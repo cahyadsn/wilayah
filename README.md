@@ -9,7 +9,7 @@ Data Wilayah Indonesia sesuai Permendagri No 56 Tahun 2015 dengan PHP+MySQL+AJaX
 Database daerah sesuai Permendagri no 56 tahun 2015
 
 | id_prov | nama                      | kab  | kota | kec | kel  | desa |
-|---------|--------------------------:|-----:|-----:|-----|-----:|-----:|
+|---------|---------------------------|-----:|-----:|-----|-----:|-----:|
 | 11      | Aceh                      |   18 |    5 | 289 |    0 | 6474 |
 | 12      | Sumatera Utara            |   25 |    8 | 436 |  692 | 5418 |
 | 13      | Sumatera Barat            |   12 |    7 | 179 |  245 |  880 |
@@ -46,7 +46,12 @@ Database daerah sesuai Permendagri no 56 tahun 2015
 | 92      | Papua Barat               |   12 |    1 | 218 |   95 | 1744 |
 |         | TOTAL                     |  416 |   98 |7160 | 8430 |74754 |
 
-link demo bisa dilihat [di sini]
+link demo bisa dilihat [di sini] http://cahyadsn.dev.php.or.id/wilayah/
 
+## Referensi
+- Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah
+
+untuk donasi via [paypal], atau bca 1451332193
 
 [di sini]: http://cahyadsn.dev.php.or.id/wilayah/
+[paypal]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K6YRM43CZ44UQ
