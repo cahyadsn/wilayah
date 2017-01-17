@@ -3,62 +3,62 @@ $dbhost ='localhost';
 $dbuser ='root';
 $dbpass ='';
 $dbname ='wilayah';
-$db_dsn = "mysql:dbname=$dbname;host=$dbhost";
+$dbdsn = "mysql:dbname=$dbname;host=$dbhost";
 try {
-  $db = new PDO($db_dsn, $dbuser, $dbpass);
+  $db = new PDO($dbdsn, $dbuser, $dbpass);
 } catch (PDOException $e) {
   echo 'Connection failed: '.$e->getMessage();
 }
-if (!empty($_GET['id'])){
+$wil=array(
+	2=>array(5,'Kota/Kabupaten','kab'),
+	5=>array(8,'Kecamatan','kec'),
+	8=>array(13,'Kelurahan','kel')
+);
+if (isset($_GET['id']) && !empty($_GET['id'])){
 	$n=strlen($_GET['id']);
-	$m=($n==2?5:($n==5?8:13));
-	$wil=($n==2?'Kota/Kab':($n==5?'Kecamatan':'Desa/Kelurahan'));
 	$query = $db->prepare("SELECT * FROM wilayah WHERE LEFT(kode,:n)=:id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
-	$query->execute(array(':n'=>$n,':id'=>$_GET['id'],':m'=>$m));
-	echo"<option value=''>Pilih {$wil}</option>";
-	while($d = $query->fetchObject()){
+	$query->execute(array(':n'=>$n,':id'=>$_GET['id'],':m'=>$wil[$n][0]));
+	echo"<option value=''>Pilih {$wil[$n][1]}</option>";
+	while($d = $query->fetchObject())
 		echo "<option value='{$d->kode}'>{$d->nama}</option>";
-	}
 }else{
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Data Daerah</title>
 		<style>
-			select {width:240px;}
+			td,select {width:240px;}
 			#kab_box,#kec_box,#kel_box{display:none;}
 		 </style>
 		<script>
 		var my_ajax=do_ajax();
 		var ids;
-		var wil=new Array('prov','kota','kec','kel');
+		var wil=new Array('kab','kec','kel');
 		function ajax(id){
-			ids=id;
-			var url="?id="+id+"&sid="+Math.random();
-			my_ajax.onreadystatechange=stateChanged;
-			my_ajax.open("GET",url,true);
-			my_ajax.send(null);
+			if(id.length<13){
+				ids=id;
+				var url="?id="+id+"&sid="+Math.random();
+				my_ajax.onreadystatechange=stateChanged;
+				my_ajax.open("GET",url,true);
+				my_ajax.send(null);
+			}
 		}
 		function do_ajax(){
-			if (window.XMLHttpRequest){
-				return new XMLHttpRequest();
-			}
-			if (window.ActiveXObject){
-				return new ActiveXObject("Microsoft.XMLHTTP");
-			}
+			if (window.XMLHttpRequest) return new XMLHttpRequest();
+			if (window.ActiveXObject) return new ActiveXObject("Microsoft.XMLHTTP");
 			return null;
 		}
 		function stateChanged(){
 			var n=ids.length;
-			var w=(n==2?wil[1]:(n==5?wil[2]:wil[3]));
+			var w=(n==2?wil[0]:(n==5?wil[1]:wil[2]));
 			var data;
 			if (my_ajax.readyState==4){
 				data=my_ajax.responseText;
 				document.getElementById(w).innerHTML = data.length>=0 ? data:"<option selected>Pilih Kota/Kab</option>";
-				document.getElementById("kab_box").style.display=(n>1)?'table-row':'none';
-				document.getElementById("kec_box").style.display=(n>4)?'table-row':'none';
-				document.getElementById("kel_box").style.display=(n>7)?'table-row':'none';
+				<?php foreach($wil as $k=>$w):?>
+					document.getElementById("<?php echo $w[2];?>_box").style.display=(n><?php echo $k-1;?>)?'table-row':'none';
+				<?php endforeach;?>
 			}
 		}
 		</script>
@@ -66,44 +66,29 @@ if (!empty($_GET['id'])){
 	<body>
 		<table>
 			<tr>
-			<td>Pilih Provinsi</td>
+			<td>Provinsi</td>
 			<td>
-				<select name="prop" id="prop" onchange="ajax(this.value)">
-					<option value="">Pilih Provinsi</option>
+				<select id="prov" onchange="ajax(this.value)">
+					<option value="">Provinsi</option>
 					<?php 
 					$query=$db->prepare("SELECT kode,nama FROM wilayah WHERE CHAR_LENGTH(kode)=2 ORDER BY nama");
 					$query->execute();
-					while ($data=$query->fetchObject()){
+					while ($data=$query->fetchObject())
 						echo '<option value="'.$data->kode.'">'.$data->nama.'</option>';
-					}
 					?>
 				<select>
 			</td>
 		</tr>
-		<tr id='kab_box'>
-			<td>Pilih Kota/Kab</td>
+		<?php foreach($wil as $w):?>
+		<tr id='<?php echo $w[2];?>_box'>
+			<td><?php echo $w[1];?></td>
 			<td>
-				<select name="kota" id="kota" onchange="ajax(this.value)">
-					<option value="">Pilih Kota</option>
+				<select id="<?php echo $w[2];?>" onchange="ajax(this.value)">
+					<option value="">Pilih <?php echo $w[1];?></option>
 				</select>
 			</td>
 		</tr>
-		<tr id='kec_box'>
-			<td>Pilih Kec</td>
-			<td>
-				<select name="kec" id="kec" onchange="ajax(this.value)">
-					<option value="">Pilih Kecamatan</option>
-				</select>
-			</td>
-		</tr>
-		<tr id='kel_box'>
-			<td>Pilih Kelurahan/Desa</td>
-			<td>
-				<select name="kel" id="kel">
-					<option value="">Pilih Kelurahan/Desa</option>
-				</select>
-			</td>
-		</tr>
+		<?php endforeach;?>
 	</body>
 </html>
 <?php } ?>
