@@ -1,5 +1,6 @@
 # wilayah
 Data Wilayah Indonesia sesuai Permendagri No 56 Tahun 2015 dengan PHP+MySQL+AJaX
+(todo : Kode dan Data Wilayah Pemerintahan Indonesia sesuai Permendagri No 137 Tahun 2017)
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
