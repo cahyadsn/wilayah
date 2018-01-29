@@ -50,7 +50,10 @@ link demo bisa dilihat [di sini] http://cahyadsn.dev.php.or.id/wilayah/
 
 ## Referensi
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah
+- Kode dan Data Wilayah Administrasi Pemerintah (Permendagri No 137 -2017) http://www.kemendagri.go.id/produk-hukum/2018/01/18/kode-dan-data-wilayah-administrasi-pemerintahan-tahun-2017
 
+## To Do
+- update data ke koda dan data wilayah berdasarkan permendagri No 137 tahun 2017
 untuk donasi via [paypal], atau bca 1451332193
 
 [di sini]: http://cahyadsn.dev.php.or.id/wilayah/
