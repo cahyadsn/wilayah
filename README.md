@@ -11,7 +11,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 1
 
 | id_prov | nama                      | kab  | kota | kec | kel  | desa |
 |---------|---------------------------|-----:|-----:|-----|-----:|-----:|
-| 11      | Aceh                      |   18 |    5 | 289 |    0 | 6496 |
+| 11      | Aceh                      |   18 |    5 | 289 |    0 | 6497 |
 | 12      | Sumatera Utara            |   25 |    8 | 444 |  693 | 5417 |
 | 13      | Sumatera Barat            |   12 |    7 | 179 |  230 |  928 |
 | 14      | Riau                      |   10 |    2 | 166 |  268 | 1591 |
@@ -46,6 +46,8 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 1
 | 91      | Papua                     |   28 |    1 | 560 |  110 | 5411 |
 | 92      | Papua Barat               |   12 |    1 | 218 |  106 | 1742 |
 |         | TOTAL                     |  416 |   98 |7201 | 8490 |74957 |
+
+)* data tidak mengalami perubahan dari sebelumnya
 
 Database daerah sesuai Permendagri no 56 tahun 2015
 
