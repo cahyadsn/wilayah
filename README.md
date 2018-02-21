@@ -1,5 +1,6 @@
 # wilayah
-Data Wilayah Indonesia sesuai Permendagri No 56 Tahun 2015 dengan PHP+MySQL+AJaX
+Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Permendagri No 56 Tahun 2015 dengan PHP+MySQL+AJaX
+
 (todo : Kode dan Data Wilayah Pemerintahan Indonesia sesuai Permendagri No 137 Tahun 2017)
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -91,15 +92,15 @@ Database daerah sesuai Permendagri no 56 tahun 2015
 
 link demo bisa dilihat [di sini] http://cahyadsn.dev.php.or.id/wilayah/
 
-
-
 ## Referensi
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah
 - Kode dan Data Wilayah Administrasi Pemerintah (Permendagri No 137 -2017) http://www.kemendagri.go.id/produk-hukum/2018/01/18/kode-dan-data-wilayah-administrasi-pemerintahan-tahun-2017
 
 ## To Do
 - update data ke koda dan data wilayah berdasarkan permendagri No 137 tahun 2017
+- on progress, convert data dari pdf -> xlsx (done) , xlsx->csv (done) , csv->sql(done) , import sql to db (done), validasi data di db dengan source (on progress)
 
+## Donasi
 untuk donasi via [paypal], atau bca 1451332193
 
 [di sini]: http://cahyadsn.dev.php.or.id/wilayah/
