@@ -49,6 +49,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 1
 |         | TOTAL                     |  416 |   98 |7201 | 8490 |74957 |
 
 )* data tidak mengalami perubahan dari sebelumnya
+
 )** terdapat 11 data kelurahan di Kota Sorong yang tidak ada namanya (hanya berupa kode wilayah saja -- tidak dimasukkan dalam database, sehingga hanya di sajikan 95 data kelurahan di provinsi Papua Barat, 8479 data kelurahan secara Nasional)
 
 Database daerah sesuai Permendagri no 56 tahun 2015
