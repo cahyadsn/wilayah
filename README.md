@@ -92,7 +92,7 @@ Database daerah sesuai Permendagri no 56 tahun 2015
 | 92      | Papua Barat               |   12 |    1 | 218 |   95 | 1744 |
 |         | TOTAL                     |  416 |   98 |7160 | 8430 |74754 |
 
-link demo bisa dilihat [di sini] http://cahyadsn.dev.php.or.id/wilayah/
+link demo bisa dilihat [di sini] http://cahyadsn.phpindonesia.id/wilayah/ (data sesuai permendagri no 137 tahun 2017)
 
 ## Referensi
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah
