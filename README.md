@@ -1,7 +1,7 @@
 # wilayah
 Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Permendagri No 137 Tahun 2017 dengan PHP+MySQL+AJaX
 
-(Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Permendagri No 56 Tahun 2015, utk database terbaru gunakan wilayah_2018.sql yg sesuai dengan Permendagri No 137 tahun 2017, namun baru sampai tingkat kecamatan. Untuk kode wilayah hingga tingkat desa/kelurahan sedang dalam verifikasi)
+(Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Permendagri No 56 Tahun 2015, utk database terbaru gunakan wilayah_2018.sql yg sesuai dengan Permendagri No 137 tahun 2017)
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
@@ -99,11 +99,10 @@ link demo bisa dilihat [di sini] http://cahyadsn.phpindonesia.id/wilayah/ (data 
 - Kode dan Data Wilayah Administrasi Pemerintah (Permendagri No 137 -2017) http://www.kemendagri.go.id/produk-hukum/2018/01/18/kode-dan-data-wilayah-administrasi-pemerintahan-tahun-2017
 
 ## To Do
-- update data ke kode dan data wilayah berdasarkan permendagri No 137 tahun 2017 smp dengan tingkat kelurahan/desa
-- on progress, convert data dari pdf -> xlsx (done) , xlsx->csv (done) , csv->sql(done) , import sql to db (done), validasi data di db dengan source (on progress s.d. tingkat kecamtan, done)
+- update data ke kode dan data wilayah berdasarkan permendagri No 137 tahun 2017 smp dengan tingkat kelurahan/desa (done)
+- on progress, convert data dari pdf -> xlsx (done) , xlsx->csv (done) , csv->sql(done) , import sql to db (done), validasi data di db dengan source (done)
 
 ## Request Data
-- data wilayah berupa kode dan nama sampai dengan tingkat desa/kelurahan sudah tersedia, silakan hubungi kontak/inbox/pm
 - data tambahan berupa koordinat latitude/longitude, polygon boundaries, kodepos, timezone utk beberapa wilayah sudah tersedia, namun tidak termasuk dalam publish ini. Yang memerlukan silakan kontak/inbox/pm
 - data lat/long/timezone dan polygon boundaries wilayah yg sudah cukup lengkap tersedia untuk wilayah provinsi DKI Jakarta dan DI Yogyakarta
 
