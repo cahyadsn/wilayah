@@ -13610,7 +13610,6 @@ INSERT INTO `wilayah_2018` (`kode`, `nama`) VALUES
 ('13.01.15.2009',	'Air Hitam'),
 ('13.01.15.2010',	'Sambungo'),
 ('13.02',	'KAB. SOLOK'),
-('13.02.02.1036',	'Ikua Koto Dibalai'),
 ('13.02.03',	'Pantai Cermin'),
 ('13.02.03.2001',	'Lolo'),
 ('13.02.03.2002',	'Surian'),
@@ -18592,6 +18591,7 @@ INSERT INTO `wilayah_2018` (`kode`, `nama`) VALUES
 ('16.01.14.1014',	'Sekar Jaya'),
 ('16.01.14.2015',	'Air Paoh'),
 ('16.01.14.2016',	'Terusan'),
+('16.01.20','Ulu Ogan'),
 ('16.01.20.2001',	'Kelumpang'),
 ('16.01.20.2002',	'Gunung Tiga'),
 ('16.01.20.2003',	'Mendingin'),
@@ -18637,6 +18637,7 @@ INSERT INTO `wilayah_2018` (`kode`, `nama`) VALUES
 ('16.01.22.2015',	'Markisa'),
 ('16.01.22.2016',	'Air Wall'),
 ('16.01.22.2017',	'Sumber Bahagia'),
+('16.01.28','Lengkiti'),
 ('16.01.28.2001',	'Bandar Jaya'),
 ('16.01.28.2002',	'Karang Endah'),
 ('16.01.28.2003',	'Pajar Bulan'),
@@ -18692,6 +18693,7 @@ INSERT INTO `wilayah_2018` (`kode`, `nama`) VALUES
 ('16.01.32.2007',	'Sinar Kedaton'),
 ('16.01.32.2008',	'Lubuk Kemiling'),
 ('16.02',	'KAB. OGAN KOMERING ILIR'),
+('16.02.02','Tanjung Lubuk'),
 ('16.02.02.2001',	'Ulak Kapal'),
 ('16.02.02.2002',	'Tanjung Merindu'),
 ('16.02.02.2003',	'Tanjung Baru'),
@@ -18900,6 +18902,7 @@ INSERT INTO `wilayah_2018` (`kode`, `nama`) VALUES
 ('16.02.15.2016',	'Gajah Mulya'),
 ('16.02.15.2017',	'Sri Gading'),
 ('16.02.15.2018',	'Gading Mas'),
+('16.02.17','Jejawi'),
 ('16.02.17.2001',	'Tanjung Aur'),
 ('16.02.17.2002',	'Lubuk Ketepeng'),
 ('16.02.17.2003',	'Talang Cempedak'),
@@ -91197,4 +91200,4 @@ INSERT INTO `wilayah_2018` (`kode`, `nama`) VALUES
 ('91.71.05.2003',	'Yoka'),
 ('91.71.05.1004',	'Yabansai');
 
--- 2018-06-04 10:20:14
+-- 2018-06-10 23:27:24
