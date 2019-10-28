@@ -106,6 +106,10 @@ link demo bisa dilihat [di sini] http://cahyadsn.phpindonesia.id/wilayah/ (data 
 - data tambahan berupa koordinat latitude/longitude, polygon boundaries, kodepos, timezone utk beberapa wilayah sudah tersedia, namun tidak termasuk dalam publish ini. Yang memerlukan silakan kontak/inbox/pm
 - data lat/long/timezone dan polygon boundaries wilayah yg sudah cukup lengkap tersedia untuk wilayah provinsi DKI Jakarta dan DI Yogyakarta
 
+## Pengaplikasian Lain
+
+1. [https://github.com/codenoid/Data-Wilayah.js](https://github.com/codenoid/Data-Wilayah.js) (Untuk JavaScript, tinggal panggil dan siap pakai, jadikan cache agar lebih cepat)
+
 ## Donasi
 untuk donasi via [paypal], atau bca 1451332193
 
