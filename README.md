@@ -47,6 +47,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 7
 | 91      | Papua                     |   28 |    1 | 560 |  110 | 5411 |
 | 92      | Papua Barat*              |   12 |    1 | 218 |   95 | 1742 |
 |         | TOTAL*                    |  416 |   98 |7230 | 8488 |74953 |
+
 )* data tidak mengalami perubahan dari sebelumnya (data permendagri No 137 Tahun 2017)
 
 
