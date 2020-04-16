@@ -1,7 +1,10 @@
 # wilayah
 Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Permendagri No 72 Tahun 2019 dengan PHP+MySQL+AJaX
 
-(Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Permendagri No 56 Tahun 2015, utk database gunakan wilayah_2018.sql sesuai dengan Permendagri No 137 tahun 2017, sedangkan database yg sesuai Permendagri No. 72 Tahun 2019 masih dalam penyusunan)
+Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
+- wilayah.sql sesuai Permendagri No 56 Tahun 2015, 
+- wilayah_2018.sql sesuai Permendagri No 137 tahun 2017
+- wilayah_2020.sql sesuai Permendagri No. 72 Tahun 2019
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
@@ -13,12 +16,12 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 7
 | id_prov | nama                      | kab  | kota | kec | kel  | desa |
 |---------|---------------------------|-----:|-----:|-----|-----:|-----:|
 | 11      | Aceh                      |   18 |    5 | 289 |    0 | 6497 |
-| 12      | Sumatera Utara            |   25 |    8 | 444 |  693 | 5417 |
+| 12      | Sumatera Utara*           |   25 |    8 | 444 |  693 | 5417 |
 | 13      | Sumatera Barat            |   12 |    7 | 179 |  230 |  928 |
-| 14      | Riau                      |   10 |    2 | 166 |  268 | 1591 |
+| 14      | Riau*                     |   10 |    2 | 166 |  268 | 1591 |
 | 15      | Jambi                     |    9 |    2 | 141 |  163 | 1399 |
-| 16      | Sumatera Selatan          |   13 |    4 | 236 |  386 | 2853 |
-| 17      | Bengkulu                  |    9 |    1 | 128 |  172 | 1341 |
+| 16      | Sumatera Selatan*         |   13 |    4 | 236 |  386 | 2853 |
+| 17      | Bengkulu*                 |    9 |    1 | 128 |  172 | 1341 |
 | 18      | Lampung                   |   13 |    2 | 228 |  205 | 2435 |
 | 19      | Kepulauan Bangka Belitung |    6 |    1 |  47 |   82 |  309 |
 | 21      | Kepulauan Riau*           |    5 |    2 |  70 |  142 |  275 |
@@ -39,7 +42,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 7
 | 71      | Sulawesi Utara            |   11 |    4 | 171 |  332 | 1507 |
 | 72      | Sulawesi Tengah           |   12 |    1 | 175 |  175 | 1842 |
 | 73      | Sulawesi Selatan*         |   21 |    3 | 311 |  792 | 2255 |
-| 74      | Sulawesi Tenggara         |   15 |    2 | 219 |  377 | 1911 |
+| 74      | Sulawesi Tenggara*        |   15 |    2 | 219 |  377 | 1911 |
 | 75      | Gorontalo*                |    5 |    1 |  77 |   72 |  657 |
 | 76      | Sulawesi Barat            |    6 |    0 |  69 |   73 |  575 |
 | 81      | Maluku                    |    9 |    2 | 118 |   35 | 1198 |
@@ -48,7 +51,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 7
 | 92      | Papua Barat*              |   12 |    1 | 218 |   95 | 1742 |
 |         | TOTAL*                    |  416 |   98 |7230 | 8488 |74953 |
 
-)* data tidak mengalami perubahan dari sebelumnya (data permendagri No 137 Tahun 2017)
+)* data mengalami perubahan dari data sebelumnya (data permendagri No 137 Tahun 2017)
 
 
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 137 Tahun 2017
