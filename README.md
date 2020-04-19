@@ -1,4 +1,4 @@
-# wilayah
+# WILAYAH
 Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Permendagri No 72 Tahun 2019 dengan PHP+MySQL+AJaX
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
@@ -152,8 +152,9 @@ link demo bisa dilihat [di sini] http://cahyadsn.phpindonesia.id/wilayah/ (data 
 - on progress, convert data dari pdf -> xlsx (done) , xlsx->csv (done) , csv->sql(done) , import sql to db (done), validasi data di db dengan source (done)
 
 ## Request Data
-- data tambahan berupa koordinat latitude/longitude, polygon boundaries, kodepos, timezone utk beberapa wilayah sudah tersedia, namun tidak termasuk dalam publish ini. Yang memerlukan silakan kontak/inbox/pm
+- data tambahan berupa koordinat latitude/longitude, polygon boundaries, kodepos, timezone utk beberapa wilayah sudah tersedia, namun tidak termasuk dalam publish ini.
 - data lat/long/timezone dan polygon boundaries wilayah yg sudah cukup lengkap tersedia untuk wilayah provinsi DKI Jakarta dan DI Yogyakarta
+- data polygon diperoleh dari website BIG(Badan Informasi Geospatial) di https://tanahair.indonesia.go.id
 
 ## Donasi
 untuk donasi via [paypal], atau bni 0821-342-555
