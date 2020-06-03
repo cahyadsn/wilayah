@@ -11,7 +11,8 @@ Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 [![GitHub forks](https://img.shields.io/github/forks/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/network)
 [![GitHub stars](https://img.shields.io/github/stars/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/stargazers)
 
-Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 72 Tahun 2019
+## Data Permendagri No 72 Tahun 2019
+Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 72 Tahun 2019 (wilayah_2020.sql)
 
 | id_prov | nama                      | kab  | kota | kec | kel  | desa |
 |---------|---------------------------|-----:|-----:|-----|-----:|-----:|
@@ -53,8 +54,8 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 7
 
 )* data mengalami perubahan dari data sebelumnya (data permendagri No 137 Tahun 2017)
 
-
-Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 137 Tahun 2017
+## Data Permendagri No 137 Tahun 2017
+Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 137 Tahun 2017 (wilayah_2018.sql)
 
 | id_prov | nama                      | kab  | kota | kec | kel  | desa |
 |---------|---------------------------|-----:|-----:|-----|-----:|-----:|
@@ -98,7 +99,8 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 1
 
 )** terdapat 11 data kelurahan di Kota Sorong yang tidak ada namanya (hanya berupa kode wilayah saja -- tidak dimasukkan dalam database, sehingga hanya di sajikan 95 data kelurahan di provinsi Papua Barat, 8479 data kelurahan secara Nasional)
 
-Database daerah sesuai Permendagri no 56 tahun 2015
+## Data Permendagri no 56 tahun 2015
+Database daerah sesuai Permendagri no 56 tahun 2015 (wilayah.sql)
 
 | id_prov | nama                      | kab  | kota | kec | kel  | desa |
 |---------|---------------------------|-----:|-----:|-----|-----:|-----:|
@@ -157,7 +159,7 @@ link demo bisa dilihat [di sini] http://cahyadsn.phpindonesia.id/wilayah/ (data 
 - data polygon diperoleh dari website BIG(Badan Informasi Geospatial) di https://tanahair.indonesia.go.id
 
 ## Donasi
-untuk donasi via [paypal], atau bni 0821-342-555
+untuk donasi via [paypal], https://paypal.me/cahyadsn, atau BNI Syariah 0821-342-555
 
 [di sini]: http://cahyadsn.dev.php.or.id/wilayah/
 [paypal]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K6YRM43CZ44UQ
