@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_wilayah.php
 purpose  :
 create   : 2017/09/12
-last edit: 2019-08-30
+last edit: 200605,190830
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -16,12 +16,12 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY
 WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
 A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
-copyright (c) 2015-2019 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2015-2020 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 $dbhost='localhost';
 $dbuser='root';
 $dbpass='';
-$dbname='test';
+$dbname='wilayah';
 $db_dsn = "mysql:dbname=$dbname;host=$dbhost";
 $tbl_wilayah="wilayah_level_1_2";
 try {
