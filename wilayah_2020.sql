@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2020 at 08:35 AM
+-- Generation Time: Aug 26, 2020 at 08:05 AM
 -- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.4
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -23635,6 +23635,17 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('17.09.10.2011', 'Bang Haji'),
 ('17.09.10.2012', 'Sungkai Berayun'),
 ('17.09.11', 'Semidang Lagan'),
+('17.09.11.2001', 'Pagar Gunung'),
+('17.09.11.2002', 'Karang Nanding'),
+('17.09.11.2003', 'Semidang'),
+('17.09.11.2004', 'Gajah Mati'),
+('17.09.11.2005', 'Padang Siring'),
+('17.09.11.2006', 'Lagan Bungin'),
+('17.09.11.2007', 'Pagar Jati'),
+('17.09.11.2008', 'Taba Lagan'),
+('17.09.11.2009', 'Lagan'),
+('17.09.11.2010', 'Bukit'),
+('17.09.11.2011', 'Kota Niur'),
 ('17.71', 'KOTA BENGKULU'),
 ('17.71.01', 'Selebar'),
 ('17.71.01.1001', 'Pagar Dewa'),
@@ -26994,17 +27005,6 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('19.06.07.2002', 'Tanjung Batu Itam'),
 ('19.06.07.2003', 'Tanjung Kelumpang'),
 ('19.06.07.2004', 'Dukong'),
-('19.09.11.2001', 'Pagar Gunung'),
-('19.09.11.2002', 'Karang Nanding'),
-('19.09.11.2003', 'Semidang'),
-('19.09.11.2004', 'Gajah Mati'),
-('19.09.11.2005', 'Padang Siring'),
-('19.09.11.2006', 'Lagan Bungin'),
-('19.09.11.2007', 'Pagar Jati'),
-('19.09.11.2008', 'Taba Lagan'),
-('19.09.11.2009', 'Lagan'),
-('19.09.11.2010', 'Bukit'),
-('19.09.11.2011', 'Kota Niur'),
 ('19.71', 'KOTA PANGKAL PINANG'),
 ('19.71.01', 'Bukitintan'),
 ('19.71.01.1004', 'Semabung Lama'),
