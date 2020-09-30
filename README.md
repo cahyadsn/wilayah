@@ -53,7 +53,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 7
 |         | TOTAL*                    |  416 |   98 |7230 | 8488 |74953 |
 
 )* data mengalami perubahan dari data sebelumnya (data permendagri No 137 Tahun 2017)
-
+**Neakles
 ## Data Permendagri No 137 Tahun 2017
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 137 Tahun 2017 (wilayah_2018.sql)
 
