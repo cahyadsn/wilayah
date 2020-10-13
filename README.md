@@ -159,7 +159,6 @@ link demo bisa dilihat [di sini] http://cahyadsn.phpindonesia.id/wilayah/ (data 
 - data polygon diperoleh dari website BIG(Badan Informasi Geospatial) di https://tanahair.indonesia.go.id
 
 ## Donasi
-untuk donasi via [paypal], https://paypal.me/cahyadsn, atau BNI Syariah 0821-342-555
+untuk donasi via BNI Syariah 0821-342-555
 
 [di sini]: http://cahyadsn.dev.php.or.id/wilayah/
-[paypal]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K6YRM43CZ44UQ
