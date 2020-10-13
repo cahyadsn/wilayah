@@ -161,4 +161,4 @@ link demo bisa dilihat [di sini] http://cahyadsn.phpindonesia.id/wilayah/ (data 
 ## Donasi
 untuk donasi via BNI Syariah 0821-342-555
 
-[di sini]: http://cahyadsn.dev.php.or.id/wilayah/
+[di sini]: http://wilayah.cahyadsn.com/v2/
