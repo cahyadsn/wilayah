@@ -140,7 +140,7 @@ Database daerah sesuai Permendagri no 56 tahun 2015 (wilayah.sql)
 | 92      | Papua Barat               |   12 |    1 | 218 |   95 | 1744 |
 |         | TOTAL                     |  416 |   98 |7160 | 8430 |74754 |
 
-link demo bisa dilihat [di sini] http://cahyadsn.phpindonesia.id/wilayah/ (data sesuai permendagri no 137 tahun 2017)
+link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai permendagri no 137 tahun 2017)
 
 ## Referensi
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah
@@ -161,4 +161,4 @@ link demo bisa dilihat [di sini] http://cahyadsn.phpindonesia.id/wilayah/ (data 
 ## Donasi
 untuk donasi via BNI Syariah 0821-342-555
 
-[di sini]: http://wilayah.cahyadsn.com/v2/
+[di sini]: https://wilayah.cahyadsn.com/v2/
