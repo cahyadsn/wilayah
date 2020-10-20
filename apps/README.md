@@ -73,7 +73,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai p
 - data lat/long/timezone dan polygon boundaries wilayah yg sudah cukup lengkap tersedia untuk wilayah provinsi DKI Jakarta dan DI Yogyakarta
 
 ## Donasi
-untuk donasi via [paypal] di akun cdsatrian@yahoo.co.id , atau BNI Syariah 0821 342 555
+untuk donasi via BNI Syariah 0821 342 555
 
 [di sini]: http://cahyadsn.dev.php.or.id/wilayah/
-[paypal]: https://paypal.me/cahyadsn
+
