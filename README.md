@@ -2,9 +2,9 @@
 Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Permendagri No 72 Tahun 2019 dengan PHP+MySQL+AJaX
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
-- wilayah.sql sesuai Permendagri No 56 Tahun 2015, 
-- wilayah_2018.sql sesuai Permendagri No 137 tahun 2017
 - wilayah_2020.sql sesuai Permendagri No. 72 Tahun 2019
+- wilayah_2018.sql sesuai Permendagri No 137 tahun 2017
+- wilayah.sql sesuai Permendagri No 56 Tahun 2015
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
@@ -143,9 +143,9 @@ Database daerah sesuai Permendagri no 56 tahun 2015 (wilayah.sql)
 link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai permendagri no 137 tahun 2017)
 
 ## Referensi
-- Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.72-2019) https://www.kemendagri.go.id/page/read/48/peraturan-menteri-dalam-negeri-no72-tahun-2019 (Berita Negara Tahun 2019 Nomor 1327, Ditetapkan pada tanggal 8 Oktober 2019)
-- Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.137-2017) http://www.kemendagri.go.id/produk-hukum/2018/01/18/kode-dan-data-wilayah-administrasi-pemerintahan-tahun-2017 (Berita Negara Tahun 2017 Nomor 1955, Ditetapkan pada tanggal 27 Desember 2017)
-- Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Ditetapkan pada tanggal 29 Juni 2015)
+- Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.72-2019) https://www.kemendagri.go.id/page/read/48/peraturan-menteri-dalam-negeri-no72-tahun-2019 (Berita Negara Republik Indonesia Tahun 2019 Nomor 1327, Ditetapkan pada tanggal 8 Oktober 2019)
+- Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.137-2017) http://www.kemendagri.go.id/produk-hukum/2018/01/18/kode-dan-data-wilayah-administrasi-pemerintahan-tahun-2017 (Berita Negara Republik Indonesia Tahun 2017 Nomor 1955, Ditetapkan pada tanggal 27 Desember 2017)
+- Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
 - update data perubahan nama kecamatan, kelurahan/desa (on progress)
