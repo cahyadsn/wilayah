@@ -148,6 +148,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai p
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
+- update data perubahan nama kecamatan, kelurahan/desa (on progress)
 - update data di web demo (on progress)
 - update data ke kode dan data wilayah berdasarkan permendagri No 72 tahun 2019 smp dengan tingkat kelurahan/desa (done)
 - update data ke kode dan data wilayah berdasarkan permendagri No 137 tahun 2017 smp dengan tingkat kelurahan/desa (done)
@@ -160,5 +161,6 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai p
 
 ## Donasi
 untuk donasi via BNI Syariah 0821-342-555
+untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 
 [di sini]: https://wilayah.cahyadsn.com/v2/
