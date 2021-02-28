@@ -5,6 +5,7 @@ Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - wilayah_2020.sql sesuai Permendagri No. 72 Tahun 2019
 - wilayah_2018.sql sesuai Permendagri No 137 tahun 2017
 - wilayah.sql sesuai Permendagri No 56 Tahun 2015
+- wilayah_level_1_2.sql sesuai Permendagri No. 72 Tahun 2019 untuk data provinsi dan kab/kota dengan koordinat,timezone dan boundaries
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
@@ -148,6 +149,8 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai p
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
+- meng-update data latitude/longitude data wilayah_level_1_2.sql (**on progress**)
+- menambahkan database wilayal_level_1_2.sql (data level provinsi dan kab/kota dengan koordinat, timezone dan boundaries) (done)
 - update data perubahan nama kecamatan, kelurahan/desa (**on progress**)
 - update data di web demo (**on progress**)
 - update data ke kode dan data wilayah berdasarkan permendagri No 72 tahun 2019 smp dengan tingkat kelurahan/desa (done)
