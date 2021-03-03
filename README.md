@@ -149,7 +149,8 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai p
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
-- meng-update data latitude/longitude data wilayah_level_1_2.sql (**on progress**)
+- meng-update data boundaries data wilayah_level_1_2.sql (**on progress**)
+- meng-update data latitude/longitude data wilayah_level_1_2.sql (done)
 - menambahkan database wilayal_level_1_2.sql (data level provinsi dan kab/kota dengan koordinat, timezone dan boundaries) (done)
 - update data perubahan nama kecamatan, kelurahan/desa (**on progress**)
 - update data di web demo (**on progress**)
