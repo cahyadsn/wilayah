@@ -2,21 +2,28 @@
 /*
 BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 ================================================================================
-filename : index.php
-purpose  :
-create   : 2015/07/02
-last edit: 200605,191117,190830,170928,170912,170503,170426,170419,170328,150702
-author   : cahya dsn
+filename    : index.php
+purpose     : main application page
+create      : 150702
+last edit   : 210304
+author   	: cahya dsn
+demo site 	: https://wilayah.cahyadsn.com/v2
+soure code 	: https://github.com/cahyadsn/wilayah/apps
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
-terms of the GNU General Public License as published by the Free Software
-Foundation; either version 2 of the License, or (at your option) any later version.
+terms of the MIT License.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
-A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-copyright (c) 2015-2020 by cahya dsn; cahyadsn@gmail.com
+See the MIT License for more details
+
+copyright (c) 2015-2021 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 session_start();
 $c=isset($_SESSION['c'])?$_SESSION['c']:(isset($_GET['c'])?$_GET['c']:'indigo');
