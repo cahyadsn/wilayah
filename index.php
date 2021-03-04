@@ -1,4 +1,30 @@
 <?php
+/*
+BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
+================================================================================
+filename 	: index.php
+purpose  	: main application page
+create   	: 20170117
+last edit	: 20210304
+author   	: cahya dsn
+demo site 	: https://wilayah.cahyadsn.com/v2
+soure code 	: https://github.com/cahyadsn/wilayah
+================================================================================
+This program is free software; you can redistribute it and/or modify it under the
+terms of the MIT License.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+See the MIT License for more details
+
+copyright (c) 2017-2021 by cahya dsn; cahyadsn@gmail.com
+================================================================================*/
 $dbhost ='localhost';
 $dbuser ='root';
 $dbpass ='';
@@ -16,7 +42,7 @@ $wil=array(
 );
 if (isset($_GET['id']) && !empty($_GET['id'])){
 	$n=strlen($_GET['id']);
-	$query = $db->prepare("SELECT * FROM wilayah WHERE LEFT(kode,:n)=:id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
+	$query = $db->prepare("SELECT * FROM wilayah_2020 WHERE LEFT(kode,:n)=:id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
 	$query->execute(array(':n'=>$n,':id'=>$_GET['id'],':m'=>$wil[$n][0]));
 	echo"<option value=''>Pilih {$wil[$n][1]}</option>";
 	while($d = $query->fetchObject())
