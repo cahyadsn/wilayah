@@ -30,7 +30,7 @@ if (!empty($_GET['id'])){
   $query->execute(array(':id'=>$_GET['id']));
   $d = $query->fetchObject();
   if(empty($d->lat)){
-    $r=array('status'=>false,'error'=>'data not found','kodepos'=>$d->kodepos);
+    $r=array('status'=>false,'error'=>'data not found');
   }else{
     $path=$d->path;
     if(empty($path)){ 
@@ -41,7 +41,7 @@ if (!empty($_GET['id'])){
             array('lat'=>$d->lat-0.01,'lng'=>$d->lng+0.01)
       );
     }
-    $data=array('kode'=> $d->kode,'lat'=> $d->lat,'lng'=> $d->lng,'kodepos'=> $d->kodepos,'path'=>$path);
+    $data=array('kode'=> $d->kode,'lat'=> $d->lat,'lng'=> $d->lng,'path'=>$path);
     $r=array('status'=>true,'data'=>$data);
   }
   if(empty($_GET['geo'])){
@@ -61,7 +61,6 @@ if (!empty($_GET['id'])){
   $data=array(
     ':lat'=>$_POST['lat'],
     ':lng'=>$_POST['lng'],
-    ':kodepos'=>$_POST['kodepos'],
     ':path'=>$_POST['path']
   );
   $sql="UPDATE {$tbl_wilayah} SET ";
