@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2021 at 02:48 AM
+-- Generation Time: Mar 07, 2021 at 02:03 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.4.5
 
@@ -73855,7 +73855,7 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('73.08.01.2008', 'Erecinnong'),
 ('73.08.01.2009', 'Bulu Sirua'),
 ('73.08.01.2010', 'Lamoncong'),
-('73.08.01.2011', 'Mattiro Walie'),
+('73.08.01.2011', 'Mattirowalie'),
 ('73.08.02', 'Kahu'),
 ('73.08.02.1001', 'Palattae'),
 ('73.08.02.2002', 'Nusa'),
@@ -74011,7 +74011,7 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('73.08.10.2011', 'Kanco'),
 ('73.08.10.2012', 'Cinennung'),
 ('73.08.11', 'Ponre'),
-('73.08.11.2001', 'Mappe Sangka'),
+('73.08.11.2001', 'Mappesangka'),
 ('73.08.11.2002', 'Salebba'),
 ('73.08.11.2003', 'Matampae'),
 ('73.08.11.2004', 'Pattimpa'),
@@ -74235,7 +74235,7 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('73.08.27', 'Patimpeng'),
 ('73.08.27.2001', 'Patimpeng'),
 ('73.08.27.2002', 'Latellang'),
-('73.08.27.2003', 'Madanreng Pulu'),
+('73.08.27.2003', 'Maddenreng Pulu'),
 ('73.08.27.2004', 'Masago'),
 ('73.08.27.2005', 'Batu Lappa'),
 ('73.08.27.2006', 'Paccing'),
@@ -74587,7 +74587,7 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('73.12.04.1006', 'Lapajung'),
 ('73.12.04.1007', 'Salokaraja'),
 ('73.12.04.2008', 'Maccile'),
-('73.12.04.2009', 'Umpungenga'),
+('73.12.04.2009', 'Umpungeng'),
 ('73.12.04.2010', 'Mattabulu'),
 ('73.12.05', 'Marioriawa'),
 ('73.12.05.1001', 'Batu Batu'),
@@ -76933,7 +76933,7 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('74.03.07.2003', 'Raimuna'),
 ('74.03.07.2004', 'Maligano'),
 ('74.03.07.2005', 'Lapole'),
-('74.03.07.2007', 'Poharua'),
+('74.03.07.2007', 'Pohorua'),
 ('74.03.13', 'Wakorumba Selatan'),
 ('74.03.13.1003', 'Labunia'),
 ('74.03.13.2001', 'Wambona'),
