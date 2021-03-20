@@ -63441,7 +63441,7 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('62.02.15.2001', 'Tumbang Tilap'),
 ('62.02.15.2002', 'Tumbang Kaminting'),
 ('62.02.15.2003', 'Tanah Haluan'),
-('62.02.15.2004', 'Tumbang Penyahuan'),
+('62.02.15.2004', 'Tumbang Panyahuan'),
 ('62.02.15.2005', 'Tumbang Sapia'),
 ('62.02.15.2006', 'Tumbang Getas'),
 ('62.02.15.2007', 'Tewai Hara'),
