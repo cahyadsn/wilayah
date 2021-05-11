@@ -141,7 +141,7 @@ Database daerah sesuai Permendagri no 56 tahun 2015 (wilayah.sql)
 | 92      | Papua Barat               |   12 |    1 | 218 |   95 | 1744 |
 |         | TOTAL                     |  416 |   98 |7160 | 8430 |74754 |
 
-link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai permendagri no 137 tahun 2017)
+link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.3/ (data sesuai permendagri no 137 tahun 2017, level 1 dan 2)
 
 ## Referensi
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.72-2019) https://www.kemendagri.go.id/page/read/48/peraturan-menteri-dalam-negeri-no72-tahun-2019 (Berita Negara Republik Indonesia Tahun 2019 Nomor 1327, Ditetapkan pada tanggal 8 Oktober 2019)
@@ -149,7 +149,8 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai p
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
-- update data di web demo (**on progress**)
+- update web demo ke v2.3 (done)
+- update data di web demo (done)
 - penambahan data elevation data wilayah level 1 dan 2 (done)
 - update data perubahan nama kecamatan, kelurahan/desa (done)
 - update data di web demo v2 (level 1 dan 2) (done)
