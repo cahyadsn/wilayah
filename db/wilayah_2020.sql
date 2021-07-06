@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2021 at 09:55 AM
+-- Generation Time: Jul 06, 2021 at 08:05 AM
 -- Server version: 10.1.38-MariaDB
--- PHP Version: 8.0.3
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -57036,12 +57036,16 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('52.08.01.2005', 'Sigar Penjalin'),
 ('52.08.01.2006', 'Medana'),
 ('52.08.01.2007', 'Teniga'),
+('52.08.01.2008','Sama Guna'),
 ('52.08.02', 'Gangga'),
 ('52.08.02.2001', 'Gondang'),
 ('52.08.02.2002', 'Bentek'),
 ('52.08.02.2003', 'Genggelang'),
 ('52.08.02.2004', 'Rempek'),
 ('52.08.02.2005', 'Sambik Bangkol'),
+('52.08.02.2006','Selelos'),
+('52.08.02.2007','Rempek Darussalam'),
+('52.08.02.2008','Segara Katon'),
 ('52.08.03', 'Kayangan'),
 ('52.08.03.2001', 'Kayangan'),
 ('52.08.03.2002', 'Santong'),
@@ -57051,21 +57055,27 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('52.08.03.2006', 'Salut'),
 ('52.08.03.2007', 'Dangiang'),
 ('52.08.03.2008', 'Pendua'),
+('52.08.03.2009','Pansor'),
+('52.08.03.2010','Santong Mulia'),
 ('52.08.04', 'Bayan'),
 ('52.08.04.2001', 'Bayan'),
 ('52.08.04.2002', 'Loloan'),
 ('52.08.04.2003', 'Anyar'),
 ('52.08.04.2004', 'Sukadana'),
-('52.08.04.2005', 'Akat Akar'),
+('52.08.04.2005', 'Akar Akar'),
 ('52.08.04.2006', 'Senaru'),
 ('52.08.04.2007', 'Mumbul Sari'),
 ('52.08.04.2008', 'Sambik Elen'),
 ('52.08.04.2009', 'Karang Bajo'),
+('52.08.04.2010', 'Gunjan Asri'),
+('52.08.04.2011', 'Andalan'),
+('52.08.04.2012',' Batu Rakit'),
 ('52.08.05', 'Pemenang'),
 ('52.08.05.2001', 'Pemenang Timur'),
 ('52.08.05.2002', 'Pemenang Barat'),
 ('52.08.05.2003', 'Gili Indah'),
 ('52.08.05.2004', 'Malaka'),
+('52.08.05.2005', 'Menggala'),
 ('52.71', 'KOTA MATARAM'),
 ('52.71.01', 'Ampenan'),
 ('52.71.01.1004', 'Ampenan Selatan'),
@@ -64810,6 +64820,7 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('62.13.05.2018', 'Netampin'),
 ('62.13.05.2024', 'Sumber Garunggung'),
 ('62.13.05.2025', 'Muara Awang'),
+('62.13.05.2026', 'Dambung'),
 ('62.13.06', 'Pematang Karau'),
 ('62.13.06.2001', 'Muara Palantau'),
 ('62.13.06.2002', 'Ketab'),
@@ -76682,8 +76693,6 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('74.02.16.2009', 'Lalowata'),
 ('74.02.16.2010', 'Titioa'),
 ('74.02.16.2012', 'Angonga'),
-('74.02.16.2013', 'Napooha'),
-('74.02.16.2014', 'Arombu Utama'),
 ('74.02.17', 'Puriala'),
 ('74.02.17.1002', 'Watundehoa'),
 ('74.02.17.2001', 'Puriala'),
@@ -76771,7 +76780,6 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('74.02.23.2005', 'Puuwiwirano'),
 ('74.02.23.2006', 'Tanggola'),
 ('74.02.23.2007', 'Lalomerui'),
-('74.02.23.2008', 'Wiau'),
 ('74.02.24', 'Anggaberi'),
 ('74.02.24.1001', 'Parauna'),
 ('74.02.24.1002', 'Anggaberi'),
