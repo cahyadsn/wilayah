@@ -1,8 +1,8 @@
 # WILAYAH
-Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Permendagri No 72 Tahun 2019 dengan PHP+MySQL+AJaX
+Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Permendagri No 72 Tahun 2019 (dgn pembaruan data berdasarkan  Kepmendagri No.146.1-4717 Tahun 2020) dengan PHP+MySQL+AJaX
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
-- wilayah_2020.sql sesuai Permendagri No. 72 Tahun 2019
+- wilayah_2020.sql sesuai Permendagri No. 72 Tahun 2019 (revised by Kepmendagri No.146.1-4717 Tahun 2020) 
 - wilayah_2018.sql sesuai Permendagri No 137 tahun 2017
 - wilayah.sql sesuai Permendagri No 56 Tahun 2015
 - wilayah_level_1_2.sql sesuai Permendagri No. 72 Tahun 2019 untuk data provinsi dan kab/kota dengan koordinat,timezone dan boundaries
@@ -149,6 +149,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.3/ (data sesuai
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
+- update data based on Kepmendagri No.146.1-4717 Tahun 2020 (on progress)
 - update web demo ke v2.3 (done)
 - update data di web demo (done)
 - penambahan data elevation data wilayah level 1 dan 2 (done)
