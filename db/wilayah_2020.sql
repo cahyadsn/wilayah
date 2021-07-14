@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2021 at 08:05 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: Jul 14, 2021 at 07:44 AM
+-- Server version: MySQL 8.0.23-community
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -48704,8 +48704,8 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('35.16.11.2012', 'Balongmojo'),
 ('35.16.11.2013', 'Sumolawang'),
 ('35.16.11.2014', 'Tambakagung'),
-('35.16.11.2015', 'Gayaman'),
 ('35.16.11.2016', 'Banjaragung'),
+('35.16.11.2017', 'Kenanten'),
 ('35.16.12', 'Trowulan'),
 ('35.16.12.2001', 'Jambuwok'),
 ('35.16.12.2002', 'Domas'),
@@ -48818,12 +48818,12 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('35.16.18.2004', 'Sumberjati'),
 ('35.16.18.2005', 'Gebangmalang'),
 ('35.16.18.2006', 'Jabon'),
-('35.16.18.2007', 'Kenanten'),
 ('35.16.18.2008', 'Ngarjo'),
 ('35.16.18.2009', 'Wunut'),
 ('35.16.18.2010', 'Kwedenkembar'),
 ('35.16.18.2011', 'Jumeneng'),
 ('35.16.18.2012', 'Kwatu'),
+('35.16.18.2013', 'Gayaman'),
 ('35.17', 'KAB. JOMBANG'),
 ('35.17.01', 'Perak'),
 ('35.17.01.2001', 'Jantiganggong'),
