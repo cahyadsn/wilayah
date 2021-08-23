@@ -213,7 +213,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.3/ (data sesuai
 - data polygon diperoleh dari website BIG(Badan Informasi Geospatial) di https://tanahair.indonesia.go.id
 
 ## Donasi
-- untuk donasi via BNI Syariah 0821-342-555
+- untuk donasi via Bank Syariah Indonesia (BSI) 821-342-5550
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 
 [di sini]: https://wilayah.cahyadsn.com/v2/
