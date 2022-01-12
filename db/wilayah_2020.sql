@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2021 at 07:44 AM
+-- Generation Time: Jan 12, 2022 at 08:03 AM
 -- Server version: MySQL 8.0.23-community
--- PHP Version: 8.0.8
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29930,7 +29930,7 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 ('32.05.37.2006', 'Selaawi'),
 ('32.05.37.2007', 'Mekarwangi'),
-('32.05.38', 'Bl. Limbangan'),
+('32.05.38', 'Limbangan'),
 ('32.05.38.2001', 'Limbangan Tengah'),
 ('32.05.38.2002', 'Limbangan Barat'),
 ('32.05.38.2003', 'Galihpakuwon'),
