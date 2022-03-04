@@ -86,6 +86,46 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.3/ (data sesuai
 - data lat/long/timezone dan polygon boundaries wilayah yg sudah cukup lengkap tersedia untuk wilayah provinsi DKI Jakarta dan DI Yogyakarta
 - data polygon diperoleh dari website BIG(Badan Informasi Geospatial) di https://tanahair.indonesia.go.id
 
+### Contoh Query / Pemanggilan Data
+
+Definisi kode length
+
+| Wilayah   | Length |
+| --------- | :----: |
+| Provinsi  | 2      |
+| Kab/Kota  | 5      |
+| Kecamatan | 8      |
+| Kel/Desa  | 13     |
+
+#### Query Provinsi :
+```sql
+SELECT * FROM wilayah_2020 WHERE CHAR_LENGTH(kode) = 2;
+```
+> Pada contoh di atas pemanggilan query untuk menampilkan semua Provinsi.
+
+#### Query Kota berdasarkan Provinsi :
+```sql
+SELECT * FROM wilayah_2020 WHERE CHAR_LENGTH(kode) = 5 AND LEFT(kode, 2) = '16';
+```
+> Pada contoh di atas pemanggilan query untuk mencari semua kota,
+> yang ada pada Provinsi **Sumatera Selatan** dengan kode provinsi = `16`.
+
+#### Query Kecamatan berdasarkan Kota :
+```sql
+SELECT * FROM wilayah_2020 WHERE CHAR_LENGTH(kode) = 8 AND LEFT(kode, 5) = '16.71';
+```
+> Pada contoh di atas pemanggilan query untuk mencari semua kecamatan,
+> yang ada pada Provinsi **Sumatera Selatan** > Kota **Palembang** dengan kode kota = `16.71`.
+
+#### Query Kelurahan / Desa berdasarkan Kecamatan :
+```sql
+SELECT * FROM wilayah_2020 WHERE CHAR_LENGTH(kode) = 13 AND LEFT(kode, 8) = '16.71.07';
+```
+> Pada contoh di atas pemanggilan query untuk mencari semua kelurahan / desa,
+> yang ada pada Provinsi **Sumatera Selatan** > Kota **Palembang** > Kel **Sukarami**
+> dengan kode kecamatan = `16.71.07`.
+
+
 ## Donasi
 - untuk donasi via Bank Syariah Indonesia (BSI) 821-342-5550
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
