@@ -2,7 +2,7 @@
 Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Permendagri No 58 Tahun 2021 dengan PHP+MySQL+AJaX
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
-- wilayah_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022) *
+- wilayah_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022) 
 - wilayah_2020.sql sesuai Permendagri No. 72 Tahun 2019 (revised by Kepmendagri No.146.1-4717 Tahun 2020) 
 - wilayah_2018.sql sesuai Permendagri No 137 tahun 2017
 - wilayah.sql sesuai Permendagri No 56 Tahun 2015
@@ -71,7 +71,8 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.3/ (data sesuai
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
-- update data based on Permendagri No.58 Tahun 2021 &  Kepmendagri No. 050-145 Tahun 2022 (*on progress)
+- update web demo ke v2.4 (* on progress)
+- update data based on Permendagri No.58 Tahun 2021 &  Kepmendagri No. 050-145 Tahun 2022 (done)
 - update data based on Kepmendagri No.146.1-4717 Tahun 2020 (done)
 - update web demo ke v2.3 (done)
 - update data di web demo (done)
