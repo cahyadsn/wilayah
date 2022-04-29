@@ -60,7 +60,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 5
 )* data mengalami perubahan dari data sebelumnya (data permendagri No 72 Tahun 2019/Kepmendagri No.146.1-4717 Tahun 2020)
 
 
-link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.3/ (data sesuai permendagri no 137 tahun 2017, level 1 dan 2)
+link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.3/ (data sesuai permendagri no 72 tahun 2019, level 1 dan 2)
 
 ## Referensi
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref/tree/main/docs
@@ -95,4 +95,4 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.3/ (data sesuai
 - untuk donasi via Bank Syariah Indonesia (BSI) 821-342-5550
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 
-[di sini]: https://wilayah.cahyadsn.com/v2/
+[di sini]: https://wilayah.cahyadsn.com/v2.3/
