@@ -60,6 +60,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 5
 |         | TOTAL*                    |  416 |   98 |7266 | 8506 |74961 | 16772 |
 
 )* data mengalami perubahan dari data sebelumnya (data permendagri No 72 Tahun 2019/Kepmendagri No.146.1-4717 Tahun 2020)
+
 ) ** Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 
 link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.3/ (data sesuai permendagri no 72 tahun 2019, level 1 dan 2)
