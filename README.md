@@ -76,6 +76,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.3/ (data sesuai
 
 ## To Do
 - update web demo ke v2.4 (* on progress)
+- update dan penambahan data jumlah penduduk dan luas wilayah data wilayah level 1 dan 2 (* on progress)
 - update data based on Permendagri No.58 Tahun 2021 &  Kepmendagri No. 050-145 Tahun 2022 (done)
 - update data based on Kepmendagri No.146.1-4717 Tahun 2020 (done)
 - update web demo ke v2.3 (done)
