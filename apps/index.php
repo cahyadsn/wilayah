@@ -5,8 +5,8 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit   : 210304
-author   	: cahya dsn
+last edit   : 220516
+author   	  : cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/v2
 soure code 	: https://github.com/cahyadsn/wilayah/apps
 ================================================================================
@@ -23,7 +23,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2015-2021 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2015-2022 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 session_start();
 $c=isset($_SESSION['c'])?$_SESSION['c']:(isset($_GET['c'])?$_GET['c']:'indigo');
@@ -31,7 +31,7 @@ define("_AUTHOR","cahyadsn");
 $_SESSION['author']='cahyadsn';
 $_SESSION['ver']=sha1(rand());
 include 'inc/db.php';
-$version='2.0';
+$version='2.4';
 /*header('Expires: '.date('r'));
 header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Cache-Control: post-check=0, pre-check=0', FALSE);
@@ -49,7 +49,7 @@ header('Pragma: no-cache');*/
     <meta http-equiv="content-language" content="en" />
     <meta name="author" content="Cahya DSN" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-    <meta name="keywords" content="php, mysql, data, administrasi, wilayah, indonesia, permendagri, 76, 2019, cahyadsn" />
+    <meta name="keywords" content="php, mysql, data, administrasi, wilayah, indonesia, permendagri, 58, 2021, cahyadsn" />
     <meta name="description" content="Wilayah ver <?php echo $version;?> created by cahya dsn, Data wilayah administrasi Indonesia sesuai permendagri No 72 tahun 2019, dalam bahasa pemrograman PHP dan database MySQL" />
     <meta name="robots" content="index, follow" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -84,7 +84,7 @@ header('Pragma: no-cache');*/
             <h2>&nbsp;</h2>
             <div class="w3-panel w3-bar w3-theme-d1">
                 <h3 class="w3-theme-d1">Data Wilayah Administrasi Indonesia</h3>
-                <h4 class="w3-theme-d1"> Sesuai Permendagri No 72 th 2019</h4>
+                <h4 class="w3-theme-d1"> Sesuai Permendagri No 58 th 2021</h4>
             </div>
             <div class="w3-container">
               <div class="w3-row">
