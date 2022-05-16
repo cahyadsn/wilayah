@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename 	: index.php
 purpose  	: main application page
 create   	: 20170117
-last edit	: 20210304
+last edit	: 20220516
 author   	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/v2
 soure code 	: https://github.com/cahyadsn/wilayah
@@ -23,13 +23,14 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2017-2021 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2017-2022 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
+//--- Database configuration
 $dbhost ='localhost';
 $dbuser ='root';
 $dbpass ='';
 $dbname ='wilayah';
-$dbdsn = "mysql:dbname=$dbname;host=$dbhost";
+$dbdsn = "mysql:dbname={$dbname};host={$dbhost}";
 try {
   $db = new PDO($dbdsn, $dbuser, $dbpass);
 } catch (PDOException $e) {
@@ -42,7 +43,7 @@ $wil=array(
 );
 if (isset($_GET['id']) && !empty($_GET['id'])){
 	$n=strlen($_GET['id']);
-	$query = $db->prepare("SELECT * FROM wilayah_2020 WHERE LEFT(kode,:n)=:id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
+	$query = $db->prepare("SELECT * FROM wilayah WHERE LEFT(kode,:n)=:id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
 	$query->execute(array(':n'=>$n,':id'=>$_GET['id'],':m'=>$wil[$n][0]));
 	echo"<option value=''>Pilih {$wil[$n][1]}</option>";
 	while($d = $query->fetchObject())
