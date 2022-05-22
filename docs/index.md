@@ -227,5 +227,5 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/v2/) (data sesuai 
 - data polygon diperoleh dari website BIG(Badan Informasi Geospatial) di [https://tanahair.indonesia.go.id](https://tanahair.indonesia.go.id)
 
 ## Donasi
-- untuk donasi via BNI Syariah 0821-342-555
+- untuk donasi via Bank Syariah Indonesia (BSI) acc.no. 821-342-5550
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana](https://paypal.me/cahyadwiana)
