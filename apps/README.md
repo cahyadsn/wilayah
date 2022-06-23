@@ -57,7 +57,7 @@ L.mapquest.key = '<MAPQUEST_KEY_HERE>';
 |         | TOTAL                     |  416 |   98 |
 
 
-link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai permendagri no 58 tahun 2021)
+link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.4/ (data sesuai permendagri no 58 tahun 2021)
 
 ## Referensi
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
@@ -71,6 +71,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai p
 ## Donasi
 - untuk donasi via Bank Syariah Indonesia (BSI) 821-342-5550
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
+- untuk donasi via Ko-fi [https://ko-fi.com/cahyadsn]
 
-[di sini]: http://wilayah.cahyadsn.com
+[di sini]: http://wilayah.cahyadsn.com/v2.4/
 
