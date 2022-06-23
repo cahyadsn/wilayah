@@ -1,19 +1,19 @@
-# wilayah v2.0
-Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Permendagri No 72 Tahun 2019 dengan PHP+MySQL+AJaX
+# wilayah v2.4
+Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Permendagri No 58 Tahun 2021 dengan PHP+MySQL+AJaX
 
-(Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Permendagri No 72 Tahun 2019, utk aplikasi ini hanya menggunakan data level 1 dan 2 (provinsi dan kabupaten/kota) di /apps/db/wilayah_level_1_2.sql yang sesuai dengan Permendagri No 72 tahun 2019, dengan penambahan data lat/long dan boundaries/polygon)
+(Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Permendagri No 58 Tahun 2021, utk aplikasi ini hanya menggunakan data level 1 dan 2 (provinsi dan kabupaten/kota) di /db/wilayah_level_1_2.sql yang sesuai dengan Permendagri No 58 tahun 2022, dengan penambahan data lat/long/elv/timezone,boundaries/polygon,luas dan jumlah penduduk)
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
 [![GitHub forks](https://img.shields.io/github/forks/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/network)
 [![GitHub stars](https://img.shields.io/github/stars/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/stargazers)
 
-Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 72 Tahun 2019 untuk tingak Provinsi dan Kota/Kabupaten beserta data latitude/longitude (koordinat) dan polygon boundaries-nya dan aplikasi sederhananya
-Untuk aplikasi wilayah v2.0 ini mengguanakan database dengan nama tabel wilayah_level_1_2 yang terdapat di folder /apps/db/wilayah_level_1_2.sql
+Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 58 Tahun 2021 untuk tingak Provinsi dan Kota/Kabupaten beserta data latitude/longitude (koordinat) dan polygon boundaries-nya dan aplikasi sederhananya
+Untuk aplikasi wilayah v2.4 ini mengguanakan database dengan nama tabel wilayah_level_1_2 yang terdapat di folder /db/wilayah_level_1_2.sql
 
 Sesuaikan data konfigurasi database yang ada di apps/inc/db.php
 
-Sesuaikan juga MapQuest API KEY yang digunakan di file apps/inc/geo_js.php pada bagian 
+Sesuaikan juga MapQuest API KEY yang digunakan di file apps/inc/geo_js.php pada bagian
 
 L.mapquest.key = '<MAPQUEST_KEY_HERE>';
 
@@ -57,23 +57,20 @@ L.mapquest.key = '<MAPQUEST_KEY_HERE>';
 |         | TOTAL                     |  416 |   98 |
 
 
-link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai permendagri no 72 tahun 2019)
+link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2/ (data sesuai permendagri no 58 tahun 2021)
 
 ## Referensi
-- Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah
-- Kode dan Data Wilayah Administrasi Pemerintah (Permendagri No 137 -2017) http://www.kemendagri.go.id/produk-hukum/2018/01/18/kode-dan-data-wilayah-administrasi-pemerintahan-tahun-2017
-- Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.72-2019) https://www.kemendagri.go.id/page/read/48/peraturan-menteri-dalam-negeri-no72-tahun-2019
-
-## To Do
-- update data ke kode dan data wilayah berdasarkan permendagri No 72 tahun 2019 smp dengan tingkat kelurahan/desa (done)
-- on progress, convert data dari pdf -> xlsx (done) , xlsx->csv (done) , csv->sql(done) , import sql to db (done), validasi data di db dengan source (done)
-
-## Request Data
-- data tambahan berupa koordinat latitude/longitude, polygon boundaries, kodepos, timezone utk beberapa wilayah sudah tersedia sampai tingkat desa/kelurahan, namun tidak termasuk dalam publish ini. Yang memerlukan silakan kontak/inbox/pm
-- data lat/long/timezone dan polygon boundaries wilayah yg sudah cukup lengkap tersedia untuk wilayah provinsi DKI Jakarta dan DI Yogyakarta
+- Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
+- Keputusan Menteri Dalam Negeri Nomor 050-145 Tahun 2022 Tentang Pemberian Kode, Data Wilayah Administrasi Pemerintahan, Dan Pulau Tahun 2021 (Kepmendagri No. 050-145 Tahun 2022, https://www.kemendagri.go.id/arsip/detail/10857/keputusan-menteri-dalam-negeri-nomor-050145-tahun-2022-tentang-pemberian-kode-data-wilayah-administrasi-pemerintahan-dan-pulau-tahun-2021 (Ditetapkan pada tanggal 14 Februari 2022)
+- Peraturan Menteri Dalam Negeri Republik Indonesia Nomor 58 Tahun 2021 Tentang Kode, Data Wilayah Administrasi Pemerintahan, Dan Pulau https://paralegal.id/peraturan/peraturan-menteri-dalam-negeri-nomor-58-tahun-2021/ (Permendagri No.58 2021, Ditetapkan pada tanggal 13 Desember 2021,Berita Negara Tahun 2021 Nomor 1391)
+- Penetapan Nama, Kode Dan Jumlah Desa Seluruh Indonesia Tahun 2020 (Kepmendagri No. 146.1-4717 - 2020) http://binapemdes.kemendagri.go.id/produkhukum/detil/keputusan-menteri-dalam-negeri-nomor-1461-4717-tahun-2020 (Ditetapkan pada tanggal 21 Desember 2020)
+- Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.72-2019) https://www.kemendagri.go.id/page/read/48/peraturan-menteri-dalam-negeri-no72-tahun-2019 (Berita Negara Republik Indonesia Tahun 2019 Nomor 1327, Ditetapkan pada tanggal 8 Oktober 2019)
+- Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.137-2017) http://www.kemendagri.go.id/produk-hukum/2018/01/18/kode-dan-data-wilayah-administrasi-pemerintahan-tahun-2017 (Berita Negara Republik Indonesia Tahun 2017 Nomor 1955, Ditetapkan pada tanggal 27 Desember 2017)
+- Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## Donasi
-untuk donasi via BNI Syariah 0821 342 555
+- untuk donasi via Bank Syariah Indonesia (BSI) 821-342-5550
+- untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 
-[di sini]: http://cahyadsn.dev.php.or.id/wilayah/
+[di sini]: http://wilayah.cahyadsn.com
 

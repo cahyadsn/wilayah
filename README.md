@@ -3,8 +3,8 @@ Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Perme
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - wilayah.sql (data kode wilayah terbaru sesuai dengan Kepmendagri No. 050-145 Tahun 2022)
-- wilayah_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022) 
-- wilayah_2020.sql sesuai Permendagri No. 72 Tahun 2019 (revised by Kepmendagri No.146.1-4717 Tahun 2020) 
+- wilayah_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022)
+- wilayah_2020.sql sesuai Permendagri No. 72 Tahun 2019 (revised by Kepmendagri No.146.1-4717 Tahun 2020)
 - wilayah_2018.sql sesuai Permendagri No 137 tahun 2017
 - wilayah_2016.sql sesuai Permendagri No 56 Tahun 2015
 - wilayah_level_1_2.sql sesuai Permendagri No. 58 Tahun 2021 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
@@ -17,7 +17,7 @@ Kode dan Data Pulau Indonesia dalam database :
 [![GitHub forks](https://img.shields.io/github/forks/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/network)
 [![GitHub stars](https://img.shields.io/github/stars/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/stargazers)
 [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)]()
-[![Donate](https://img.shields.io/badge/$-support-ff69b4.svg?style=flat)](https://paypal.me/cahyadwiana)  
+[![Donate](https://img.shields.io/badge/$-support-ff69b4.svg?style=flat)](https://paypal.me/cahyadwiana)
 
 ## Data Kepmendagri No 050-145 Tahun 2022
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 58 Tahun 2021  dengan revisi berdasarkan Kepmendagrin No 050-145 Tahun 2022 (wilayah_2022.sql)
@@ -49,12 +49,12 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 5
 | 64      | Kalimantan Timur*         |    7 |    3 | 105 |  197 |  841 |   243 |
 | 65      | Kalimantan Utara*         |    4 |    1 |  55 |   35 |  447 |   196 |
 | 71      | Sulawesi Utara            |   11 |    4 | 171 |  332 | 1507 |   329 |
-| 72      | Sulawesi Tengah           |   12 |    1 | 175 |  175 | 1842 |  1572 | 
+| 72      | Sulawesi Tengah           |   12 |    1 | 175 |  175 | 1842 |  1572 |
 | 73      | Sulawesi Selatan*         |   21 |    3 | 311 |  793 | 2255 |   355 |
 | 74      | Sulawesi Tenggara*        |   15 |    2 | 220 |  378 | 1908 |   590 |
 | 75      | Gorontalo                 |    5 |    1 |  77 |   72 |  657 |   127 |
 | 76      | Sulawesi Barat            |    6 |    0 |  69 |   73 |  575 |    69 |
-| 81      | Maluku                    |    9 |    2 | 118 |   35 | 1198 |  1337 |  
+| 81      | Maluku                    |    9 |    2 | 118 |   35 | 1198 |  1337 |
 | 82      | Maluku Utara*             |    8 |    2 | 118 |  118 | 1063 |   837 |
 | 91      | Papua*                    |   28 |    1 | 566 |  110 | 5411 |   547 |
 | 92      | Papua Barat               |   12 |    1 | 218 |   95 | 1742 |  4514 |
@@ -76,7 +76,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.3/ (data sesuai
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
-- update web demo ke v2.4 (* on progress)
+- update web demo ke v2.4 (done)
 - update dan penambahan data jumlah penduduk dan luas wilayah data wilayah level 1 dan 2 (done)
 - update data based on Permendagri No.58 Tahun 2021 &  Kepmendagri No. 050-145 Tahun 2022 (done)
 - update data based on Kepmendagri No.146.1-4717 Tahun 2020 (done)

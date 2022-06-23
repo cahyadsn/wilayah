@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_ajax.php
 purpose  :
 create   : 170912
-last edit: 210304
+last edit: 220623
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -21,7 +21,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2017-2021 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2017-2022 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 include "db.php";
 $r=array('status'=>false,'error'=>'an error occured');
@@ -33,7 +33,7 @@ if (!empty($_GET['id'])){
     $r=array('status'=>false,'error'=>'data not found');
   }else{
     $path=$d->path;
-    if(empty($path)){ 
+    if(empty($path)){
       $path=array(
             array('lat'=>$d->lat-0.01,'lng'=>$d->lng-0.01),
             array('lat'=>$d->lat+0.01,'lng'=>$d->lng-0.01),
@@ -41,7 +41,7 @@ if (!empty($_GET['id'])){
             array('lat'=>$d->lat-0.01,'lng'=>$d->lng+0.01)
       );
     }
-    $data=array('kode'=> $d->kode,'lat'=> $d->lat,'lng'=> $d->lng,'path'=>$path);
+    $data=array('kode'=> $d->kode,'nama'=> $d->nama,'lat'=> $d->lat,'lng'=> $d->lng,'path'=>$path,'luas'=>$d->luas,'penduduk'=>$d->penduduk);
     $r=array('status'=>true,'data'=>$data);
   }
   if(empty($_GET['geo'])){
@@ -50,7 +50,7 @@ if (!empty($_GET['id'])){
     $wil=($n==2?'Kota/Kab':($n==5?'Kecamatan':'Desa/Kelurahan'));
     $query = $db->prepare("SELECT * FROM {$tbl_wilayah} WHERE LEFT(kode,:n)=:id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
     $query->execute(array(':n'=>$n,':id'=>$_GET['id'],':m'=>$m));
-    $opt="<option value=''>Pilih {$wil}</option>";    
+    $opt="<option value=''>Pilih {$wil}</option>";
     while($d = $query->fetchObject()){
         $opt.="<option value='{$d->kode}'>{$d->nama}</option>";
     }
@@ -72,6 +72,6 @@ if (!empty($_GET['id'])){
   $data[':kode']=$_POST['kode'];
   $query = $db->prepare($sql);
   $query->execute($data);
-  $r=array('status'=>true,'msg'=>'data saved' );  
+  $r=array('status'=>true,'msg'=>'data saved' );
 }
 echo json_encode($r);

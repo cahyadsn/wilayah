@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_js.php
 purpose  :
 create   : 170912
-last edit: 210304
+last edit: 220623
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -21,7 +21,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2017-2021 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2017-2022 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 session_start();
 header("Content-type: text/javascript");
@@ -99,7 +99,7 @@ function stateChanged(){
         marker = new L.marker(myPoint, {
            icon: L.mapquest.icons.marker(),
            draggable: false
-         }).bindPopup('Kode wilayah '+d.data.kode).addTo(map);
+         }).bindPopup('<b>'+d.data.nama+'</b><br>Kode wilayah <b>'+d.data.kode+'</b><br>luas: <b>'+d.data.luas+'</b> km<sup>2</sup><br>penduduk: <b>'+d.data.penduduk+'</b>').addTo(map);
         polyLayer=L.polygon(polyLatLngs, {color: 'blue'}).addTo(map);
         map.flyTo(myPoint, 9);
         $('div#preload').hide();
