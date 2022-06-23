@@ -1,2 +1,4 @@
 /backup
 dump-*
+/inc/db.php
+/inc/geo_js.php
