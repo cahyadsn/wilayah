@@ -2,10 +2,10 @@
 /*
 BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 ================================================================================
-filename : geo_wilayah.php
-purpose  :
+filename : dp.php
+purpose  : configuration of database connection
 create   : 170912
-last edit: 210304
+last edit: 220627
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
