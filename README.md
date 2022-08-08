@@ -25,7 +25,7 @@ Data belum termasuk data perubahan adanya pembentukan provinsi baru
 - UU No 15 Tahun 2022 tentang Pembentukan Provinsi Papua Tengah (LN.2022/No.158, TLN No.6804, jdih.setneg.go.id: 14 hlm., 25 Juli 2022)
 - UU No 16 Tahun 2022 tentang Pembentukan Provinsi Papua Pegunungan (LN.2022/No.159, TLN No.6805, jdih.setneg.go.id: 14 hlm., 25 Juli 2022)
 - 
-Data perubahan kode wilayah atas pembentukan provinsi baru belum ada pemutakhiran data dari Kepmendagri
+Data perubahan kode wilayah atas pembentukan provinsi baru belum ada pemutakhiran data dari Kemendagri
 
 ## Data Kepmendagri No 050-145 Tahun 2022
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 58 Tahun 2021  dengan revisi berdasarkan Kepmendagrin No 050-145 Tahun 2022 (wilayah_2022.sql)
