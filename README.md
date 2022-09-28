@@ -84,6 +84,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.4/ (data sesuai
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
+- update web demo ke v2.5 (on progress, data sampai dengan level 3 dan 4)
 - update web demo ke v2.4 (done)
 - update dan penambahan data jumlah penduduk dan luas wilayah data wilayah level 1 dan 2 (done)
 - update data based on Permendagri No.58 Tahun 2021 &  Kepmendagri No. 050-145 Tahun 2022 (done)
