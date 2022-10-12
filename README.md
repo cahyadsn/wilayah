@@ -24,7 +24,7 @@ Data belum termasuk data perubahan adanya pembentukan provinsi baru
 - UU No 14 Tahun 2022 tentang Pembentukan Provinsi Papua Selatan (LN.2022/No.157, TLN No.6803, jdih.setneg.go.id: 15 hlm., 25 Juli 2022)
 - UU No 15 Tahun 2022 tentang Pembentukan Provinsi Papua Tengah (LN.2022/No.158, TLN No.6804, jdih.setneg.go.id: 14 hlm., 25 Juli 2022)
 - UU No 16 Tahun 2022 tentang Pembentukan Provinsi Papua Pegunungan (LN.2022/No.159, TLN No.6805, jdih.setneg.go.id: 14 hlm., 25 Juli 2022)
-- 
+
 Data perubahan kode wilayah atas pembentukan provinsi baru belum ada pemutakhiran data dari Kemendagri
 
 ## Data Kepmendagri No 050-145 Tahun 2022
@@ -84,7 +84,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.4/ (data sesuai
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
-- update web demo ke v2.5 (on progress, data sampai dengan level 3 dan 4)
+- update web demo ke v2.5 (on progress, data sampai dengan level 3 - kecamatan)
 - update web demo ke v2.4 (done)
 - update dan penambahan data jumlah penduduk dan luas wilayah data wilayah level 1 dan 2 (done)
 - update data based on Permendagri No.58 Tahun 2021 &  Kepmendagri No. 050-145 Tahun 2022 (done)
