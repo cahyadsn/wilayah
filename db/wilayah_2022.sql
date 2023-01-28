@@ -64434,7 +64434,7 @@ VALUES
 ('62.09.08.2008','Kina'),
 ('62.09.08.2009','Jamuat'),
 ('62.10','KAB. GUNUNG MAS'),
-('62.10.01','Sepang Simin'),
+('62.10.01','Sepang'),
 ('62.10.01.1001','Sepang Simin'),
 ('62.10.01.2002','Sepang Kota'),
 ('62.10.01.2003','Tewai Baru'),
