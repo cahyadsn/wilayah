@@ -110,4 +110,4 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - untuk donasi via Bank Syariah Indonesia (BSI) 821-342-5550
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 
-[di sini]: https://wilayah.cahyadsn.com/v2.4/
+[di sini]: https://wilayah.cahyadsn.com/
