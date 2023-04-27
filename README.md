@@ -85,7 +85,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
-- update web demo ke v2.5 (on progress)
+- update web demo ke v2.5.1 (on progress)
     - level 3 - kecamatan 
     - level 4 - desa/kelurahan
     - encrypted polygon data
@@ -110,7 +110,10 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - data latitude/longitude dari google maps
 
 ## Donasi
-- untuk donasi via Bank Syariah Indonesia (BSI) 821-342-5550
+- untuk donasi via transfer 
+    - Bank Syariah Indonesia (BSI) 821-342-5550
+    - Bank Sinarmas (153) 005 462 4719
+    - Bank BCA Digital (Blu) (501) 000 576 776 186
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 
 [di sini]: https://wilayah.cahyadsn.com/
