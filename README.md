@@ -85,9 +85,12 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
-- update web demo ke v2.5.1 (on progress)
+- update web demo ke v3.0 (on progress)
+    - menampilkan data kodepos
+    - menampilkan data kode wilayah di sidebar
     - level 3 - kecamatan 
     - level 4 - desa/kelurahan
+- update web demo ke v2.5.1 (done)
     - encrypted polygon data
 - update web demo ke v2.4 (done)
 - update dan penambahan data jumlah penduduk dan luas wilayah data wilayah level 1 dan 2 (done)
