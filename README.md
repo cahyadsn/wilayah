@@ -10,8 +10,8 @@ Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - archive/wilayah_level_1_2.sql sesuai Permendagri No. 58 Tahun 2021 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
 
 Kode dan Data Pulau Indonesia dalam database :
-- pulau.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022
-- archive/pulau_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022) *
+- pulau.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 *
+- archive/pulau_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022) 
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
@@ -27,7 +27,7 @@ Data BELUM/TIDAK termasuk data perubahan adanya pembentukan provinsi baru
 Data perubahan kode wilayah atas pembentukan provinsi Papua Barat Daya belum ada pemutakhiran data dari Kemendagri
 
 ## Data Kepmendagri No 100.1.1-6117 Tahun 2022
-Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagrin No 100.1.1-6117 Tahun 2022 (wilayah.sql)
+Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 (wilayah.sql)
 
 | id_prov | nama                      | kab   | kota  | kec  | kel   | desa  | pulau  |
 |---------|---------------------------|------:|------:|------|------:|------:|-------:|
