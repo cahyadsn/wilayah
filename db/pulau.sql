@@ -977,3 +977,63 @@ VALUES
 ('14.10.40010','Pulau Setahun','1.0625','102.8439','TBP'),
 ('14.10.40011','Pulau Tebingtinggi','0.8916','102.7332','BP'),
 ('14.10.40012','Pulau Topang','0.7581','103.0953','BP');
+
+-- Provinsi JAMBI
+INSERT INTO pulau(kode,nama,lat,lng,notes)
+VALUES
+('15.04.40001','Pulau Selat','1.5458','103.4422','TBP'),
+('15.04.40002','Pulau Senaning','1.5627','103.3515','TBP'),
+('15.05.40001','Pulau Pendam','1.4837','103.5003','TBP'),
+('15.07.40001','Pulau Balai','1.0623','104.2161','TBP'),
+('15.07.40002','Pulau Betet','1.0519','104.2442','TBP'),
+('15.07.40003','Pulau Burung','1.109','104.0277','BP'),
+('15.07.40004','Pulau Harapan','1.0839','104.1972','BP'),
+('15.07.40005','Pulau Mudo','1.0472','104.1932','TBP'),
+('15.07.40006','Pulau Pangkudo','1.0448','104.2484','TBP'),
+('15.07.40007','Pulau Pedado Anak','1.0384','104.1805','TBP'),
+('15.07.40008','Pulau Putri','1.0608','104.2109',''),
+('15.07.40009','Pulau Tanjung Putus','1.2321','104.1685','TBP'),
+('15.07.40010','Pulau Tengah','1.0426','104.2306','BP'),
+('15.07.40011','Pulau Wantambi','1.0433','104.2014','TBP');
+
+-- Provinsi SUMATERA_SELATAN
+INSERT INTO pulau(kode,nama,lat,lng,notes)
+VALUES
+('16.02.40001','Pulau Maspari','3.2194','106.2172','BP'),
+('16.03.40001','Pulau Selatpunai','3.0374','104.62','TBP'),
+('16.07.40001','Pulau Betet','1.7614','104.5206','TBP'),
+('16.07.40002','Pulau Borang','2.9108','104.8806','BP'),
+('16.07.40003','Pulau Brendam','2.5319','104.4222','TBP'),
+('16.07.40004','Pulau Burung','2.862','104.8987','TBP'),
+('16.07.40005','Pulau Deltaaersalek','2.4925','104.9725','BP'),
+('16.07.40006','Pulau Deltaaersugihan','2.4034','105.0704','BP'),
+('16.07.40007','Pulau Deltatelang','2.6011','104.8733','BP'),
+('16.07.40008','Pulau Deltaupang','2.5636','104.9433','BP'),
+('16.07.40009','Pulau Gundul','2.6647','104.9428','TBP'),
+('16.07.40010','Pulau Kalong','2.6035','104.3529','TBP'),
+('16.07.40011','Pulau Kramat','2.5188','104.9354','BP'),
+('16.07.40012','Pulau Lopak Besak','2.3594','104.7064','TBP'),
+('16.07.40013','Pulau Lopak Kecik Pulo','2.36','104.7026','TBP'),
+('16.07.40014','Pulau Payung','2.3711','104.9193','TBP'),
+('16.07.40015','Pulau Salahnamo','2.9581','104.8711','BP'),
+('16.07.40016','Pulau Selatcemara','2.5311','104.9343','TBP'),
+('16.07.40017','Pulau Singgris','2.5631','104.9306','BP'),
+('16.07.40018','Pulau Srijaya','3.0369','104.5232','TBP'),
+('16.07.40019','Pulo Alanggantang','1.9283','104.5697','TBP'),
+('16.07.40020','Pulo Alangtikus','2.333','104.7654','TBP'),
+('16.71.40001','Pulau Kemaro','2.9794','104.8211','BP'),
+('16.71.40002','Pulau Kerto','3.0328','104.6614','BP'),
+
+-- Provinsi BENGKULU
+INSERT INTO pulau(kode,nama,lat,lng,notes)
+VALUES
+('17.03.40001','Pulau Bangkei','5.466','102.3731','TBP'),
+('17.03.40002','Pulau Dua','5.4431','102.3914','BP'),
+('17.03.40003','Pulau Enggano','5.3903','102.2378','BP (PPKT)'),
+('17.03.40004','Pulau Mega','4.0072','101.0453','TBP (PPKT)'),
+('17.03.40005','Pulau Merbau','5.4728','102.3851','TBP'),
+('17.03.40006','Pulau Satu','5.4685','102.2241','TBP'),
+('17.03.40007','Pulau Tapakarifin','3.4244','101.8977','TBP'),
+('17.03.40008','Pulau Tapakbalai','3.5821','102.1132','TBP'),
+('17.71.40001','Pulau Tikus','3.8382','102.1797','BP');
+
