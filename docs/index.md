@@ -2,16 +2,16 @@
 Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 menggunakan PHP+MySQL+AJaX
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
-- wilayah.sql (data kode wilayah terbaru sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022)
-- archive/wilayah_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022) 
-- archive/wilayah_2020.sql sesuai Permendagri No. 72 Tahun 2019 (revised by Kepmendagri No.146.1-4717 Tahun 2020) 
-- archive/wilayah_2018.sql sesuai Permendagri No 137 tahun 2017
-- archive/wilayah_2016.sql sesuai Permendagri No 56 Tahun 2015
-- archive/wilayah_level_1_2.sql sesuai Permendagri No. 58 Tahun 2021 untuk data provinsi dan kab/kota dengan koordinat,timezone dan boundaries
+- db/wilayah.sql (data kode wilayah terbaru sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022)
+- db/archive/wilayah_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022) 
+- db/archive/wilayah_2020.sql sesuai Permendagri No. 72 Tahun 2019 (revised by Kepmendagri No.146.1-4717 Tahun 2020) 
+- db/archive/wilayah_2018.sql sesuai Permendagri No 137 tahun 2017
+- db/archive/wilayah_2016.sql sesuai Permendagri No 56 Tahun 2015
+- db/archive/wilayah_level_1_2.sql sesuai Permendagri No. 58 Tahun 2021 untuk data provinsi dan kab/kota dengan koordinat,timezone dan boundaries
 
 Kode dan Data Pulau Indonesia dalam database :
-- pulau.sql  sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022
-- archive/pulau_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022) *
+- db/pulau.sql  sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022
+- db/archive/pulau_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022) *
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
