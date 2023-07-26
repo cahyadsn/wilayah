@@ -35,8 +35,8 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 | 12      | Sumatera Utara            |   25  |    8  | 455  |  693  | 5417  |   229  |  done  |
 | 13      | Sumatera Barat*           |   12  |    7  | 179  |  230  | 1035* |   219* |  done  |
 | 14      | Riau                      |   10  |    2  | 172  |  271  | 1591  |   144  |  done  |
-| 15      | Jambi*                    |    9  |    2  | 144  |  171* | 1414* |    14  |  part  |
-| 16      | Sumatera Selatan*         |   13  |    4  | 241  |  403* | 2855* |    24  |  part  |
+| 15      | Jambi*                    |    9  |    2  | 144  |  171* | 1414* |    14  |  done  |
+| 16      | Sumatera Selatan*         |   13  |    4  | 241  |  403* | 2855* |    24  |  done  |
 | 17      | Bengkulu                  |    9  |    1  | 129  |  172  | 1341  |     9  |  done  |
 | 18      | Lampung*                  |   13  |    2  | 229  |  205  | 2446* |   172  |  part  |
 | 19      | Kepulauan Bangka Belitung |    6  |    1  |  47  |   84  |  309  |   507  |  done  |
