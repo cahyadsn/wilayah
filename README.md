@@ -35,40 +35,40 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 | 12      | Sumatera Utara            |   25  |    8  | 455  |  693  | 5417  |   229  |  done  |
 | 13      | Sumatera Barat*           |   12  |    7  | 179  |  230  | 1035* |   219* |  done  |
 | 14      | Riau                      |   10  |    2  | 172  |  271  | 1591  |   144  |  done  |
-| 15      | Jambi*                    |    9  |    2  | 144  |  171* | 1414* |    14  |        |
-| 16      | Sumatera Selatan*         |   13  |    4  | 241  |  403* | 2855* |    24  |        |
+| 15      | Jambi*                    |    9  |    2  | 144  |  171* | 1414* |    14  |  part  |
+| 16      | Sumatera Selatan*         |   13  |    4  | 241  |  403* | 2855* |    24  |  part  |
 | 17      | Bengkulu                  |    9  |    1  | 129  |  172  | 1341  |     9  |  done  |
-| 18      | Lampung*                  |   13  |    2  | 229  |  205  | 2446* |   172  |        |
+| 18      | Lampung*                  |   13  |    2  | 229  |  205  | 2446* |   172  |  part  |
 | 19      | Kepulauan Bangka Belitung |    6  |    1  |  47  |   84  |  309  |   507  |  done  |
-| 21      | Kepulauan Riau*           |    5  |    2  |  80* |  144* |  275  |  2028* |        |
+| 21      | Kepulauan Riau*           |    5  |    2  |  80* |  144* |  275  |  2028* |  part  |
 | 31      | DKI Jakarta               |    1  |    5  |  44  |  267  |    0  |   113  |  done  |
-| 32      | Jawa Barat*               |   18  |    9  | 627  |  646* | 5311* |    30  |        |
-| 33      | Jawa Tengah*              |   29  |    6  | 576  |  753  | 7810* |    71  |        |
+| 32      | Jawa Barat*               |   18  |    9  | 627  |  646* | 5311* |    30  |  part  |
+| 33      | Jawa Tengah*              |   29  |    6  | 576  |  753  | 7810* |    71  |  prat  |
 | 34      | DI Yogyakarta             |    4  |    1  |  78  |   46  |  392  |    33  |  done  |
-| 35      | Jawa Timur*               |   29  |    9  | 666  |  773* | 7721* |   512* |        |
+| 35      | Jawa Timur*               |   29  |    9  | 666  |  773* | 7721* |   512* |  part  |
 | 36      | Banten                    |    4  |    4  | 155  |  314  | 1238  |    81  |  done  |
 | 51      | Bali                      |    8  |    1  |  57  |   80  |  636  |    34  |  done  |
-| 52      | Nusa Tenggara Barat*      |    8  |    2  | 117  |  145  | 1021* |   403  |        |
-| 53      | Nusa Tenggara Timur*      |   21  |    1  | 315  |  305* | 3137* |   609* |        |
-| 61      | Kalimantan Barat*         |   12  |    2  | 174  |   99  | 2046* |   251* |        |
-| 62      | Kalimantan Tengah*        |   13  |    1  | 136  |  139  | 1432  |    71* |        |
-| 63      | Kalimantan Selatan*       |   11  |    2  | 156  |  144  | 1872* |   165* |        |
-| 64      | Kalimantan Timur*         |    7  |    3  | 105  |  197  |  841  |   243  |        |
+| 52      | Nusa Tenggara Barat*      |    8  |    2  | 117  |  145  | 1021* |   403  |  part  |
+| 53      | Nusa Tenggara Timur*      |   21  |    1  | 315  |  305* | 3137* |   609* |  part  |
+| 61      | Kalimantan Barat*         |   12  |    2  | 174  |   99  | 2046* |   251* |  part  |
+| 62      | Kalimantan Tengah*        |   13  |    1  | 136  |  139  | 1432  |    71* |  part  |
+| 63      | Kalimantan Selatan*       |   11  |    2  | 156  |  144  | 1872* |   165* |  part  |
+| 64      | Kalimantan Timur*         |    7  |    3  | 105  |  197  |  841  |   243  |  part  |
 | 65      | Kalimantan Utara          |    4  |    1  |  55  |   35  |  447  |   196  |  done  |
-| 71      | Sulawesi Utara*           |   11  |    4  | 171  |  332  | 1507  |   353* |        |
+| 71      | Sulawesi Utara*           |   11  |    4  | 171  |  332  | 1507  |   353* |  part  |
 | 72      | Sulawesi Tengah           |   12  |    1  | 175  |  175  | 1842  |  1572  |  done  |
-| 73      | Sulawesi Selatan*         |   21  |    3  | 313* |  793  | 2266* |   370* |        |
-| 74      | Sulawesi Tenggara*        |   15  |    2  | 221* |  379* | 1908  |   590  |        |
+| 73      | Sulawesi Selatan*         |   21  |    3  | 313* |  793  | 2266* |   370* |  part  |
+| 74      | Sulawesi Tenggara*        |   15  |    2  | 221* |  379* | 1908  |   590  |  part  |
 | 75      | Gorontalo                 |    5  |    1  |  77  |   72  |  657  |   127  |  done  |
 | 76      | Sulawesi Barat            |    6  |    0  |  69  |   73  |  575  |    69  |  done  |
-| 81      | Maluku*                   |    9  |    2  | 118  |   35  | 1200* |  1388* |        |
-| 82      | Maluku Utara*             |    8  |    2  | 118  |  118  | 1067* |   901* |        |
-| 91      | Papua*                    |    8* |    1  | 105* |   51* |  948* |   527* |        |
-| 92      | Papua Barat               |   12  |    1  | 218  |   95  | 1742  |  4520* |  done  |
-| 93+     | Papua Selatan+            |    4+ |    0  |  82+ |   13+ |  677+ |     7+ |        |
-| 94+     | Papua Tengah+             |    8+ |    0  | 131+ |   36+ | 1172+ |    50+ |        |
-| 95+     | Papua Pegunungan+         |    8+ |    0  | 252+ |   10+ | 2617+ |     0  |        |
-|         | TOTAL*                    |  416  |   98  |7277* | 8498* |75265* | 17001* |        |
+| 81      | Maluku*                   |    9  |    2  | 118  |   35  | 1200* |  1388* |  part  |
+| 82      | Maluku Utara*             |    8  |    2  | 118  |  118  | 1067* |   901* |  part  |
+| 91      | Papua*                    |    8* |    1  | 105* |   51* |  948* |   527* |    -   |
+| 92      | Papua Barat               |   12  |    1  | 218  |   95  | 1742  |  4520* |  part  |
+| 93+     | Papua Selatan+            |    4+ |    0  |  82+ |   13+ |  677+ |     7+ |    -   |
+| 94+     | Papua Tengah+             |    8+ |    0  | 131+ |   36+ | 1172+ |    50+ |    -   |
+| 95+     | Papua Pegunungan+         |    8+ |    0  | 252+ |   10+ | 2617+ |     0  |    -   |
+|         | TOTAL*                    |  416  |   98  |7277* | 8498* |75265* | 17001* |  part  |
 
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 050-145 Tahun 2022)
 
