@@ -40,7 +40,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 | 17      | Bengkulu                  |    9  |    1  | 129  |  172  | 1341  |     9  |  done  |
 | 18      | Lampung*                  |   13  |    2  | 229  |  205  | 2446* |   172  |  done  |
 | 19      | Kepulauan Bangka Belitung |    6  |    1  |  47  |   84  |  309  |   507  |  done  |
-| 21      | Kepulauan Riau*           |    5  |    2  |  80* |  144* |  275  |  2028* |  part  |
+| 21      | Kepulauan Riau*           |    5  |    2  |  80* |  144* |  275  |  2028* |  done  |
 | 31      | DKI Jakarta               |    1  |    5  |  44  |  267  |    0  |   113  |  done  |
 | 32      | Jawa Barat*               |   18  |    9  | 627  |  646* | 5311* |    30  |  part  |
 | 33      | Jawa Tengah*              |   29  |    6  | 576  |  753  | 7810* |    71  |  prat  |
