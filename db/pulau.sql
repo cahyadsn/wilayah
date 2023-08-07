@@ -11817,7 +11817,7 @@ VALUES
 ('82.72.40011','Pulau Woda','0.3982','127.5839','TBP');
 
 -- Provinsi PAPUA
-INERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO pulau(kode,nama,lat,lng,notes)
 VALUES
 ('91.03.40001','Pulau Ajakua','2.4372','140.5592','TBP'),
 ('91.03.40002','Pulau Ajava','2.4383','140.6064','TBP'),
@@ -12369,7 +12369,7 @@ VALUES
 ('91.71.40001','Pulau Fun Besar','2.6217','140.7686','TBP');
 
 -- Provinsi PAPUA_BARAT
-INERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO pulau(kode,nama,lat,lng,notes)
 VALUES
 ('92.00.40029','Pulau Salawati','1.0967','130.9022','BP'),
 ('92.01.40001','Ef Lalo','1.0869','131.2254','TBP'),
@@ -16548,7 +16548,7 @@ VALUES
 ('92.08.40347','Yef Kemarom Nit','3.7572','134.141','TBP'),
 ('92.08.40348','Yef Koba','3.9483','134.706','TBP'),
 ('92.08.40349','Yef Koi','3.4325','133.615','TBP'),
-('92.08.40350','Yef La'Ala'Aves','3.8518','133.9717','TBP'),
+('92.08.40350','Yef La\'Ala\'Aves','3.8518','133.9717','TBP'),
 ('92.08.40351','Yef Laferanus','3.8486','134.021','TBP'),
 ('92.08.40352','Yef Laferanus Nit','3.8486','134.0173','TBP'),
 ('92.08.40353','Yef Lafora','3.7943','134.0245','TBP'),
@@ -16893,7 +16893,7 @@ VALUES
 ('92.71.40025','Yef Umbremuk Kecil','0.928','131.2651','');
 
 -- Provinsi PAPUA_SELATAN
-INERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO pulau(kode,nama,lat,lng,notes)
 VALUES
 ('93.01.40001','Pulau Habe','8.2422','139.4422','TBP (PPKT)'),
 ('93.01.40002','Pulau Kolepom','7.8958','138.3642','BP (PPKT)'),
@@ -16904,7 +16904,7 @@ VALUES
 ('93.04.40004','Pulau Somerwoo','5.1853','137.505','TBP');
 
 -- Provinsi PAPUA_TENGAH
-INERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO pulau(kode,nama,lat,lng,notes)
 VALUES
 ('94.01.40001','Pulau Aamone','3.0265','134.8277','TBP'),
 ('94.01.40002','Pulau Ahe','3.089','135.5615','BP'),
@@ -16956,4 +16956,3 @@ VALUES
 ('94.04.40004','Pulau Bidadari','4.8969','136.7961','TBP'),
 ('94.04.40005','Pulau Puriri','4.9117','136.8199','TBP (PPKT)'),
 ('94.04.40006','Pulau Yapero','5.0364','137.1887','TBP');
-
