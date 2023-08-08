@@ -48,8 +48,8 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 | 35      | Jawa Timur*               |   29  |    9  | 666  |  773* | 7721* |   512* |  done  |
 | 36      | Banten                    |    4  |    4  | 155  |  314  | 1238  |    81  |  done  |
 | 51      | Bali                      |    8  |    1  |  57  |   80  |  636  |    34  |  done  |
-| 52      | Nusa Tenggara Barat*      |    8  |    2  | 117  |  145  | 1021* |   403  |  part  |
-| 53      | Nusa Tenggara Timur*      |   21  |    1  | 315  |  305* | 3137* |   609* |  part  |
+| 52      | Nusa Tenggara Barat*      |    8  |    2  | 117  |  145  | 1021* |   403  |  done  |
+| 53      | Nusa Tenggara Timur*      |   21  |    1  | 315  |  305* | 3137* |   609* |  done  |
 | 61      | Kalimantan Barat*         |   12  |    2  | 174  |   99  | 2046* |   251* |  part  |
 | 62      | Kalimantan Tengah*        |   13  |    1  | 136  |  139  | 1432  |    71* |  part  |
 | 63      | Kalimantan Selatan*       |   11  |    2  | 156  |  144  | 1872* |   165* |  part  |
@@ -63,11 +63,11 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 | 76      | Sulawesi Barat            |    6  |    0  |  69  |   73  |  575  |    69  |  done  |
 | 81      | Maluku*                   |    9  |    2  | 118  |   35  | 1200* |  1388* |  part  |
 | 82      | Maluku Utara*             |    8  |    2  | 118  |  118  | 1067* |   901* |  part  |
-| 91      | Papua*                    |    8* |    1  | 105* |   51* |  948* |   527* |    -   |
-| 92      | Papua Barat               |   12  |    1  | 218  |   95  | 1742  |  4520* |  part  |
-| 93+     | Papua Selatan+            |    4+ |    0  |  82+ |   13+ |  677+ |     7+ |    -   |
-| 94+     | Papua Tengah+             |    8+ |    0  | 131+ |   36+ | 1172+ |    50+ |    -   |
-| 95+     | Papua Pegunungan+         |    8+ |    0  | 252+ |   10+ | 2617+ |     0  |    -   |
+| 91      | Papua*                    |    8* |    1  | 105* |   51* |  948* |   527* |  part  |
+| 92      | Papua Barat               |   12  |    1  | 218  |   95  | 1742  |  4520* |  done  |
+| 93+     | Papua Selatan+            |    4+ |    0  |  82+ |   13+ |  677+ |     7+ |  part  |
+| 94+     | Papua Tengah+             |    8+ |    0  | 131+ |   36+ | 1172+ |    50+ |  part  |
+| 95+     | Papua Pegunungan+         |    8+ |    0  | 252+ |   10+ | 2617+ |     0  |  part  |
 |         | TOTAL*                    |  416  |   98  |7277* | 8498* |75265* | 17001* |  part  |
 
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 050-145 Tahun 2022)
