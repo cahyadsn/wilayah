@@ -51,11 +51,11 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 | 52      | Nusa Tenggara Barat*      |    8  |    2  | 117  |  145  | 1021* |   403  |  done  |
 | 53      | Nusa Tenggara Timur*      |   21  |    1  | 315  |  305* | 3137* |   609* |  done  |
 | 61      | Kalimantan Barat*         |   12  |    2  | 174  |   99  | 2046* |   251* |  done  |
-| 62      | Kalimantan Tengah*        |   13  |    1  | 136  |  139  | 1432  |    71* |  part  |
-| 63      | Kalimantan Selatan*       |   11  |    2  | 156  |  144  | 1872* |   165* |  part  |
+| 62      | Kalimantan Tengah*        |   13  |    1  | 136  |  139  | 1432  |    71* |  done  |
+| 63      | Kalimantan Selatan*       |   11  |    2  | 156  |  144  | 1872* |   165* |  done  |
 | 64      | Kalimantan Timur*         |    7  |    3  | 105  |  197  |  841  |   243  |  part  |
 | 65      | Kalimantan Utara          |    4  |    1  |  55  |   35  |  447  |   196  |  done  |
-| 71      | Sulawesi Utara*           |   11  |    4  | 171  |  332  | 1507  |   353* |  part  |
+| 71      | Sulawesi Utara*           |   11  |    4  | 171  |  332  | 1507  |   353* |  done  |
 | 72      | Sulawesi Tengah           |   12  |    1  | 175  |  175  | 1842  |  1572  |  done  |
 | 73      | Sulawesi Selatan*         |   21  |    3  | 313* |  793  | 2266* |   370* |  part  |
 | 74      | Sulawesi Tenggara*        |   15  |    2  | 221* |  379* | 1908  |   590  |  part  |
