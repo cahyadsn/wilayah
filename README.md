@@ -58,7 +58,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 | 71      | Sulawesi Utara*           |   11  |    4  | 171  |  332  | 1507  |   353* |  done  |
 | 72      | Sulawesi Tengah           |   12  |    1  | 175  |  175  | 1842  |  1572  |  done  |
 | 73      | Sulawesi Selatan*         |   21  |    3  | 313* |  793  | 2266* |   370* |  done  |
-| 74      | Sulawesi Tenggara*        |   15  |    2  | 221* |  379* | 1908  |   590  |  part  |
+| 74      | Sulawesi Tenggara*        |   15  |    2  | 221* |  379* | 1908  |   590  |  done  |
 | 75      | Gorontalo                 |    5  |    1  |  77  |   72  |  657  |   127  |  done  |
 | 76      | Sulawesi Barat            |    6  |    0  |  69  |   73  |  575  |    69  |  done  |
 | 81      | Maluku*                   |    9  |    2  | 118  |   35  | 1200* |  1388* |  part  |
