@@ -63,9 +63,9 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 | 76      | Sulawesi Barat            |    6  |    0  |  69  |   73  |  575  |    69  |  done  |
 | 81      | Maluku*                   |    9  |    2  | 118  |   35  | 1200* |  1388* |  done  |
 | 82      | Maluku Utara*             |    8  |    2  | 118  |  118  | 1067* |   901* |  done  |
-| 91      | Papua*                    |    8* |    1  | 105* |   51* |  948* |   527* |  part  |
+| 91      | Papua*                    |    8* |    1  | 105* |   51* |  948* |   527* |  done  |
 | 92      | Papua Barat               |   12  |    1  | 218  |   95  | 1742  |  4520* |  done  |
-| 93+     | Papua Selatan+            |    4+ |    0  |  82+ |   13+ |  677+ |     7+ |  part  |
+| 93+     | Papua Selatan+            |    4+ |    0  |  82+ |   13+ |  677+ |     7+ |  done  |
 | 94+     | Papua Tengah+             |    8+ |    0  | 131+ |   36+ | 1172+ |    50+ |  part  |
 | 95+     | Papua Pegunungan+         |    8+ |    0  | 252+ |   10+ | 2617+ |     0  |  part  |
 |         | TOTAL*                    |  416  |   98  |7277* | 8498* |75265* | 17001* |  part  |
