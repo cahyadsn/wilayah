@@ -260,7 +260,7 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/v2/) (data sesuai 
 
 ## To Do
 - update data kode wilayah berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (on progress)
-- update data kode pulau berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (on progress)
+- update data kode pulau berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done)
 - memindahkan database kode wilayah dan pulau sebelumnya ke folder db/archive (done)
 - update web demo ke v3.0 (on progress)
     - menampilkan data kodepos
