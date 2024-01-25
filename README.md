@@ -22,7 +22,7 @@ Kode dan Data Pulau Indonesia dalam database :
 
 ## NOTE :
 Data BELUM/TIDAK termasuk data perubahan adanya pembentukan provinsi baru
-- UU No 29 Tahun 2022 tentang Pembentukan Provinsi Papua Barat Daya (LN.2022/No.223, TLN No.6831, jdih.setneg.go.id: 15 hlm., 08 Desember 2002)
+- UU No 29 Tahun 2022 tentang Pembentukan Provinsi Papua Barat Daya (LN.2022/No.223, TLN No.6831, jdih.setneg.go.id: 15 hlm., 08 Desember 2022)
 
 Data perubahan kode wilayah atas pembentukan provinsi Papua Barat Daya belum ada pemutakhiran data dari Kemendagri
 
