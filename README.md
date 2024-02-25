@@ -22,7 +22,7 @@ Kode dan Data Pulau Indonesia dalam database :
 
 ## NOTE :
 Data BELUM/TIDAK termasuk data perubahan adanya pembentukan provinsi baru
-- UU No 29 Tahun 2022 tentang Pembentukan Provinsi Papua Barat Daya (LN.2022/No.223, TLN No.6831, jdih.setneg.go.id: 15 hlm., 08 Desember 2002)
+- UU No 29 Tahun 2022 tentang Pembentukan Provinsi Papua Barat Daya (LN.2022/No.223, TLN No.6831, jdih.setneg.go.id: 15 hlm., 08 Desember 2022)
 
 Data perubahan kode wilayah atas pembentukan provinsi Papua Barat Daya belum ada pemutakhiran data dari Kemendagri
 
@@ -66,9 +66,9 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 | 91      | Papua*                    |    8* |    1  | 105* |   51* |  948* |   527* |  done  |
 | 92      | Papua Barat               |   12  |    1  | 218  |   95  | 1742  |  4520* |  done  |
 | 93+     | Papua Selatan+            |    4+ |    0  |  82+ |   13+ |  677+ |     7+ |  done  |
-| 94+     | Papua Tengah+             |    8+ |    0  | 131+ |   36+ | 1172+ |    50+ |  part  |
-| 95+     | Papua Pegunungan+         |    8+ |    0  | 252+ |   10+ | 2617+ |     0  |  part  |
-|         | TOTAL*                    |  416  |   98  |7277* | 8498* |75265* | 17001* |  part  |
+| 94+     | Papua Tengah+             |    8+ |    0  | 131+ |   36+ | 1172+ |    50+ |  done  |
+| 95+     | Papua Pegunungan+         |    8+ |    0  | 252+ |   10+ | 2617+ |     0  |  done  |
+|         | TOTAL*                    |  416  |   98  |7277* | 8498* |75265* | 17001* |  done  |
 
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 050-145 Tahun 2022)
 
@@ -92,7 +92,11 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
-- update data kode wilayah berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (on progress)
+- update web demo dengan openstreemap + leafletjs (dev)
+- update web demo dengan data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (dev)
+- menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
+- update data wilayah_level_1_2.sql berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (dev) 
+- update data kode wilayah berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done)
 - update data kode pulau berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done)
 - memindahkan database kode wilayah dan pulau sebelumnya ke folder db/archive (done)
 - update web demo ke v3.0 (on progress)
