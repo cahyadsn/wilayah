@@ -5,8 +5,8 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit   : 220623
-author   	  : cahya dsn
+last edit   : 2024-02-24 09:44:14
+author   	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/v2
 soure code 	: https://github.com/cahyadsn/wilayah/apps
 ================================================================================
@@ -23,7 +23,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2015-2022 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2015-2024 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 session_start();
 $c=isset($_SESSION['c'])?$_SESSION['c']:(isset($_GET['c'])?$_GET['c']:'indigo');
@@ -31,7 +31,7 @@ define("_AUTHOR","cahyadsn");
 $_SESSION['author']='cahyadsn';
 $_SESSION['ver']=sha1(rand());
 include 'inc/db.php';
-$version='2.4';
+$version='2.5';
 /*header('Expires: '.date('r'));
 header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Cache-Control: post-check=0, pre-check=0', FALSE);
@@ -57,10 +57,15 @@ header('Pragma: no-cache');*/
     <link rel="stylesheet" href="css/w3-theme-<?php echo $c;?>.css" media="all" id="wil_css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="css/wilayah.php?v=<?php echo md5(filemtime('css/wilayah.php'));?>">
-    <script src="js/jquery.min.js"></script>
-    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
-    <script src="inc/geo_js.php?v=<?php echo $_SESSION['ver'];?>"></script>
+	<script src='https://code.jquery.com/jquery-3.6.4.min.js'></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+		crossorigin=""/>
+	<link type="text/css" rel="stylesheet" href="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.css"/>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+		crossorigin=""></script>
+	<script src="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.js"></script>
 </head>
 <body>
     <div class="w3-top">
@@ -128,6 +133,7 @@ header('Pragma: no-cache');*/
             Wilayah v<?php echo $version;?> copyright &copy; 2017<?php echo (date('Y')>2017?date('-Y'):'');?> by <a href='mailto:cahyadsn@gmail.com'>cahya dsn</a><br />
         </div>
     </div>
+    <script src="inc/geo_js.php?v=<?php echo $_SESSION['ver'];?>"></script>
     <script src="js/wilayah.js?id=<?php echo MD5(date('YmdHis'))?>"></script>
 </body>
 </html>

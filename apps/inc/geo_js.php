@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_js.php
 purpose  :
 create   : 170912
-last edit: 220623
+last edit: 2024-02-25 10:14:48
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -21,7 +21,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2017-2022 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2017-2024 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 session_start();
 header("Content-type: text/javascript");
@@ -62,7 +62,6 @@ function do_ajax(){
     return null;
 }
 
-L.mapquest.key = '<MAPQUEST_KEY_HERE>';
 var polyLatLngs;
 var polyLayer;
 var map;
@@ -96,10 +95,7 @@ function stateChanged(){
         }
         polyLatLngs=JSON.parse(d.data.path);
         myPoint=[d.data.lat,d.data.lng];
-        marker = new L.marker(myPoint, {
-           icon: L.mapquest.icons.marker(),
-           draggable: false
-         }).bindPopup('<b>'+d.data.nama+'</b><br>Kode wilayah <b>'+d.data.kode+'</b><br>luas: <b>'+d.data.luas+'</b> km<sup>2</sup><br>penduduk: <b>'+d.data.penduduk+'</b>').addTo(map);
+        marker = new L.marker(myPoint).bindPopup('<b>'+d.data.nama+'</b><br>Kode wilayah <b>'+d.data.kode+'</b><br>luas: <b>'+d.data.luas+'</b> km<sup>2</sup><br>penduduk: <b>'+d.data.penduduk+'</b>').addTo(map);
         polyLayer=L.polygon(polyLatLngs, {color: 'blue'}).addTo(map);
         map.flyTo(myPoint, 9);
         $('div#preload').hide();
