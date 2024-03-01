@@ -21,6 +21,7 @@ copyright (c) 2017-2024 by cahya dsn; cahyadsn@gmail.com
 //if(!defined('_AUTHOR')) die('illegal access forbiden');
 header("Content-type: text/css");
 ?>
+body,h1,h1,h3,input {font-family:"Raleway", Arial, Sans-serif;}
 #map-canvas {width:100%;height:400px;border:solid #999 1px;}
 select {width:240px;}
 #kab_box,#kec_box,#kel_box,#msg_box {display:none;}

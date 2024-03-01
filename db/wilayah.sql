@@ -1,12 +1,38 @@
+/*
+BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
+================================================================================
+filename : db/wilayah.sql
+purpose  :
+create   : 2016-03-12
+last edit: 2024-03-01 13:12:56
+author   : cahya dsn
+================================================================================
+This program is free software; you can redistribute it and/or modify it under the
+terms of the MIT License.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+See the MIT License for more details
+
+copyright (c) 2016-2024 by cahya dsn; cahyadsn@gmail.com
+================================================================================*/
 --
 -- Table structure for table wilayah
 --
 
 DROP TABLE IF EXISTS wilayah;
 CREATE TABLE IF NOT EXISTS wilayah (
- kode varchar(13) NOT NULL,
- nama varchar(100) DEFAULT NULL
+    kode varchar(13) NOT NULL,
+    nama varchar(100) DEFAULT NULL,
+    PRIMARY KEY (kode)
 );
+CREATE INDEX wilayah_name_idx ON wilayah (nama);
 
 --
 -- Dumping data for table wilayah
@@ -14253,7 +14279,7 @@ VALUES
 ('13.08.13.2002','Ladang Panjang'),
 ('13.08.13.2003','Binjai'),
 ('13.08.13.2004','Malampah Barat'),
-('13.08.13.2005','Ladang Panjang Barat'), 
+('13.08.13.2005','Ladang Panjang Barat'),
 ('13.08.14','Rao'),
 ('13.08.14.2002','Taruang Taruang'),
 ('13.08.14.2005','Padang Mantinggi'),
@@ -79806,7 +79832,7 @@ VALUES
 ('75.03.18.2003','Dataran Hijau'),
 ('75.03.18.2004','Pinogu Permai'),
 ('75.03.18.2005','Tilonggibila'),
-('75.04','KAB. PAHUWATO'),
+('75.04','KAB. POHUWATO'),
 ('75.04.01','Popayato'),
 ('75.04.01.2003','Torosiaje Jaya'),
 ('75.04.01.2004','Popayato'),

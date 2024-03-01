@@ -129,7 +129,7 @@ header('Pragma: no-cache');*/
         <div class="w3-theme-d5 w3-padding">source code : <a href='https://github.com/cahyadsn/wilayah'>https://github.com/cahyadsn/wilayah</a></div>
     </div>
     <div class="w3-bottom">
-        <div class="w3-bar w3-theme-d4 w3-center">
+        <div class="w3-bar w3-theme-d4 w3-center w3-padding">
             Wilayah v<?php echo $version;?> copyright &copy; 2017<?php echo (date('Y')>2017?date('-Y'):'');?> by <a href='mailto:cahyadsn@gmail.com'>cahya dsn</a><br />
         </div>
     </div>
