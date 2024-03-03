@@ -92,6 +92,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
+- verify perubahan dan perbaikan data (on progress)
 - update web demo dengan openstreemap + leafletjs (dev)
 - update web demo dengan data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (dev)
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
