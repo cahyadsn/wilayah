@@ -13460,7 +13460,6 @@ VALUES
 ('12.78.06.2009','Ononamolo II Lot');
 
 -- Provinsi Sumatera Barat
--- Provinsi Sumatera Barat
 INSERT INTO wilayah (kode, nama)
 VALUES
 ('13','SUMATERA BARAT'),
