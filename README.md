@@ -7,7 +7,7 @@ Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - db/archive/wilayah_2020.sql sesuai Permendagri No. 72 Tahun 2019 (revised by Kepmendagri No.146.1-4717 Tahun 2020)
 - db/archive/wilayah_2018.sql sesuai Permendagri No 137 tahun 2017
 - db/archive/wilayah_2016.sql sesuai Permendagri No 56 Tahun 2015
-- db/archive/wilayah_level_1_2.sql sesuai Permendagri No. 58 Tahun 2021 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
+- db/archive/wilayah_level_1_2.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
 
 Kode dan Data Pulau Indonesia dalam database :
 - db/pulau.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 *
