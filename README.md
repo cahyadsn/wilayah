@@ -95,7 +95,6 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update web demo dengan openstreemap + leafletjs (dev)
 - update web demo dengan data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (dev)
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
-- update data wilayah_level_1_2.sql berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (dev)
 - update web demo ke v3.0 (on progress)
     - menampilkan data kodepos
     - menampilkan data kode wilayah di sidebar
@@ -103,6 +102,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
     - level 4 - desa/kelurahan
   
 ## Change Log 
+- update data wilayah_level_1_2.sql berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done 2024-04-30)
 - verify perubahan dan perbaikan data (done)
 - update data kode wilayah berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done)
 - update data kode pulau berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done)
