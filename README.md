@@ -93,7 +93,6 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
 ## To Do
 - update web demo dengan openstreemap + leafletjs (dev)
-- update web demo dengan data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (dev)
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 - update web demo ke v3.0 (on progress)
     - menampilkan data kodepos
@@ -102,6 +101,8 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
     - level 4 - desa/kelurahan
   
 ## Change Log 
+- update web demo ke v2.6 dengan data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done 2024-05-15)
+    - data level 1 dan 2 berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022
 - update data wilayah_level_1_2.sql berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done 2024-04-30)
 - verify perubahan dan perbaikan data (done)
 - update data kode wilayah berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done)
@@ -136,4 +137,4 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
     - Bank BCA Digital (Blu) (501) 000 576 776 186
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 
-[di sini]: https://wilayah.cahyadsn.com/
+[di sini]: https://wilayah.cahyadsn.com/v2.6
