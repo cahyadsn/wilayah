@@ -76,7 +76,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 
 ) ** Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 
-link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
+link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
 
 ## Referensi
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
