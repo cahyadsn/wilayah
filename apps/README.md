@@ -51,9 +51,9 @@ Sesuaikan data konfigurasi database yang ada di apps/inc/db.php
 | 82      | Maluku Utara              |    8 |    2 |
 | 91      | Papua                     |    8 |    1 |
 | 92      | Papua Barat               |   12 |    1 |
-| 92      | Papua Selatan             |    4 |    0 |
-| 92      | Papua Tenagh              |    8 |    0 |
-| 92      | Papua Pegunungan          |    8 |    0 |
+| 93      | Papua Selatan             |    4 |    0 |
+| 94      | Papua Tenagh              |    8 |    0 |
+| 95      | Papua Pegunungan          |    8 |    0 |
 |         | TOTAL                     |  416 |   98 |
 
 
