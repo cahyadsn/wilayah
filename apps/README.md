@@ -1,16 +1,16 @@
-# wilayah v2.5
+# wilayah v2.6
 Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 dengan PHP+MySQL+AJaX
 
-(Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Permendagri No 58 Tahun 2021, utk aplikasi ini hanya menggunakan data level 1 dan 2 (provinsi dan kabupaten/kota) di /db/archive/wilayah_level_1_2.sql yang sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022 (on progress), dengan penambahan data lat/long/elv/timezone,boundaries/polygon,luas dan jumlah penduduk)
+(Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022, utk aplikasi ini hanya menggunakan data level 1 dan 2 (provinsi dan kabupaten/kota) di /db/archive/wilayah_level_1_2.sql yang sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022, dengan penambahan data lat/long/elv/timezone,boundaries/polygon,luas dan jumlah penduduk)
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
 [![GitHub forks](https://img.shields.io/github/forks/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/network)
 [![GitHub stars](https://img.shields.io/github/stars/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/stargazers)
 
-Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 58 Tahun 2021 untuk tingkat Provinsi dan Kota/Kabupaten beserta data latitude/longitude (koordinat) dan polygon boundaries-nya dan aplikasi sederhananya
+Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk tingkat Provinsi dan Kota/Kabupaten beserta data latitude/longitude (koordinat) dan polygon boundaries-nya dan aplikasi sederhananya
 
-Untuk aplikasi wilayah v2.5 ini mengguanakan database dengan nama tabel wilayah_level_1_2 yang terdapat di folder /db/archive/wilayah_level_1_2.sql
+Untuk aplikasi wilayah v2.6 ini mengguanakan database dengan nama tabel wilayah_level_1_2 yang terdapat di folder /db/archive/wilayah_level_1_2.sql
 
 Sesuaikan data konfigurasi database yang ada di apps/inc/db.php
 
@@ -49,12 +49,15 @@ Sesuaikan data konfigurasi database yang ada di apps/inc/db.php
 | 76      | Sulawesi Barat            |    6 |    0 |
 | 81      | Maluku                    |    9 |    2 |
 | 82      | Maluku Utara              |    8 |    2 |
-| 91      | Papua                     |   28 |    1 |
+| 91      | Papua                     |    8 |    1 |
 | 92      | Papua Barat               |   12 |    1 |
+| 92      | Papua Selatan             |    4 |    0 |
+| 92      | Papua Tenagh              |    8 |    0 |
+| 92      | Papua Pegunungan          |    8 |    0 |
 |         | TOTAL                     |  416 |   98 |
 
 
-link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.5/ (data sesuai permendagri no 58 tahun 2021)
+link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6/ (data sesuai Kepmendagri No 100.1.1-6117 Tahun 2022)
 
 ## Referensi
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
@@ -69,8 +72,8 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.5/ (data sesuai
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.137-2017) http://www.kemendagri.go.id/produk-hukum/2018/01/18/kode-dan-data-wilayah-administrasi-pemerintahan-tahun-2017 (Berita Negara Republik Indonesia Tahun 2017 Nomor 1955, Ditetapkan pada tanggal 27 Desember 2017)
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
-## Todo
-- update data db/archive/wilayah_level_1_2.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 (on progress)
+## New Update
+- update data db/archive/wilayah_level_1_2.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 (done 2024-05-15)
 
 ## Donasi
 - untuk donasi via :
@@ -80,5 +83,5 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.5/ (data sesuai
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 - untuk donasi via Ko-fi [https://ko-fi.com/cahyadsn]
 
-[di sini]: http://wilayah.cahyadsn.com/v2.5/
+[di sini]: http://wilayah.cahyadsn.com/v2.6/
 
