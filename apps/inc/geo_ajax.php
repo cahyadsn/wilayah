@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_ajax.php
 purpose  :
 create   : 170912
-last edit: 220623
+last edit: 240515
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -21,7 +21,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2017-2022 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2017-2024 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 include "db.php";
 $r=array('status'=>false,'error'=>'an error occured');
@@ -33,7 +33,7 @@ if (!empty($_GET['id'])){
     $r=array('status'=>false,'error'=>'data not found');
   }else{
     $path=$d->path;
-    if(empty($path)){
+    if(empty($paths)){
       $path=array(
             array('lat'=>$d->lat-0.01,'lng'=>$d->lng-0.01),
             array('lat'=>$d->lat+0.01,'lng'=>$d->lng-0.01),
@@ -57,21 +57,5 @@ if (!empty($_GET['id'])){
     $r['opt']=$opt;
     $r['n']=$n;
   }
-}else{
-  $data=array(
-    ':lat'=>$_POST['lat'],
-    ':lng'=>$_POST['lng'],
-    ':path'=>$_POST['path']
-  );
-  $sql="UPDATE {$tbl_wilayah} SET ";
-  $field=array();
-  foreach($data as $f=>$v){
-    $field[]=substr($f,1)."={$f}";
-  }
-  $sql.=implode(',',$field)." WHERE kode=:kode";
-  $data[':kode']=$_POST['kode'];
-  $query = $db->prepare($sql);
-  $query->execute($data);
-  $r=array('status'=>true,'msg'=>'data saved' );
 }
 echo json_encode($r);
