@@ -1,5 +1,6 @@
 # WILAYAH
 Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 menggunakan PHP+MySQL+AJaX
+![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/240606.png?raw=true)
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - db/wilayah.sql (data kode wilayah terbaru sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022)
@@ -77,7 +78,6 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 ) ** Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 
 link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
-![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/240606.png?raw=true)
 
 ## Referensi
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
