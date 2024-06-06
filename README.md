@@ -77,6 +77,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 ) ** Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 
 link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
+![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/240606.png?raw=true)
 
 ## Referensi
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
@@ -92,7 +93,8 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
-- update web demo dengan openstreemap + leafletjs (dev)
+- update main web demo dengan data data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (dev) 
+- update main web demo dengan openstreemap + leafletjs (dev)
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 - update web demo ke v3.0 (on progress)
     - menampilkan data kodepos
