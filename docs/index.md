@@ -1,6 +1,8 @@
 # WILAYAH
 Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 menggunakan PHP+MySQL+AJaX
 
+![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/240606.png?raw=true)
+
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - db/wilayah.sql (data kode wilayah terbaru sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022)
 - db/archive/wilayah_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022) 
@@ -112,7 +114,6 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai dengan Kepmendag
 
 ) ** Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 
-link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/v2.3/) (data sesuai permendagri no 58 tahun 2021, level 1 dan 2)
 # Data Kepmendagri No 146.1-4717 Tahun 2020
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Permendagri No 72 Tahun 2019  dengan revisi berdasarkan KepmendagrinNo 146.1-4717 Tahun 2020 (wilayah_2020.sql)
 
@@ -242,7 +243,6 @@ Database daerah sesuai Permendagri no 56 tahun 2015 (wilayah_2016.sql)
 | 92      | Papua Barat               |   12 |    1 | 218 |   95 | 1744 |
 |         | TOTAL                     |  416 |   98 |7160 | 8430 |74754 |
 
-link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/v2/) (data sesuai permendagri no 137 tahun 2017)
 
 ## Referensi
 - Dokumen Referensi : [https://github.com/cahyadsn/wilayah_ref](https://github.com/cahyadsn/wilayah_ref)
@@ -258,8 +258,8 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/v2/) (data sesuai 
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) [http://www.kemendagri.go.id/pages/data-wilayah](http://www.kemendagri.go.id/pages/data-wilayah) (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 
-## To Do
-- update data kode wilayah berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (on progress)
+## Change Log
+- update data kode wilayah berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done)
 - update data kode pulau berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done)
 - memindahkan database kode wilayah dan pulau sebelumnya ke folder db/archive (done)
 - update web demo ke v3.0 (on progress)
@@ -269,8 +269,8 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/v2/) (data sesuai 
     - level 4 - desa/kelurahan
 - update web demo ke v2.5.1 (done)
     - encrypted polygon data
-- update web demo ke v2.4 (* on progress)
-- update dan penambahan data jumlah penduduk dan luas wilayah data wilayah level 1 dan 2 (* on progress)
+- update web demo ke v2.4 (dones)
+- update dan penambahan data jumlah penduduk dan luas wilayah data wilayah level 1 dan 2 (done)
 - update data based on Permendagri No.58 Tahun 2021 &  Kepmendagri No. 050-145 Tahun 2022 (done)
 - update data based on Kepmendagri No.146.1-4717 Tahun 2020 (done)
 - update web demo ke v2.3 (done)
