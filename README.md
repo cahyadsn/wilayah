@@ -12,7 +12,11 @@ Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 
 Kode dan Data Pulau Indonesia dalam database :
 - db/pulau.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 *
-- db/archive/pulau_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022) 
+- db/archive/pulau_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022)
+
+  ## TAUTAN TERKAIT
+  - Data kodepos vs kode wilayah administrasi pemerintahan Indoensia : https://github.com/cahyadsn/wilayah_kodepos
+  - Data referensi Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia : https://github.com/cahyadsn/wilayah_ref
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
