@@ -103,8 +103,9 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
 - update web demo ke v3.0 (on progress)
     - menampilkan data kodepos
     - menampilkan data kode wilayah di sidebar
-    - level 3 - kecamatan 
-    - level 4 - desa/kelurahan
+    - data boundaries :
+        - level 3 - kecamatan 
+        - level 4 - desa/kelurahan
   
 ## Change Log 
 - update web demo ke v2.6 dengan data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done 2024-05-15)
