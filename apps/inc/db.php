@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : dp.php
 purpose  : configuration of database connection
 create   : 170912
-last edit: 240515
+last edit: 2024-10-25 22:29:50
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the

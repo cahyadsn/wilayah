@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit   : 2024-05-15 00:56:34
+last edit   : 2024-10-25 22:30:21
 author   	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/v2.6
 soure code 	: https://github.com/cahyadsn/wilayah/apps
@@ -105,7 +105,7 @@ header('Pragma: no-cache');*/
                     <select name="prop" id="prop" class="w3-select w3-hover-theme" onchange="ajax(this.value)" readonly>
                       <option value="">Pilih Provinsi</option>
                       <?php
-                      $query=$db->prepare("SELECT kode,nama FROM wilayah_1_2 WHERE CHAR_LENGTH(kode)=2 ORDER BY nama");
+                      $query=$db->prepare("SELECT kode,nama FROM {$tbl_wilayah} WHERE CHAR_LENGTH(kode)=2 ORDER BY nama");
                       $query->execute();
                       while ($data=$query->fetchObject()){
                         echo '<option value="'.$data->kode.'">'.$data->nama.'</option>';
