@@ -49,8 +49,8 @@ header('Pragma: no-cache');*/
     <meta http-equiv="content-language" content="en" />
     <meta name="author" content="Cahya DSN" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-    <meta name="keywords" content="php, mysql, data, administrasi, wilayah, indonesia, permendagri, 58, 2021, cahyadsn" />
-    <meta name="description" content="Wilayah ver <?php echo $version;?> created by cahya dsn, Data wilayah administrasi Indonesia sesuai permendagri No 72 tahun 2019, dalam bahasa pemrograman PHP dan database MySQL" />
+    <meta name="keywords" content="php, mysql, data, administrasi, wilayah, indonesia, kepmendagri,100.1.1-6117,2022, cahyadsn" />
+    <meta name="description" content="Wilayah ver <?php echo $version;?> created by cahya dsn, Data wilayah administrasi Indonesia sesuai kepmendagri No. 100.1.1-6117 Tahun 2022, dalam bahasa pemrograman PHP dan database MySQL" />
     <meta name="robots" content="index, follow" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/w3.css">
@@ -89,7 +89,7 @@ header('Pragma: no-cache');*/
             <h2>&nbsp;</h2>
             <div class="w3-panel w3-bar w3-theme-d1">
                 <h3 class="w3-theme-d1">Data Wilayah Administrasi Indonesia</h3>
-                <h4 class="w3-theme-d1"> Sesuai Permendagri No 58 th 2021</h4>
+                <h4 class="w3-theme-d1"> Sesuai Kepmendagri No 100.1.1-6117 Tahun 2022</h4>
             </div>
             <div class="w3-container">
               <div class="w3-row">
