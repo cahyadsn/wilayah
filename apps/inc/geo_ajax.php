@@ -34,12 +34,11 @@ if (!empty($_GET['id'])){
   }else{
     $path=$d->path;
     if(empty($path)){
-      $path=array(
-            array('lat'=>$d->lat-0.01,'lng'=>$d->lng-0.01),
-            array('lat'=>$d->lat+0.01,'lng'=>$d->lng-0.01),
-            array('lat'=>$d->lat+0.01,'lng'=>$d->lng+0.01),
-            array('lat'=>$d->lat-0.01,'lng'=>$d->lng+0.01)
-      );
+      $path='[['
+            .($d->lat-0.01).','.($d->lng-0.01).'],['
+            .($d->lat+0.01).','.($d->lng-0.01).'],['
+            .($d->lat+0.01).','.($d->lng+0.01).'],['
+            .($d->lat-0.01).','.($d->lng+0.01).']]'
     }
     $data=array('kode'=> $d->kode,'nama'=> $d->nama,'lat'=> $d->lat,'lng'=> $d->lng,'path'=>$path,'luas'=>$d->luas,'penduduk'=>$d->penduduk);
     $r=array('status'=>true,'data'=>$data);
