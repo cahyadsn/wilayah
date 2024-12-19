@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_ajax.php
 purpose  :
 create   : 170912
-last edit: 2024-10-25 22:30:03
+last edit: 2024-12-19 10:35:03
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -34,12 +34,11 @@ if (!empty($_GET['id'])){
   }else{
     $path=$d->path;
     if(empty($path)){
-      $path=array(
-            array('lat'=>$d->lat-0.01,'lng'=>$d->lng-0.01),
-            array('lat'=>$d->lat+0.01,'lng'=>$d->lng-0.01),
-            array('lat'=>$d->lat+0.01,'lng'=>$d->lng+0.01),
-            array('lat'=>$d->lat-0.01,'lng'=>$d->lng+0.01)
-      );
+      $path='[['
+            .($d->lat-0.01).','.($d->lng-0.01).'],['
+            .($d->lat+0.01).','.($d->lng-0.01).'],['
+            .($d->lat+0.01).','.($d->lng+0.01).'],['
+            .($d->lat-0.01).','.($d->lng+0.01).']]';
     }
     $data=array('kode'=> $d->kode,'nama'=> $d->nama,'lat'=> $d->lat,'lng'=> $d->lng,'path'=>$path,'luas'=>$d->luas,'penduduk'=>$d->penduduk);
     $r=array('status'=>true,'data'=>$data);
