@@ -5,7 +5,11 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_ajax.php
 purpose  :
 create   : 170912
+<<<<<<< HEAD
 last edit: 2024-12-19 10:31:03
+=======
+last edit: 2024-12-19 10:35:03
+>>>>>>> 7de39290e2d601d2468ca5dd0a6a65abfa0a85f2
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
