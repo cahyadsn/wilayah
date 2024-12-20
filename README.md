@@ -17,6 +17,7 @@ Kode dan Data Pulau Indonesia dalam database :
 ## TAUTAN TERKAIT
 - Data kodepos vs kode wilayah administrasi pemerintahan Indoensia : https://github.com/cahyadsn/wilayah_kodepos
 - Data referensi Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia : https://github.com/cahyadsn/wilayah_ref
+- Data boundaries berdasarkan kode wilayah adminsitrasi pemerintahan Indonesia : https://github.com/cahyadsn/wilayah_boundaries
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
@@ -103,9 +104,6 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
 - update web demo ke v3.0 (on progress)
     - menampilkan data kodepos
     - menampilkan data kode wilayah di sidebar
-    - data boundaries :
-        - level 3 - kecamatan 
-        - level 4 - desa/kelurahan
   
 ## Change Log 
 - update web demo ke v2.6 dengan data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done 2024-05-15)
