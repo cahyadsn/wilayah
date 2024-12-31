@@ -106,6 +106,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
     - menampilkan data kode wilayah di sidebar
   
 ## Change Log 
+- update data desa di prov Sumatera Utara (perubahan nama dan perpindahan kecamatan 2024-12-31)
 - update web demo ke v2.6 dengan data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done 2024-05-15)
     - data level 1 dan 2 berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022
 - update data wilayah_level_1_2.sql berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done 2024-04-30)
