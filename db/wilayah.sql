@@ -4,7 +4,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : db/wilayah.sql
 purpose  :
 create   : 2016-03-12
-last edit: 2024-12-31 15:05:43
+last edit: 2024-12-31 17:00:29
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -17696,8 +17696,8 @@ VALUES
 ('15.03.11.2006','Jati Baru'),
 ('15.03.11.2007','Jati Baru Mudo'),
 ('15.03.11.2008','Meranti Baru'),
+('15.03.11.2009','Meranti Jaya'),
 ('15.03.11.2010','Jernang Baru'),
-('15.03.11.2019','Meranti Jaya'),
 ('15.04','KAB. BATANGHARI'),
 ('15.04.01','Mersam'),
 ('15.04.01.1001','Kembang Paseban'),
@@ -31544,6 +31544,8 @@ VALUES
 ('32.09.21.2011','Buyut'),
 ('32.09.21.2012','Mayung'),
 ('32.09.21.2015','Mertasinga'),
+('32.09.21.2016','Sambeng'),
+('32.09.21.2017','Sirnabaya'),
 ('32.09.22','Kapetakan'),
 ('32.09.22.2010','Kertasura'),
 ('32.09.22.2011','Pegagan Kidul'),
@@ -31727,8 +31729,6 @@ VALUES
 ('32.09.38.2009','Sindang Kempeng'),
 ('32.09.38.2010','Nanggela'),
 ('32.09.39','Suranenggala'),
-('32.09.39.2001','Sambeng'),
-('32.09.39.2002','Sirnabaya'),
 ('32.09.39.2003','Muara'),
 ('32.09.39.2004','Purwawinangun'),
 ('32.09.39.2005','Keraton'),
@@ -37833,9 +37833,6 @@ VALUES
 ('33.09.17.2004','Klewor'),
 ('33.09.17.2005','Bawu'),
 ('33.09.17.2006','Kendel'),
-('33.09.17.2007','Kauman'),
-('33.09.17.2008','Lemahireng'),
-('33.09.17.2009','Guwo'),
 ('33.09.17.2010','Kemusu'),
 ('33.09.17.2011','Genengsari'),
 ('33.09.17.2012','Kedungmulyo'),
@@ -37849,6 +37846,9 @@ VALUES
 ('33.09.18.2007','Wonosegoro'),
 ('33.09.18.2008','Bandung'),
 ('33.09.18.2014','Bojong'),
+('33.09.18.2019','Kauman'),
+('33.09.18.2020','Lemahireng'),
+('33.09.18.2021','Guwo'),
 ('33.09.19','Juwangi'),
 ('33.09.19.1006','Sambeng'),
 ('33.09.19.2001','Krobokan'),
@@ -68708,10 +68708,7 @@ VALUES
 ('65.01.10.2003','Bunyu Timur'),
 ('65.02','KAB. MALINAU'),
 ('65.02.01','Mentarang'),
-('65.02.01.2001','Long Gafid'),
 ('65.02.01.2002','Long Bisai'),
-('65.02.01.2003','Temalang'),
-('65.02.01.2004','Long Liku'),
 ('65.02.01.2005','Pulau Sapi'),
 ('65.02.01.2006','Paking'),
 ('65.02.01.2007','Lidung Kemenci'),
@@ -68807,6 +68804,9 @@ VALUES
 ('65.02.12.2005','Lung Berang'),
 ('65.02.12.2006','Lung Sulit'),
 ('65.02.12.2007','Lung Semamu'),
+('65.02.12.2008','Long Gafid'),
+('65.02.12.2009','Temalang'),
+('65.02.12.2010','Long Liku'),
 ('65.02.13','Malinau Selatan Hilir'),
 ('65.02.13.2001','Setulang'),
 ('65.02.13.2002','Setarap'),
@@ -76035,8 +76035,8 @@ VALUES
 ('73.18.37.2004','Rano Tengah'),
 ('73.18.37.2005','Rano Timur'),
 ('73.18.38','Kurra'),
-('73.18.38.1002','Bambalu'),
-('73.18.38.2001','Rante Kurra'),
+('73.18.38.1001','Ratte Kurra'),
+('73.18.38.2002','Bambalu'),
 ('73.18.38.2003','Maroson'),
 ('73.18.38.2004','Lipungan Tanete'),
 ('73.18.38.2005','Rante limbong'),
