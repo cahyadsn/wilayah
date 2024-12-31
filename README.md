@@ -106,6 +106,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
     - menampilkan data kode wilayah di sidebar
   
 ## Change Log 
+- update data desa di prov Riau (perpindahan kecamatan 2024-12-31)
 - update data desa/kelurahan di prov Sulawesi Selatan (perubahan nama dan status 2024-12-31)
 - update data desa di prov Kalimantan Utara (perpindahan kecamatan 2024-12-31)
 - update data desa di prov Jawa Tengah (perpindahan kecamatan 2024-12-31)

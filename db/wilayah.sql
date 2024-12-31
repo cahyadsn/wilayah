@@ -4,7 +4,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : db/wilayah.sql
 purpose  :
 create   : 2016-03-12
-last edit: 2024-12-31 17:00:29
+last edit: 2024-12-31 18:47:53
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -16869,9 +16869,6 @@ VALUES
 ('14.71.06','Rumbai Barat'),
 ('14.71.06.1003','Rumbai Bukit'),
 ('14.71.06.1005','Muarafajar Timur '),
-('14.71.06.1006','Umban Sari'),
-('14.71.06.1008','Sri Meranti'),
-('14.71.06.1009','Palas'),
 ('14.71.06.1010','Muarafajar Barat'),
 ('14.71.06.1011','Rantaupanjang'),
 ('14.71.06.1012','Maharani'),
@@ -16887,6 +16884,7 @@ VALUES
 ('14.71.08.1008','Delima'),
 ('14.71.08.1009','Tobekgodang'),
 ('14.71.08.1010','Binawidya'),
+('14.71.08.1014','Sungaisibam'),
 ('14.71.09','Marpoyan Damai'),
 ('14.71.09.1001','Tangkerang Barat'),
 ('14.71.09.1002','Tangkerang Tengah'),
@@ -16909,12 +16907,14 @@ VALUES
 ('14.71.11.1003','Labuh Baru Barat'),
 ('14.71.11.1004','Air Hitam'),
 ('14.71.11.1005','Bandarraya'),
-('14.71.11.1006','Sungaisibam'),
 ('14.71.11.1007','Tirtasiak'),
 ('14.71.12','Rumbai'),
 ('14.71.12.1001','Meranti Pandak'),
 ('14.71.12.1004','Lembah Damai'),
 ('14.71.12.1006','Limbungan Baru'),
+('14.71.12.1009','Sri Meranti'),
+('14.71.12.1010','Palas'),
+('14.71.12.1011','Umban Sari'),
 ('14.71.13','Tuahmadani'),
 ('14.71.13.1001','Sidomulyo Barat'),
 ('14.71.13.1002','Sialangmunggu'),
