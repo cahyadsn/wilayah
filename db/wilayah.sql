@@ -4,7 +4,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : db/wilayah.sql
 purpose  :
 create   : 2016-03-12
-last edit: 2024-12-31 18:47:53
+last edit: 2025-01-01 07:52:34
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -83582,7 +83582,7 @@ VALUES
 ('91.03.02.2004','Asei Besar'),
 ('91.03.02.3005','Desa Adat Kleuwblou'),
 ('91.03.02.2006','Nendali'),
-('91.03.02.2007','Desa Adat Yokiwa'),
+('91.03.02.3007','Desa Adat Yokiwa'),
 ('91.03.03','Depapre'),
 ('91.03.03.2001','Waiya'),
 ('91.03.03.2002','Entiyebo'),
