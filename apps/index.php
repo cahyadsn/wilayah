@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit   : 2024-10-25 22:30:21
+last edit   : 2025-01-27 02:13:10
 author   	  : cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/v2.6
 soure code 	: https://github.com/cahyadsn/wilayah/apps
@@ -23,7 +23,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2015-2024 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2015-2025 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 session_start();
 $c=isset($_SESSION['c'])?$_SESSION['c']:(isset($_GET['c'])?$_GET['c']:'indigo');
@@ -31,7 +31,7 @@ define("_AUTHOR","cahyadsn");
 $_SESSION['author']='cahyadsn';
 $_SESSION['ver']=sha1(rand());
 include 'inc/db.php';
-$version='2.6';
+$version='2.7';
 /*header('Expires: '.date('r'));
 header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Cache-Control: post-check=0, pre-check=0', FALSE);
@@ -57,7 +57,7 @@ header('Pragma: no-cache');*/
   <link rel="stylesheet" href="css/w3-theme-<?php echo $c;?>.css" media="all" id="wil_css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="css/wilayah.php?v=<?php echo md5(filemtime('css/wilayah.php'));?>">
-	<script src='https://code.jquery.com/jquery-3.6.4.min.js'></script>
+	<script src='js/zepto.min.js'></script>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
 		crossorigin=""/>
