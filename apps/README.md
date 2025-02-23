@@ -75,6 +75,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6/ (data sesuai
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## New Update
+- update library javascript dari jquery ke zepto js (done 2025-01-27)
 - update data db/archive/wilayah_level_1_2.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 (done 2024-05-15)
 
 ## Donasi
