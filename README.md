@@ -106,7 +106,8 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
     - menampilkan data kode wilayah di sidebar
   
 ## Change Log 
-- update library jquery js ke zepto js 2024-0127
+- update wilayah_level_1_2.sql dan wilayah_level_1_2_postgresl.sql untuk boundaries kota Sabang 2025-02-23
+- update library jquery js ke zepto js 2025-01-27
 - update data desa di prov Papua Barat (perubahan nama dan ppindahan kecamatan 2024-12-31)
 - update data desa di prov Riau (perpindahan kecamatan 2024-12-31)
 - update data desa/kelurahan di prov Sulawesi Selatan (perubahan nama dan status 2024-12-31)
