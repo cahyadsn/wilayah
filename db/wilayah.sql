@@ -4,7 +4,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : db/wilayah.sql
 purpose  :
 create   : 2016-03-12
-last edit: 2025-01-01 07:52:34
+last edit: 2025-03-09 14:26:32
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -20,7 +20,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2016-2024 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2016-2025 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 --
 -- Table structure for table wilayah
@@ -27576,6 +27576,7 @@ VALUES
 ('21.04.09.2001','Marok Kecil'),
 ('21.04.09.2002','Berhala'),
 ('21.04.09.2003','Resang'),
+('21.04.09.1004','Berlian'),
 ('21.04.10','Kepulauan Posek'),
 ('21.04.10.2001','Busung Panjang'),
 ('21.04.10.2002','Posek'),
