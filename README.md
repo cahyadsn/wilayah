@@ -100,6 +100,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
 ## To Do
 - verifikasi/update main web data 
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
+- update data menu about pada main web (dev)
   
 ## Change Log 
 - update web demo ke v3.0 beta 1 2025-03-17
