@@ -98,14 +98,15 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## To Do
-- update main web demo dengan data data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (dev) 
-- update main web demo dengan openstreemap + leafletjs (dev)
+- verifikasi/update main web data 
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
-- update web demo ke v3.0 (on progress)
-    - menampilkan data kodepos
-    - menampilkan data kode wilayah di sidebar
   
 ## Change Log 
+- update web demo ke v3.0 beta 1 2025-03-17
+    - update main web demo dengan data data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022
+    - menampilkan data kode wilayah di sidebar 
+    - menampilkan data kodepos
+    - menampilkan data kode wilayah di sidebar
 - update penambahan kekurangan data 1 kelurahan di prov Riau dan 1 desa di prov Sulawesi Selatan 2025-03-09
 - update wilayah_level_1_2.sql dan wilayah_level_1_2_postgresl.sql untuk boundaries kota Sabang 2025-02-23
 - update library jquery js ke zepto js 2025-01-27
