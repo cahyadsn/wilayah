@@ -82,9 +82,9 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 1
 
 ) ** Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 
-link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
+link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
-## Referensi
+## REFERENSI
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
 - Keputusan Menteri Dalam Negeri Nomor 100.1.1-6117 Tahun 2022 Tentang Pemberian dan Pemutakhiran Kode, Data Wilayah Adminstrasi Pemerintahan, dan Pulau (Ditetapkan pada 9 November 2022) * 
 - UU No 14 Tahun 2022 tentang Pembentukan Provinsi Papua Selatan (LN.2022/No.157, TLN No.6803, jdih.setneg.go.id: 15 hlm., 25 Juli 2022)
@@ -97,12 +97,12 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.137-2017) http://www.kemendagri.go.id/produk-hukum/2018/01/18/kode-dan-data-wilayah-administrasi-pemerintahan-tahun-2017 (Berita Negara Republik Indonesia Tahun 2017 Nomor 1955, Ditetapkan pada tanggal 27 Desember 2017)
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
-## To Do
+## TODO
 - verifikasi/update main web data 
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 - update data menu about pada main web (dev)
   
-## Change Log 
+## CHANGE LOG 
 - update web demo ke v3.0 beta 1 2025-03-17
     - update main web demo dengan data data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022
     - menampilkan data kode wilayah di sidebar 
@@ -145,15 +145,15 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6
 - update data ke kode dan data wilayah berdasarkan permendagri No 137 tahun 2017 smp dengan tingkat kelurahan/desa (done)
 - on progress, convert data dari pdf -> xlsx (done) , xlsx->csv (done) , csv->sql(done) , import sql to db (done), validasi data di db dengan source (done)
 
-## Informasi
+## INFORMASI
 - data polygon diperoleh dari website BIG(Badan Informasi Geospatial) di https://tanahair.indonesia.go.id
 - data latitude/longitude dari google maps
 
-## Donasi
+## DONASI
 - untuk donasi via transfer 
     - Bank Syariah Indonesia (BSI) 821-342-5550
     - Bank Sinarmas (153) 005 462 4719
     - Bank BCA Digital (Blu) (501) 000 576 776 186
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 
-[di sini]: https://wilayah.cahyadsn.com/v2.6
+[di sini]: https://wilayah.cahyadsn.com/
