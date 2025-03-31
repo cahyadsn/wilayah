@@ -151,9 +151,9 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
 ## DONASI
 - untuk donasi via transfer 
-    - Bank Syariah Indonesia (BSI) 821-342-5550
-    - Bank Sinarmas (153) 005 462 4719
     - Bank BCA Digital (Blu) (501) 000 576 776 186
+    - Bank Sinarmas (153) 005 462 4719
+    - Bank Syariah Indonesia (BSI) 821-342-5550
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 
 [di sini]: https://wilayah.cahyadsn.com/
