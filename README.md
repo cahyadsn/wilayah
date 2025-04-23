@@ -3,7 +3,7 @@ Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Kepme
 ![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/240606.png?raw=true)
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
-- **db/wilayah.sql* (_data kode wilayah terbaru sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022_)
+- **db/wilayah.sql** (_data kode wilayah terbaru sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022_)
 - **db/archive/wilayah_2022.sql** sesuai Permendagri No 58 Tahun 2021 (_revised by Kepmendagri No. 050-145 Tahun 2022_)
 - **db/archive/wilayah_2020.sql** sesuai Permendagri No. 72 Tahun 2019 (_revised by Kepmendagri No.146.1-4717 Tahun 2020_)
 - **db/archive/wilayah_2018.sql** sesuai Permendagri No 137 tahun 2017
