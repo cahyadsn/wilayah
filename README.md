@@ -3,16 +3,16 @@ Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Kepme
 ![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/240606.png?raw=true)
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
-- db/wilayah.sql (data kode wilayah terbaru sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022)
-- db/archive/wilayah_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022)
-- db/archive/wilayah_2020.sql sesuai Permendagri No. 72 Tahun 2019 (revised by Kepmendagri No.146.1-4717 Tahun 2020)
-- db/archive/wilayah_2018.sql sesuai Permendagri No 137 tahun 2017
-- db/archive/wilayah_2016.sql sesuai Permendagri No 56 Tahun 2015
-- db/archive/wilayah_level_1_2.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
+- **db/wilayah.sql* (_data kode wilayah terbaru sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022_)
+- **db/archive/wilayah_2022.sql** sesuai Permendagri No 58 Tahun 2021 (_revised by Kepmendagri No. 050-145 Tahun 2022_)
+- **db/archive/wilayah_2020.sql** sesuai Permendagri No. 72 Tahun 2019 (_revised by Kepmendagri No.146.1-4717 Tahun 2020_)
+- **db/archive/wilayah_2018.sql** sesuai Permendagri No 137 tahun 2017
+- **db/archive/wilayah_2016.sql** sesuai Permendagri No 56 Tahun 2015
+- **db/archive/wilayah_level_1_2.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
 
 Kode dan Data Pulau Indonesia dalam database :
-- db/pulau.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 *
-- db/archive/pulau_2022.sql sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022)
+- **db/pulau.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 *
+- **db/archive/pulau_2022.sql** sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022)
 
 ## TAUTAN TERKAIT
 - Data kodepos vs kode wilayah administrasi pemerintahan Indoensia : https://github.com/cahyadsn/wilayah_kodepos
@@ -28,7 +28,7 @@ Kode dan Data Pulau Indonesia dalam database :
 
 ## NOTE :
 Data BELUM/TIDAK termasuk data perubahan adanya pembentukan provinsi baru
-- UU No 29 Tahun 2022 tentang Pembentukan Provinsi Papua Barat Daya (LN.2022/No.223, TLN No.6831, jdih.setneg.go.id: 15 hlm., 08 Desember 2022)
+- UU No 29 Tahun 2022 tentang Pembentukan Provinsi Papua Barat Daya (_LN.2022/No.223, TLN No.6831, jdih.setneg.go.id: 15 hlm., 08 Desember 2022_)
 
 Data perubahan kode wilayah atas pembentukan provinsi Papua Barat Daya belum ada pemutakhiran data dari Kemendagri
 
