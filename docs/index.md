@@ -285,10 +285,16 @@ Database daerah sesuai Permendagri no 56 tahun 2015 (wilayah_2016.sql)
 - update data ke kode dan data wilayah berdasarkan permendagri No 137 tahun 2017 smp dengan tingkat kelurahan/desa (done)
 - on progress, convert data dari pdf -> xlsx (done) , xlsx->csv (done) , csv->sql(done) , import sql to db (done), validasi data di db dengan source (done)
 
-## Request Data
-- data lat/long/timezone dan polygon boundaries wilayah yg sudah cukup lengkap tersedia untuk wilayah provinsi DKI Jakarta dan DI Yogyakarta
+## Informasi
 - data polygon diperoleh dari website BIG(Badan Informasi Geospatial) di [https://tanahair.indonesia.go.id](https://tanahair.indonesia.go.id)
 
 ## Donasi
-- untuk donasi via Bank Syariah Indonesia (BSI) acc.no. 821-342-5550
-- untuk donasi via PayPal [https://paypal.me/cahyadwiana](https://paypal.me/cahyadwiana)
+- untuk donasi via transfer 
+    - Bank BCA Digital (Blu) (501) 000 576 776 186
+    - Bank Syariah Indonesia (BSI) 821-342-5550
+    - Bank Sinarmas (153) 005 462 4719
+- untuk donasi via PayPal [https://paypal.me/cahyadwiana]
+
+## Contact
++ facebook (https://m.facebook.com/cahya.dsn)
++ email (cahyadsn@gmail.com)
