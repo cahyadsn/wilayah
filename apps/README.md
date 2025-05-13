@@ -61,7 +61,7 @@ Sesuaikan data konfigurasi database yang ada di apps/inc/db.php
 |         | TOTAL                     |  416 |   98 |
 
 
-link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/v2.6/ (data sesuai Kepmendagri No 100.1.1-6117 Tahun 2022)
+link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/apps/ (data sesuai Kepmendagri No 100.1.1-6117 Tahun 2022)
 
 ## Referensi
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
