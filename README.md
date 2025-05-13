@@ -2,6 +2,9 @@
 Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 menggunakan PHP+MySQL+AJaX
 ![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/240606.png?raw=true)
 
+## DEMO
+tautan demo web [apps versi 2.7](https://wilayah.cahyadsn.com/apps) 
+
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - **db/wilayah.sql** (_data kode wilayah terbaru sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022_)
 - **db/archive/wilayah_2022.sql** sesuai Permendagri No 58 Tahun 2021 (_revised by Kepmendagri No. 050-145 Tahun 2022_)
