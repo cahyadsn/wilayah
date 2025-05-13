@@ -1,4 +1,4 @@
-# wilayah v2.6
+# wilayah v2.7
 Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 dengan PHP+MySQL+AJaX
 
 (Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022, utk aplikasi ini hanya menggunakan data level 1 dan 2 (provinsi dan kabupaten/kota) di /db/archive/wilayah_level_1_2.sql yang sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022, dengan penambahan data lat/long/elv/timezone,boundaries/polygon,luas dan jumlah penduduk)
@@ -8,14 +8,16 @@ Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah I
 [![GitHub forks](https://img.shields.io/github/forks/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/network)
 [![GitHub stars](https://img.shields.io/github/stars/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/stargazers)
 
+## DEMO 
+tautan web demo apps : [demo versi 2.7](https://wilayah.cahyadsn.com/apps)
+
 ![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/240606.png?raw=true)
 
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk tingkat Provinsi dan Kota/Kabupaten beserta data latitude/longitude (koordinat) dan polygon boundaries-nya dan aplikasi sederhananya
 
-Untuk aplikasi wilayah v2.6 ini mengguanakan database dengan nama tabel wilayah_level_1_2 yang terdapat di folder /db/archive/wilayah_level_1_2.sql
+Untuk aplikasi wilayah v2.7 ini mengguanakan database dengan nama tabel wilayah_level_1_2 yang terdapat di folder /db/archive/wilayah_level_1_2.sql
 
 Sesuaikan data konfigurasi database yang ada di apps/inc/db.php
-
 
 | id_prov | nama                      | kab  | kota |
 |---------|---------------------------|-----:|-----:|
