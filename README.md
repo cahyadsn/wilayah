@@ -108,6 +108,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
+- update web apps demo ke v2.7 2025-05-13
 - update web demo ke v3.0 beta 1 2025-03-17
     - update main web demo dengan data data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022
     - menampilkan data kode wilayah di sidebar 
