@@ -78,16 +78,17 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/apps/) (data sesua
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## New Update
+- update web apps demo ke v2.7 2025-05-13
 - update library javascript dari jquery ke zepto js (done 2025-01-27)
 - update data db/archive/wilayah_level_1_2.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 (done 2024-05-15)
 
-## Donasi
-- untuk donasi via :
-  - Bank Syariah Indonesia (BSI) 821-342-5550
-  - Bank Sinarmas (153) 005 462 4719
-  - Bank BCA Digital (Blu) (501) 000 576 776 186
+## DONASI
+- untuk donasi via transfer 
+    - Bank BCA Digital (Blu) (501) 000 576 776 186
+    - Bank Jago (542) 5003 5796 1022
+    - Bank Sinarmas (153) 005 462 4719
+    - Bank Syariah Indonesia (BSI) 821-342-5550
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 - untuk donasi via Ko-fi [https://ko-fi.com/cahyadsn]
 
-[di sini]: http://wilayah.cahyadsn.com/v2.6/
 
