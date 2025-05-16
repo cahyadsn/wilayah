@@ -8,10 +8,11 @@ Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah I
 [![GitHub forks](https://img.shields.io/github/forks/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/network)
 [![GitHub stars](https://img.shields.io/github/stars/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/stargazers)
 
-## DEMO 
-tautan web demo apps : [demo versi 2.7](https://wilayah.cahyadsn.com/apps)
+## DEMO
+tautan demo web [apps versi 2.7](https://wilayah.cahyadsn.com/apps) 
 
-![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/240606.png?raw=true)
+## SCREENSHOT
+![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/250514.png?raw=true)
 
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk tingkat Provinsi dan Kota/Kabupaten beserta data latitude/longitude (koordinat) dan polygon boundaries-nya dan aplikasi sederhananya
 
