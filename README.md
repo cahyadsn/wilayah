@@ -152,6 +152,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - on progress, convert data dari pdf -> xlsx (done) , xlsx->csv (done) , csv->sql(done) , import sql to db (done), validasi data di db dengan source (done)
 
 ## INFORMASI
+- data kode wilayah pemerintahan diperoleh dari website Kemendagri di https://e-database.kemendagri.go.id
 - data polygon diperoleh dari website BIG(Badan Informasi Geospatial) di https://tanahair.indonesia.go.id
 - data latitude/longitude dari google maps
 
