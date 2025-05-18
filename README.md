@@ -5,7 +5,7 @@ Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Kepme
 tautan demo web [apps versi 2.7](https://wilayah.cahyadsn.com/apps) 
 
 ## SCREENSHOT
-![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/250514.png?raw=true)
+[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/250514.png?raw=true 'wilayah apps web demo v2.7')](https://wilayah.cahyadsn.com/apps)
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - **db/wilayah.sql** (_data kode wilayah terbaru sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022_)
@@ -165,6 +165,6 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 - untuk donasi via QRIS CAHYADSN ID1022183125288 :
   
-![screenshot](https://github.com/cahyadsn/wilayah/blob/master/docs/qr_code.cahyadsn.png?raw=true)
+![screenshot](https://github.com/cahyadsn/wilayah/blob/master/docs/qr_code.cahyadsn.png?raw=true 'Donasi via QRIS CAHYADSN')
 
 [di sini]: https://wilayah.cahyadsn.com/
