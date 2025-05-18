@@ -163,5 +163,8 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
     - Bank Sinarmas (153) 005 462 4719
     - Bank Syariah Indonesia (BSI) 821-342-5550
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
+- untuk donasi via QRIS CAHYADSN ID1022183125288 :
+  
+![screenshot](https://github.com/cahyadsn/wilayah/blob/master/docs/qr_code.cahyadsn.png?raw=true)
 
 [di sini]: https://wilayah.cahyadsn.com/
