@@ -1,13 +1,11 @@
 # WILAYAH
 Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 menggunakan PHP+MySQL+AJaX
 
-## DEMO*
+## DEMO
 tautan demo web [apps versi 2.8](https://wilayah.cahyadsn.com/apps) 
 
-## SCREENSHOT*
+## SCREENSHOT
 [![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/250525.png?raw=true 'wilayah apps web demo v2.8')](https://wilayah.cahyadsn.com/apps)
-
-)* source code belum publish
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - **db/wilayah.sql** sesuai dengan Kepmendagri No 300.2.2-2138 Tahun 2025 *
@@ -79,7 +77,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 93      | Papua Selatan              |    4  |    0  |  82  |   13  |  677  |     7  |  done  |
 | 94      | Papua Tengah               |    8  |    0  | 131  |   36  | 1172  |    50  |  done  |
 | 95      | Papua Pegunungan           |    8  |    0  | 252  |   10  | 2617  |     0  |  done  |
-| 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |        |   
+| 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |  part  |   
 |         | TOTAL*                     |  416  |   98  |7285* | 8498* |75266* | 17380* |        |
 
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 100.1.1-6117 Tahun 2022)
@@ -113,6 +111,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
+- update data kode wilayah provinsi Papua Barat dan Papua Barat Daya 25-05-05
 - update web apps demo ke v2.8 (Data sesuai Kepmendagri No 300.2.2-2138 tahun 2025) 25-05-05
 - update web apps demo ke v2.7 2025-05-13
 - update web demo ke v3.0 beta 1 2025-03-17

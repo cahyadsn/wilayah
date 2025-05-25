@@ -5,9 +5,9 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit   : 2025-01-27 02:13:10
+last edit   : 2025-05-25 16:34:49
 author   	  : cahya dsn
-demo site 	: https://wilayah.cahyadsn.com/v2.6
+demo site 	: https://wilayah.cahyadsn.com/apps
 soure code 	: https://github.com/cahyadsn/wilayah/apps
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -31,11 +31,11 @@ define("_AUTHOR","cahyadsn");
 $_SESSION['author']='cahyadsn';
 $_SESSION['ver']=sha1(rand());
 include 'inc/db.php';
-$version='2.7';
-/*header('Expires: '.date('r'));
+$version='2.8';
+header('Expires: '.date('r'));
 header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Cache-Control: post-check=0, pre-check=0', FALSE);
-header('Pragma: no-cache');*/
+header('Pragma: no-cache');
 ?>
 <!DOCTYPE html>
 <html lang='en'>
@@ -49,7 +49,7 @@ header('Pragma: no-cache');*/
   <meta http-equiv="content-language" content="en" />
   <meta name="author" content="Cahya DSN" />
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-  <meta name="keywords" content="php, mysql, data, administrasi, wilayah, indonesia, kepmendagri,100.1.1-6117,2022, cahyadsn" />
+  <meta name="keywords" content="php, mysql, data, administrasi, wilayah, indonesia, kepmendagri,300.2.2-2138,2025, cahyadsn" />
   <meta name="description" content="Wilayah ver <?php echo $version;?> created by cahya dsn, Data wilayah administrasi Indonesia sesuai kepmendagri No. 100.1.1-6117 Tahun 2022, dalam bahasa pemrograman PHP dan database MySQL" />
   <meta name="robots" content="index, follow" />
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -89,7 +89,7 @@ header('Pragma: no-cache');*/
       <h2>&nbsp;</h2>
       <div class="w3-panel w3-bar w3-theme-d1">
           <h3 class="w3-theme-d1">Data Wilayah Administrasi Indonesia</h3>
-          <h4 class="w3-theme-d1"> Sesuai Kepmendagri No 100.1.1-6117 Tahun 2022</h4>
+          <h4 class="w3-theme-d1"> Sesuai Kepmendagri No 300.2.2-2138 Tahun 2025</h4>
       </div>
       <div class="w3-container">
         <div class="w3-row">
