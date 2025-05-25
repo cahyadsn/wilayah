@@ -111,8 +111,8 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
-- update data kode wilayah provinsi Papua Barat dan Papua Barat Daya 25-05-05
-- update web apps demo ke v2.8 (Data sesuai Kepmendagri No 300.2.2-2138 tahun 2025) 25-05-05
+- update data kode wilayah provinsi Papua Barat dan Papua Barat Daya 25-05-25
+- update web apps demo ke v2.8 (Data sesuai Kepmendagri No 300.2.2-2138 tahun 2025) 25-05-25
 - update web apps demo ke v2.7 2025-05-13
 - update web demo ke v3.0 beta 1 2025-03-17
     - update main web demo dengan data data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022
