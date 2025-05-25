@@ -1,11 +1,11 @@
 /*
 BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 ================================================================================
-filename : db/pulau.sql
+filename : db/pulau-2023.sql
 purpose  :
-note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
-create   : 2025-05-25 14:47:20
-last edit: 2025-05-25 14:47:27
+note     : Data Kode Wilayah sesuai Kepmendagri No 100.1.1-6117 Tahun 2022
+create   : 2024-08-08 14:18:25
+last edit: 2024-12-23 11:09:25
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -21,7 +21,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2025 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2024 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 --
 -- Table structure for table pulau

@@ -3,8 +3,9 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 ================================================================================
 filename : db/wilayah.sql
 purpose  :
-create   : 2016-03-12
-last edit: 2025-03-09 14:34:29
+note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
+create   : 2025-05-25 14:41:15
+last edit: 2025-05-25 14:41:24
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -20,7 +21,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2016-2025 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2025 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 --
 -- Table structure for table wilayah
