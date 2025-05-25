@@ -65,12 +65,12 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 64      | Kalimantan Timur*          |    7  |    3  | 105  |  197  |  841  |   244* |        |
 | 65      | Kalimantan Utara           |    4  |    1  |  55  |   35  |  447  |   196  |  done  |
 | 71      | Sulawesi Utara*            |   11  |    4  | 171  |  332  | 1507  |   382* |        |
-| 72      | Sulawesi Tengah*           |   12  |    1  | 177* |  175  | 1842  |  1600* |        |
+| 72      | Sulawesi Tengah*           |   12  |    1  | 177* |  175  | 1842  |  1600* |  part  |
 | 73      | Sulawesi Selatan*          |   21  |    3  | 313  |  793  | 2266  |   394* |        |
 | 74      | Sulawesi Tenggara*         |   15  |    2  | 221  |  377* | 1908  |   591* |        |
 | 75      | Gorontalo                  |    5  |    1  |  77  |   72  |  657  |   127  |  done  |
 | 76      | Sulawesi Barat             |    6  |    0  |  69  |   73  |  575  |    69  |  done  |
-| 81      | Maluku*                    |    9  |    2  | 119* |   35  | 1200  |  1422* |        |
+| 81      | Maluku*                    |    9  |    2  | 119* |   35  | 1200  |  1422* |  part  |
 | 82      | Maluku Utara*              |    8  |    2  | 118  |  118  | 1067  |   975* |        |
 | 91      | Papua*                     |    8  |    1  | 105  |   51  |  948  |   544* |        |
 | 92      | Papua Barat*               |    7* |    0* |  91* |   21* |  803* |  1498* |        |
