@@ -111,6 +111,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
+- update data kode wilayah prov Sulteng dan Maluku (pemekaran kecamatan) 25-05-25 
 - update data kode wilayah provinsi Papua Barat dan Papua Barat Daya 25-05-25
 - update web apps demo ke v2.8 (Data sesuai Kepmendagri No 300.2.2-2138 tahun 2025) 25-05-25
 - update web apps demo ke v2.7 2025-05-13
