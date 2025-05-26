@@ -5,7 +5,7 @@ filename : db/pulau.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2025-05-25 14:47:27
+last edit: 2025-05-26 08:49:10
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -376,6 +376,7 @@ VALUES
 ('11.16.40008','Pulau Pusongketapang','4.4347','98.2526','TBP'),
 ('11.16.40009','Pulau Rukui','4.5098','98.1474','TBP'),
 ('11.71.40001','Pulau Biawak','5.568','95.3021',''),
+('11.71.40002','Pulau Ulee Lheueh','5.561414','95.289158','TBP'),
 ('11.72.40001','Pulau Batu Kembar','6.0625','95.1139',''),
 ('11.72.40002','Pulau Batu Runcing','6.0629','95.1138',''),
 ('11.72.40003','Pulau Batu Tengah','6.0594','95.1152',''),
@@ -389,6 +390,7 @@ VALUES
 ('11.72.40011','Pulau Seulako','5.895','95.2539','TBP'),
 ('11.72.40012','Pulau Ujung Ba''U','6.0557','95.1169',''),
 ('11.72.40013','Pulau Weh','5.8349','95.3133','BP (PPKT)'),
+('11.72.40014','Pulau Batu Arus Selatan','6.05985','95.115286','TBP'),
 ('11.74.40001','Pulau Pusoeng','4.5519','98.0656','BP'),
 ('11.74.40002','Pulau Pusong Salam','4.5317','98.0844',''),
 ('11.74.40003','Pulau Rawa Cut','4.5364','98.0386','TBP'),

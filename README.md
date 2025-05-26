@@ -40,12 +40,12 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 
 | id_prov | nama                       | kab   | kota  | kec  | kel   | desa  | pulau  | status |
 |---------|----------------------------|------:|------:|------|------:|------:|-------:|-------:|
-| 11      | Aceh*                      |   18  |    5  | 290  |    0  | 6500  |   365* |        |
+| 11      | Aceh*                      |   18  |    5  | 290  |    0  | 6500  |   365* |  done  |
 | 12      | Sumatera Utara             |   25  |    8  | 455  |  693  | 5417  |   228  |  done  |
 | 13      | Sumatera Barat             |   12  |    7  | 179  |  230  | 1035  |   219  |  done  |
 | 14      | Riau                       |   10  |    2  | 172  |  271  | 1591  |   144  |  done  |
 | 15      | Jambi                      |    9  |    2  | 144  |  171  | 1414  |    14  |  done  |
-| 16      | Sumatera Selatan*          |   13  |    4  | 241  |  403  | 2856* |    24  |        |
+| 16      | Sumatera Selatan*          |   13  |    4  | 241  |  403  | 2856* |    24  |  done  |
 | 17      | Bengkulu                   |    9  |    1  | 129  |  172  | 1341  |     9  |  done  |
 | 18      | Lampung                    |   13  |    2  | 229  |  205  | 2446  |   172  |  done  |
 | 19      | Kepulauan Bangka Belitung* |    6  |    1  |  47  |   84  |  309  |   501* |        |
@@ -111,6 +111,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
+- update data kode wilayah dan pulau prov Aceh dan Sumatera Selatan 25-05-26
 - update data kode wilayah prov Sulteng dan Maluku (pemekaran kecamatan) 25-05-25 
 - update data kode wilayah provinsi Papua Barat dan Papua Barat Daya 25-05-25
 - update web apps demo ke v2.8 (Data sesuai Kepmendagri No 300.2.2-2138 tahun 2025) 25-05-25
