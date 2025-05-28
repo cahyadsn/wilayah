@@ -48,7 +48,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 16      | Sumatera Selatan*          |   13  |    4  | 241  |  403  | 2856* |    24  |  done  |
 | 17      | Bengkulu                   |    9  |    1  | 129  |  172  | 1341  |     9  |  done  |
 | 18      | Lampung                    |   13  |    2  | 229  |  205  | 2446  |   172  |  done  |
-| 19      | Kepulauan Bangka Belitung* |    6  |    1  |  47  |   84  |  309  |   501* |        |
+| 19      | Kepulauan Bangka Belitung* |    6  |    1  |  47  |   84  |  309  |   501* |  done  |
 | 21      | Kepulauan Riau             |    5  |    2  |  80  |  144  |  275  |  2028  |  done  |
 | 31      | DKI Jakarta                |    1  |    5  |  44  |  267  |    0  |   113  |  done  |
 | 32      | Jawa Barat                 |   18  |    9  | 627  |  646  | 5311  |    30  |  done  |
@@ -111,6 +111,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
+- update data kode pulau prov Bangka Belitung 25-05-28
 - update data kode wilayah dan pulau prov Aceh dan Sumatera Selatan 25-05-26
 - update data kode wilayah prov Sulteng dan Maluku (pemekaran kecamatan) 25-05-25 
 - update data kode wilayah provinsi Papua Barat dan Papua Barat Daya 25-05-25
