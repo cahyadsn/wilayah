@@ -5,7 +5,7 @@ filename : db/pulau.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2025-05-29 09:15:11
+last edit: 2025-05-29 09:34:18
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -4677,40 +4677,47 @@ VALUES
 -- Provinsi BALI
 INSERT INTO pulau(kode,nama,lat,lng,notes)
 VALUES
-('51.00.40001','Pulau Bali','8.3564','115.0719','BP'),
-('51.01.40001','Pulau Burung','8.1757','114.4496','TBP'),
+('51.00.40001','Pulau Bali','8.3564','115.0717','BP'),
+('51.01.40001','Pulau Burung','8.1756','114.4494','TBP'),
 ('51.01.40002','Pulau Kalong','8.165','114.445','TBP'),
-('51.03.40001','Nusa Pudut','8.758','115.2141',''),
-('51.05.40001','Nusa Ceningansa','8.7','115.4514','BP'),
-('51.05.40002','Nusa Lembongansa','8.6789','115.45','BP'),
+('51.01.40003','Pulau Bajoh','8.3983','114.6119','TBP'),
+('51.01.40004','Pulau Kaloran','8.3994','114.6103','TBP'),
+('51.02.40001','Pulau Enjunggejer','8.5014','114.9597','TBP'),
+('51.02.40002','Pulau Enjungpegat','8.5419','115.0042','TBP'),
+('51.03.40001','Nusa Pudut','8.7578','115.2139',''),
+('51.03.40002','Pulau Batu Empuh','8.8136','115.09','TBP'),
+('51.03.40003','Pulau Jineng','8.8478','115.1244','TBP'),
+('51.03.40004','Pulau Wanci','8.8472','115.1258','TBP'),
+('51.05.40001','Nusa Ceningan','8.7','115.4514','BP'),
+('51.05.40002','Nusa Lembongan','8.6789','115.45','BP'),
 ('51.05.40003','Pulau Batu Dua','8.8','115.5275','TBP'),
 ('51.05.40004','Pulau Batu Satu','8.7542','115.4728','TBP'),
-('51.05.40005','Pulau Batuabah','8.7775','115.6302','TBP'),
-('51.05.40006','Pulau Batubolong','8.7726','115.4844','TBP'),
-('51.05.40007','Pulau Batujineng','8.8033','115.5258','TBP'),
-('51.05.40008','Pulau Batujineng Bungamekar','8.7376','115.4546',''),
-('51.05.40009','Pulau Batujineng Kandik Barat','8.78','115.6292','TBP'),
-('51.05.40010','Pulau Batujineng Kandik Timur','8.7804','115.6296','TBP'),
-('51.05.40011','Pulau Batukita','8.7503','115.4516','TBP'),
-('51.05.40012','Pulau Batumejineng','8.7147','115.4564','TBP'),
-('51.05.40013','Pulau Batupadasan','8.7756','115.6258','TBP'),
-('51.05.40014','Pulau Batupahet','8.7583','115.4783','TBP'),
-('51.05.40015','Pulau Batupawon Atuh Lilin','8.788','115.6101',''),
-('51.05.40016','Pulau Batusanggah','8.7787','115.6181',''),
-('51.05.40017','Pulau Batusepatu','8.7702','115.487','TBP'),
-('51.05.40018','Pulau Batuserutan','8.779','115.6195','TBP'),
-('51.05.40019','Pulau Batutemeling','8.7729','115.4934','TBP'),
-('51.05.40020','Pulau Nusapenida','8.7372','115.5378','BP  (PPKT)'),
-('51.05.40021','Pulau Sebihah','8.816','115.5945',''),
-('51.07.40001','Pulau Biaha','8.5322','115.585','TBP'),
-('51.07.40002','Pulau Kuan','8.5092','115.6143','TBP'),
-('51.07.40003','Pulau Maimpang Selatan','8.5262','115.5757','TBP'),
-('51.07.40004','Pulau Maimpang Tengah','8.5255','115.5767','TBP'),
-('51.07.40005','Pulau Maimpang Utara','8.5254','115.5772','TBP'),
+('51.05.40005','Pulau Batuabah','8.7775','115.63','TBP'),
+('51.05.40006','Pulau Batubolong','8.7725','115.4842','TBP'),
+('51.05.40007','Pulau Batujineng','8.8031','115.5256','TBP'),
+('51.05.40008','Pulau Batujineng Bungamekar','8.7375','115.4544',''),
+('51.05.40009','Pulau Batujineng Kandik Barat','8.7797','115.6292','TBP'),
+('51.05.40010','Pulau Batujineng Kandik Timur','8.7803','115.6294','TBP'),
+('51.05.40011','Pulau Batukita','8.7503','115.4514','TBP'),
+('51.05.40012','Pulau Batumejineng','8.7144','115.4564','TBP'),
+('51.05.40013','Pulau Batupadasan','8.7756','115.6256','TBP'),
+('51.05.40014','Pulau Batupahet','8.7581','115.4781','TBP'),
+('51.05.40015','Pulau Batupawon Atuh Lilin','8.7878','115.61',''),
+('51.05.40016','Pulau Batusanggah','8.7786','115.6181',''),
+('51.05.40017','Pulau Batusepatu','8.77','115.4869','TBP'),
+('51.05.40018','Pulau Batuserutan','8.7789','115.6194','TBP'),
+('51.05.40019','Pulau Batutemeling','8.7728','115.4933','TBP'),
+('51.05.40020','Pulau Nusapenida','8.7369','115.5378','BP'),
+('51.05.40021','Pulau Sebihah','8.8158','115.5944',''),
+('51.07.40001','Pulau Biaha','8.5319','115.585','TBP'),
+('51.07.40002','Pulau Kuan','8.5092','115.6142','TBP'),
+('51.07.40003','Pulau Maimpang Selatan','8.5261','115.5756','TBP'),
+('51.07.40004','Pulau Maimpang Tengah','8.5253','115.5767','TBP'),
+('51.07.40005','Pulau Maimpang Utara','8.5253','115.5772','TBP'),
 ('51.07.40006','Pulau Selang','8.4003','115.7117','TBP'),
-('51.08.40001','Gili Putih','8.122','114.6091',''),
-('51.08.40002','Pulau Menjangan','8.0958','114.5153','TBP'),
-('51.71.40001','Pulau Serangan','8.724','115.2325','BP');
+('51.08.40001','Gili Putih','8.1219','114.6089',''),
+('51.08.40002','Pulau Menjangan','8.0956','114.5153','TBP'),
+('51.71.40001','Pulau Serangan','8.7239','115.2322','BP');
 
 -- Provinsi NUSA_TENGGARA_BARAT
 INSERT INTO pulau(kode,nama,lat,lng,notes)
