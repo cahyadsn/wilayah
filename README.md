@@ -54,7 +54,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 32      | Jawa Barat                 |   18  |    9  | 627  |  646  | 5311  |    30  |  done  |
 | 33      | Jawa Tengah                |   29  |    6  | 576  |  753  | 7810  |    71  |  done  |
 | 34      | DI Yogyakarta*             |    4  |    1  |  78  |   46  |  392  |    37* |  done  |
-| 35      | Jawa Timur*                |   29  |    9  | 666  |  773  | 7721  |   528* |        |
+| 35      | Jawa Timur*                |   29  |    9  | 666  |  773  | 7721  |   538* |  done  |
 | 36      | Banten*                    |    4  |    4  | 155  |  314  | 1238  |    80* |        |
 | 51      | Bali*                      |    8  |    1  |  57  |   80  |  636  |    41* |        |
 | 52      | Nusa Tenggara Barat*       |    8  |    2  | 117  |  145  | 1021  |   430* |        |
@@ -111,11 +111,12 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
-- update data kode pulau prov Bangka Belitung dan DI Yogyakarta 25-05-28
-- update data kode wilayah dan pulau prov Aceh dan Sumatera Selatan 25-05-26
-- update data kode wilayah prov Sulteng dan Maluku (pemekaran kecamatan) 25-05-25 
-- update data kode wilayah provinsi Papua Barat dan Papua Barat Daya 25-05-25
-- update web apps demo ke v2.8 (Data sesuai Kepmendagri No 300.2.2-2138 tahun 2025) 25-05-25
+- update data kode pulau prov Jawa Timur 2025-05-29
+- update data kode pulau prov Bangka Belitung dan DI Yogyakarta 2025-05-28
+- update data kode wilayah dan pulau prov Aceh dan Sumatera Selatan 2025-05-26
+- update data kode wilayah prov Sulteng dan Maluku (pemekaran kecamatan) 2025-05-25 
+- update data kode wilayah provinsi Papua Barat dan Papua Barat Daya 2025-05-25
+- update web apps demo ke v2.8 (Data sesuai Kepmendagri No 300.2.2-2138 tahun 2025) 2025-05-25
 - update web apps demo ke v2.7 2025-05-13
 - update web demo ke v3.0 beta 1 2025-03-17
     - update main web demo dengan data data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022
