@@ -55,7 +55,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 33      | Jawa Tengah                |   29  |    6  | 576  |  753  | 7810  |    71  |  done  |
 | 34      | DI Yogyakarta*             |    4  |    1  |  78  |   46  |  392  |    37* |  done  |
 | 35      | Jawa Timur*                |   29  |    9  | 666  |  773  | 7721  |   538* |  done  |
-| 36      | Banten*                    |    4  |    4  | 155  |  314  | 1238  |    80* |        |
+| 36      | Banten*                    |    4  |    4  | 155  |  314  | 1238  |    80* |  done  |
 | 51      | Bali*                      |    8  |    1  |  57  |   80  |  636  |    41* |        |
 | 52      | Nusa Tenggara Barat*       |    8  |    2  | 117  |  145  | 1021  |   430* |        |
 | 53      | Nusa Tenggara Timur*       |   21  |    1  | 315  |  305  | 3137  |   653* |        |
@@ -111,7 +111,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
-- update data kode pulau prov Jawa Timur 2025-05-29
+- update data kode pulau prov Jawa Timur dan Banten 2025-05-29
 - update data kode pulau prov Bangka Belitung dan DI Yogyakarta 2025-05-28
 - update data kode wilayah dan pulau prov Aceh dan Sumatera Selatan 2025-05-26
 - update data kode wilayah prov Sulteng dan Maluku (pemekaran kecamatan) 2025-05-25 
