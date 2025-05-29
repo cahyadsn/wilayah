@@ -64,7 +64,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 61      | Kalimantan Barat*          |   12  |    2  | 174  |   99  | 2046  |   260* |  done  |
 | 62      | Kalimantan Tengah          |   13  |    1  | 136  |  139  | 1432  |    71  |  done  |
 | 63      | Kalimantan Selatan         |   11  |    2  | 156  |  144  | 1872  |   165  |  done  |
-| 64      | Kalimantan Timur*          |    7  |    3  | 105  |  197  |  841  |   244* |        |
+| 64      | Kalimantan Timur*          |    7  |    3  | 105  |  197  |  841  |   244* |  done  |
 | 65      | Kalimantan Utara           |    4  |    1  |  55  |   35  |  447  |   196  |  done  |
 | 71      | Sulawesi Utara*            |   11  |    4  | 171  |  332  | 1507  |   382* |        |
 | 72      | Sulawesi Tengah*           |   12  |    1  | 177* |  175  | 1842  |  1600* |  part  |
@@ -112,6 +112,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
+- update data kode pulau prov Kalbar, Kalteng,Kalsel,Kaltim 2025-05-30
 - update data kode pulau prov Jawa Timur,Banten,Bali,NTB,NTT 2025-05-29
 - update data kode pulau prov Bangka Belitung dan DI Yogyakarta 2025-05-28
 - update data kode wilayah dan pulau prov Aceh dan Sumatera Selatan 2025-05-26
