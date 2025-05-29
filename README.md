@@ -61,7 +61,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 51      | Bali*                      |    8  |    1  |  57  |   80  |  636  |    41* |  done  |
 | 52      | Nusa Tenggara Barat*       |    8  |    2  | 117  |  145  | 1021  |   430* |  done  |
 | 53      | Nusa Tenggara Timur*       |   21  |    1  | 315  |  305  | 3137  |   653* |  done  |
-| 61      | Kalimantan Barat*          |   12  |    2  | 174  |   99  | 2046  |   260* |        |
+| 61      | Kalimantan Barat*          |   12  |    2  | 174  |   99  | 2046  |   260* |  done  |
 | 62      | Kalimantan Tengah          |   13  |    1  | 136  |  139  | 1432  |    71  |  done  |
 | 63      | Kalimantan Selatan         |   11  |    2  | 156  |  144  | 1872  |   165  |  done  |
 | 64      | Kalimantan Timur*          |    7  |    3  | 105  |  197  |  841  |   244* |        |
