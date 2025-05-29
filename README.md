@@ -14,7 +14,9 @@ Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - **db/archive/wilayah_2020.sql** sesuai Permendagri No. 72 Tahun 2019 (_revised by Kepmendagri No.146.1-4717 Tahun 2020_)
 - **db/archive/wilayah_2018.sql** sesuai Permendagri No 137 tahun 2017
 - **db/archive/wilayah_2016.sql** sesuai Permendagri No 56 Tahun 2015
-- **db/archive/wilayah_level_1_2.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
+- **db/archive/wilayah_level_1_2.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
+- **db/archive/wilayah_level_1_2-2022.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries (mysql)
+- **db/archive/wilayah_level_1_2_postgresl.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries (postgresql)
 
 Kode dan Data Pulau Indonesia dalam database :
 - **db/pulau.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 *
@@ -105,13 +107,12 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
 ## TODO
 - update data sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
-- update web apps ke versi 2.8
 - verifikasi/update main web data 
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
-- update data kode pulau prov Jawa Timur dan Banten 2025-05-29
+- update data kode pulau prov Jawa Timur,Banten, dan Bali 2025-05-29
 - update data kode pulau prov Bangka Belitung dan DI Yogyakarta 2025-05-28
 - update data kode wilayah dan pulau prov Aceh dan Sumatera Selatan 2025-05-26
 - update data kode wilayah prov Sulteng dan Maluku (pemekaran kecamatan) 2025-05-25 
