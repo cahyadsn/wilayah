@@ -112,6 +112,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
+- update data kode pulau prov Maluku, Malut 2025-05-31
 - update data kode pulau prov Sulut,Sulteng,Sulsel,Sultra 2025-05-30
 - update data kode pulau prov Kalbar, Kalteng,Kalsel,Kaltim,Kaltara 2025-05-30
 - update data kode pulau prov Jawa Timur,Banten,Bali,NTB,NTT 2025-05-29
