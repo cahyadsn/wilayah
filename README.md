@@ -69,7 +69,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 71      | Sulawesi Utara*            |   11  |    4  | 171  |  332  | 1507  |   382* |  done  |
 | 72      | Sulawesi Tengah*           |   12  |    1  | 177* |  175  | 1842  |  1600* |  done  |
 | 73      | Sulawesi Selatan*          |   21  |    3  | 313  |  793  | 2266  |   394* |  done  |
-| 74      | Sulawesi Tenggara*         |   15  |    2  | 221  |  377* | 1908  |   591* |        |
+| 74      | Sulawesi Tenggara*         |   15  |    2  | 221  |  377* | 1908  |   591* |  done  |
 | 75      | Gorontalo                  |    5  |    1  |  77  |   72  |  657  |   127  |  done  |
 | 76      | Sulawesi Barat             |    6  |    0  |  69  |   73  |  575  |    69  |  done  |
 | 81      | Maluku*                    |    9  |    2  | 119* |   35  | 1200  |  1422* |  part  |
@@ -106,13 +106,13 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## TODO
-- update data sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
+- update dan validasi data sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 - verifikasi/update main web data 
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
-- update data kode pulau prov Sulut,Sulteng,Sulsel 2025-05-30
+- update data kode pulau prov Sulut,Sulteng,Sulsel,Sultra 2025-05-30
 - update data kode pulau prov Kalbar, Kalteng,Kalsel,Kaltim,Kaltara 2025-05-30
 - update data kode pulau prov Jawa Timur,Banten,Bali,NTB,NTT 2025-05-29
 - update data kode pulau prov Bangka Belitung dan DI Yogyakarta 2025-05-28
