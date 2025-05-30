@@ -73,7 +73,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 75      | Gorontalo                  |    5  |    1  |  77  |   72  |  657  |   127  |  done  |
 | 76      | Sulawesi Barat             |    6  |    0  |  69  |   73  |  575  |    69  |  done  |
 | 81      | Maluku*                    |    9  |    2  | 119* |   35  | 1200  |  1422* |  done  |
-| 82      | Maluku Utara*              |    8  |    2  | 118  |  118  | 1067  |   975* |        |
+| 82      | Maluku Utara*              |    8  |    2  | 118  |  118  | 1067  |   975* |  done  |
 | 91      | Papua*                     |    8  |    1  | 105  |   51  |  948  |   544* |        |
 | 92      | Papua Barat*               |    7* |    0* |  91* |   21* |  803* |  1498* |        |
 | 93      | Papua Selatan              |    4  |    0  |  82  |   13  |  677  |     7  |  done  |
