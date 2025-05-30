@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-05-25 17:24:11
+last edit: 2025-05-30 21:18:09
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
