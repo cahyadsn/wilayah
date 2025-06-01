@@ -5,7 +5,7 @@ filename : db/pulau.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2025-06-01 15:51:27
+last edit: 2025-06-01 15:58:44
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -1056,15 +1056,15 @@ VALUES
 -- Provinsi BENGKULU
 INSERT INTO pulau(kode,nama,lat,lng,notes)
 VALUES
-('17.03.40001','Pulau Bangkei','5.466','102.3731','TBP'),
+('17.03.40001','Pulau Bangkei','5.4658','102.3731','TBP'),
 ('17.03.40002','Pulau Dua','5.4431','102.3914','BP'),
-('17.03.40003','Pulau Enggano','5.3903','102.2378','BP (PPKT)'),
-('17.03.40004','Pulau Mega','4.0072','101.0453','TBP (PPKT)'),
-('17.03.40005','Pulau Merbau','5.4728','102.3851','TBP'),
-('17.03.40006','Pulau Satu','5.4685','102.2241','TBP'),
-('17.03.40007','Pulau Tapakarifin','3.4244','101.8977','TBP'),
-('17.03.40008','Pulau Tapakbalai','3.5821','102.1132','TBP'),
-('17.71.40001','Pulau Tikus','3.8382','102.1797','BP');
+('17.03.40003','Pulau Enggano','5.3903','102.2378','BP'),
+('17.03.40004','Pulau Mega','4.0069','101.0453','TBP'),
+('17.03.40005','Pulau Merbau','5.4725','102.385','TBP'),
+('17.03.40006','Pulau Satu','5.4683','102.2239','TBP'),
+('17.03.40007','Pulau Tapakarifin','3.4242','101.8975','TBP'),
+('17.03.40008','Pulau Tapakbalai','3.5819','102.1131','TBP'),
+('17.71.40001','Pulau Tikus','3.8381','102.1794','BP');
 
 -- Provinsi LAMPUNG
 INSERT INTO pulau(kode,nama,lat,lng,notes)
