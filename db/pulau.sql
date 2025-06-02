@@ -5,7 +5,7 @@ filename : db/pulau.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2025-06-02 01:58:27
+last edit: 2025-06-02 10:04:15
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -4117,7 +4117,7 @@ VALUES
 ('35.03.40025','Pulau Lumbung','8.3067','111.4456','TBP'),
 ('35.03.40026','Pulau Lumbung Barat','8.2778','111.4147','TBP'),
 ('35.03.40027','Pulau Mbatang','8.3881','111.7486','TBP'),
-('35.03.40028','Pulau Ngekel','8.4064','111.7086','TBP'),
+('35.03.40028','Pulau Ngekel','8.4064','111.7086','PPKT'),
 ('35.03.40029','Pulau Ngrembeng','8.3231','111.7383','TBP'),
 ('35.03.40030','Pulau Panikan','8.37','111.5131','TBP'),
 ('35.03.40031','Pulau Pelatar','8.3175','111.4881','TBP'),
@@ -4262,7 +4262,7 @@ VALUES
 ('35.07.40057','Pulau Mrutu Kecil','8.3786','112.3736','TBP'),
 ('35.07.40058','Pulau Ngglobyor','8.3956','112.8178','TBP'),
 ('35.07.40059','Pulau Nusabarong','8.4494','112.6494','TBP'),
-('35.07.40060','Pulau Nyonya','8.4636','112.7058',''),
+('35.07.40060','Pulau Nyonya','8.4636','112.7058','TBP'),
 ('35.07.40061','Pulau Nyonya Dua','8.4578','112.6775','TBP'),
 ('35.07.40062','Pulau Nyonya Gede','8.4589','112.6725','TBP'),
 ('35.07.40063','Pulau Nyonya Satu','8.4583','112.6769','TBP'),
@@ -4664,9 +4664,9 @@ VALUES
 ('36.04.40014','Pulau Karangparejakah','6.1378','105.8522','TBP'),
 ('36.04.40015','Pulau Kemanisan','5.9636','106.1089','TBP'),
 ('36.04.40016','Pulau Panjang','5.9308','106.1531','BP'),
-('36.04.40017','Pulau Salira','5.8794','106.0606',''),
-('36.04.40018','Pulau Semut','5.9383','106.1697',''),
-('36.04.40019','Pulau Tarahan','5.9492','106.1156',''),
+('36.04.40017','Pulau Salira','5.8794','106.0606','TBP'),
+('36.04.40018','Pulau Semut','5.9383','106.1697','TBP'),
+('36.04.40019','Pulau Tarahan','5.9492','106.1156','TBP'),
 ('36.72.40001','Pulau Merak Besar','5.9339','105.9897','TBP'),
 ('36.72.40002','Pulau Merak Kecil','5.9417','105.9972','TBP'),
 ('36.72.40003','Pulau Plorida','5.9017','106.0111','TBP'),

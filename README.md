@@ -112,6 +112,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
+- update data kode dan perubahan nama pulau di provinsi-provinsi wilayah jawa 2025-06-02
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah sumatera 2025-06-02
 - update data kode pulau prov Maluku, Malut 2025-05-31
 - update data kode pulau prov Sulut,Sulteng,Sulsel,Sultra 2025-05-30
@@ -122,48 +123,6 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data kode wilayah prov Sulteng dan Maluku (pemekaran kecamatan) 2025-05-25 
 - update data kode wilayah provinsi Papua Barat dan Papua Barat Daya 2025-05-25
 - update web apps demo ke v2.8 (Data sesuai Kepmendagri No 300.2.2-2138 tahun 2025) 2025-05-25
-- update web apps demo ke v2.7 2025-05-13
-- update web demo ke v3.0 beta 1 2025-03-17
-    - update main web demo dengan data data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022
-    - menampilkan data kode wilayah di sidebar 
-    - menampilkan data kodepos
-    - menampilkan data kode wilayah di sidebar
-- update penambahan kekurangan data 1 kelurahan di prov Riau dan 1 desa di prov Sulawesi Selatan 2025-03-09
-- update wilayah_level_1_2.sql dan wilayah_level_1_2_postgresl.sql untuk boundaries kota Sabang 2025-02-23
-- update library jquery js ke zepto js 2025-01-27
-- update data desa di prov Papua Barat (perubahan nama dan ppindahan kecamatan 2024-12-31)
-- update data desa di prov Riau (perpindahan kecamatan 2024-12-31)
-- update data desa/kelurahan di prov Sulawesi Selatan (perubahan nama dan status 2024-12-31)
-- update data desa di prov Kalimantan Utara (perpindahan kecamatan 2024-12-31)
-- update data desa di prov Jawa Tengah (perpindahan kecamatan 2024-12-31)
-- update data desa di prov Jawa Barat (perubahan nama dan perpindahan kecamatan 2024-12-31)
-- update data desa di prov Jambi (perubahan nama dan perpindahan kecamatan 2024-12-31)
-- update data desa di prov Papua (perubahan nama, status desa adat dan perpindahan kecamatan 2024-12-31)
-- update data desa di prov Sumatera Utara (perubahan nama dan perpindahan kecamatan 2024-12-31)
-- update web demo ke v2.6 dengan data berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done 2024-05-15)
-    - data level 1 dan 2 berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022
-- update data wilayah_level_1_2.sql berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done 2024-04-30)
-- verify perubahan dan perbaikan data (done)
-- update data kode wilayah berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done)
-- update data kode pulau berdasarkan Kepmendagri No 100.1.1.6117 Tahun 2022 (done)
-- memindahkan database kode wilayah dan pulau sebelumnya ke folder db/archive (done)
-- update web demo ke v2.5.1 (done)
-    - encrypted polygon data
-- update web demo ke v2.4 (done)
-- update dan penambahan data jumlah penduduk dan luas wilayah data wilayah level 1 dan 2 (done)
-- update data based on Permendagri No.58 Tahun 2021 &  Kepmendagri No. 050-145 Tahun 2022 (done)
-- update data based on Kepmendagri No.146.1-4717 Tahun 2020 (done)
-- update web demo ke v2.3 (done)
-- update data di web demo (done)
-- penambahan data elevation data wilayah level 1 dan 2 (done)
-- update data perubahan nama kecamatan, kelurahan/desa (done)
-- update data di web demo v2 (level 1 dan 2) (done)
-- meng-update data boundaries data wilayah_level_1_2.sql (done)
-- meng-update data latitude/longitude data wilayah_level_1_2.sql (done)
-- menambahkan database wilayal_level_1_2.sql (data level provinsi dan kab/kota dengan koordinat, timezone dan boundaries) (done)
-- update data ke kode dan data wilayah berdasarkan permendagri No 72 tahun 2019 smp dengan tingkat kelurahan/desa (done)
-- update data ke kode dan data wilayah berdasarkan permendagri No 137 tahun 2017 smp dengan tingkat kelurahan/desa (done)
-- on progress, convert data dari pdf -> xlsx (done) , xlsx->csv (done) , csv->sql(done) , import sql to db (done), validasi data di db dengan source (done)
 
 ## INFORMASI
 - data kode wilayah pemerintahan diperoleh dari website Kemendagri di https://jdih.kemendagri.go.id/dokumen/view?id=1937
