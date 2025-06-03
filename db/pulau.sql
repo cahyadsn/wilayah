@@ -5,7 +5,7 @@ filename : db/pulau.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2025-06-02 10:04:15
+last edit: 2025-06-03 08:40:20
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -4754,9 +4754,9 @@ VALUES
 ('52.01.40029','Gili Rengit','8.7181','115.9156','BP'),
 ('52.01.40030','Gili Salat','8.8519','115.9458',''),
 ('52.01.40031','Gili Sarang Timur','8.8983','116.0494','TBP'),
-('52.01.40032','Gili Sarang Barat','8.8833','115.9878',''),
+('52.01.40032','Gili Sarang Barat','8.8833','115.9878','Perubahan nama pulau semula Pulau Sarang'),
 ('52.01.40033','Gili Sedarang','8.8794','115.9744','TBP'),
-('52.01.40034','Gili Sepatang','8.9219','116.0019','(PPKT)'),
+('52.01.40034','Gili Sepatang','8.9219','116.0019','PPKT'),
 ('52.01.40035','Gili Solet','8.8272','115.87','TBP'),
 ('52.01.40036','Gili Sudaq','8.725','116.0242','BP'),
 ('52.01.40037','Gili Tangkong','8.7231','116.0139','BP'),
@@ -4971,7 +4971,7 @@ VALUES
 ('52.04.40041','Pulau Meriam Lape','8.5225','117.6617','TBP'),
 ('52.04.40042','Pulau Meriam Ode','8.6003','117.8397','TBP'),
 ('52.04.40043','Pulau Meriam Rea','8.6053','117.8417','TBP'),
-('52.04.40044','Pulau Batu Mimbar','8.5217','117.6336',''),
+('52.04.40044','Pulau Batu Mimbar','8.5217','117.6336','Perubahan nama pulau semula Pulau Mimbar'),
 ('52.04.40045','Pulau Moyo','8.2294','117.565','BP'),
 ('52.04.40046','Pulau Nampar','9.0236','117.4644','TBP'),
 ('52.04.40047','Pulau Ngali','8.5311','117.7306','TBP'),
