@@ -1,4 +1,6 @@
 # CHANGE LOG 
+- update data kode dan perubahan nama pulau di provinsi-provinsi wilayah balinusra, kalimantan 2025-06-03
+- update data kode dan perubahan nama pulau di provinsi-provinsi wilayah jawa 2025-06-02
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah jawa 2025-06-02
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah sumatera 2025-06-02
 - update data kode pulau prov Maluku, Malut 2025-05-31
