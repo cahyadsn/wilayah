@@ -40,47 +40,47 @@ Kode dan Data Pulau Indonesia dalam database :
 ## Data Kepmendagri No 300.2.2-2138 Tahun 2025
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 (wilayah.sql)
 
-| id_prov | nama                       | kab   | kota  | kec  | kel   | desa  | pulau  | status |
-|---------|----------------------------|------:|------:|------|------:|------:|-------:|-------:|
-| 11      | Aceh*                      |   18  |    5  | 290  |    0  | 6500  |   365* |  done  |
-| 12      | Sumatera Utara             |   25  |    8  | 455  |  693  | 5417  |   228  |  done  |
-| 13      | Sumatera Barat             |   12  |    7  | 179  |  230  | 1035  |   219  |  done  |
-| 14      | Riau                       |   10  |    2  | 172  |  271  | 1591  |   144  |  done  |
-| 15      | Jambi                      |    9  |    2  | 144  |  171  | 1414  |    14  |  done  |
-| 16      | Sumatera Selatan*          |   13  |    4  | 241  |  403  | 2856* |    24  |  done  |
-| 17      | Bengkulu                   |    9  |    1  | 129  |  172  | 1341  |     9  |  done  |
-| 18      | Lampung                    |   13  |    2  | 229  |  205  | 2446  |   172  |  done  |
-| 19      | Kepulauan Bangka Belitung* |    6  |    1  |  47  |   84  |  309  |   501* |  done  |
-| 21      | Kepulauan Riau             |    5  |    2  |  80  |  144  |  275  |  2028  |  done  |
-| 31      | DKI Jakarta                |    1  |    5  |  44  |  267  |    0  |   113  |  done  |
-| 32      | Jawa Barat                 |   18  |    9  | 627  |  646  | 5311  |    30  |  done  |
-| 33      | Jawa Tengah                |   29  |    6  | 576  |  753  | 7810  |    71  |  done  |
-| 34      | DI Yogyakarta*             |    4  |    1  |  78  |   46  |  392  |    37* |  done  |
-| 35      | Jawa Timur*                |   29  |    9  | 666  |  773  | 7721  |   538* |  done  |
-| 36      | Banten*                    |    4  |    4  | 155  |  314  | 1238  |    80* |  done  |
-| 51      | Bali*                      |    8  |    1  |  57  |   80  |  636  |    41* |  done  |
-| 52      | Nusa Tenggara Barat*       |    8  |    2  | 117  |  145  | 1021  |   430* |  done  |
-| 53      | Nusa Tenggara Timur*       |   21  |    1  | 315  |  305  | 3137  |   653* |  done  |
-| 61      | Kalimantan Barat*          |   12  |    2  | 174  |   99  | 2046  |   260* |  done  |
-| 62      | Kalimantan Tengah          |   13  |    1  | 136  |  139  | 1432  |    71  |  done  |
-| 63      | Kalimantan Selatan         |   11  |    2  | 156  |  144  | 1872  |   165  |  done  |
-| 64      | Kalimantan Timur*          |    7  |    3  | 105  |  197  |  841  |   244* |  done  |
-| 65      | Kalimantan Utara           |    4  |    1  |  55  |   35  |  447  |   196  |  done  |
-| 71      | Sulawesi Utara*            |   11  |    4  | 171  |  332  | 1507  |   382* |  done  |
-| 72      | Sulawesi Tengah*           |   12  |    1  | 177* |  175  | 1842  |  1600* |  done  |
-| 73      | Sulawesi Selatan*          |   21  |    3  | 313  |  793  | 2266  |   394* |  done  |
-| 74      | Sulawesi Tenggara*         |   15  |    2  | 221  |  377* | 1908  |   591* |  done  |
-| 75      | Gorontalo                  |    5  |    1  |  77  |   72  |  657  |   127  |  done  |
-| 76      | Sulawesi Barat             |    6  |    0  |  69  |   73  |  575  |    69  |  done  |
-| 81      | Maluku*                    |    9  |    2  | 119* |   35  | 1200  |  1422* |  done  |
-| 82      | Maluku Utara*              |    8  |    2  | 118  |  118  | 1067  |   975* |  done  |
-| 91      | Papua*                     |    8  |    1  | 105  |   51  |  948  |   544* |  done  |
-| 92      | Papua Barat*               |    7* |    0* |  91* |   21* |  803* |  1498* |  done  |
-| 93      | Papua Selatan              |    4  |    0  |  82  |   13  |  677  |     7  |  done  |
-| 94      | Papua Tengah               |    8  |    0  | 131  |   36  | 1172  |    50  |  done  |
-| 95      | Papua Pegunungan           |    8  |    0  | 252  |   10  | 2617  |     0  |  done  |
-| 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |  done  |   
-|         | TOTAL*                     |  416  |   98  |7285* | 8498* |75266* | 17380* |        |
+| id_prov | nama                       | kab   | kota  | kec  | kel   | desa  | pulau  |   status   |
+|---------|----------------------------|------:|------:|------|------:|------:|-------:|-----------:|
+| 11      | Aceh*                      |   18  |    5  | 290  |    0  | 6500  |   365* |  on check  |
+| 12      | Sumatera Utara             |   25  |    8  | 455  |  693  | 5417  |   228  |  on check  |
+| 13      | Sumatera Barat             |   12  |    7  | 179  |  230  | 1035  |   219  |  on check  |
+| 14      | Riau                       |   10  |    2  | 172  |  271  | 1591  |   144  |  on check  |
+| 15      | Jambi                      |    9  |    2  | 144  |  171  | 1414  |    14  |  on check  |
+| 16      | Sumatera Selatan*          |   13  |    4  | 241  |  403  | 2856* |    24  |  on check  |
+| 17      | Bengkulu                   |    9  |    1  | 129  |  172  | 1341  |     9  |  on check  |
+| 18      | Lampung                    |   13  |    2  | 229  |  205  | 2446  |   172  |  on check  |
+| 19      | Kepulauan Bangka Belitung* |    6  |    1  |  47  |   84  |  309  |   501* |  on check  |
+| 21      | Kepulauan Riau             |    5  |    2  |  80  |  144  |  275  |  2028  |  on check  |
+| 31      | DKI Jakarta                |    1  |    5  |  44  |  267  |    0  |   113  |  on check  |
+| 32      | Jawa Barat                 |   18  |    9  | 627  |  646  | 5311  |    30  |  on check  |
+| 33      | Jawa Tengah                |   29  |    6  | 576  |  753  | 7810  |    71  |  on check  |
+| 34      | DI Yogyakarta*             |    4  |    1  |  78  |   46  |  392  |    37* |  on check  |
+| 35      | Jawa Timur*                |   29  |    9  | 666  |  773  | 7721  |   538* |  on check  |
+| 36      | Banten*                    |    4  |    4  | 155  |  314  | 1238  |    80* |  on check  |
+| 51      | Bali*                      |    8  |    1  |  57  |   80  |  636  |    41* |  on check  |
+| 52      | Nusa Tenggara Barat*       |    8  |    2  | 117  |  145  | 1021  |   430* |  on check  |
+| 53      | Nusa Tenggara Timur*       |   21  |    1  | 315  |  305  | 3137  |   653* |  on check  |
+| 61      | Kalimantan Barat*          |   12  |    2  | 174  |   99  | 2046  |   260* |  on check  |
+| 62      | Kalimantan Tengah          |   13  |    1  | 136  |  139  | 1432  |    71  |  on check  |
+| 63      | Kalimantan Selatan         |   11  |    2  | 156  |  144  | 1872  |   165  |  on check  |
+| 64      | Kalimantan Timur*          |    7  |    3  | 105  |  197  |  841  |   244* |  on check  |
+| 65      | Kalimantan Utara           |    4  |    1  |  55  |   35  |  447  |   196  |  on check  |
+| 71      | Sulawesi Utara*            |   11  |    4  | 171  |  332  | 1507  |   382* |  on check  |
+| 72      | Sulawesi Tengah*           |   12  |    1  | 177* |  175  | 1842  |  1600* |  on check  |
+| 73      | Sulawesi Selatan*          |   21  |    3  | 313  |  793  | 2266  |   394* |  on check  |
+| 74      | Sulawesi Tenggara*         |   15  |    2  | 221  |  377* | 1908  |   591* |  on check  |
+| 75      | Gorontalo                  |    5  |    1  |  77  |   72  |  657  |   127  |  on check  |
+| 76      | Sulawesi Barat             |    6  |    0  |  69  |   73  |  575  |    69  |  on check  |
+| 81      | Maluku*                    |    9  |    2  | 119* |   35  | 1200  |  1422* |  on check  |
+| 82      | Maluku Utara*              |    8  |    2  | 118  |  118  | 1067  |   975* |  on check  |
+| 91      | Papua*                     |    8  |    1  | 105  |   51  |  948  |   544* |  on check  |
+| 92      | Papua Barat*               |    7* |    0* |  91* |   21* |  803* |  1498* |  on check  |
+| 93      | Papua Selatan              |    4  |    0  |  82  |   13  |  677  |     7  |  on check  |
+| 94      | Papua Tengah               |    8  |    0  | 131  |   36  | 1172  |    50  |  on check  |
+| 95      | Papua Pegunungan           |    8  |    0  | 252  |   10  | 2617  |     0  |  on check  |
+| 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |  on check  |   
+|         | TOTAL*                     |  416  |   98  |7285* | 8498* |75266* | 17380* |            |
 
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 100.1.1-6117 Tahun 2022)
 
