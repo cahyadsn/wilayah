@@ -19,11 +19,11 @@ Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - **db/archive/wilayah_level_1_2_postgresl.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries (postgresql)
 
 Kode dan Data Pulau Indonesia dalam database :
-- **db/pulau.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 *
+- **db/pulau.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 - **db/archive/pulau_2023.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 
 - **db/archive/pulau_2022.sql** sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022)
 
-**NOTE** )* in progress 
+**NOTE** )* in progress/verifikasi 
 
 ## TAUTAN TERKAIT
 - Data kodepos vs kode wilayah administrasi pemerintahan Indoensia : https://github.com/cahyadsn/wilayah_kodepos
@@ -90,6 +90,8 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 - Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 - Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi
 Geospasial (BIG)
+- Data kode pulau sudah diupdate dan di verifikasi
+- Data kode wilayah sudah diupdate, masih dalam proses verifikasi
 
 link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
