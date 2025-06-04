@@ -86,7 +86,10 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 
 )+ data baru dari Kepmendagri No. 300.2.2-2138 Tahun 2025
 
-) ** Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
+) ** 
+- Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
+- Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi
+Geospasial (BIG)
 
 link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
@@ -106,7 +109,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## TODO
-- update dan validasi data sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
+- verifikasi data kode wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 - verifikasi/update main web data 
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 - update data menu about pada main web (dev)
