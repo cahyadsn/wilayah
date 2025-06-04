@@ -74,12 +74,12 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 76      | Sulawesi Barat             |    6  |    0  |  69  |   73  |  575  |    69  |  done  |
 | 81      | Maluku*                    |    9  |    2  | 119* |   35  | 1200  |  1422* |  done  |
 | 82      | Maluku Utara*              |    8  |    2  | 118  |  118  | 1067  |   975* |  done  |
-| 91      | Papua*                     |    8  |    1  | 105  |   51  |  948  |   544* |        |
-| 92      | Papua Barat*               |    7* |    0* |  91* |   21* |  803* |  1498* |        |
+| 91      | Papua*                     |    8  |    1  | 105  |   51  |  948  |   544* |  done  |
+| 92      | Papua Barat*               |    7* |    0* |  91* |   21* |  803* |  1498* |  done  |
 | 93      | Papua Selatan              |    4  |    0  |  82  |   13  |  677  |     7  |  done  |
 | 94      | Papua Tengah               |    8  |    0  | 131  |   36  | 1172  |    50  |  done  |
 | 95      | Papua Pegunungan           |    8  |    0  | 252  |   10  | 2617  |     0  |  done  |
-| 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |  part  |   
+| 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |  done  |   
 |         | TOTAL*                     |  416  |   98  |7285* | 8498* |75266* | 17380* |        |
 
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 100.1.1-6117 Tahun 2022)
@@ -112,7 +112,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
-- update data kode dan perubahan nama pulau di provinsi-provinsi wilayah sulawesi 2025-06-04
+- update data kode dan perubahan nama pulau di provinsi-provinsi wilayah sulawesi,maluku,papua 2025-06-04
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah balinusra, kalimantan 2025-06-03
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah jawa 2025-06-02
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah sumatera 2025-06-02
