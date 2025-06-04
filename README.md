@@ -112,6 +112,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
   
 ## CHANGE LOG 
+- update data kode dan perubahan nama pulau di provinsi-provinsi wilayah sulawesi 2025-06-04
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah balinusra, kalimantan 2025-06-03
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah jawa 2025-06-02
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah sumatera 2025-06-02
