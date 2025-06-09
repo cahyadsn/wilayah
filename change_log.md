@@ -1,4 +1,5 @@
 # CHANGE LOG 
+- verifikasi data kode wilayah prov. Sumatera Utara 2025-06-09
 - verifikasi data kode wilayah prov. Aceh 2025-06-08
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah sulawesi,maluku,papua 2025-06-04
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah balinusra, kalimantan 2025-06-03
