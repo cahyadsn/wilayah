@@ -46,7 +46,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 12      | Sumatera Utara             |   25  |    8  | 455  |  693  | 5417  |   228  |    done    |
 | 13      | Sumatera Barat             |   12  |    7  | 179  |  230  | 1035  |   219  |    done    |
 | 14      | Riau                       |   10  |    2  | 172  |  271  | 1591  |   144  |  on check  |
-| 15      | Jambi                      |    9  |    2  | 144  |  171  | 1414  |    14  |  on check  |
+| 15      | Jambi                      |    9  |    2  | 144  |  171  | 1414  |    14  |    done    |
 | 16      | Sumatera Selatan*          |   13  |    4  | 241  |  403  | 2856* |    24  |  on check  |
 | 17      | Bengkulu                   |    9  |    1  | 129  |  172  | 1341  |     9  |  on check  |
 | 18      | Lampung                    |   13  |    2  | 229  |  205  | 2446  |   172  |  on check  |
@@ -117,7 +117,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
 
 ## CHANGE LOG
-- verifikasi data kode wilayah prov. Sumatera Barat 2025-06-10
+- verifikasi data kode wilayah prov. Sumatera Barat,Jambi 2025-06-10
 - verifikasi data kode wilayah prov. Sumatera Utara 2025-06-09
 - verifikasi data kode wilayah prov. Aceh 2025-06-08
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah sulawesi,maluku,papua 2025-06-04
