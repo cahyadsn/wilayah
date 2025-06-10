@@ -2,7 +2,7 @@
 Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 menggunakan PHP+MySQL+AJaX
 
 ## DEMO
-tautan demo web [apps versi 2.8](https://wilayah.cahyadsn.com/apps) 
+tautan demo web [apps versi 2.8](https://wilayah.cahyadsn.com/apps)
 
 ## SCREENSHOT
 [![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/250525.png?raw=true 'wilayah apps web demo v2.8')](https://wilayah.cahyadsn.com/apps)
@@ -20,10 +20,10 @@ Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 
 Kode dan Data Pulau Indonesia dalam database :
 - **db/pulau.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
-- **db/archive/pulau_2023.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 
+- **db/archive/pulau_2023.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022
 - **db/archive/pulau_2022.sql** sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022)
 
-**NOTE** )* in progress/verifikasi 
+**NOTE** )* in progress/verifikasi
 
 ## TAUTAN TERKAIT
 - Data kodepos vs kode wilayah administrasi pemerintahan Indoensia : https://github.com/cahyadsn/wilayah_kodepos
@@ -44,7 +44,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 |---------|----------------------------|------:|------:|------|------:|------:|-------:|-----------:|
 | 11      | Aceh*                      |   18  |    5  | 290  |    0  | 6500  |   365* |    done    |
 | 12      | Sumatera Utara             |   25  |    8  | 455  |  693  | 5417  |   228  |    done    |
-| 13      | Sumatera Barat             |   12  |    7  | 179  |  230  | 1035  |   219  |  on check  |
+| 13      | Sumatera Barat             |   12  |    7  | 179  |  230  | 1035  |   219  |    done    |
 | 14      | Riau                       |   10  |    2  | 172  |  271  | 1591  |   144  |  on check  |
 | 15      | Jambi                      |    9  |    2  | 144  |  171  | 1414  |    14  |  on check  |
 | 16      | Sumatera Selatan*          |   13  |    4  | 241  |  403  | 2856* |    24  |  on check  |
@@ -79,14 +79,14 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 93      | Papua Selatan              |    4  |    0  |  82  |   13  |  677  |     7  |  on check  |
 | 94      | Papua Tengah               |    8  |    0  | 131  |   36  | 1172  |    50  |  on check  |
 | 95      | Papua Pegunungan           |    8  |    0  | 252  |   10  | 2617  |     0  |  on check  |
-| 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |  on check  |   
+| 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |  on check  |
 |         | TOTAL*                     |  416  |   98  |7285* | 8498* |75266* | 17380* |            |
 
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 100.1.1-6117 Tahun 2022)
 
 )+ data baru dari Kepmendagri No. 300.2.2-2138 Tahun 2025
 
-) ** 
+) **
 - Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 - Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi
 Geospasial (BIG)
@@ -98,7 +98,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 ## REFERENSI
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
 - Keputusan Menteri Dalam Negeri Nomor 300.2.2-2138 tahun 2025 Tentang Pemberian Dan Pemutakhiran Kode, Data Wilayah Administrasi Pemerintahan, Dan Pulau (Ditetapkan pada 25 April 2025)
-- Keputusan Menteri Dalam Negeri Nomor 100.1.1-6117 Tahun 2022 Tentang Pemberian dan Pemutakhiran Kode, Data Wilayah Adminstrasi Pemerintahan, dan Pulau (Ditetapkan pada 9 November 2022) 
+- Keputusan Menteri Dalam Negeri Nomor 100.1.1-6117 Tahun 2022 Tentang Pemberian dan Pemutakhiran Kode, Data Wilayah Adminstrasi Pemerintahan, dan Pulau (Ditetapkan pada 9 November 2022)
 - UU No 29 Tahun 2022 tentang Pembentukan Provinsi Papua Barat Daya (_LN.2022/No.223, TLN No.6831, jdih.setneg.go.id: 15 hlm., 08 Desember 2022_)
 - UU No 14 Tahun 2022 tentang Pembentukan Provinsi Papua Selatan (LN.2022/No.157, TLN No.6803, jdih.setneg.go.id: 15 hlm., 25 Juli 2022)
 - UU No 15 Tahun 2022 tentang Pembentukan Provinsi Papua Tengah (LN.2022/No.158, TLN No.6804, jdih.setneg.go.id: 14 hlm., 25 Juli 2022)
@@ -112,11 +112,12 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
 ## TODO
 - verifikasi data kode wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
-- verifikasi/update main web data 
+- verifikasi/update main web data
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 - update data menu about pada main web (dev)
-  
-## CHANGE LOG 
+
+## CHANGE LOG
+- verifikasi data kode wilayah prov. Sumatera Barat 2025-06-10
 - verifikasi data kode wilayah prov. Sumatera Utara 2025-06-09
 - verifikasi data kode wilayah prov. Aceh 2025-06-08
 - update data kode dan perubahan nama pulau di provinsi-provinsi wilayah sulawesi,maluku,papua 2025-06-04
@@ -129,7 +130,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data kode pulau prov Jawa Timur,Banten,Bali,NTB,NTT 2025-05-29
 - update data kode pulau prov Bangka Belitung dan DI Yogyakarta 2025-05-28
 - update data kode wilayah dan pulau prov Aceh dan Sumatera Selatan 2025-05-26
-- update data kode wilayah prov Sulteng dan Maluku (pemekaran kecamatan) 2025-05-25 
+- update data kode wilayah prov Sulteng dan Maluku (pemekaran kecamatan) 2025-05-25
 - update data kode wilayah provinsi Papua Barat dan Papua Barat Daya 2025-05-25
 - update web apps demo ke v2.8 (Data sesuai Kepmendagri No 300.2.2-2138 tahun 2025) 2025-05-25
 
@@ -139,14 +140,14 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - data latitude/longitude dari google maps
 
 ## DONASI
-- untuk donasi via transfer 
+- untuk donasi via transfer
     - Bank BCA Digital (Blu) (501) 000 576 776 186
     - Bank Jago (542) 5003 5796 1022
     - Bank Sinarmas (153) 005 462 4719
     - Bank Syariah Indonesia (BSI) 821-342-5550
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
 - untuk donasi via QRIS CAHYADSN ID1022183125288 :
-  
+
 ![screenshot](https://github.com/cahyadsn/wilayah/blob/master/docs/qr_code.cahyadsn.png?raw=true 'Donasi via QRIS CAHYADSN')
 
 [di sini]: https://wilayah.cahyadsn.com/
