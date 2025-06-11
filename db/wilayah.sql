@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-06-11 13:50:13
+last edit: 2025-06-12 01:07:23
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -15092,6 +15092,7 @@ VALUES
 ('14.01.10.2022','Kijang Rejo'),
 ('14.01.10.2023','Sungai Agung'),
 ('14.01.10.2024','Bencah Kelubi'),
+('14.01.10.2025','Batu Gajah'),
 ('14.01.11','Tapung Hilir'),
 ('14.01.11.2001','Koto Garo'),
 ('14.01.11.2002','Sekijang'),
@@ -15199,6 +15200,8 @@ VALUES
 ('14.01.21','Koto Kampar Hulu'),
 ('14.01.21.2001','Siberuang'),
 ('14.01.21.2002','Bandur Picak'),
+('14.01.21.2003','Gunung Malelo'),
+('14.01.21.2004','Tabing'),
 ('14.01.21.2005','Pongkai'),
 ('14.01.21.2006','Tanjung'),
 ('14.02','Kabupaten Indragiri Hulu'),
@@ -15442,6 +15445,7 @@ VALUES
 ('14.03.01.2028','Kelemantan Barat'),
 ('14.03.01.2029','Damai'),
 ('14.03.01.2030','Pangkalan Batang Barat'),
+('14.03.01.2031','Pematang Duku Timur'),
 ('14.03.02','Bantan'),
 ('14.03.02.2001','Bantan Tengah'),
 ('14.03.02.2002','Bantan Air'),
@@ -15835,6 +15839,7 @@ VALUES
 ('14.04.20.2008','Mugo Mulyo'),
 ('14.05','Kabupaten Pelalawan'),
 ('14.05.01','Ukui'),
+('14.05.01.1010','Ukui I'),
 ('14.05.01.2001','Air Hitam'),
 ('14.05.01.2002','Air Emas'),
 ('14.05.01.2003','Bukit Gajah'),
@@ -15873,6 +15878,7 @@ VALUES
 ('14.05.03.2016','Batang Kulim'),
 ('14.05.03.2017','Sidomukti'),
 ('14.05.04','Pangkalan Lesung'),
+('14.05.04.1001','Pangkalan Lesung'),
 ('14.05.04.2002','Dusun Tua'),
 ('14.05.04.2003','Genduang'),
 ('14.05.04.2004','Mayang Sari'),
@@ -15892,6 +15898,7 @@ VALUES
 ('14.05.05.2007','Langkan'),
 ('14.05.05.2008','Padang Luas'),
 ('14.05.06','Pelalawan'),
+('14.05.06.1001','Pelalawan'),
 ('14.05.06.2002','Sungai Ara'),
 ('14.05.06.2003','Ransang'),
 ('14.05.06.2004','Kuala Tolam'),
@@ -15901,6 +15908,7 @@ VALUES
 ('14.05.06.2008','Delik'),
 ('14.05.06.2010','Lalang Kabung'),
 ('14.05.07','Kerumutan'),
+('14.05.07.1001','Kerumutan'),
 ('14.05.07.2002','Pangkalan Panduk'),
 ('14.05.07.2003','Pangkalan Tampui'),
 ('14.05.07.2004','Bukit Lembah Subur'),
@@ -15922,6 +15930,7 @@ VALUES
 ('14.05.08.2017','Keriung'),
 ('14.05.08.2018','Sialang Kayu Batu'),
 ('14.05.09','Teluk Meranti'),
+('14.05.09.1001','Teluk Meranti'),
 ('14.05.09.2002','Kuala Panduk'),
 ('14.05.09.2003','Petodaan'),
 ('14.05.09.2004','Teluk Binjai'),
@@ -15973,6 +15982,7 @@ VALUES
 ('14.06.02.2004','Cipang Kiri Hilir'),
 ('14.06.02.2006','Tanjung Medan'),
 ('14.06.02.2007','Lubuk Bendahara Timur'),
+('14.06.02.2008','Lubuk Bendahara'),
 ('14.06.02.2010','Sikebau Jaya'),
 ('14.06.02.2013','Rokan Koto Ruang'),
 ('14.06.02.2014','Rokan Timur'),
