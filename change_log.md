@@ -1,4 +1,5 @@
 # CHANGE LOG 
+- verifikasi data kode wilayah prov. Riau 2025-06-11
 - verifikasi data kode wilayah prov. Sumatera Barat,Jambi 2025-06-10
 - verifikasi data kode wilayah prov. Sumatera Utara 2025-06-09
 - verifikasi data kode wilayah prov. Aceh 2025-06-08
