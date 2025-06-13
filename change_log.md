@@ -1,4 +1,5 @@
 # CHANGE LOG 
+- verifikasi data kode wilayah prov. Kep Babel 2025-06-13
 - verifikasi data kode wilayah prov. Sumatera Selatan,Bengkulu,Lampung 2025-06-12
 - verifikasi data kode wilayah prov. Riau 2025-06-11
 - verifikasi data kode wilayah prov. Sumatera Barat,Jambi 2025-06-10
