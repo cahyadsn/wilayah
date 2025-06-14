@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-06-13 09:04:08
+last edit: 2025-06-14 09:39:58
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -27769,17 +27769,17 @@ VALUES
 -- Provinsi DKI JAKARTA
 INSERT INTO wilayah (kode, nama)
 VALUES
-('31','DKI JAKARTA'),
-('31.01','KAB. ADM. KEP. SERIBU'),
+('31','Daerah Khusus Ibukota Jakarta'),
+('31.01','Kabupaten Administrasi Kepulauan Seribu'),
 ('31.01.01','Kepulauan Seribu Utara'),
 ('31.01.01.1001','Pulau Panggang'),
 ('31.01.01.1002','Pulau Kelapa'),
 ('31.01.01.1003','Pulau Harapan'),
-('31.01.02','Kepulauan Seribu Selatan.'),
+('31.01.02','Kepulauan Seribu Selatan'),
 ('31.01.02.1001','Pulau Untung Jawa'),
 ('31.01.02.1002','Pulau Tidung'),
 ('31.01.02.1003','Pulau Pari'),
-('31.71','KOTA ADM. JAKARTA PUSAT'),
+('31.71','Kota Administrasi Jakarta Pusat'),
 ('31.71.01','Gambir'),
 ('31.71.01.1001','Gambir'),
 ('31.71.01.1002','Cideng'),
@@ -27832,7 +27832,7 @@ VALUES
 ('31.71.08.1002','Kampung Rawa'),
 ('31.71.08.1003','Galur'),
 ('31.71.08.1004','Tanah Tinggi'),
-('31.72','KOTA ADM. JAKARTA UTARA'),
+('31.72','Kota Administrasi Jakarta Utara '),
 ('31.72.01','Penjaringan'),
 ('31.72.01.1001','Penjaringan'),
 ('31.72.01.1002','Kamal Muara'),
@@ -27870,7 +27870,7 @@ VALUES
 ('31.72.06.1001','Kelapa Gading Timur'),
 ('31.72.06.1002','Pegangsaan Dua'),
 ('31.72.06.1003','Kelapa Gading Barat'),
-('31.73','KOTA ADM. JAKARTA BARAT'),
+('31.73','Kota Administrasi Jakarta Barat'),
 ('31.73.01','Cengkareng'),
 ('31.73.01.1001','Cengkareng Barat'),
 ('31.73.01.1002','Duri Kosambi'),
@@ -27935,7 +27935,7 @@ VALUES
 ('31.73.08.1004','Srengseng'),
 ('31.73.08.1005','Joglo'),
 ('31.73.08.1006','Kembangan Selatan'),
-('31.74','KOTA ADM. JAKARTA SELATAN'),
+('31.74','Kota Administrasi Jakarta Selatan'),
 ('31.74.01','Tebet'),
 ('31.74.01.1001','Tebet Timur'),
 ('31.74.01.1002','Tebet Barat'),
@@ -28011,7 +28011,7 @@ VALUES
 ('31.74.10.1003','Petukangan Utara'),
 ('31.74.10.1004','Petukangan Selatan'),
 ('31.74.10.1005','Ulujami'),
-('31.75','KOTA ADM. JAKARTA TIMUR'),
+('31.75','Kota Administrasi Jakarta Timur'),
 ('31.75.01','Matraman'),
 ('31.75.01.1001','Pisangan Baru'),
 ('31.75.01.1002','Utan Kayu Utara'),
