@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-06-17 11:00:42
+last edit: 2025-06-17 11:17:17
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -43886,8 +43886,8 @@ VALUES
 -- Provinsi DAERAH ISTIMEWA YOGYAKARTA
 INSERT INTO wilayah (kode, nama)
 VALUES
-('34','DAERAH ISTIMEWA YOGYAKARTA'),
-('34.01','KAB. KULON PROGO'),
+('34','Daerah Istimewa Yogyakarta'),
+('34.01','Kabupaten Kulon Progo'),
 ('34.01.01','Temon'),
 ('34.01.01.2001','Jangkaran'),
 ('34.01.01.2002','Sindutan'),
@@ -43988,7 +43988,7 @@ VALUES
 ('34.01.12.2002','Banjarasri'),
 ('34.01.12.2003','Banjarharjo'),
 ('34.01.12.2004','Banjaroyo'),
-('34.02','KAB. BANTUL'),
+('34.02','Kabupaten Bantul'),
 ('34.02.01','Srandakan'),
 ('34.02.01.2001','Poncosari'),
 ('34.02.01.2002','Trimurti'),
@@ -44012,7 +44012,7 @@ VALUES
 ('34.02.05.2002','Mulyodadi'),
 ('34.02.05.2003','Sumbermulyo'),
 ('34.02.06','Pandak'),
-('34.02.06.2001','Catuharjo'),
+('34.02.06.2001','Caturharjo'),
 ('34.02.06.2002','Triharjo'),
 ('34.02.06.2003','Gilangharjo'),
 ('34.02.06.2004','Wijirejo'),
@@ -44081,7 +44081,7 @@ VALUES
 ('34.02.17.2002','Argorejo'),
 ('34.02.17.2003','Argosari'),
 ('34.02.17.2004','Argomulyo'),
-('34.03','KAB. GUNUNGKIDUL'),
+('34.03','Kabupaten Gunungkidul'),
 ('34.03.01','Wonosari'),
 ('34.03.01.2001','Wonosari'),
 ('34.03.01.2002','Kepek'),
@@ -44244,7 +44244,7 @@ VALUES
 ('34.03.18.2003','Girijati'),
 ('34.03.18.2004','Giriasih'),
 ('34.03.18.2005','Giritirto'),
-('34.04','KAB. SLEMAN'),
+('34.04','Kabupaten Sleman'),
 ('34.04.01','Gamping'),
 ('34.04.01.2001','Balecatur'),
 ('34.04.01.2002','Ambarketawang'),
@@ -44348,7 +44348,7 @@ VALUES
 ('34.04.17.2003','Glagaharjo'),
 ('34.04.17.2004','Kepuharjo'),
 ('34.04.17.2005','Umbulharjo'),
-('34.71','KOTA YOGYAKARTA'),
+('34.71','Kota Yogyakarta'),
 ('34.71.01','Tegalrejo'),
 ('34.71.01.1001','Kricak'),
 ('34.71.01.1002','Karangwaru'),

@@ -1,5 +1,5 @@
 # CHANGE LOG 
-- verifikasi data kode wilayah prov. Jawa Barat, Jawa Tengah 2025-06-17
+- verifikasi data kode wilayah prov. Jawa Barat, Jawa Tengah, DIY 2025-06-17
 - verifikasi data kode wilayah prov. DKI Jakarta 2025-06-14
 - verifikasi data kode wilayah prov. Kep Babel, Kepri 2025-06-13
 - verifikasi data kode wilayah prov. Sumatera Selatan,Bengkulu,Lampung 2025-06-12
