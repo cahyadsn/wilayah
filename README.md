@@ -56,7 +56,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 32      | Jawa Barat                 |   18  |    9  | 627  |  646  | 5311  |    30  |    done    |
 | 33      | Jawa Tengah                |   29  |    6  | 576  |  753  | 7810  |    71  |    done  |
 | 34      | DI Yogyakarta*             |    4  |    1  |  78  |   46  |  392  |    37* |    done    |
-| 35      | Jawa Timur*                |   29  |    9  | 666  |  773  | 7721  |   538* |  on check  |
+| 35      | Jawa Timur*                |   29  |    9  | 666  |  773  | 7721  |   538* |    done    |
 | 36      | Banten*                    |    4  |    4  | 155  |  314  | 1238  |    80* |  on check  |
 | 51      | Bali*                      |    8  |    1  |  57  |   80  |  636  |    41* |  on check  |
 | 52      | Nusa Tenggara Barat*       |    8  |    2  | 117  |  145  | 1021  |   430* |  on check  |
@@ -117,6 +117,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
 
 ## CHANGE LOG
+- verifikasi data kode wilayah prov. Jawa Timur 2025-06-18
 - verifikasi data kode wilayah prov. Jawa Barat, Jawa Tengah, DIY 2025-06-17
 - verifikasi data kode wilayah prov. DKI Jakarta 2025-06-14
 - verifikasi data kode wilayah prov. Kep Babel, Kepri 2025-06-13
