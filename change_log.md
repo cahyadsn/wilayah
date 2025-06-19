@@ -1,5 +1,5 @@
 # CHANGE LOG 
-- verifikasi data kode wilayah prov. Banten,Bali 2025-06-19
+- verifikasi data kode wilayah prov. Banten,Bali,NTB 2025-06-19
 - verifikasi data kode wilayah prov. Jawa Timur 2025-06-18
 - verifikasi data kode wilayah prov. Jawa Barat, Jawa Tengah, DIY 2025-06-17
 - verifikasi data kode wilayah prov. DKI Jakarta 2025-06-14
