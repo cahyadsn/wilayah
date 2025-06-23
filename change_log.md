@@ -1,4 +1,5 @@
 # CHANGE LOG 
+- verifikasi data kode wilayah prov. Kalsel 2025-06-23
 - verifikasi data kode wilayah prov. Kalbar,Kalteng 2025-06-20
 - verifikasi data kode wilayah prov. Banten,Bali,NTB,NTT 2025-06-19
 - verifikasi data kode wilayah prov. Jawa Timur 2025-06-18
