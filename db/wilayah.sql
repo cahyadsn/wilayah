@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-06-23 10:44:28
+last edit: 2025-06-23 11:58:40
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -68616,8 +68616,8 @@ VALUES
 -- Provinsi KALIMANTAN UTARA
 INSERT INTO wilayah (kode, nama)
 VALUES
-('65','KALIMANTAN UTARA'),
-('65.01','KAB. BULUNGAN'),
+('65','Kalimantan Utara'),
+('65.01','Kabupaten Bulungan'),
 ('65.01.01','Tanjung Palas'),
 ('65.01.01.1001','Tanjung Palas Hulu'),
 ('65.01.01.1002','Tanjung Palas Tengah'),
@@ -68709,7 +68709,7 @@ VALUES
 ('65.01.10.2001','Bunyu Barat'),
 ('65.01.10.2002','Bunyu Selatan'),
 ('65.01.10.2003','Bunyu Timur'),
-('65.02','KAB. MALINAU'),
+('65.02','Kabupaten Malinau'),
 ('65.02.01','Mentarang'),
 ('65.02.01.2002','Long Bisai'),
 ('65.02.01.2005','Pulau Sapi'),
@@ -68834,7 +68834,7 @@ VALUES
 ('65.02.15.2003','Long Ranau'),
 ('65.02.15.2004','Rian Tubu'),
 ('65.02.15.2005','Long Pada'),
-('65.03','KAB. NUNUKAN'),
+('65.03','Kabupaten Nunukan'),
 ('65.03.01','Sebatik'),
 ('65.03.01.2001','Tanjungkarang'),
 ('65.03.01.2002','Balansiku'),
@@ -69096,7 +69096,7 @@ VALUES
 ('65.03.21.2008','Tuntulibing'),
 ('65.03.21.2009','Tetagas'),
 ('65.03.21.2010','Kabungolor'),
-('65.04','KAB. TANA TIDUNG'),
+('65.04','Kabupaten Tana Tidung'),
 ('65.04.01','Sesayap'),
 ('65.04.01.2001','Tideng Pale'),
 ('65.04.01.2002','Limbu Sedulun'),
@@ -69134,7 +69134,7 @@ VALUES
 ('65.04.05.2004','Rian Rayo'),
 ('65.04.05.2005','Kapuak'),
 ('65.04.05.2006','Sapari'),
-('65.71','KOTA TARAKAN'),
+('65.71','Kota Tarakan'),
 ('65.71.01','Tarakan Barat'),
 ('65.71.01.1001','Karang Anyar'),
 ('65.71.01.1002','Karang Rejo'),
