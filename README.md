@@ -67,7 +67,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 64      | Kalimantan Timur*          |    7  |    3  | 105  |  197  |  841  |   244* |    done    |
 | 65      | Kalimantan Utara           |    4  |    1  |  55  |   35  |  447  |   196  |    done    |
 | 71      | Sulawesi Utara*            |   11  |    4  | 171  |  332  | 1507  |   382* |    done    |
-| 72      | Sulawesi Tengah*           |   12  |    1  | 177* |  175  | 1842  |  1600* |  on check  |
+| 72      | Sulawesi Tengah*           |   12  |    1  | 177* |  175  | 1842  |  1600* |    done    |
 | 73      | Sulawesi Selatan*          |   21  |    3  | 313  |  793  | 2266  |   394* |  on check  |
 | 74      | Sulawesi Tenggara*         |   15  |    2  | 221  |  377* | 1908  |   591* |  on check  |
 | 75      | Gorontalo                  |    5  |    1  |  77  |   72  |  657  |   127  |  on check  |
@@ -117,7 +117,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
 
 ## CHANGE LOG
-- verifikasi data kode wilayah prov. Sulut 2025-06-25
+- verifikasi data kode wilayah prov. Sulut,Sulteng 2025-06-25
 - verifikasi data kode wilayah prov. Kalsel,Kaltim,Kaltara 2025-06-23
 - verifikasi data kode wilayah prov. Kalbar,Kalteng 2025-06-20
 - verifikasi data kode wilayah prov. Banten,Bali,NTB,NTT 2025-06-19
