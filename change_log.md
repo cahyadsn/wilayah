@@ -1,5 +1,5 @@
 # CHANGE LOG 
-- verifikasi data kode wilayah prov. Sulut,Sulteng,Sulsel 2025-06-25
+- verifikasi data kode wilayah prov. Sulut,Sulteng,Sulsel,Sultra 2025-06-25
 - verifikasi data kode wilayah prov. Kalsel,Kaltim,Kaltara 2025-06-23
 - verifikasi data kode wilayah prov. Kalbar,Kalteng 2025-06-20
 - verifikasi data kode wilayah prov. Banten,Bali,NTB,NTT 2025-06-19
