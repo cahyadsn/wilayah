@@ -70,7 +70,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 72      | Sulawesi Tengah*           |   12  |    1  | 177* |  175  | 1842  |  1600* |    done    |
 | 73      | Sulawesi Selatan*          |   21  |    3  | 313  |  793  | 2266  |   394* |    done    |
 | 74      | Sulawesi Tenggara*         |   15  |    2  | 221  |  377* | 1908  |   591* |    done    |
-| 75      | Gorontalo                  |    5  |    1  |  77  |   72  |  657  |   127  |  on check  |
+| 75      | Gorontalo                  |    5  |    1  |  77  |   72  |  657  |   127  |    done    |
 | 76      | Sulawesi Barat             |    6  |    0  |  69  |   73  |  575  |    69  |  on check  |
 | 81      | Maluku*                    |    9  |    2  | 119* |   35  | 1200  |  1422* |  on check  |
 | 82      | Maluku Utara*              |    8  |    2  | 118  |  118  | 1067  |   975* |  on check  |
@@ -117,6 +117,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
 
 ## CHANGE LOG
+- verifikasi data kode wilayah prov. Gorontalo 2025-06-26
 - verifikasi data kode wilayah prov. Sulut,Sulteng,Sulsel,Sultra 2025-06-25
 - verifikasi data kode wilayah prov. Kalsel,Kaltim,Kaltara 2025-06-23
 - verifikasi data kode wilayah prov. Kalbar,Kalteng 2025-06-20
