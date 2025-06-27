@@ -76,7 +76,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 82      | Maluku Utara*              |    8  |    2  | 118  |  118  | 1067  |   975* |    done    |
 | 91      | Papua*                     |    8  |    1  | 105  |   51  |  948  |   544* |    done    |
 | 92      | Papua Barat*               |    7* |    0* |  91* |   21* |  803* |  1498* |    done    |
-| 93      | Papua Selatan              |    4  |    0  |  82  |   13  |  677  |     7  |  on check  |
+| 93      | Papua Selatan              |    4  |    0  |  82  |   13  |  677  |     7  |    done    |
 | 94      | Papua Tengah               |    8  |    0  | 131  |   36  | 1172  |    50  |  on check  |
 | 95      | Papua Pegunungan           |    8  |    0  | 252  |   10  | 2617  |     0  |  on check  |
 | 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |  on check  |
@@ -118,7 +118,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
 
 ## CHANGE LOG
-- verifikasi data kode wilayah prov. Papua,Papua Barat 2025-06-27
+- verifikasi data kode wilayah prov. Papua,Papua Barat,Papua Selatam 2025-06-27
 - verifikasi data kode wilayah prov. Gorontalo,Sulbar,Maluku,Malut 2025-06-26
 - verifikasi data kode wilayah prov. Sulut,Sulteng,Sulsel,Sultra 2025-06-25
 - verifikasi data kode wilayah prov. Kalsel,Kaltim,Kaltara 2025-06-23
