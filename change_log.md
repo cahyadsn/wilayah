@@ -1,4 +1,5 @@
 # CHANGE LOG 
+- verifikasi data kode wilayah prov. Papua 2025-06-27
 - verifikasi data kode wilayah prov. Gorontalo,Sulbar,Maluku,Malut 2025-06-26
 - verifikasi data kode wilayah prov. Sulut,Sulteng,Sulsel,Sultra 2025-06-25
 - verifikasi data kode wilayah prov. Kalsel,Kaltim,Kaltara 2025-06-23
