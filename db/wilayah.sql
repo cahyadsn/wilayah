@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-06-26 09:32:51
+last edit: 2025-06-27 11:15:39
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -30,7 +30,7 @@ copyright (c) 2025 by cahya dsn; cahyadsn@gmail.com
 DROP TABLE IF EXISTS wilayah;
 CREATE TABLE IF NOT EXISTS wilayah (
     kode varchar(13) NOT NULL,
-    nama varchar(255) NOT NULL,
+    nama varchar(100) NOT NULL,
     PRIMARY KEY (kode)
 );
 CREATE INDEX wilayah_name_idx ON wilayah (nama);
