@@ -1,4 +1,5 @@
 # CHANGE LOG 
+- menambahkan data jumlah penduduk Indonesia per propinsi, per kabupaten/kota 2025-06-27
 - verifikasi data kode wilayah prov. Papua,Papua Barat,Papua Selatam,Papua Tengah,Papua Pegunungan,Papua Barat Daya 2025-06-27
 - verifikasi data kode wilayah prov. Gorontalo,Sulbar,Maluku,Malut 2025-06-26
 - verifikasi data kode wilayah prov. Sulut,Sulteng,Sulsel,Sultra 2025-06-25

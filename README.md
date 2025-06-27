@@ -8,7 +8,7 @@ tautan demo web [apps versi 2.8](https://wilayah.cahyadsn.com/apps)
 [![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/250525.png?raw=true 'wilayah apps web demo v2.8')](https://wilayah.cahyadsn.com/apps)
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
-- **db/wilayah.sql** sesuai dengan Kepmendagri No 300.2.2-2138 Tahun 2025 *
+- **db/wilayah.sql** sesuai dengan Kepmendagri No 300.2.2-2138 Tahun 2025 
 - **db/archive/wilayah_2023.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022
 - **db/archive/wilayah_2022.sql** sesuai Permendagri No 58 Tahun 2021 (_revised by Kepmendagri No. 050-145 Tahun 2022_)
 - **db/archive/wilayah_2020.sql** sesuai Permendagri No. 72 Tahun 2019 (_revised by Kepmendagri No.146.1-4717 Tahun 2020_)
@@ -23,7 +23,11 @@ Kode dan Data Pulau Indonesia dalam database :
 - **db/archive/pulau_2023.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022
 - **db/archive/pulau_2022.sql** sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022)
 
-**NOTE** )* in progress/verifikasi
+Data Jumlah Penduduk Indonesia per propinsi dan per kabupaten/kota dalam database
+- **db/penduduk.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 *
+
+*NOTE* )* :
+- Jumlah penduduk bersumbor dari Ditjen Kependudukan dan Pencatatan Sipil Kemendagri (Data Kependudukan Semester I Bulan DesemberTahun 2024)
 
 ## TAUTAN TERKAIT
 - Data kodepos vs kode wilayah administrasi pemerintahan Indoensia : https://github.com/cahyadsn/wilayah_kodepos
@@ -40,47 +44,47 @@ Kode dan Data Pulau Indonesia dalam database :
 ## Data Kepmendagri No 300.2.2-2138 Tahun 2025
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 (wilayah.sql)
 
-| id_prov | nama                       | kab   | kota  | kec  | kel   | desa  | pulau  |   status   |
-|---------|----------------------------|------:|------:|------|------:|------:|-------:|-----------:|
-| 11      | Aceh*                      |   18  |    5  | 290  |    0  | 6500  |   365* |    done    |
-| 12      | Sumatera Utara             |   25  |    8  | 455  |  693  | 5417  |   228  |    done    |
-| 13      | Sumatera Barat             |   12  |    7  | 179  |  230  | 1035  |   219  |    done    |
-| 14      | Riau                       |   10  |    2  | 172  |  271  | 1591  |   144  |    done    |
-| 15      | Jambi                      |    9  |    2  | 144  |  171  | 1414  |    14  |    done    |
-| 16      | Sumatera Selatan*          |   13  |    4  | 241  |  403  | 2856* |    24  |    done    |
-| 17      | Bengkulu                   |    9  |    1  | 129  |  172  | 1341  |     9  |    done    |
-| 18      | Lampung                    |   13  |    2  | 229  |  205  | 2446  |   172  |    done    |
-| 19      | Kepulauan Bangka Belitung* |    6  |    1  |  47  |   84  |  309  |   501* |    done    |
-| 21      | Kepulauan Riau             |    5  |    2  |  80  |  144  |  275  |  2028  |    done    |
-| 31      | DKI Jakarta                |    1  |    5  |  44  |  267  |    0  |   113  |    done    |
-| 32      | Jawa Barat                 |   18  |    9  | 627  |  646  | 5311  |    30  |    done    |
-| 33      | Jawa Tengah                |   29  |    6  | 576  |  753  | 7810  |    71  |    done    |
-| 34      | DI Yogyakarta*             |    4  |    1  |  78  |   46  |  392  |    37* |    done    |
-| 35      | Jawa Timur*                |   29  |    9  | 666  |  773  | 7721  |   538* |    done    |
-| 36      | Banten*                    |    4  |    4  | 155  |  314  | 1238  |    80* |    done    |
-| 51      | Bali*                      |    8  |    1  |  57  |   80  |  636  |    41* |    done    |
-| 52      | Nusa Tenggara Barat*       |    8  |    2  | 117  |  145  | 1021  |   430* |    done    |
-| 53      | Nusa Tenggara Timur*       |   21  |    1  | 315  |  305  | 3137  |   653* |    done    |
-| 61      | Kalimantan Barat*          |   12  |    2  | 174  |   99  | 2046  |   260* |    done    |
-| 62      | Kalimantan Tengah          |   13  |    1  | 136  |  139  | 1432  |    71  |    done    |
-| 63      | Kalimantan Selatan         |   11  |    2  | 156  |  144  | 1872  |   165  |    done    |
-| 64      | Kalimantan Timur*          |    7  |    3  | 105  |  197  |  841  |   244* |    done    |
-| 65      | Kalimantan Utara           |    4  |    1  |  55  |   35  |  447  |   196  |    done    |
-| 71      | Sulawesi Utara*            |   11  |    4  | 171  |  332  | 1507  |   382* |    done    |
-| 72      | Sulawesi Tengah*           |   12  |    1  | 177* |  175  | 1842  |  1600* |    done    |
-| 73      | Sulawesi Selatan*          |   21  |    3  | 313  |  793  | 2266  |   394* |    done    |
-| 74      | Sulawesi Tenggara*         |   15  |    2  | 221  |  377* | 1908  |   591* |    done    |
-| 75      | Gorontalo                  |    5  |    1  |  77  |   72  |  657  |   127  |    done    |
-| 76      | Sulawesi Barat             |    6  |    0  |  69  |   73  |  575  |    69  |    done    |
-| 81      | Maluku*                    |    9  |    2  | 119* |   35  | 1200  |  1422* |    done    |
-| 82      | Maluku Utara*              |    8  |    2  | 118  |  118  | 1067  |   975* |    done    |
-| 91      | Papua*                     |    8  |    1  | 105  |   51  |  948  |   544* |    done    |
-| 92      | Papua Barat*               |    7* |    0* |  91* |   21* |  803* |  1498* |    done    |
-| 93      | Papua Selatan              |    4  |    0  |  82  |   13  |  677  |     7  |    done    |
-| 94      | Papua Tengah               |    8  |    0  | 131  |   36  | 1172  |    50  |    done    |
-| 95      | Papua Pegunungan           |    8  |    0  | 252  |   10  | 2617  |     0  |    done    |
-| 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |    done    |
-|         | TOTAL*                     |  416  |   98  |7285* | 8498* |75266* | 17380* |            |
+| id_prov | nama                       | kab   | kota  | kec  | kel   | desa  | pulau  |
+|---------|----------------------------|------:|------:|------|------:|------:|-------:|
+| 11      | Aceh*                      |   18  |    5  | 290  |    0  | 6500  |   365* |
+| 12      | Sumatera Utara             |   25  |    8  | 455  |  693  | 5417  |   228  |
+| 13      | Sumatera Barat             |   12  |    7  | 179  |  230  | 1035  |   219  |
+| 14      | Riau                       |   10  |    2  | 172  |  271  | 1591  |   144  |
+| 15      | Jambi                      |    9  |    2  | 144  |  171  | 1414  |    14  |
+| 16      | Sumatera Selatan*          |   13  |    4  | 241  |  403  | 2856* |    24  |
+| 17      | Bengkulu                   |    9  |    1  | 129  |  172  | 1341  |     9  |
+| 18      | Lampung                    |   13  |    2  | 229  |  205  | 2446  |   172  |
+| 19      | Kepulauan Bangka Belitung* |    6  |    1  |  47  |   84  |  309  |   501* |
+| 21      | Kepulauan Riau             |    5  |    2  |  80  |  144  |  275  |  2028  |
+| 31      | DKI Jakarta                |    1  |    5  |  44  |  267  |    0  |   113  |
+| 32      | Jawa Barat                 |   18  |    9  | 627  |  646  | 5311  |    30  |
+| 33      | Jawa Tengah                |   29  |    6  | 576  |  753  | 7810  |    71  |
+| 34      | DI Yogyakarta*             |    4  |    1  |  78  |   46  |  392  |    37* |
+| 35      | Jawa Timur*                |   29  |    9  | 666  |  773  | 7721  |   538* |
+| 36      | Banten*                    |    4  |    4  | 155  |  314  | 1238  |    80* |
+| 51      | Bali*                      |    8  |    1  |  57  |   80  |  636  |    41* |
+| 52      | Nusa Tenggara Barat*       |    8  |    2  | 117  |  145  | 1021  |   430* |
+| 53      | Nusa Tenggara Timur*       |   21  |    1  | 315  |  305  | 3137  |   653* |
+| 61      | Kalimantan Barat*          |   12  |    2  | 174  |   99  | 2046  |   260* |
+| 62      | Kalimantan Tengah          |   13  |    1  | 136  |  139  | 1432  |    71  |
+| 63      | Kalimantan Selatan         |   11  |    2  | 156  |  144  | 1872  |   165  |
+| 64      | Kalimantan Timur*          |    7  |    3  | 105  |  197  |  841  |   244* |
+| 65      | Kalimantan Utara           |    4  |    1  |  55  |   35  |  447  |   196  |
+| 71      | Sulawesi Utara*            |   11  |    4  | 171  |  332  | 1507  |   382* |
+| 72      | Sulawesi Tengah*           |   12  |    1  | 177* |  175  | 1842  |  1600* |
+| 73      | Sulawesi Selatan*          |   21  |    3  | 313  |  793  | 2266  |   394* |
+| 74      | Sulawesi Tenggara*         |   15  |    2  | 221  |  377* | 1908  |   591* |
+| 75      | Gorontalo                  |    5  |    1  |  77  |   72  |  657  |   127  |
+| 76      | Sulawesi Barat             |    6  |    0  |  69  |   73  |  575  |    69  |
+| 81      | Maluku*                    |    9  |    2  | 119* |   35  | 1200  |  1422* |
+| 82      | Maluku Utara*              |    8  |    2  | 118  |  118  | 1067  |   975* |
+| 91      | Papua*                     |    8  |    1  | 105  |   51  |  948  |   544* |
+| 92      | Papua Barat*               |    7* |    0* |  91* |   21* |  803* |  1498* |
+| 93      | Papua Selatan              |    4  |    0  |  82  |   13  |  677  |     7  |
+| 94      | Papua Tengah               |    8  |    0  | 131  |   36  | 1172  |    50  |
+| 95      | Papua Pegunungan           |    8  |    0  | 252  |   10  | 2617  |     0  |
+| 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |
+|         | TOTAL*                     |  416  |   98  |7285* | 8498* |75266* | 17380* |
 
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 100.1.1-6117 Tahun 2022)
 
@@ -109,12 +113,12 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## TODO
-~ data jumlah penduduk indonesia
 - verifikasi/update main web data
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 - update data menu about pada main web (dev)
 
 ## CHANGE LOG
+- menambahkan data jumlah penduduk Indonesia per propinsi, per kabupaten/kota 2025-06-27
 - verifikasi data kode wilayah prov. Papua,Papua Barat,Papua Selatam,Papua Tengah,Papua Pegunungan,Papua Barat Daya 2025-06-27
 - verifikasi data kode wilayah prov. Gorontalo,Sulbar,Maluku,Malut 2025-06-26
 - verifikasi data kode wilayah prov. Sulut,Sulteng,Sulsel,Sultra 2025-06-25
