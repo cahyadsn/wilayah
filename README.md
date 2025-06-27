@@ -79,7 +79,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 93      | Papua Selatan              |    4  |    0  |  82  |   13  |  677  |     7  |    done    |
 | 94      | Papua Tengah               |    8  |    0  | 131  |   36  | 1172  |    50  |    done    |
 | 95      | Papua Pegunungan           |    8  |    0  | 252  |   10  | 2617  |     0  |    done    |
-| 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |  on check  |
+| 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |    done    |
 |         | TOTAL*                     |  416  |   98  |7285* | 8498* |75266* | 17380* |            |
 
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 100.1.1-6117 Tahun 2022)
@@ -90,8 +90,6 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 - Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 - Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi
 Geospasial (BIG)
-- Data kode pulau sudah diupdate dan di verifikasi
-- Data kode wilayah sudah diupdate, masih dalam proses verifikasi
 
 link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
@@ -112,13 +110,12 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
 ## TODO
 ~ data jumlah penduduk indonesia
-- verifikasi data kode wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 - verifikasi/update main web data
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 - update data menu about pada main web (dev)
 
 ## CHANGE LOG
-- verifikasi data kode wilayah prov. Papua,Papua Barat,Papua Selatam,Papua Tengah,Papua Pegunungan 2025-06-27
+- verifikasi data kode wilayah prov. Papua,Papua Barat,Papua Selatam,Papua Tengah,Papua Pegunungan,Papua Barat Daya 2025-06-27
 - verifikasi data kode wilayah prov. Gorontalo,Sulbar,Maluku,Malut 2025-06-26
 - verifikasi data kode wilayah prov. Sulut,Sulteng,Sulsel,Sultra 2025-06-25
 - verifikasi data kode wilayah prov. Kalsel,Kaltim,Kaltara 2025-06-23
