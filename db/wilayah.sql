@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-06-27 16:18:14
+last edit: 2025-06-29 09:18:44
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -83586,7 +83586,7 @@ VALUES
 ('91.03.02.2004','Asei Besar'),
 ('91.03.02.2006','Nendali'),
 ('91.03.02.3003','Desa Adat Ayapo'),
-('91.03.02.3005','Desa Adat'),
+('91.03.02.3005','Desa Adat Kleuwblou'),
 ('91.03.02.3007','Desa Adat Yokiwa'),
 ('91.03.03','Depapre'),
 ('91.03.03.2001','Waiya'),
