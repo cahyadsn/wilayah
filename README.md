@@ -84,7 +84,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 94      | Papua Tengah               |    8  |    0  | 131  |   36  | 1172  |    50  |
 | 95      | Papua Pegunungan           |    8  |    0  | 252  |   10  | 2617  |     0  |
 | 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |  3082+ |
-|         | TOTAL*                     |  416  |   98  |7285* | 8498* |75266* | 17380* |
+|         | TOTAL*                     |  416  |   98  |7285* | 8496* |75266* | 17380* |
 
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 100.1.1-6117 Tahun 2022)
 
