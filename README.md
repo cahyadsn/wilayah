@@ -29,10 +29,6 @@ Data Jumlah Penduduk Indonesia per propinsi dan per kabupaten/kota dalam databas
 Data Luas wilayah Indonesia per popinsi dan per kabupaten/kota dalam database
 - **db/wilayah_luas.sql** sesuai dengan Kepmendagri No 300.2.2-2138 Tahun 2025 dan Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia
 
-
-*NOTE*  :
-- )* Jumlah penduduk bersumbor dari Ditjen Kependudukan dan Pencatatan Sipil Kemendagri (Data Kependudukan Semester I Bulan DesemberTahun 2024)
-
 ## TAUTAN TERKAIT
 - Data kodepos vs kode wilayah administrasi pemerintahan Indoensia : https://github.com/cahyadsn/wilayah_kodepos
 - Data referensi Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia : https://github.com/cahyadsn/wilayah_ref
@@ -90,13 +86,15 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 | 96+     | Papua Barat Daya+          |    5+ |    1+ | 132+ |   74+ |  939+ |   39103.058 |    623186 |  3082+ |
 |         | TOTAL*                     |  416  |   98  |7285* | 8496* |75266* | 1890179.784 | 284973643 | 17380* |
 
+**NOTE** :
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 100.1.1-6117 Tahun 2022)
-
 )+ data baru dari Kepmendagri No. 300.2.2-2138 Tahun 2025
-
-) **
-- Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
+- Nama Provinsi diurutkan sesuai dengan Kode Wilayah Administrasi Pemerintahan
+- Luas wilayah (dalam km persegi) bersumber dari Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia
+- Jumlah penduduk bersumber dari Ditjen Kependudukan dan Pencatatan Sipil Kemendagri (Data Kependudukan Semester II Bulan Desember Tahun 2024)
+- Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua) 
 - Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi Geospasial (BIG)
+- Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 
 link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
