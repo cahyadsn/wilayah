@@ -1,11 +1,11 @@
 /*
 BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 ================================================================================
-filename : db/pulau.sql
+filename : db/wilayah_pulau.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2025-06-04 15:56:18
+last edit: 2025-07-04 07:59:28
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -26,17 +26,18 @@ copyright (c) 2025 by cahya dsn; cahyadsn@gmail.com
 --
 -- Table structure for table pulau
 --
-DROP TABLE IF EXISTS pulau;
-CREATE TABLE IF NOT EXISTS pulau(
+DROP TABLE IF EXISTS wilayah_pulau;
+CREATE TABLE IF NOT EXISTS wilayah_pulau(
 	kode VARCHAR(11),
 	nama VARCHAR(255),
 	lat FLOAT(23),
 	lng FLOAT(23),
 	notes TEXT
 );
+CREATE INDEX pulau_nama_idx ON wilayah_pulau(nama);
 
 -- provinsi ACEH
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('11.01.40001','Pulau Batukapal','-3.3175','97.1281','TBP'),
 ('11.01.40002','Pulau Batutunggal','-3.4153','97.0725','TBP'),
@@ -405,7 +406,7 @@ VALUES
 ('11.75.40007','Pulau Tualang Mbelen','-2.7706','97.8372','TBP');
 
 -- Provinsi SUMATERA_UTARA
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('12.00.40002','Pulau Bintanah','-1.4767','98.1781','BP'),
 ('12.00.40004','Pulau Nias','-1.0678','97.6008','BP'),
@@ -637,7 +638,7 @@ VALUES
 ('12.74.40009','Pulau Tuantahir','-2.9636','99.8128','Alokasi pulau semula berada di Provinsi Sumatera Utara');
 
 -- Provinsi SUMATERA_BARAT
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('13.00.40002','Pulau Bintangua','1.1481','100.33','TBP'),
 ('13.00.40003','Pulau Sironjong','1.1439','100.3586','TBP'),
@@ -860,7 +861,7 @@ VALUES
 ('13.77.40005','Pulau Bando','0.7606','99.9964','Alokasi pulau semula berada di Provinsi Sumatera Barat');
 
 -- Provinsi RIAU
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('14.01.40001','Pulau Karangantinggi','-0.3603','101.2069',''),
 ('14.01.40002','Pulau Rambai','-0.3653','101.1756',''),
@@ -1008,7 +1009,7 @@ VALUES
 ('14.10.40012','Pulau Topang','-0.7581','103.0953','BP');
 
 -- Provinsi JAMBI
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('15.04.40001','Pulau Selat','1.5456','103.4422','TBP'),
 ('15.04.40002','Pulau Senaning','1.5625','103.3514','TBP'),
@@ -1026,7 +1027,7 @@ VALUES
 ('15.07.40011','Pulau Wantambi','1.0431','104.2014','TBP');
 
 -- Provinsi SUMATERA_SELATAN
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('16.00.40001','Pulau Meba','3.0372','104.62',''),
 ('16.02.40001','Pulau Maspari','3.2192','106.2169','BP'),
@@ -1054,7 +1055,7 @@ VALUES
 ('16.71.40002','Pulau Pulokerto','3.0328','104.6614','Perubahan nama pulau semula Pulau Kerto');
 
 -- Provinsi BENGKULU
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('17.03.40001','Pulau Bangkei','5.4658','102.3731','TBP'),
 ('17.03.40002','Pulau Dua','5.4431','102.3914','BP'),
@@ -1067,7 +1068,7 @@ VALUES
 ('17.71.40001','Pulau Tikus','3.8381','102.1794','BP');
 
 -- Provinsi LAMPUNG
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('18.01.40001','Pulau Anak Krakatau','6.0978','105.4261','BP'),
 ('18.01.40002','Pulau Batu Perahu Sebuku','5.8453','105.5242',''),
@@ -1243,7 +1244,7 @@ VALUES
 ('18.71.40002','Pulau Pasaran','5.4639','105.2653','BP');
 
 -- Provinsi KEP_BANGKA_BELITUNG
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('19.00.40001','Pulau Bangka','2.2531','106.0064','BP'),
 ('19.00.40002','Pulau Belitung','2.8561','107.9164','BP'),
@@ -1748,7 +1749,7 @@ VALUES
 ('19.06.40129','Pulau Tenga','2.6842','108.0031','TBP');
 
 -- Provinsi KEP_RIAU
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('21.00.40001','Pulau Batubulai','0.8678','104.405',''),
 ('21.00.40002','Pulau Lampu','0.8697','104.4044','BP'),
@@ -3780,7 +3781,7 @@ VALUES
 ('21.72.40008','Pulau Terkulai','-0.9539','104.3381','');
 
 -- Provinsi JAKARTA
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('31.01.40001','Pulau Air','5.7633','106.5831','TBP'),
 ('31.01.40002','Pulau Air Biawak Dua','5.7592','106.5839','TBP'),
@@ -3897,7 +3898,7 @@ VALUES
 ('31.72.40001','Pulau Pondok Dayung','6.0978','106.8772','BP');
 
 -- Provinsi JAWA_BARAT
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('32.02.40001','Pulau Cipamungguan','7.3807','106.4935',''),
 ('32.02.40002','Pulau Gotor','7.1864','106.4177','TBP'),
@@ -3931,7 +3932,7 @@ VALUES
 ('32.18.40007','Pulau Sodonggede','7.7938','108.4967','TBP');
 
 -- Provinsi JAWA_TENGAH
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('33.01.40001','Nusa Bagian','7.6886','108.8567',''),
 ('33.01.40002','Nusa Bondan','7.6886','108.8711',''),
@@ -4006,7 +4007,7 @@ VALUES
 ('33.20.40032','Pulau Tengah','5.8092','110.5083','TBP');
 
 -- Provinsi YOGYAKARTA
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('34.03.40001','Pulau Amben','8.1964','110.7664','TBP'),
 ('34.03.40002','Pulau Amben','8.1956','110.7617',''),
@@ -4048,7 +4049,7 @@ VALUES
 
 
 -- Provinsi JAWA_TIMUR
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('35.00.40001','Pulau Madura','7.0425','113.2978','BP'),
 ('35.00.40002','Pulau Galang','7.195','112.6647','BP'),
@@ -4590,7 +4591,7 @@ VALUES
 ('35.29.40119','Tukoh Macan','7.0161','115.5036','');
 
 -- Provinsi BANTEN
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('36.01.40001','Pulau Badul','6.7075','105.5028','TBP'),
 ('36.01.40002','Pulau Batu Acak','6.6881','105.1783','TBP'),
@@ -4674,7 +4675,7 @@ VALUES
 ('36.72.40005','Pulau Ular','6.0075','105.9278','TBP');
 
 -- Provinsi BALI
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('51.00.40001','Pulau Bali','8.3564','115.0717','BP'),
 ('51.01.40001','Pulau Burung','8.1756','114.4494','TBP'),
@@ -4719,7 +4720,7 @@ VALUES
 ('51.71.40001','Pulau Serangan','8.7239','115.2322','BP');
 
 -- Provinsi NUSA_TENGGARA_BARAT
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('52.00.40002','Pulau Lombok','8.6311','116.3175','BP'),
 ('52.00.40003','Pulau Sumbawa','8.8167','117.9514','BP'),
@@ -5153,7 +5154,7 @@ VALUES
 ('52.08.40003','Gili Trawangan','8.3508','116.0364','TBP');
 
 -- Provinsi NUSA_TENGGARA_TIMUR
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('53.00.40007','Pulau Flores','8.715','121.4956','BP'),
 ('53.00.40011','Pulau Sumba','9.7281','120.0011','BP'),
@@ -5811,7 +5812,7 @@ VALUES
 
 
 -- Provinsi KALIMANTAN_BARAT
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('61.00.40007','Pulau Nibung Hilir','2.91','110.7925',''),
 ('61.01.40001','Pulau Bejamban','-1.8764','109.4503',''),
@@ -6075,7 +6076,7 @@ VALUES
 ('61.72.40001','Pulau Simping','-0.8672','108.9011','TBP');
 
 -- Provinsi KALIMANTAN_TENGAH
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('62.00.40001','Pulau Batu Bamana','0.15','114.0989',''),
 ('62.00.40002','Pulau Landuken','1.9094','113.3733',''),
@@ -6150,7 +6151,7 @@ VALUES
 ('62.71.40005','Pulau Takapan','1.8444','113.7367','TBP');
 
 -- Provinsi KALIMANTAN_SELATAN
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('63.01.40001','Pulau Datu','4.0625','114.6164','TBP'),
 ('63.01.40002','Pulau Nyamuk','3.8986','115.2578','TBP'),
@@ -6319,7 +6320,7 @@ VALUES
 ('63.71.40002','Pulau Bromo','3.3444','114.5475','BP');
 
 -- Provinsi KALIMANTAN_TIMUR
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('64.00.40002','Pulau Benawa Besar','1.0869','116.7267','TBP'),
 ('64.01.40001','Pulau Bansik','1.6606','116.3006','TBP'),
@@ -6567,7 +6568,7 @@ VALUES
 ('64.74.40017','Pulau Siacca','-0.0678','117.4919','');
 
 -- Provinsi KALIMANTAN_UTARA
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('65.00.40001','Pulau Sengatok Besar','-3.33','117.35','BP'),
 ('65.01.40001','Pulau Agis','-3.2197','117.2892','TBP'),
@@ -6767,7 +6768,7 @@ VALUES
 ('65.71.40002','Pulau Tarakan','-3.3628','117.5969','BP');
 
 -- Provinsi SULAWESI_UTARA
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('71.00.40001','Pulau Libuton','-0.7564','124.4556','TBP'),
 ('71.01.40001','Pulau Gogabola','-0.8428','123.8297','TBP'),
@@ -7153,7 +7154,7 @@ VALUES
 ('71.72.40036','Pulau Tarsius','-1.5089','125.2483','TBP');
 
 -- Provinsi SULAWESI_TENGAH
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('72.01.40001','Pulau Anduhian','0.8858','123.0747','TBP'),
 ('72.01.40002','Pulau Apitan','0.8172','123.4508','TBP'),
@@ -8757,7 +8758,7 @@ VALUES
 ('72.12.40066','Togong Teo','1.6261','122.0567','TBP');
 
 -- Provinsi SULAWESI_SELATAN
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('73.00.40001','Pulau Betang','5.6789','120.4775','TBP'),
 ('73.01.40001','Gili Gili','7.2394','121.7469','TBP'),
@@ -9155,7 +9156,7 @@ VALUES
 ('73.73.40003','Pulau Ulau Kucing','2.9456','120.1931','');
 
 -- Provinsi SULAWESI_TENGGARA
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('74.00.40001','Pulau Buton','5.0139','122.8881','BP'),
 ('74.00.40002','Pulau Kabaena','5.2578','121.9392','BP'),
@@ -9750,7 +9751,7 @@ VALUES
 ('74.72.40005','Pulau Sawanga','5.3436','122.6469','TBP');
 
 -- Provinsi GORONTALO
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('75.02.40001','Pulau Asiangi','-0.4903','122.3483','TBP'),
 ('75.02.40002','Pulau Bandera','-0.5003','122.3669','TBP'),
@@ -9881,7 +9882,7 @@ VALUES
 ('75.05.40055','Pulau Huliahu Da''A','-0.8994','122.9281','TBP');
 
 -- Provinsi SULAWESI_BARAT
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('76.01.40001','Pulau Anak Pulau Tedong','1.4156','119.3025',''),
 ('76.01.40002','Pulau Baras 6','1.4222','119.4094',''),
@@ -9954,7 +9955,7 @@ VALUES
 ('76.06.40007','Pulau Ujung Karama','2.3039','119.135','');
 
 -- Provinsi MALUKU
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('81.00.40001','Pulau Ambon','3.6144','128.1656','BP'),
 ('81.00.40002','Pulau Buru','3.4456','126.6319','BP'),
@@ -11368,7 +11369,7 @@ VALUES
 ('81.72.40065','Pulau Yer Teran Ratut','5.6258','132.7158','TBP');
 
 -- Provinsi MALUKU_UTARA
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('82.00.40001','Pulau Halmahera','-0.6981','127.8411',''),
 ('82.00.40002','Pulau Yiew Besar','-0.7275','129.1417','PPKT'),
@@ -12347,7 +12348,7 @@ VALUES
 ('82.72.40014','Pulau Sosa Gamgau Moi','-0.7461','127.4428','TBP');
 
 -- Provinsi PAPUA
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('91.03.40001','Pulau Ajakua','2.4369','140.5592','TBP'),
 ('91.03.40002','Pulau Ajava','2.4381','140.6064','TBP'),
@@ -12895,7 +12896,7 @@ VALUES
 ('91.71.40019','Pulau Sibir','2.6111','140.7761','TBP');
 
 -- Provinsi PAPUA_BARAT
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('92.02.40001','Pulau Irbor','0.7436','133.9844','TBP'),
 ('92.02.40002','Pulau Irbor Utara','0.7431','133.9836','TBP'),
@@ -14397,7 +14398,7 @@ VALUES
 ('92.08.40672','Pulau Wariami Nus','3.8956','134.1669','');
 
 -- Provinsi PAPUA_SELATAN
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('93.01.40001','Pulau Habe','8.2419','139.4419','TBP'),
 ('93.01.40002','Pulau Kolepom','7.8956','138.3642','110652.4943 BP'),
@@ -14408,7 +14409,7 @@ VALUES
 ('93.04.40004','Pulau Somerwoo','5.1853','137.505','TBP');
 
 -- Provinsi PAPUA_TENGAH
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('94.01.40001','Pulau Aamone','3.0264','134.8275','TBP'),
 ('94.01.40002','Pulau Ahe','3.0889','135.5614','BP'),
@@ -14462,7 +14463,7 @@ VALUES
 ('94.04.40006','Pulau Yapero','5.0364','137.1886','TBP');
 
 -- Provinsi PAPUA_BARAT_DAYA
-INSERT INTO pulau(kode,nama,lat,lng,notes)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('96.00.40001','Pulau Salawati','1.0964','130.9022','BP'),
 ('96.01.40001','Ef Lalo','1.0869','131.2253','TBP'),

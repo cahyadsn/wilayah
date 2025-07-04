@@ -1,11 +1,12 @@
 /*
 BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 ================================================================================
-filename : db/pendudk.sql
+filename : db/wilayah_pendudk.sql
 purpose  :
-note     : Data jumlah penduduk dan kode wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
+note     : Data jumlah penduduk dan kode wilayah sesuai Kepmendagri 
+           No 300.2.2-2138 Tahun 2025
 create   : 2025-06-27 18:42:05
-last edit: 2025-06-27 18:59:02
+last edit: 2025-07-04 07:58:13
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -27,8 +28,8 @@ copyright (c) 2025 by cahya dsn; cahyadsn@gmail.com
 -- Table structure for table penduduk
 --
 
-DROP TABLE IF EXISTS penduduk;
-CREATE TABLE IF NOT EXISTS penduduk (
+DROP TABLE IF EXISTS wilayah_penduduk;
+CREATE TABLE IF NOT EXISTS wilayah_penduduk (
     kode varchar(13) NOT NULL,
     nama varchar(100) NOT NULL,
     pria integer NOT NULL,
@@ -36,13 +37,13 @@ CREATE TABLE IF NOT EXISTS penduduk (
     total integer NOT NULL,
     PRIMARY KEY (kode)
 );
-CREATE INDEX penduduk_nama_idx ON penduduk (nama);
+CREATE INDEX penduduk_nama_idx ON wilayah_penduduk(nama);
 --
 -- Dumping data for table penduduk
 --
 
 -- 
-INSERT INTO penduduk (kode, nama, pria, wanita, total)
+INSERT INTO wilayah_penduduk(kode, nama, pria, wanita, total)
 VALUES
 ('0','INDONESIA','143863392','141110251','284973643'),
 ('11','Aceh','2815060','2808419','5623479'),
