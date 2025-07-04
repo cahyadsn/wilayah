@@ -113,12 +113,14 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## TODO
-- update data luas wilayah di db/wilayah_level_1_2.sql berdasar dari Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia(on progress)
 - verifikasi/update main web data
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 - update data menu about pada main web (dev)
 
 ## CHANGE LOG
+- update data luas wilayah di db/wilayah_level_1_2.sql berdasar dari Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia 2025-07-04
+
+[v2025.6]
 - menambahkan data jumlah penduduk Indonesia per propinsi, per kabupaten/kota 2025-06-27
 - verifikasi data kode wilayah prov. Papua,Papua Barat,Papua Selatam,Papua Tengah,Papua Pegunungan,Papua Barat Daya 2025-06-27
 - verifikasi data kode wilayah prov. Gorontalo,Sulbar,Maluku,Malut 2025-06-26
