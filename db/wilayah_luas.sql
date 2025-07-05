@@ -9,7 +9,7 @@ note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
            Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, 
            Hal Penghitungan Luas Wilayah di Seluruh Indonesia
 create   : 2025-07-04 07:52:21
-last edit: 2025-07-04 08:18:14
+last edit: 2025-07-05 23:21:45
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -627,10 +627,10 @@ VALUES
 ('92','Papua Barat',60308.59),
 ('92.02','Kabupaten Manokwari',2764.187),
 ('92.03','Kabupaten Fak Fak',9735.003),
-('92.06','19946.579',84205.0),
+('92.06','Kabupaten Teluk Bintuni',19946.579),
 ('92.07','Kabupaten Teluk Wondama',4847.951),
 ('92.08','Kabupaten Kaimana',17878.913),
-('92.11','1837.146',39026.0),
+('92.11','Kabupaten Manokwari Selatan',1837.146),
 ('92.12','Kabupaten Pegunungan Arfak',3298.811);
 INSERT INTO wilayah_luas(kode,nama,luas)
 VALUES

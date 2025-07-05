@@ -122,6 +122,8 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
 
 ## CHANGE LOG
+- update data luas wilayah kabupaten Teluk Bintuni dan Manokwari Selatan 2025-07-05
+
 [v2025.7]
 - update data jumlah penduduk di **db/wilayah_penduduk.sql**, Jumlah penduduk bersumbor dari Ditjen Kependudukan dan Pencatatan Sipil Kemendagri (Data Kependudukan Semester I Bulan DesemberTahun 2024)  2025-07-04
 - update data pulau di **db/wilayah_pulau.sql** berdasar dari Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi Geospasial (BIG) 2025-07-04
