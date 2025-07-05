@@ -87,8 +87,11 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 |         | TOTAL*                     |  416  |   98  |7285* | 8496* |75266* | 1890179.784 | 284973643 | 17380* |
 
 **NOTE** :
+
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 100.1.1-6117 Tahun 2022)
+
 )+ data baru dari Kepmendagri No. 300.2.2-2138 Tahun 2025
+
 - Nama Provinsi diurutkan sesuai dengan Kode Wilayah Administrasi Pemerintahan
 - Luas wilayah (dalam km persegi) bersumber dari Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia
 - Jumlah penduduk bersumber dari Ditjen Kependudukan dan Pencatatan Sipil Kemendagri (Data Kependudukan Semester II Bulan Desember Tahun 2024)
