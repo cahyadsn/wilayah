@@ -1,16 +1,16 @@
 /*
 BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 ================================================================================
-filename : db/wilayah.sql
-purpose  :
-note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
-           Data Luas Wilaah  berdasar dari Badan Informasi Geospasial berdasarkan 
-           Surat Deputi Bidang Informasi Geospasial Dasar 
-           Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, 
-           Hal Penghitungan Luas Wilayah di Seluruh Indonesia
-create   : 2025-07-04 07:52:21
-last edit: 2025-07-05 23:21:45
-author   : cahya dsn
+filename  : db/wilayah.sql
+purpose   :
+note      : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
+            Data Luas Wilaah berdasar dari Badan Informasi Geospasial berdasarkan
+            Surat Deputi Bidang Informasi Geospasial Dasar
+            Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024,
+            Hal Penghitungan Luas Wilayah di Seluruh Indonesia
+create    : 2025-07-04 07:52:21
+last edit : 2025-07-05 23:30:05
+author    : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
 terms of the MIT License.
@@ -32,10 +32,10 @@ copyright (c) 2025 by cahya dsn; cahyadsn@gmail.com
 --
 DROP TABLE IF EXISTS wilayah_luas;
 CREATE TABLE wilayah_luas (
-  kode varchar(13) NOT NULL,
-  nama varchar(100) DEFAULT NULL,
-  luas double NOT NULL,
-  PRIMARY KEY (kode)
+ kode varchar(13) NOT NULL,
+ nama varchar(100) DEFAULT NULL,
+ luas double NOT NULL,
+ PRIMARY KEY (kode)
 );
 CREATE INDEX luas_nama_idx ON wilayah_luas(nama);
 --
@@ -133,9 +133,9 @@ VALUES
 ('14.02','Kabupaten Indragiri Hulu',7871.85),
 ('14.03','Kabupaten Bengkalis',8604.179),
 ('14.04','Kabupaten Indragiri Hilir',13518.47),
-('14.05','Kabupaten  Pelalawan',13256.104),
-('14.06','Kabupaten  Rokan Hulu',7658.149),
-('14.07','Kabupaten  Rokan Hilir',9068.605),
+('14.05','Kabupaten Pelalawan',13256.104),
+('14.06','Kabupaten Rokan Hulu',7658.149),
+('14.07','Kabupaten Rokan Hilir',9068.605),
 ('14.08','Kabupaten Siak',7803.566),
 ('14.09','Kabupaten Kuantan Singingi',5457.863),
 ('14.1','Kabupaten Kepulauan Meranti',3609.397),
@@ -144,11 +144,11 @@ VALUES
 INSERT INTO wilayah_luas(kode,nama,luas)
 VALUES
 ('15','Jambi',49023.037),
-('15.01','Kabupaten  Kerinci',3445.196),
-('15.02','Kabupaten  Merangin',7540.118),
+('15.01','Kabupaten Kerinci',3445.196),
+('15.02','Kabupaten Merangin',7540.118),
 ('15.03','Kabupaten Sarolangun',5935.894),
 ('15.04','Kabupaten Batanghari',5453.689),
-('15.05','Kabupaten  Muaro Jambi',5159.623),
+('15.05','Kabupaten Muaro Jambi',5159.623),
 ('15.06','Kabupaten Tanjung Jabung Barat',5544.567),
 ('15.07','Kabupaten Tanjung Jabung Timur',4544.575),
 ('15.08','Kabupaten Bungo',4760.827),
@@ -654,7 +654,7 @@ INSERT INTO wilayah_luas(kode,nama,luas)
 VALUES
 ('95','Papua Pegunungan',52508.656),
 ('95.01','Kabupaten Jayawijaya',2629.01),
-('95.02','Kab Pegunungan Bintang',13751.915),
+('95.02','Kabupaten Pegunungan Bintang',13751.915),
 ('95.03','Kabupaten Yahukimo',16365.938),
 ('95.04','Kabupaten Tolikara',4285.333),
 ('95.05','Kabupaten Mamberamo Tengah',4101.486),
