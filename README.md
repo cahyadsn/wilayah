@@ -122,6 +122,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
 
 ## CHANGE LOG
+- update data luas wilayah kabupaten Sarmi dan Mamberamo Raya 2025-07-06
 - update data luas wilayah kabupaten Teluk Bintuni dan Manokwari Selatan 2025-07-05
 
 [v2025.7]

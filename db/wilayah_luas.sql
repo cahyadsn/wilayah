@@ -9,7 +9,7 @@ note      : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
             Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024,
             Hal Penghitungan Luas Wilayah di Seluruh Indonesia
 create    : 2025-07-04 07:52:21
-last edit : 2025-07-05 23:30:05
+last edit : 2025-07-06 15:09:55
 author    : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -616,11 +616,11 @@ VALUES
 ('91.03','Kabupaten Jayapura',14081.935),
 ('91.05','Kabupaten Kepulauan Yapen',2425.374),
 ('91.06','Kabupaten Biak Numfor',2258.863),
-('91.1','Kabupaten Sarmi',14068.312),
+('91.10','Kabupaten Sarmi',14068.312),
 ('91.11','Kabupaten Keerom',9526.315),
 ('91.15','Kabupaten Waropen',10781.037),
 ('91.19','Kabupaten Supiori',660.681),
-('91.2','Kabupaten Mamberamo Raya',26745.359),
+('91.20','Kabupaten Mamberamo Raya',26745.359),
 ('91.71','Kota Jayapura',835.439);
 INSERT INTO wilayah_luas(kode,nama,luas)
 VALUES
