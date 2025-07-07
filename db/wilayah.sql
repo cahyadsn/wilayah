@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-06-29 09:18:44
+last edit: 2025-07-07 09:29:09
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -9074,7 +9074,7 @@ VALUES
 ('12.08.18.2014','Pokan Baru'),
 ('12.08.18.2015','Manrayap Bayu'),
 ('12.08.18.2016','Talang Bayu'),
-('12.08.19','Jawa Maraja Bah Jambi  -'),
+('12.08.19','Jawa Maraja Bah Jambi'),
 ('12.08.19.2001','Jawa Maraja'),
 ('12.08.19.2002','Moho'),
 ('12.08.19.2003','Bahalat Bayu'),
@@ -9350,7 +9350,7 @@ VALUES
 ('12.09.16.2017','Mekar Sari'),
 ('12.09.16.2018','Perkebunan Sei Silau'),
 ('12.09.16.2019','Karya Ambalutu'),
-('12.09.17','Bandar Pasir Mandoge  -'),
+('12.09.17','Bandar Pasir Mandoge'),
 ('12.09.17.2001','Bandar Pasir Mandoge'),
 ('12.09.17.2002','Huta Bagasan'),
 ('12.09.17.2003','Sei Nadoras'),
