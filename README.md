@@ -122,7 +122,8 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - update data menu about pada main web (dev)
 
 ## CHANGE LOG
-- update perbaikan nama desa di kab. Aceh Utara, Kab. Mamberamo Raya 2025-07-17
+- verifikasi dan update data nama wilayah, menghilangkan double spasi 2025-07-17
+- update perbaikan nama desa di kab. ACeh Tenggara, Aceh Utara, Mamberamo Raya 2025-07-17
 - update data luas wilayah kabupaten Sarmi dan Mamberamo Raya 2025-07-06
 - update data luas wilayah kabupaten Teluk Bintuni dan Manokwari Selatan 2025-07-05
 
