@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-07-17 18:42:12
+last edit: 2025-07-17 18:48:48
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -18899,7 +18899,7 @@ VALUES
 ('16.01.32.2006','Suka Pindah'),
 ('16.01.32.2007','Sinar Kedaton'),
 ('16.01.32.2008','Lubuk Kemiling'),
-('16.02','Kabupaten Ogan Komering'),
+('16.02','Kabupaten Ogan Komering Ilir'),
 ('16.02.02','Tanjung Lubuk'),
 ('16.02.02.1011','Tanjung Lubuk'),
 ('16.02.02.2001','Ulak Kapal'),
@@ -20107,7 +20107,7 @@ VALUES
 ('16.05.18.2006','Muara Kati Baru I'),
 ('16.05.18.2007','Muara Kati Baru II'),
 ('16.05.18.2008','Kebur'),
-('16.05.18.2009','Simpang Gegas'),
+('16.05.18.2009','Simpang Gegas Temuan'),
 ('16.05.18.2010','Kebur Jaya'),
 ('16.05.19','Sumber Harta'),
 ('16.05.19.1002','Sumber Harta'),
@@ -20255,7 +20255,7 @@ VALUES
 ('16.06.07.2021','Bukit Jaya'),
 ('16.06.08','Keluang'),
 ('16.06.08.1015','Keluang'),
-('16.06.08.2001','Tenggaro Keluang'),
+('16.06.08.2001','Tenggaro'),
 ('16.06.08.2003','Tanjung Dalam'),
 ('16.06.08.2004','Dawas'),
 ('16.06.08.2005','Mekar Jaya'),
