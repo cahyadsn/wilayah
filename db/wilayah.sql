@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-07-17 18:02:29
+last edit: 2025-07-17 18:09:28
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -15210,7 +15210,7 @@ VALUES
 ('14.02.01.1006','Pasar Kota'),
 ('14.02.01.1007','Kampung Besar Kota'),
 ('14.02.01.1008','Sekip Hulu'),
-('14.02.01.1011','Kampung Besar'),
+('14.02.01.1011','Kampung Besar Seberang'),
 ('14.02.01.1018','Sekip Hilir'),
 ('14.02.01.2001','Sungai Guntung Tengah'),
 ('14.02.01.2002','Sungai Guntung Hilir'),
@@ -15845,7 +15845,7 @@ VALUES
 ('14.05.01.2003','Bukit Gajah'),
 ('14.05.01.2004','Bukit Jaya'),
 ('14.05.01.2005','Kampung Baru'),
-('14.05.01.2006','Lubuk Kembang'),
+('14.05.01.2006','Lubuk Kembang Bunga'),
 ('14.05.01.2007','Lubuk Kembang Sari'),
 ('14.05.01.2008','Silikuan Hulu'),
 ('14.05.01.2009','Tri Mulya Jaya'),
@@ -16023,7 +16023,7 @@ VALUES
 ('14.06.05.2003','Kepenuhan Barat'),
 ('14.06.05.2004','Kepenuhan Hilir'),
 ('14.06.05.2005','Kepenuhan Timur'),
-('14.06.05.2006','Kepenuhan Barat Sei'),
+('14.06.05.2006','Kepenuhan Barat Sei Rokan Jaya'),
 ('14.06.05.2007','Kepenuhan Raya'),
 ('14.06.05.2008','Kepenuhan Baru'),
 ('14.06.05.2009','Kepenuhan Barat Mulya'),
@@ -16114,7 +16114,7 @@ VALUES
 ('14.06.13.2005','Pauh'),
 ('14.06.13.2006','Kasang Padang'),
 ('14.06.13.2007','Kasang Mungkal'),
-('14.06.14','Pagaran Tapah'),
+('14.06.14','Pagaran Tapah Darussalam'),
 ('14.06.14.2001','Pagaran Tapah'),
 ('14.06.14.2002','Kembang Damai'),
 ('14.06.14.2005','Sangkir Indah'),
@@ -16705,8 +16705,8 @@ VALUES
 ('14.09.14.2004','Kampungbaru Sentajo'),
 ('14.09.14.2005','Pulaukopung Sentajo'),
 ('14.09.14.2006','Teratak Air Hitam'),
-('14.09.14.2007','Seberang Teratak Air'),
-('14.09.14.2008','Parit Teratak Air'),
+('14.09.14.2007','Seberang Teratak Air Hitam'),
+('14.09.14.2008','Parit Teratak Air Hitam'),
 ('14.09.14.2009','Jalur Patah'),
 ('14.09.14.2010','Geringing Baru'),
 ('14.09.14.2011','Marsawa'),
@@ -16939,7 +16939,7 @@ VALUES
 ('14.72.01.1003','Pangkalan Sesai'),
 ('14.72.01.1006','Purnama'),
 ('14.72.01.1008','Bagan Keladi'),
-('14.72.01.1009','Simpang Tetap Darul'),
+('14.72.01.1009','Simpang Tetap Darul Ichsan'),
 ('14.72.02','Dumai Timur'),
 ('14.72.02.1002','Teluk Binjai'),
 ('14.72.02.1003','Tanjung Palas'),
