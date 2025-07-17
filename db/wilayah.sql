@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-07-17 14:32:45
+last edit: 2025-07-17 14:46:47
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -84625,7 +84625,7 @@ VALUES
 ('91.20.07.2001','Kamai'),
 ('91.20.07.2002','Dadat'),
 ('91.20.07.2003','Kerema'),
-('91.20.07.2005','Teuw*'),
+('91.20.07.2005','Teuw'),
 ('91.20.07.2006','Watiaro'),
 ('91.20.07.2007','Gesa Baru'),
 ('91.20.07.2008','Baitanisa'),
