@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-07-17 17:34:44
+last edit: 2025-07-17 18:02:29
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -13481,7 +13481,7 @@ VALUES
 ('13.01.02.2002','Sungai Tunu'),
 ('13.01.02.2003','Sungai Tunu Utara'),
 ('13.01.02.2004','Sungai Tunu Barat'),
-('13.01.02.2005','Nyiur Melambai'),
+('13.01.02.2005','Nyiur Melambai Pelangai'),
 ('13.01.02.2006','Sungai Liku Pelangai'),
 ('13.01.02.2007','Koto VIII Pelangai'),
 ('13.01.02.2008','Pelangai Gadang'),
@@ -13945,7 +13945,7 @@ VALUES
 ('13.05.04','2 x 11 Anam Lingkuang'),
 ('13.05.04.2002','Sicincin'),
 ('13.05.04.2003','Lubuk Pandan'),
-('13.05.04.2004','Sungai Asam Anduring Guguk'),
+('13.05.04.2004','Sungai Asam'),
 ('13.05.05','VII Koto'),
 ('13.05.05.2001','Balah Aie'),
 ('13.05.05.2002','Sungai Sariak'),
@@ -14085,7 +14085,7 @@ VALUES
 ('13.06.07.2003','Lambah'),
 ('13.06.07.2004','Panampuang'),
 ('13.06.07.2005','Ampang Gadang'),
-('13.06.07.2006','Pasia Panampung'),
+('13.06.07.2006','Pasia'),
 ('13.06.07.2008','Balai Gurah'),
 ('13.06.08','Baso'),
 ('13.06.08.2001','Koto Tinggi'),
@@ -14097,7 +14097,7 @@ VALUES
 ('13.06.08.2008','Sungai Cubadak'),
 ('13.06.08.2009','Koto Gadang'),
 ('13.06.09','Tilatang Kamang'),
-('13.06.09.2001','Koto Tangah Kamang Mudik'),
+('13.06.09.2001','Koto Tangah'),
 ('13.06.09.2003','Gadut'),
 ('13.06.09.2004','Kapau'),
 ('13.06.10','Palupuh'),
