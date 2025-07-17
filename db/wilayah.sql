@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-07-07 09:29:09
+last edit: 2025-07-17 14:32:45
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -3441,14 +3441,14 @@ VALUES
 ('11.08.04.2034','Meunasah Ulee Barat'),
 ('11.08.04.2035','Meunasah Ranto'),
 ('11.08.04.2036','Meunasah Tutong'),
-('11.08.04.2037','Meunasah Nga LB ,'),
+('11.08.04.2037','Meunasah Nga LB'),
 ('11.08.04.2038','Keutapang'),
 ('11.08.04.2039','Matang Munjee'),
 ('11.08.04.2040','Pulo Dulang'),
 ('11.08.04.2041','Dayah LB'),
 ('11.08.04.2042','Meunasah Geumata'),
 ('11.08.04.2043','Meunasah Meureubo'),
-('11.08.04.2044','Meunasah Dayah LT ,'),
+('11.08.04.2044','Meunasah Dayah LT'),
 ('11.08.04.2045','Arongan LT'),
 ('11.08.04.2046','Meunasah Tuha'),
 ('11.08.04.2047','Meunasah Krueng LT'),
