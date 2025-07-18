@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-07-18 08:10:33
+last edit: 2025-07-18 09:33:33
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -15369,7 +15369,7 @@ VALUES
 ('14.02.11.2007','Sungai Lala'),
 ('14.02.11.2008','Kelawat'),
 ('14.02.11.2009','Perkebunan Sungai Parit'),
-('14.02.11.2010','Perkebunan Sunga Lala'),
+('14.02.11.2010','Perkebunan Sungai Lala'),
 ('14.02.11.2011','Tanjung Danau'),
 ('14.02.11.2012','Sungai Air Putih'),
 ('14.02.12','Lubuk Batu Jaya'),
