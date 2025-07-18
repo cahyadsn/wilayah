@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-07-18 09:33:33
+last edit: 2025-07-18 22:18:12
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -51808,7 +51808,7 @@ VALUES
 ('35.25.05.2020','Kemudi'),
 ('35.25.05.2021','Tebaloan'),
 ('35.25.05.2022','Tirem'),
-('35.25.05.2023','Ambeng - ambeng Watangrejo'),
+('35.25.05.2023','Ambeng-ambeng Watangrejo'),
 ('35.25.06','Wringinanom'),
 ('35.25.06.2001','Kepuhklagen'),
 ('35.25.06.2002','Sumbergede'),
@@ -51919,7 +51919,7 @@ VALUES
 ('35.25.11.2014','Betiting'),
 ('35.25.11.2015','Ngabetan'),
 ('35.25.11.2016','Padeg'),
-('35.25.11.2017','Iker - iker Geger'),
+('35.25.11.2017','Iker-iker Geger'),
 ('35.25.11.2018','Semampir'),
 ('35.25.11.2019','Cagakagung'),
 ('35.25.11.2020','Cerme Kidul'),
@@ -51939,7 +51939,7 @@ VALUES
 ('35.25.12.2008','Sidokumpul'),
 ('35.25.12.2009','Pegundan'),
 ('35.25.12.2010','Sukowati'),
-('35.25.12.2011','Abar - abir'),
+('35.25.12.2011','Abar-abir'),
 ('35.25.12.2012','Bungah'),
 ('35.25.12.2013','Kemangi'),
 ('35.25.12.2014','Kisik'),
