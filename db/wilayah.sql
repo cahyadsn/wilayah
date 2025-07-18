@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-07-17 21:16:01
+last edit: 2025-07-18 08:10:33
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -4493,7 +4493,7 @@ VALUES
 ('11.11.01.2043','Meunasah Lancok'),
 ('11.11.01.2044','Meunasah Puuk'),
 ('11.11.01.2045','Tanjongan Idem'),
-('11.11.01.2084','Geulumpang Payong ,'),
+('11.11.01.2084','Geulumpang Payong'),
 ('11.11.02','Jeunieb'),
 ('11.11.02.2018','Blang Me Timu'),
 ('11.11.02.2019','Lancang'),
@@ -4618,7 +4618,7 @@ VALUES
 ('11.11.04.2057','Pulo Lawang'),
 ('11.11.04.2058','Abeuk Usong'),
 ('11.11.04.2059','Paloh Seulimeng'),
-('11.11.04.2060','Abeuk Tingkeum ,'),
+('11.11.04.2060','Abeuk Tingkeum'),
 ('11.11.04.2061','Blang Mee'),
 ('11.11.04.2062','Blang Seupeung'),
 ('11.11.04.2063','Blang Gandai'),
@@ -4819,7 +4819,7 @@ VALUES
 ('11.11.09.2023','Bukit Mulia'),
 ('11.11.09.2024','Juli Meunasah Tambo'),
 ('11.11.09.2025','Alue Rambong'),
-('11.11.09.2026','Juli MeunasahTeungoh'),
+('11.11.09.2026','Juli Meunasah Teungoh'),
 ('11.11.09.2027','Juli Payaru'),
 ('11.11.09.2028','Paseh'),
 ('11.11.09.2029','Juli Cot Meurak'),
