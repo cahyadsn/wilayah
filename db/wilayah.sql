@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-07-18 22:18:12
+last edit: 2025-07-19 10:30:15
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -7824,7 +7824,7 @@ VALUES
 ('12.05.01.2011','Empus'),
 ('12.05.01.2012','Simpang Pulo Rambung'),
 ('12.05.01.2013','Perkebunan Sei Musam'),
-('12.05.01.2014','Batu Jong - Jong'),
+('12.05.01.2014','Batu Jong-Jong'),
 ('12.05.01.2015','Sematar'),
 ('12.05.01.2016','Perkebunan Pulo Rambung'),
 ('12.05.01.2017','Sei Musam Kendit'),
@@ -12607,7 +12607,7 @@ VALUES
 ('12.23.05.2016','Bulungihit'),
 ('12.23.05.2017','Aek Hitetoras'),
 ('12.23.05.2018','Sumber Mulyo'),
-('12.23.06','Na IX - X'),
+('12.23.06','Na IX-X'),
 ('12.23.06.1001','Aek Kota Batu'),
 ('12.23.06.2002','Pematang'),
 ('12.23.06.2003','Batu Tunggal'),
@@ -46167,7 +46167,7 @@ VALUES
 ('35.07.10.2007','Panggungrejo'),
 ('35.07.10.2008','Ganjaran'),
 ('35.07.10.2009','Putat Lor'),
-('35.07.10.2010','Urek - Urek'),
+('35.07.10.2010','Urek-Urek'),
 ('35.07.10.2011','Ketawang'),
 ('35.07.10.2012','Putukrejo'),
 ('35.07.10.2013','Sumberjaya'),
@@ -46488,7 +46488,7 @@ VALUES
 ('35.08.04.2002','Kalibendo'),
 ('35.08.04.2003','Bades'),
 ('35.08.04.2004','Bago'),
-('35.08.04.2005','Selok Awar - Awar'),
+('35.08.04.2005','Selok Awar-Awar'),
 ('35.08.04.2006','Condro'),
 ('35.08.04.2007','Madurejo'),
 ('35.08.04.2008','Pasirian'),
@@ -63305,7 +63305,7 @@ VALUES
 ('61.11.02.2003','Pemangkat'),
 ('61.11.02.2004','Padu Banjar'),
 ('61.11.02.2005','Penjalaan'),
-('61.11.02.2006','Sungai Mata - Mata'),
+('61.11.02.2006','Sungai Mata-Mata'),
 ('61.11.02.2007','Batu Barat'),
 ('61.11.02.2008','Pulau Kumbang'),
 ('61.11.02.2009','Rantau Panjang'),
@@ -76694,7 +76694,7 @@ VALUES
 ('73.71.12.1008','Bitowa'),
 ('73.71.13','Rappocini'),
 ('73.71.13.1001','Tidung'),
-('73.71.13.1002','Kassi - Kassi'),
+('73.71.13.1002','Kassi-Kassi'),
 ('73.71.13.1003','Mappala'),
 ('73.71.13.1004','Buakana'),
 ('73.71.13.1005','Bonto Makkio'),
@@ -76989,7 +76989,7 @@ VALUES
 ('74.02.03.1009','Ranoeya'),
 ('74.02.03.1010','Palarahi'),
 ('74.02.03.1011','Kasupute'),
-('74.02.03.1019','Nohu - Nohu'),
+('74.02.03.1019','Nohu-Nohu'),
 ('74.02.03.1020','Inolobu'),
 ('74.02.03.1027','Bose-Bose'),
 ('74.02.03.1028','Puusinauwi'),
@@ -78307,7 +78307,7 @@ VALUES
 ('74.08.04.2014','Landolia'),
 ('74.08.04.2015','Lawekara'),
 ('74.08.05','Kodeoha'),
-('74.08.05.1002','Mala - Mala'),
+('74.08.05.1002','Mala-Mala'),
 ('74.08.05.2001','Awo'),
 ('74.08.05.2003','Koroha'),
 ('74.08.05.2004','Kamisi'),
@@ -78343,7 +78343,7 @@ VALUES
 ('74.08.08','Lambai'),
 ('74.08.08.2001','Lambai'),
 ('74.08.08.2002','Latawaro'),
-('74.08.08.2003','Lapasi - Pasi'),
+('74.08.08.2003','Lapasi-Pasi'),
 ('74.08.08.2004','Raoda'),
 ('74.08.08.2005','Woise'),
 ('74.08.08.2006','Woitombo'),
@@ -78388,7 +78388,7 @@ VALUES
 ('74.08.12.2008','Sarambu'),
 ('74.08.12.2009','Tinuna'),
 ('74.08.13','Katoi'),
-('74.08.13.2001','Lanipa - Nipa'),
+('74.08.13.2001','Lanipa-Nipa'),
 ('74.08.13.2002','Ujung Tobaku'),
 ('74.08.13.2003','Katoi'),
 ('74.08.13.2004','Simbula'),
