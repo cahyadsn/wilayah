@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-07-19 10:30:15
+last edit: 2025-07-22 10:02:30
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -3964,7 +3964,7 @@ VALUES
 ('11.08.17.2011','Cempeudak'),
 ('11.08.17.2012','Matang Teungoh'),
 ('11.08.17.2013','Pucok Alue'),
-('11.08.17.2014','U Baro.'),
+('11.08.17.2014','U Baro'),
 ('11.08.17.2015','Trieng'),
 ('11.08.17.2016','Lhok Reuhat'),
 ('11.08.17.2017','Lueng Baro'),
@@ -6991,7 +6991,7 @@ VALUES
 ('12.01.09.2002','Unte Boang'),
 ('12.01.09.2003','Sibintang'),
 ('12.01.09.2004','Barambang'),
-('12.01.09.2005','Siantar Ca.'),
+('12.01.09.2005','Siantar Ca'),
 ('12.01.09.2006','Muara Bolak'),
 ('12.01.09.2007','Huta Tombak'),
 ('12.01.09.2008','Siantar Dolok'),
@@ -13278,7 +13278,7 @@ VALUES
 ('12.77.01.1009','Sadabuan'),
 ('12.77.01.1010','Panyanggar'),
 ('12.77.01.1011','Bonan Dolok'),
-('12.77.01.1012','Losung Batu.'),
+('12.77.01.1012','Losung Batu'),
 ('12.77.01.1013','Timbangan'),
 ('12.77.01.1014','Bincar'),
 ('12.77.01.1015','Kantin'),
@@ -22423,7 +22423,7 @@ VALUES
 ('17.02','Kabupaten Rejang Lebong'),
 ('17.02.06','Kota Padang'),
 ('17.02.06.1004','Kota Padang'),
-('17.02.06.1015','Bedeng SS.'),
+('17.02.06.1015','Bedeng SS'),
 ('17.02.06.1016','Dusun Baru'),
 ('17.02.06.2001','Derati'),
 ('17.02.06.2002','Taba Anyar'),
@@ -66499,7 +66499,7 @@ VALUES
 ('63.07.01.2016','Pandanu'),
 ('63.07.01.2017','Teluk Mesjid'),
 ('63.07.02','Batu Benawa'),
-('63.07.02.2001','Murung A.'),
+('63.07.02.2001','Murung A'),
 ('63.07.02.2002','Pagat'),
 ('63.07.02.2003','Kalibaru'),
 ('63.07.02.2004','Kahakan'),
@@ -66628,7 +66628,7 @@ VALUES
 ('63.07.09','Hantakan'),
 ('63.07.09.2001','Hantakan'),
 ('63.07.09.2002','Alat'),
-('63.07.09.2003','Murung B.'),
+('63.07.09.2003','Murung B'),
 ('63.07.09.2004','Bulayak'),
 ('63.07.09.2005','Batu Tunggal'),
 ('63.07.09.2006','Pasting'),
@@ -75979,7 +75979,7 @@ VALUES
 ('73.18.20.2007','Buri'''),
 ('73.18.20.2008','Maroson'),
 ('73.18.20.2009','Batusura'''),
-('73.18.20.2010','Bua '' Tarrung'),
+('73.18.20.2010','Bua'' Tarrung'),
 ('73.18.20.2011','To''pao'),
 ('73.18.20.2012','Kayuosing'),
 ('73.18.27','Makale Utara'),
