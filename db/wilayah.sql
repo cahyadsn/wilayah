@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-07-22 10:02:30
+last edit: 2025-08-05 16:21:47
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -14135,7 +14135,7 @@ VALUES
 ('13.06.15.2001','Magek'),
 ('13.06.15.2002','Kamang Hilia'),
 ('13.06.15.2003','Kamang Mudiak'),
-('13.06.15.2004','Kamang Tangah'),
+('13.06.15.2004','Kamang Tangah Anam Suku'),
 ('13.06.15.2005','Pauh Kamang Mudiak'),
 ('13.06.16','Malalak'),
 ('13.06.16.2001','Malalak Utara'),
