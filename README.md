@@ -119,9 +119,9 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 ## TODO
 - verifikasi/update main web data
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
-- update data menu about pada main web (dev)
 
 ## CHANGE LOG
+- update main web ke v4.0 (https://wilayah.cahyadsn.com) dan update data sesuai kepmendari No 300.2.2-2138 Th 2025 2025-07-23
 - verifikasi dan update data nama wilayah, menghilangkan double spasi 2025-07-17
 - update perbaikan nama desa di kab. ACeh Tenggara, Aceh Utara, Mamberamo Raya 2025-07-17
 - update data luas wilayah kabupaten Sarmi dan Mamberamo Raya 2025-07-06
