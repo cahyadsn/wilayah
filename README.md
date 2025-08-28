@@ -134,7 +134,7 @@ link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 - menambahkan data luas wilayah Indonesia per propinsi, per kabupaten/kota berdasarkan di **db/wilayah_luas.sql**, data Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia 2025-07-04
 
 ## INFORMASI
-- data kode wilayah pemerintahan diperoleh dari website Kemendagri di https://jdih.kemendagri.go.id/dokumen/view?id=1937
+- data kode wilayah pemerintahan diperoleh dari https://drive.google.com/file/d/1o_m621D00TtwCwQMLn8XUnV3nolamPDm/view?usp=sharing
 - data polygon diperoleh dari website BIG(Badan Informasi Geospatial) di https://tanahair.indonesia.go.id
 - data latitude/longitude dari google maps
 
