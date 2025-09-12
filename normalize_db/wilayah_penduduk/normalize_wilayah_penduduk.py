@@ -6,7 +6,7 @@ filename : normalize_wilayah_penduduk.py
 purpose  : Normalize wilayah_penduduk data from single table to normalized tables
 note     : Converts hierarchical wilayah population data from Kemendagri
 create   : 2025-09-13
-author   : sukmaajidigital with GitHub Copilot
+author   : sukmaajidigital
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
 terms of the MIT License.
@@ -246,7 +246,7 @@ purpose  : Normalized {category} data from Kemendagri
 note     : Data {category.title()} sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
            Data penduduk per wilayah berdasar data terbaru
 create   : 2025-09-13
-author   : sukmaajidigital with GitHub Copilot (normalized from original data)
+author   : sukmaajidigital (normalized from original data)
 ================================================================================
 */
 

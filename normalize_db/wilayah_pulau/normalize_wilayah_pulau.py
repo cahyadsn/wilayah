@@ -6,7 +6,7 @@ filename : normalize_wilayah_pulau.py
 purpose  : Normalize wilayah_pulau data from single table to normalized tables
 note     : Converts pulau (island) data into normalized relational structure
 create   : 2025-09-13
-author   : sukmaajidigital with GitHub Copilot
+author   : sukmaajidigital
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
 terms of the MIT License.
@@ -218,7 +218,7 @@ purpose  : Normalized {category} data from pulau (island) dataset
 note     : Data {category.title()} - Island/Pulau geographic locations
            Contains coordinate data for islands across Indonesia
 create   : 2025-09-13
-author   : sukmaajidigital with GitHub Copilot (normalized from original data)
+author   : sukmaajidigital (normalized from original data)
 ================================================================================
 */
 

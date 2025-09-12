@@ -6,7 +6,7 @@ filename : normalize_wilayah_level_1_2.py
 purpose  : Normalize wilayah_level_1_2 data from single table to normalized tables
 note     : Converts hierarchical wilayah level 1-2 data with geographic info
 create   : 2025-09-13
-author   : sukmaajidigital with GitHub Copilot
+author   : sukmaajidigital
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
 terms of the MIT License.
@@ -209,7 +209,7 @@ filename : {category}.sql
 purpose  : Normalized {category} data with geographic information
 note     : Data {category.title()} sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-09-13
-author   : sukmaajidigital with GitHub Copilot (normalized from original data)
+author   : sukmaajidigital (normalized from original data)
 ================================================================================
 */
 

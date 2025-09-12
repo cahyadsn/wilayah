@@ -6,7 +6,7 @@ filename : normalize_wilayah_luas.py
 purpose  : Normalize wilayah_luas data from single table to normalized tables
 note     : Converts hierarchical wilayah luas data from BIG (Badan Informasi Geospasial)
 create   : 2025-09-13
-author   : sukmaajidigital with GitHub Copilot
+author   : sukmaajidigital
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
 terms of the MIT License.
@@ -223,7 +223,7 @@ note     : Data {category.title()} sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
            Data luas berdasar Surat Deputi Bidang Informasi Geospasial Dasar
            Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024
 create   : 2025-09-13
-author   : sukmaajidigital with GitHub Copilot (normalized from original data)
+author   : sukmaajidigital(normalized from original data)
 ================================================================================
 */
 
