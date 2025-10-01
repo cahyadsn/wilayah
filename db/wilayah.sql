@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-08-05 16:21:47
+last edit: 2025-10-01 08:45:08
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -24384,8 +24384,8 @@ VALUES
 ('18.02.15.2006','Kedatuan'),
 ('18.02.15.2007','Goras Jaya'),
 ('18.02.15.2008','Bangun Sari'),
-('18.02.16','Seputih Agung');
-INSERT INTO wilayah VALUES('18.02.16.2001','Harapan Rejo'),
+('18.02.16','Seputih Agung'),
+('18.02.16.2001','Harapan Rejo'),
 ('18.02.16.2002','Endang Rejo'),
 ('18.02.16.2003','Dono Arum'),
 ('18.02.16.2004','Simpang Agung'),
@@ -24412,8 +24412,8 @@ INSERT INTO wilayah VALUES('18.02.16.2001','Harapan Rejo'),
 ('18.02.18.2005','Sendang Agung Mataram'),
 ('18.02.18.2006','Mataram Udik'),
 ('18.02.18.2007','Terbanggi Mulya'),
-('18.02.18.2008','Mataram Jaya');
-INSERT INTO wilayah VALUES('18.02.18.2009','Sumber Rejeki Mataram'),
+('18.02.18.2008','Mataram Jaya'),
+('18.02.18.2009','Sumber Rejeki Mataram'),
 ('18.02.19','Pubian'),
 ('18.02.19.2001','Kota Batu'),
 ('18.02.19.2002','Sangun Ratu'),
