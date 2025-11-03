@@ -101,6 +101,40 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 
 link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
+## KODEFIKASI DATA WILAYAH
+Kode Wilayah Administrasi Pemerintahan adalah serangkaian angka dan titik yang menunjukkan Kode dan Data Wilayah Administrasi Pemerintahan Indonesia pada setiap daerah/wilayah mulai dari tingkat desa/kelurahan, kecamatan, kota/kabupaten, hingga provinsi yang digunakan untuk mempermudah dan mempercepat pengeloaan wilayah administrasi pemerintahan Republik Indonesia.
+
+Berdasarkan Permendagri No 58 Tahun 2021 kodefikasi data wilayah administrasi pemerintahan dan pulau adalah sesuai aturan susunan sebagai berikut:
+
+### KODE WILAYAH
+**Kode Provinsi**
+Kode untuk daerah provinsi terdiri dari 2 (dua) digit yaitu:
+1. Digit pertama Kode untuk daerah provinsi didasarkan pada letak geografis Pulau/kepulauan Indonesia yang dimulai dari arah barat ke timur; dan
+2. Digit kedua diisi sesuai dengan urutan pembentukan provinsi.
+
+**Kode Kabupaten/Kota**
+Kode untuk daerah kabupaten/kota terdiri dari 4 (empat) digit, yaitu:
+1. Kode untuk daerah provinsi berjumlah 2 (dua) digit;
+2. Kode untuk daerah kabupaten/kota berjumlah 2 (dua) digit yang ditulis secara berurutan;
+3. Digit ketiga dan keempat dari 4 (empat) digit Kode untuk kabupaten diisi dengan angka 01 (nol  satu)  sampai  dengan  69  (enam  puluh sembilan); dan
+4. Digit ketiga dan keempat dari 4 (empat) digit Kode untuk kota diisi dengan angka 71 (tujuh puluh satu) sampai dengan 99 (sembilan puluh sembilan).
+
+**Kode Kecematan**
+Kode  untuk  Kecamatan  berjumlah  6  (enam)  digit yang terdiri dari Kode untuk daerah provinsi 2 (dua) digit, Kode untuk daerah kabupaten/kota berjumlah 2 (dua) digit, dan Kode untuk Kecamatan berjumlah 2 (dua) digit yang ditulis secara berurutan.
+
+**Kode Desa/Kelurahan**
+Kode untuk Kelurahan dan Desa berjumlah 10 (sepuluh) digit, terdiri dari Kode untuk daerah provinsi berjumlah 2 (dua) digit, Kode untuk daerah kabupaten/kota berjumlah 2 (dua) digit, Kode untuk Kecamatan berjumlah 2 (dua) digit, dan Kode untuk Kelurahan dan Desa berjumlah 4 (empat) digit yang ditulis secara berurutan, sebagai berikut:
+1. urutan pertama dari 4 (empat) digit Kode untuk Kelurahan menggunakan angka 1 (satu); dan
+2. urutan pertama dari 4 (empat) digit Kode untuk Desa menggunakan angka 2 (dua).
+3. urutan pertama dari 4 (empat) digit Kode untuk Desa adat menggunakan angka 3 (tiga).
+
+### KODE PULAU
+Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
+1. Kode untuk daerah provinsi berjumlah 2 (dua) digit,
+2. Kode untuk daerah kabupaten/kota berjumlah 2 (dua) digit; dan
+3. Kode  Pulau  berjumlah  5  (lima)  digit  dengan urutan pertama menggunakan angka 4 (empat).
+
+
 ## REFERENSI
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
 - Keputusan Menteri Dalam Negeri Nomor 300.2.2-2138 tahun 2025 Tentang Pemberian Dan Pemutakhiran Kode, Data Wilayah Administrasi Pemerintahan, Dan Pulau (Ditetapkan pada 25 April 2025)
