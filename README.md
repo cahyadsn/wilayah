@@ -99,7 +99,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 - Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi Geospasial (BIG)
 - Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 
-link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
+> link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
 ## KODEFIKASI DATA WILAYAH
 Kode Wilayah Administrasi Pemerintahan adalah serangkaian angka dan titik yang menunjukkan Kode dan Data Wilayah Administrasi Pemerintahan Indonesia pada setiap daerah/wilayah mulai dari tingkat desa/kelurahan, kecamatan, kota/kabupaten, hingga provinsi yang digunakan untuk mempermudah dan mempercepat pengeloaan wilayah administrasi pemerintahan Republik Indonesia.
@@ -133,7 +133,6 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 1. Kode untuk daerah provinsi berjumlah 2 (dua) digit,
 2. Kode untuk daerah kabupaten/kota berjumlah 2 (dua) digit; dan
 3. Kode  Pulau  berjumlah  5  (lima)  digit  dengan urutan pertama menggunakan angka 4 (empat).
-
 
 ## REFERENSI
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
