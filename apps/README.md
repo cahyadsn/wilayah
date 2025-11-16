@@ -1,7 +1,7 @@
-# wilayah v2.7
-Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 dengan PHP+MySQL+AJaX
+# wilayah v2.8
+Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 dengan PHP+MySQL+AJaX
 
-(Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022, utk aplikasi ini hanya menggunakan data level 1 dan 2 (provinsi dan kabupaten/kota) di /db/archive/wilayah_level_1_2.sql yang sesuai dengan Kepmendagri No 100.1.1-6117 Tahun 2022, dengan penambahan data lat/long/elv/timezone,boundaries/polygon,luas dan jumlah penduduk)
+(Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Kepmendagri No 300.2.2-2138 Tahun 2025, utk aplikasi ini hanya menggunakan data level 1 dan 2 (provinsi dan kabupaten/kota) di /db/archive/wilayah_level_1_2.sql yang sesuai dengan Kepmendagri No 300.2.2-2138 Tahun 2025, dengan penambahan data lat/long/elv/timezone,boundaries/polygon,luas dan jumlah penduduk)
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
@@ -9,14 +9,14 @@ Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah I
 [![GitHub stars](https://img.shields.io/github/stars/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/stargazers)
 
 ## DEMO
-tautan demo web [apps versi 2.7](https://wilayah.cahyadsn.com/apps) 
+tautan demo web [apps versi 2.8](https://wilayah.cahyadsn.com/apps) 
 
 ## SCREENSHOT
-![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/250514.png?raw=true)
+[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/250525.png?raw=true 'wilayah apps web demo v2.8')](https://wilayah.cahyadsn.com/apps)
 
-Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk tingkat Provinsi dan Kota/Kabupaten beserta data latitude/longitude (koordinat) dan polygon boundaries-nya dan aplikasi sederhananya
+Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 300.2.2-2138 Tahun 20252 untuk tingkat Provinsi dan Kota/Kabupaten beserta data latitude/longitude (koordinat) dan polygon boundaries-nya dan aplikasi sederhananya
 
-Untuk aplikasi wilayah v2.7 ini mengguanakan database dengan nama tabel wilayah_level_1_2 yang terdapat di folder /db/archive/wilayah_level_1_2.sql
+Untuk aplikasi wilayah v2.8 ini mengguanakan database dengan nama tabel wilayah_level_1_2 yang terdapat di folder /db/archive/wilayah_level_1_2.sql
 
 Sesuaikan data konfigurasi database yang ada di apps/inc/db.php
 
@@ -55,17 +55,19 @@ Sesuaikan data konfigurasi database yang ada di apps/inc/db.php
 | 81      | Maluku                    |    9 |    2 |
 | 82      | Maluku Utara              |    8 |    2 |
 | 91      | Papua                     |    8 |    1 |
-| 92      | Papua Barat               |   12 |    1 |
+| 92      | Papua Barat               |    7 |    0 |
 | 93      | Papua Selatan             |    4 |    0 |
 | 94      | Papua Tenagh              |    8 |    0 |
 | 95      | Papua Pegunungan          |    8 |    0 |
+| 96      | Papua Barat Daya          |    5 |    1 |
 |         | TOTAL                     |  416 |   98 |
 
 
-link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/apps/) (data sesuai Kepmendagri No 100.1.1-6117 Tahun 2022)
+link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/apps/) (data sesuai Kepmendagri No 300.2.2-2138 Tahun 2025)
 
 ## Referensi
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
+- Keputusan Menteri Dalam Negeri Nomor 300.2.2-2138 tahun 2025 Tentang Pemberian Dan Pemutakhiran Kode, Data Wilayah Administrasi Pemerintahan, Dan Pulau (Ditetapkan pada 25 April 2025)
 - Keputusan Menteri Dalam Negeri Nomor 100.1.1-6117 Tahun 2022 Tentang Pemberian dan Pemutakhiran Kode, Data Wilayah Adminstrasi Pemerintahan, dan Pulau (Ditetapkan pada 9 November 2022) *
 - UU No 14 Tahun 2022 tentang Pembentukan Provinsi Papua Selatan (LN.2022/No.157, TLN No.6803, jdih.setneg.go.id: 15 hlm., 25 Juli 2022)
 - UU No 15 Tahun 2022 tentang Pembentukan Provinsi Papua Tengah (LN.2022/No.158, TLN No.6804, jdih.setneg.go.id: 14 hlm., 25 Juli 2022)
@@ -78,17 +80,23 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/apps/) (data sesua
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## New Update
+- update web apps demo ke v2.8 2025-08-04
+- update data luas wilayah di db/wilayah_level_1_2.sql berdasar dari Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia 2025-07-04
+- update data db/archive/wilayah_level_1_2.sql sesuai Kepmendagri Np. 300.2.2-2138 tahun 2025  2025-07-01
 - update web apps demo ke v2.7 2025-05-13
 - update library javascript dari jquery ke zepto js (done 2025-01-27)
 - update data db/archive/wilayah_level_1_2.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 (done 2024-05-15)
 
 ## DONASI
-- untuk donasi via transfer 
+- untuk donasi via transfer
     - Bank BCA Digital (Blu) (501) 000 576 776 186
     - Bank Jago (542) 5003 5796 1022
     - Bank Sinarmas (153) 005 462 4719
     - Bank Syariah Indonesia (BSI) 821-342-5550
 - untuk donasi via PayPal [https://paypal.me/cahyadwiana]
-- untuk donasi via Ko-fi [https://ko-fi.com/cahyadsn]
+- untuk donasi via QRIS CAHYADSN ID1022183125288 :
+
+![screenshot](https://github.com/cahyadsn/wilayah/blob/master/docs/qr_code.cahyadsn.png?raw=true 'Donasi via QRIS CAHYADSN')
+
 
 
