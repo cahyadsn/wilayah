@@ -1,4 +1,9 @@
 # CHANGE LOG 
+- update README.md menambahkan informasi kodefikasi kode wilayah dan kode pulau 2025-11-03
+- update main web ke v4.0 (https://wilayah.cahyadsn.com) dan update data sesuai kepmendari No 300.2.2-2138 Th 2025 2025-07-23
+- verifikasi dan update data nama wilayah, menghilangkan double spasi 2025-07-17
+- update perbaikan nama desa di kab. ACeh Tenggara, Aceh Utara, Mamberamo Raya 2025-07-17
+- update data luas wilayah kabupaten Sarmi dan Mamberamo Raya 2025-07-06
 - update data luas wilayah kabupaten Teluk Bintuni dan Manokwari Selatan 2025-07-05
 
 ## RELEASE v2025.7 [2025-07-04]
