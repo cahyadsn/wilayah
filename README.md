@@ -108,7 +108,7 @@ Kode Wilayah Administrasi Pemerintahan adalah serangkaian angka dan titik yang m
 Berdasarkan Permendagri No 58 Tahun 2021 kodefikasi data wilayah administrasi pemerintahan dan pulau adalah sesuai aturan susunan sebagai berikut:
 
 ## FUNGSI DAN TUJUAN KODE WILAYAH
--  **Identifikasi** administratif**: Memudahkan pengelolaan data dan informasi pemerintahan.
+-  **Identifikasi administratif**: Memudahkan pengelolaan data dan informasi pemerintahan.
 -  **Standarisasi nasional**: Digunakan dalam dokumen resmi, statistik, dan sistem informasi pemerintah.
 -  **Referensi geografis**: Menunjukkan lokasi dan hierarki wilayah secara sistematis.
 
