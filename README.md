@@ -40,6 +40,7 @@ Data Luas wilayah Indonesia per popinsi dan per kabupaten/kota dalam database
 - Data kodepos vs kode wilayah administrasi pemerintahan Indoensia : https://github.com/cahyadsn/wilayah_kodepos
 - Data referensi Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia : https://github.com/cahyadsn/wilayah_ref
 - Data boundaries/polygon berdasarkan kode wilayah adminsitrasi pemerintahan Indonesia : https://github.com/cahyadsn/wilayah_boundaries
+- Data logo/lambang berdasarkan kode wilayah adminsitrasi pemerintahan Indonesia (prov,kab/kota) : https://github.com/cahyadsn/wilayah_logo
 
 ## Data Kepmendagri No 300.2.2-2138 Tahun 2025
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 (wilayah.sql)
