@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2025-10-01 08:45:08
+last edit: 2026-01-29 09:53:42
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -57623,7 +57623,7 @@ VALUES
 ('53.01.30.2002','Binafun'),
 ('53.01.30.2003','Bitobe'),
 ('53.01.30.2004','Bonmuti'),
-('53.02','Kab Timor Tengah Selatan'),
+('53.02','Kabupaten Timor Tengah Selatan'),
 ('53.02.01','Kota Soe'),
 ('53.02.01.1001','SoE'),
 ('53.02.01.1002','Cendana'),
@@ -88119,7 +88119,7 @@ VALUES
 ('95.01.40.2006','Agamoa'),
 ('95.01.40.2007','Silumarek'),
 ('95.01.40.2008','Wesaganya'),
-('95.02','Kab Pegunungan Bintang'),
+('95.02','Kabupaten Pegunungan Bintang'),
 ('95.02.01','Oksibil'),
 ('95.02.01.2001','Kabiding'),
 ('95.02.01.2002','Aldom'),
