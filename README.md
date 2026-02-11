@@ -157,7 +157,6 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## TODO
-- verifikasi/update main web data
 - membuat repository wilayah_api untuk API kode data wilayah pemerintahan  (dev)
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 
