@@ -5,7 +5,7 @@ filename : db/wilayah.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:41:15
-last edit: 2026-01-29 09:53:42
+last edit: 2026-02-13 16:45:21
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -81686,7 +81686,7 @@ VALUES
 ('81.05.15.2011','Madak'),
 ('81.05.16','Ukar Sengan'),
 ('81.05.16.2001','Urung'),
-('81.05.16.2002','Kwamor Kecil Ata'),
+('81.05.16.2002','Kwamor Kecil Mata Ata'),
 ('81.05.16.2003','Kwamor Kecil Mata Wawa'),
 ('81.05.16.2004','Kwamor Besar Ena'),
 ('81.05.16.2005','Kwamor Besar Witau'),
