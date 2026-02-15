@@ -2,3 +2,36 @@
 dump-*
 /inc/db.php
 /src
+
+# Normalized Data Output Folders
+# These folders contain generated output from normalization tools
+# and should not be committed to version control
+normalized_data/
+**/normalized_data/
+normalize_db/*/normalized_data/
+
+# Database Files (generated)
+*.db
+*.sqlite
+*.sqlite3
+
+# CSV Output Files (from normalization tools)
+# Comment the line below if you want to commit CSV files
+# *.csv
+
+# Reports and Documentation (generated)
+**/normalization_report.txt
+**/summary_report.txt
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary Files
+*.tmp
+*.temp
+*~
+
+# Log Files
+*.log
