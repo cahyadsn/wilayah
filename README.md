@@ -101,7 +101,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 - Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 
 > link demo bisa dilihat di sini : https://wilayah.cahyadsn.com/
-[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2025-12-04_08_45_31.png?raw=true 'wilayah web demo v5.0')](https://wilayah.cahyadsn.com/)
+[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2026_02_18_23_33_31.png?raw=true 'wilayah web demo v5.0')](https://wilayah.cahyadsn.com/)
 
 ## KODEFIKASI DATA WILAYAH
 Kode Wilayah Administrasi Pemerintahan adalah serangkaian angka dan titik yang menunjukkan Kode dan Data Wilayah Administrasi Pemerintahan Indonesia pada setiap daerah/wilayah mulai dari tingkat desa/kelurahan, kecamatan, kota/kabupaten, hingga provinsi yang digunakan untuk mempermudah dan mempercepat pengeloaan wilayah administrasi pemerintahan Republik Indonesia.
