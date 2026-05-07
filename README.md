@@ -15,8 +15,8 @@ tautan demo web [apps versi 2.8](https://wilayah.cahyadsn.com/apps)
 [![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/250525.png?raw=true 'wilayah apps web demo v2.8')](https://wilayah.cahyadsn.com/apps)
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
-- **db/wilayah.sql** sesuai dengan Kepmendagri No 300.2.2-2138 Tahun 2025 
-- **db/wilayah_level_1_2.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
+- **db/wilayah.sql** sesuai dengan Kepmendagri No 300.2.2-2430 Tahun 2025 
+- **db/wilayah_level_1_2.sql** sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
 - **db/archive/wilayah_2023.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022
 - **db/archive/wilayah_2022.sql** sesuai Permendagri No 58 Tahun 2021 (_revised by Kepmendagri No. 050-145 Tahun 2022_)
 - **db/archive/wilayah_2020.sql** sesuai Permendagri No. 72 Tahun 2019 (_revised by Kepmendagri No.146.1-4717 Tahun 2020_)
@@ -32,10 +32,10 @@ Kode dan Data Pulau Indonesia dalam database :
 - **db/archive/pulau_2022.sql** sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022)
 
 Data Jumlah Penduduk Indonesia per propinsi dan per kabupaten/kota dalam database
-- **db/wilayah_penduduk.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 *
+- **db/wilayah_penduduk.sql** sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 *
 
 Data Luas wilayah Indonesia per popinsi dan per kabupaten/kota dalam database
-- **db/wilayah_luas.sql** sesuai dengan Kepmendagri No 300.2.2-2138 Tahun 2025 dan Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia
+- **db/wilayah_luas.sql** sesuai dengan Kepmendagri No 300.2.2-2430 Tahun 2025 dan Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia
 
 ## TAUTAN TERKAIT
 - Data kodepos vs kode wilayah administrasi pemerintahan Indoensia : https://github.com/cahyadsn/wilayah_kodepos
