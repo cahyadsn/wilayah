@@ -1,11 +1,11 @@
 /*
 BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 ================================================================================
-filename : db/wilayah_pulau.sql
+filename : db/archive/pulau_2025.sql
 purpose  :
-note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2430 Tahun 2025
+note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2026-05-07 11:25:52
+last edit: 2026-05-07 11:25:13
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -320,10 +320,6 @@ VALUES
 ('11.10.40078','Pulau Tugu','-2.2614','97.2919','TBP'),
 ('11.10.40079','Pulau Ujungbatu','-2.3425','97.3992','BP'),
 ('11.10.40080','Pulau Ujunglolok','-2.0425','97.3381','TBP'),
-('11.10.40081','Pulau Lipan','-2.1206','98.1619','TBP'),
-('11.10.40082','Pulau Mangkir Gadang','-2.1467','98.1244','TBP'),
-('11.10.40083','Pulau Mangkir Ketek','-2.1394','98.1439','TBP'),
-('11.10.40084','Pulau Panjang','-2.0953','98.1778','TBP'),
 ('11.14.40001','Pulau Baaloen','-4.6111','95.585','TBP'),
 ('11.14.40002','Pulau Batee','-4.6153','95.5742','TBP'),
 ('11.14.40003','Pulau Batee Pageu','-4.8075','95.4375',''),
@@ -426,9 +422,13 @@ VALUES
 ('12.01.40010','Pulau Kalimantung Namenek','-1.5608','98.5764','TBP'),
 ('12.01.40011','Pulau Karang','-1.9731','98.3525','TBP'),
 ('12.01.40012','Pulau Karang Jambe','-1.6581','98.5139','TBP'),
+('12.01.40013','Pulau Lipan','-2.1206','98.1619','TBP'),
 ('12.01.40014','Pulau Lipatkain','-1.5694','98.7178','TBP'),
+('12.01.40015','Pulau Mangkir Gadang','-2.1467','98.1244','TBP'),
+('12.01.40016','Pulau Mangkir Ketek','-2.1394','98.1439','TBP'),
 ('12.01.40017','Pulau Mursala','-1.6375','98.5256','BP'),
 ('12.01.40018','Pulau Pane','-1.9375','98.4981','TBP'),
+('12.01.40019','Pulau Panjang','-2.0953','98.1778','TBP'),
 ('12.01.40020','Pulau Porlak','-1.7703','98.7414','BP'),
 ('12.01.40021','Pulau Pune','-1.6628','98.5811','TBP'),
 ('12.01.40022','Pulau Puti','-1.645','98.5975','BP'),

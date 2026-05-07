@@ -26,7 +26,8 @@ Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - **db/archive/wilayah_level_1_2_postgresl.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries (postgresql)
 
 Kode dan Data Pulau Indonesia dalam database :
-- **db/wilayah_pulau.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
+- **db/wilayah_pulau.sql** sesuai Kepmendagri No 300.2.2-2430 Tahun 2025
+- **db/archive/pulau_2025.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 - **db/archive/pulau_2023.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022
 - **db/archive/pulau_2022.sql** sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022)
 
@@ -156,11 +157,12 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## TODO
-- update data kode pulau sesuai Keputusan Menteri Dalam Negeri Nomor 300.2.2-2430 tahun 2025 (dev)
+- update database pulau sesuai Keputusan Menteri Dalam Negeri Nomor 300.2.2-2430 tahun 2025, penambahan data luas pulau (dev)
 - membuat repository wilayah_api untuk API kode data wilayah pemerintahan  (dev)
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 
 ## CHANGE LOG
+- update data kode pulau sesuai Keputusan Menteri Dalam Negeri Nomor 300.2.2-2430 tahun 2025 2026-05-07
 - update db/wilayah.sql , perbaikan nama desa Kwawor Kecil Mata Ata 2026-02-13
 - update db/wilayah dan db/wilayah_level_1_2, perbaikan nama Kabupaten Timor Tengah Selatan dan Pegunungan Bintang 2026-01-29
 - update db/wilayah_level_1_2, perbaikan nama kota padangsidimpuan (sebelumnya padangsidempuan) sesuai Undang-Undang Nomor 8 Tahun 2023 tentang Provinsi Sumatera Utara 2026-01-13
