@@ -143,6 +143,7 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 
 ## REFERENSI
 - Dokumen Referensi : https://github.com/cahyadsn/wilayah_ref
+- Keputusan Menteri Dalam Negeri Nomor 300.2.2-2430 tahun 2025 Tentang Perubahan Atas Keputusan Menteri Dalam Negeri Nomor 300.2.2-2138 Таhun 2025 Tentang Pemberian Dan Pemutakhiran Kode, Data Wilayah Administrasi Pemerintahan, Dan Pulau (Ditetapkan pada 23 Juni 2025)
 - Keputusan Menteri Dalam Negeri Nomor 300.2.2-2138 tahun 2025 Tentang Pemberian Dan Pemutakhiran Kode, Data Wilayah Administrasi Pemerintahan, Dan Pulau (Ditetapkan pada 25 April 2025)
 - Keputusan Menteri Dalam Negeri Nomor 100.1.1-6117 Tahun 2022 Tentang Pemberian dan Pemutakhiran Kode, Data Wilayah Adminstrasi Pemerintahan, dan Pulau (Ditetapkan pada 9 November 2022)
 - UU No 29 Tahun 2022 tentang Pembentukan Provinsi Papua Barat Daya (_LN.2022/No.223, TLN No.6831, jdih.setneg.go.id: 15 hlm., 08 Desember 2022_)
@@ -157,6 +158,7 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## TODO
+- update data kode pulau sesuai Keputusan Menteri Dalam Negeri Nomor 300.2.2-2430 tahun 2025 (dev)
 - membuat repository wilayah_api untuk API kode data wilayah pemerintahan  (dev)
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 
