@@ -21,7 +21,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2025 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 --
 -- Table structure for table pulau
