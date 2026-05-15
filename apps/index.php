@@ -77,7 +77,7 @@ header('Pragma: no-cache');
           <?php
           $color=array("black","brown","pink","orange","amber","lime","green","teal","purple","indigo","blue","cyan");
           foreach($color as $c){
-            echo "<a href='#' class='w3-bar-item w3-button w3-{$c} color' data-value='{$c}'> </a>";
+            echo "<a href='#' class='w3-bar-item w3-button w3-{$c} color' data-value='{$c}' aria-label='Theme color: {$c}' title='Theme color: {$c}'> </a>";
           }
           ?>
         </div>
@@ -100,7 +100,7 @@ header('Pragma: no-cache');
         </div>
         <div class="w3-row">
           <div class="w3-col m6 w3-padding">
-            <label class="w3-col s6 m3">Pilih Provinsi</label>
+            <label for="prop" class="w3-col s6 m3">Pilih Provinsi</label>
             <div class="w3-col s6 m3">
               <select name="prop" id="prop" class="w3-select w3-hover-theme" onchange="ajax(this.value)" readonly>
                 <option value="">Pilih Provinsi</option>
@@ -115,7 +115,7 @@ header('Pragma: no-cache');
             </div>
           </div>
           <div class="w3-col m6 w3-padding" id="kab_box">
-            <label class="w3-col s6 m3">Pilih Kota/Kab</label>
+            <label for="kota" class="w3-col s6 m3">Pilih Kota/Kab</label>
             <div class="w3-col s6 m3">
               <select name="kota" id="kota" class="w3-select w3-hover-theme" onchange="ajax(this.value)" readonly>
                 <option value="">Pilih Kota</option>
