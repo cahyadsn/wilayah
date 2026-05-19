@@ -162,6 +162,7 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 
 ## CHANGE LOG
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Bengkulu 2026-05-19
 - update penambahan kolom status dan luas untuk db/wilayah_pulau.sql 2026-05-19
 - update koordinat Kab Sorong di db/wilayah_level_1_2.sql 2026-05-08
 - update data kode pulau sesuai Keputusan Menteri Dalam Negeri Nomor 300.2.2-2430 tahun 2025 2026-05-07
