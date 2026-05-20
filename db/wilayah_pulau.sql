@@ -5,7 +5,7 @@ filename : db/wilayah_pulau.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2430 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2026-05-19 13:44:57
+last edit: 2026-05-20 10:00:15
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS wilayah_pulau(
 	lat FLOAT,
 	lng FLOAT,
 	status VARCHAR(5),
-	luas FLOAT,
+	luas FLOAT DEFAULT NULL,
 	notes TEXT
 );
 CREATE INDEX pulau_nama_idx ON wilayah_pulau(nama);
@@ -1011,22 +1011,22 @@ VALUES
 ('14.10.40012','Pulau Topang','-0.7581','103.0953','BP');
 
 -- Provinsi JAMBI
-INSERT INTO wilayah_pulau(kode,nama,lat,lng,status)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,status,luas,notes)
 VALUES
-('15.04.40001','Pulau Selat','1.5456','103.4422','TBP'),
-('15.04.40002','Pulau Senaning','1.5625','103.3514','TBP'),
-('15.05.40001','Pulau Pendam','1.4836','103.5003','TBP'),
-('15.07.40001','Pulau Balai','1.0622','104.2161','TBP'),
-('15.07.40002','Pulau Betet','1.0519','104.2442','TBP'),
-('15.07.40003','Pulau Burung','1.1089','104.0275','BP'),
-('15.07.40004','Pulau Harapan','1.0839','104.1972','BP'),
-('15.07.40005','Pulau Mudo','1.0472','104.1931','TBP'),
-('15.07.40006','Pulau Pangkudo','1.0447','104.2483','TBP'),
-('15.07.40007','Pulau Pedado Anak','1.0383','104.1803','TBP'),
-('15.07.40008','Pulau Putri','1.0606','104.2108',''),
-('15.07.40009','Pulau Tanjung Putus','1.2319','104.1683','TBP'),
-('15.07.40010','Pulau Tengah','1.0425','104.2306','BP'),
-('15.07.40011','Pulau Wantambi','1.0431','104.2014','TBP');
+('15.04.40001','Pulau Selat','1.5456','103.4422','TBP',NULL,''),
+('15.04.40002','Pulau Senaning','1.5625','103.3514','TBP',NULL,''),
+('15.05.40001','Pulau Pendam','1.4836','103.5003','TBP',NULL,''),
+('15.07.40001','Pulau Balai','1.0622','104.2161','TBP',0.1869,''),
+('15.07.40002','Pulau Betet','1.0519','104.2442','TBP',0.0667,''),
+('15.07.40003','Pulau Burung','1.1089','104.0275','BP',NULL,''),
+('15.07.40004','Pulau Harapan','1.0839','104.1972','BP',NULL,''),
+('15.07.40005','Pulau Mudo','1.0472','104.1931','TBP',0.8802,''),
+('15.07.40006','Pulau Pangkudo','1.0447','104.2483','TBP',0.4148,''),
+('15.07.40007','Pulau Pedado Anak','1.0383','104.1803','TBP',0.2884,''),
+('15.07.40008','Pulau Putri','1.0606','104.2108','',0.0416,''),
+('15.07.40009','Pulau Tanjung Putus','1.2319','104.1683','TBP',NULL,''),
+('15.07.40010','Pulau Tengah','1.0425','104.2306','BP',10.9355,''),
+('15.07.40011','Pulau Wantambi','1.0431','104.2014','TBP'3.4293,'');
 
 -- Provinsi SUMATERA_SELATAN
 INSERT INTO wilayah_pulau(kode,nama,lat,lng,status)
@@ -1065,7 +1065,7 @@ VALUES
 ('17.03.40004','Pulau Mega','4.0069','101.0453','TBP'3.0209,'(PPKT)'),
 ('17.03.40005','Pulau Merbau','5.4725','102.385','TBP',0.1081,''),
 ('17.03.40006','Pulau Satu','5.4683','102.2239','TBP'0,0010,''),
-('17.03.40007','Pulau Tapakarifin','3.4242','101.8975','TBP',''),
+('17.03.40007','Pulau Tapakarifin','3.4242','101.8975','TBP',NULL,''),
 ('17.03.40008','Pulau Tapakbalai','3.5819','102.1131','TBP',0.0012,''),
 ('17.71.40001','Pulau Tikus','3.8381','102.1794','BP',0.0075,'');
 
