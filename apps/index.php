@@ -105,10 +105,20 @@ header('Pragma: no-cache');
               <select name="prop" id="prop" class="w3-select w3-hover-theme" onchange="ajax(this.value)" readonly>
                 <option value="">Pilih Provinsi</option>
                 <?php
-                $query=$db->prepare("SELECT kode,nama FROM {$tbl_wilayah} WHERE CHAR_LENGTH(kode)=2 ORDER BY nama");
-                $query->execute();
-                while ($data=$query->fetchObject()){
-                  echo '<option value="'.$data->kode.'">'.$data->nama.'</option>';
+                $cache_file = sys_get_temp_dir() . '/provinsi_cache.html';
+                $cache_ttl = 86400; // 24 hours
+
+                if (file_exists($cache_file) && (time() - filemtime($cache_file) < $cache_ttl)) {
+                  echo file_get_contents($cache_file);
+                } else {
+                  $query=$db->prepare("SELECT kode,nama FROM {$tbl_wilayah} WHERE CHAR_LENGTH(kode)=2 ORDER BY nama");
+                  $query->execute();
+                  $html = '';
+                  while ($data=$query->fetchObject()){
+                    $html .= '<option value="'.$data->kode.'">'.$data->nama.'</option>';
+                  }
+                  file_put_contents($cache_file, $html, LOCK_EX);
+                  echo $html;
                 }
                 ?>
               </select>
