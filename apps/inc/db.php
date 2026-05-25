@@ -23,10 +23,10 @@ See the MIT License for more details
 
 copyright (c) 2015-2021 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
-$dbhost='localhost';
-$dbuser='root';
-$dbpass='';
-$dbname='wilayah';
+$dbhost = getenv('DB_HOST') ?: 'localhost';
+$dbuser = getenv('DB_USER') ?: 'root';
+$dbpass = getenv('DB_PASS') ?: '';
+$dbname = getenv('DB_NAME') ?: 'wilayah';
 $db_dsn = "mysql:dbname=$dbname;host=$dbhost";
 $tbl_wilayah="wilayah_level_1_2";
 try {
