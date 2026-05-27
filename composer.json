@@ -1,0 +1,29 @@
+{
+    "name": "cahyadsn/wilayah",
+    "description": "Kode dan Data Wilayah Administrasi Pemerintahan dan Kode Pulau Indonesia sesuai Kepmendagri No 300.2.2-2430 Tahun 2025",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "cahya dsn",
+            "email": "cahyadsn@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ext-pdo": "*",
+        "ext-mysqli": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:coverage": "phpunit --coverage-html coverage"
+    }
+}
