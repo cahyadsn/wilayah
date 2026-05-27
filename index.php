@@ -26,10 +26,10 @@ See the MIT License for more details
 copyright (c) 2017-2022 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 //--- Database configuration
-$dbhost ='localhost';
-$dbuser ='root';
-$dbpass ='';
-$dbname ='wilayah';
+$dbhost = getenv('DB_HOST') ?: 'localhost';
+$dbuser = getenv('DB_USER') ?: 'root';
+$dbpass = getenv('DB_PASS') ?: '';
+$dbname = getenv('DB_NAME') ?: 'wilayah';
 $dbdsn = "mysql:dbname={$dbname};host={$dbhost}";
 try {
   $db = new PDO($dbdsn, $dbuser, $dbpass);
