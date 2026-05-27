@@ -23,6 +23,11 @@ See the MIT License for more details
 
 copyright (c) 2017-2021 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
+session_start();
+if (!isset($_SESSION['author']) || $_SESSION['author'] !== 'cahyadsn') {
+    die(json_encode(array('status' => false, 'msg' => 'unauthorized')));
+}
+
 include "db.php";
 $r=array('status'=>false,'msg'=>'do nothing');
 $fields=array('lat','lng','path');
