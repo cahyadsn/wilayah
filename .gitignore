@@ -2,3 +2,5 @@
 dump-*
 /inc/db.php
 /src
+/CLAUDE.md
+/.claude
