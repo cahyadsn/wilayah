@@ -28,7 +28,7 @@ if (!isset($_SESSION['author']) || $_SESSION['author'] !== 'cahyadsn') {
     die(json_encode(array('status' => false, 'msg' => 'unauthorized')));
 }
 
-include "db.php";
+require_once "db.php";
 $r=array('status'=>false,'msg'=>'do nothing');
 $fields=array('lat','lng','path');
 if(isset($_POST['id'])){

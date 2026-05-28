@@ -30,7 +30,7 @@ $c=isset($_SESSION['c'])?$_SESSION['c']:(isset($_GET['c'])?$_GET['c']:'indigo');
 define("_AUTHOR","cahyadsn");
 $_SESSION['author']='cahyadsn';
 $_SESSION['ver']=sha1(rand());
-include 'inc/db.php';
+require_once 'inc/db.php';
 $version='2.8';
 header('Expires: '.date('r'));
 header('Cache-Control: no-store, no-cache, must-revalidate');
