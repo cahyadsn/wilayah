@@ -5,7 +5,7 @@ filename : db/wilayah_pulau.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2430 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2026-05-20 10:00:15
+last edit: 2026-05-28 11:07:23
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -1029,32 +1029,32 @@ VALUES
 ('15.07.40011','Pulau Wantambi','1.0431','104.2014','TBP'3.4293,'');
 
 -- Provinsi SUMATERA_SELATAN
-INSERT INTO wilayah_pulau(kode,nama,lat,lng,status)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,status,luas,notes)
 VALUES
-('16.00.40001','Pulau Meba','3.0372','104.62',''),
-('16.02.40001','Pulau Maspari','3.2192','106.2169','BP'),
-('16.07.40001','Pulau Betet','1.7614','104.5206','TBP'),
-('16.07.40002','Pulau Borang','2.9106','104.8806','BP'),
-('16.07.40003','Pulau Brendam','2.5317','104.4219','TBP'),
-('16.07.40004','Pulau Burung','2.8619','104.8986','TBP'),
-('16.07.40005','Pulau Deltaaersalek','2.4925','104.9725','BP'),
-('16.07.40006','Pulau Deltaaersugihan','2.4033','105.0703','BP'),
-('16.07.40007','Pulau Deltatelang','2.6011','104.8731','BP'),
-('16.07.40008','Pulau Deltaupang','2.5636','104.9431','BP'),
-('16.07.40009','Pulau Gundul','2.6644','104.9428','TBP'),
-('16.07.40010','Pulau Kalong','2.6033','104.3528','TBP'),
-('16.07.40011','Pulau Kramat','2.5186','104.9353','BP'),
-('16.07.40012','Pulau Lopak Besak','2.3592','104.7064','TBP'),
-('16.07.40013','Pulau Lopak Kecik Pulo','2.36','104.7025','TBP'),
-('16.07.40014','Pulau Payung','2.3711','104.9192','TBP'),
-('16.07.40015','Pulau Salahnamo','2.9581','104.8711','BP'),
-('16.07.40016','Pulau Selatcemara','2.5308','104.9342','TBP'),
-('16.07.40017','Pulau Singgris','2.5631','104.9306','BP'),
-('16.07.40018','Pulau Srijaya','3.0367','104.5231','TBP'),
-('16.07.40019','Pulo Alanggantang','1.9281','104.5694','TBP'),
-('16.07.40020','Pulo Alangtikus','2.3328','104.7653','TBP'),
-('16.71.40001','Pulau Kemaro','2.9792','104.8211','BP'),
-('16.71.40002','Pulau Pulokerto','3.0328','104.6614','Perubahan nama pulau semula Pulau Kerto');
+('16.00.40001','Pulau Meba','3.0372','104.62','TBP',NULL,'Alokasi pulau semula berada di Kabupaten Muara Enim. Perubahan nama pulau semula Pulau Selatpunai.'),
+('16.02.40001','Pulau Maspari','3.2192','106.2169','BP',0.2505,''),
+('16.07.40001','Pulau Betet','1.7614','104.5206','TBP',32.1545,''),
+('16.07.40002','Pulau Borang','2.9106','104.8806','BP',NULL,''),
+('16.07.40003','Pulau Brendam','2.5317','104.4219','TBP',NULL,''),
+('16.07.40004','Pulau Burung','2.8619','104.8986','TBP',NULL,''),
+('16.07.40005','Pulau Deltaaersalek','2.4925','104.9725','BP',NULL,''),
+('16.07.40006','Pulau Deltaaersugihan','2.4033','105.0703','BP',NULL,''),
+('16.07.40007','Pulau Deltatelang','2.6011','104.8731','BP',NULL,''),
+('16.07.40008','Pulau Deltaupang','2.5636','104.9431','BP',NULL,''),
+('16.07.40009','Pulau Gundul','2.6644','104.9428','TBP',NULL,''),
+('16.07.40010','Pulau Kalong','2.6033','104.3528','TBP',NULL,''),
+('16.07.40011','Pulau Kramat','2.5186','104.9353','BP',NULL,''),
+('16.07.40012','Pulau Lopak Besak','2.3592','104.7064','TBP',0.6394,''),
+('16.07.40013','Pulau Lopak Kecik Pulo','2.36','104.7025','TBP',0.0261,''),
+('16.07.40014','Pulau Payung','2.3711','104.9192','TBP',NULL,''),
+('16.07.40015','Pulau Salahnamo','2.9581','104.8711','BP',NULL,''),
+('16.07.40016','Pulau Selatcemara','2.5308','104.9342','TBP',NULL,''),
+('16.07.40017','Pulau Singgris','2.5631','104.9306','BP',NULL,''),
+('16.07.40018','Pulau Srijaya','3.0367','104.5231','TBP',NULL,''),
+('16.07.40019','Pulo Alanggantang','1.9281','104.5694','TBP',159.3856,''),
+('16.07.40020','Pulo Alangtikus','2.3328','104.7653','TBP',3.7781,''),
+('16.71.40001','Pulau Kemaro','2.9792','104.8211','BP',NULL,''),
+('16.71.40002','Pulau Pulokerto','3.0328','104.6614','BP',NULL'Perubahan nama pulau semula Pulau Kerto');
 
 -- Provinsi BENGKULU
 INSERT INTO wilayah_pulau(kode,nama,lat,lng,status,luas,notes)
