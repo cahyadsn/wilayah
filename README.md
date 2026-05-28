@@ -167,6 +167,7 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Jambi 2026-05-20
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Bengkulu 2026-05-19
 - update penambahan kolom status dan luas untuk db/wilayah_pulau.sql 2026-05-19
+- penambahan Jules pada project 2026-05-14
 - update koordinat Kab Sorong di db/wilayah_level_1_2.sql 2026-05-08
 - update data kode pulau sesuai Keputusan Menteri Dalam Negeri Nomor 300.2.2-2430 tahun 2025 2026-05-07
 - update db/wilayah.sql , perbaikan nama desa Kwawor Kecil Mata Ata 2026-02-13
