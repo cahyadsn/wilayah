@@ -162,6 +162,7 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 
 ## CHANGE LOG
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Papua Selatan 2026-05-26
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Sumsel 2026-05-26
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Jambi 2026-05-20
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Bengkulu 2026-05-19
