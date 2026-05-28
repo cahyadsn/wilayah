@@ -5,7 +5,7 @@ filename : db/wilayah_pulau.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2430 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2026-05-28 11:07:23
+last edit: 2026-05-28 14:19:32
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -14400,15 +14400,15 @@ VALUES
 ('92.08.40672','Pulau Wariami Nus','3.8956','134.1669','');
 
 -- Provinsi PAPUA_SELATAN
-INSERT INTO wilayah_pulau(kode,nama,lat,lng,status)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,status,luas,notes)
 VALUES
-('93.01.40001','Pulau Habe','8.2419','139.4419','TBP'),
-('93.01.40002','Pulau Kolepom','7.8956','138.3642','110652.4943 BP'),
-('93.01.40003','Pulau Komolom','8.2781','138.7461','TBP'),
-('93.04.40001','Pulau Binar','5.2083','137.5167','TBP'),
-('93.04.40002','Pulau Fumirpits','5.2119','137.5217','TBP'),
-('93.04.40003','Pulau Laag','5.3447','137.7375','PPKT'),
-('93.04.40004','Pulau Somerwoo','5.1853','137.505','TBP');
+('93.01.40001','Pulau Habe','8.2419','139.4419','TBP',0.0682,'(PPKT)'),
+('93.01.40002','Pulau Kolepom','7.8956','138.3642','BP',10652.4943,'(PPKT)'),
+('93.01.40003','Pulau Komolom','8.2781','138.7461','TBP',679.0847,'(PPKT)'),
+('93.04.40001','Pulau Binar','5.2083','137.5167','TBP',0.1993,''),
+('93.04.40002','Pulau Fumirpits','5.2119','137.5217','TBP',NULL,''),
+('93.04.40003','Pulau Laag','5.3447','137.7375','TBP',NULL,'(PPKT)'),
+('93.04.40004','Pulau Somerwoo','5.1853','137.505','TBP',2.5230,'');
 
 -- Provinsi PAPUA_TENGAH
 INSERT INTO wilayah_pulau(kode,nama,lat,lng,status)
