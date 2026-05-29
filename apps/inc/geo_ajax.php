@@ -27,7 +27,7 @@ See the MIT License for more details
 
 copyright (c) 2017-2024 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
-include "db.php";
+require_once "db.php";
 $r=array('status'=>false,'error'=>'an error occured');
 if (!empty($_GET['id'])){
   $query = $db->prepare("SELECT * FROM {$tbl_wilayah} WHERE kode=:id");
