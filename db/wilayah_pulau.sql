@@ -5,7 +5,7 @@ filename : db/wilayah_pulau.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2430 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2026-05-28 14:19:32
+last edit: 2026-05-29 11:06:15
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -32,9 +32,10 @@ CREATE TABLE IF NOT EXISTS wilayah_pulau(
 	nama VARCHAR(255),
 	lat FLOAT,
 	lng FLOAT,
-	status VARCHAR(5),
+	status TEXT,
 	luas FLOAT DEFAULT NULL,
-	notes TEXT
+	notes TEXT,
+	PRIMARY KEY (kode)
 );
 CREATE INDEX pulau_nama_idx ON wilayah_pulau(nama);
 
@@ -1026,7 +1027,7 @@ VALUES
 ('15.07.40008','Pulau Putri','1.0606','104.2108','',0.0416,''),
 ('15.07.40009','Pulau Tanjung Putus','1.2319','104.1683','TBP',NULL,''),
 ('15.07.40010','Pulau Tengah','1.0425','104.2306','BP',10.9355,''),
-('15.07.40011','Pulau Wantambi','1.0431','104.2014','TBP'3.4293,'');
+('15.07.40011','Pulau Wantambi','1.0431','104.2014','TBP',3.4293,'');
 
 -- Provinsi SUMATERA_SELATAN
 INSERT INTO wilayah_pulau(kode,nama,lat,lng,status,luas,notes)
@@ -1054,7 +1055,7 @@ VALUES
 ('16.07.40019','Pulo Alanggantang','1.9281','104.5694','TBP',159.3856,''),
 ('16.07.40020','Pulo Alangtikus','2.3328','104.7653','TBP',3.7781,''),
 ('16.71.40001','Pulau Kemaro','2.9792','104.8211','BP',NULL,''),
-('16.71.40002','Pulau Pulokerto','3.0328','104.6614','BP',NULL'Perubahan nama pulau semula Pulau Kerto');
+('16.71.40002','Pulau Pulokerto','3.0328','104.6614','BP',NULL,'Perubahan nama pulau semula Pulau Kerto');
 
 -- Provinsi BENGKULU
 INSERT INTO wilayah_pulau(kode,nama,lat,lng,status,luas,notes)
@@ -1062,9 +1063,9 @@ VALUES
 ('17.03.40001','Pulau Bangkei','5.4658','102.3731','TBP',0.0034,''),
 ('17.03.40002','Pulau Dua','5.4431','102.3914','BP',0.4350,''),
 ('17.03.40003','Pulau Enggano','5.3903','102.2378','BP',395.3617,'(PPKT)'),
-('17.03.40004','Pulau Mega','4.0069','101.0453','TBP'3.0209,'(PPKT)'),
+('17.03.40004','Pulau Mega','4.0069','101.0453','TBP',3.0209,'(PPKT)'),
 ('17.03.40005','Pulau Merbau','5.4725','102.385','TBP',0.1081,''),
-('17.03.40006','Pulau Satu','5.4683','102.2239','TBP'0,0010,''),
+('17.03.40006','Pulau Satu','5.4683','102.2239','TBP',0.0010,''),
 ('17.03.40007','Pulau Tapakarifin','3.4242','101.8975','TBP',NULL,''),
 ('17.03.40008','Pulau Tapakbalai','3.5819','102.1131','TBP',0.0012,''),
 ('17.71.40001','Pulau Tikus','3.8381','102.1794','BP',0.0075,'');
@@ -2351,7 +2352,7 @@ VALUES
 ('21.03.40071','Pulau Kepala','-2.6436','109.1661','PPKT'),
 ('21.03.40072','Pulau Kepalananggal','-4.0139','107.9503','TBP'),
 ('21.03.40073','Pulau Kerdau','-2.7019','108.8806','BP'),
-('21.03.40074','Pulau Kerengge','-2.4831','108.9414','0.0059'),
+('21.03.40074','Pulau Kerengge','-2.4831','108.9414','TBP'),
 ('21.03.40075','Pulau Kluang','-3.7131','108.2742','TBP'),
 ('21.03.40076','Pulau Krenga','-3.6561','108.2194','TBP'),
 ('21.03.40077','Pulau Kukop','-3.8739','107.9275','TBP'),
@@ -3900,38 +3901,38 @@ VALUES
 ('31.72.40001','Pulau Pondok Dayung','6.0978','106.8772','BP');
 
 -- Provinsi JAWA_BARAT
-INSERT INTO wilayah_pulau(kode,nama,lat,lng,status)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,status,luas,notes)
 VALUES
-('32.02.40001','Pulau Cipamungguan','7.3807','106.4935',''),
-('32.02.40002','Pulau Gotor','7.1864','106.4177','TBP'),
-('32.02.40003','Pulau Karang Beulah','7.2461','106.3773','TBP'),
-('32.02.40004','Pulau Karanghantu','7.2087','106.3814','TBP'),
-('32.02.40005','Pulau Kunti','7.1842','106.4345','TBP'),
-('32.02.40006','Pulau Mandra','7.1814','106.4468','TBP'),
-('32.02.40007','Pulau Manuk','7.1841','106.4425','TBP'),
-('32.02.40008','Pulau Manukratu','7.3764','106.488',''),
-('32.02.40009','Pulau Pandanlaut','7.3782','106.49',''),
-('32.03.40001','Pulau Nusa Bunut','7.4229','106.7946',''),
-('32.03.40002','Pulau Nusa Bunut Kidul','7.4256','106.7945',''),
-('32.03.40003','Pulau Nusa Bunut Kulon','7.4232','106.7937',''),
-('32.03.40004','Pulau Nusa Citoe','7.4146','106.7922',''),
-('32.05.40001','Pulau Karangganjor','7.7387','107.9065','TBP'),
-('32.05.40002','Pulau Karangkakapak','7.7402','107.919','TBP'),
-('32.06.40001','Pulau Batukolotok','7.8168','108.2985','TBP (PPKT)'),
-('32.06.40002','Pulau Nusa Dua','7.8017','108.2636',''),
-('32.06.40003','Pulau Nusa Kolotok','7.8188','108.3221',''),
-('32.06.40004','Pulau Nusa Manuk','7.8203','108.3227','TBP (PPKT)'),
-('32.06.40005','Pulau Nusa Manuk','7.8193','108.3224',''),
-('32.12.40001','Pulau Biawak','5.9297','108.38','TBP'),
-('32.12.40002','Pulau Candikian','5.8067','108.4552','TBP'),
-('32.12.40003','Pulau Gosongtengah','5.8685','108.406','TBP'),
-('32.18.40001','Pulau Balekambang','7.7828','108.5031','TBP'),
-('32.18.40002','Pulau Batununggul','7.754','108.5066','TBP'),
-('32.18.40003','Pulau Batupayung','7.7754','108.5057','TBP'),
-('32.18.40004','Pulau Batupayung Leutik','7.7918','108.4985','TBP'),
-('32.18.40005','Pulau Manggar','7.7878','108.5008','TBP'),
-('32.18.40006','Pulau Sebrotan','7.7886','108.5003','TBP'),
-('32.18.40007','Pulau Sodonggede','7.7938','108.4967','TBP');
+('32.02.40001','Pulau Cipamungguan','7.3807','106.4935','',0.0010,''),
+('32.02.40002','Pulau Gotor','7.1864','106.4177','TBP',0.0006,''),
+('32.02.40003','Pulau Karang Beulah','7.2461','106.3773','TBP',0.0038,''),
+('32.02.40004','Pulau Karanghantu','7.2087','106.3814','TBP',0.0023,''),
+('32.02.40005','Pulau Kunti','7.1842','106.4345','TBP',0.0010,''),
+('32.02.40006','Pulau Mandra','7.1814','106.4468','TBP',NULL,''),
+('32.02.40007','Pulau Manuk','7.1841','106.4425','TBP',NULL,''),
+('32.02.40008','Pulau Manukratu','7.3764','106.488','',0.0012,''),
+('32.02.40009','Pulau Pandanlaut','7.3782','106.49','',0.000,''),
+('32.03.40001','Nusa Bunut','7.4229','106.7946','',NULL,'Perubahan nama semula Pulau Nusa Bunut'),
+('32.03.40002','Nusa Bunut Kidul','7.4256','106.7945','',NULL,'Perubahan nama semula Pulau Nusa Bunut Kidul'),
+('32.03.40003','Nusa Bunut Kulon','7.4232','106.7937','',NULL,'Perubahan nama semula Pulau Nusa Bunut Kulon'),
+('32.03.40004','Nusa Citoe','7.4146','106.7922','',NULL,'Perubahan nama semula Pulau Nusa Cito'),
+('32.05.40001','Pulau Karangganjor','7.7387','107.9065','TBP',0.0015,''),
+('32.05.40002','Pulau Karangkakapak','7.7402','107.919','TBP',0.0007,''),
+('32.06.40001','Pulau Batukolotok','7.8168','108.2985','TBP',0.0055,'(PPKT)'),
+('32.06.40002','Nusa Dua','7.8017','108.2636','',NULL,'Perubahan nama semula Pulau Nusa Dua'),
+('32.06.40003','Nusa Kolotok','7.8188','108.3221','',0.0013,'Perubahan nama semula Pulau Nusa Kolotok'),
+('32.06.40004','Pulau Nusamanuk','7.8203','108.3227','',0.0058,'Perubahan nama semula Pulau Nusa Manuk'),
+('32.06.40005','Nusa Manuk','7.8193','108.3224','',0.0056,'Perubahan nama semula Pulau Nusa Manuk'),
+('32.12.40001','Pulau Biawak','5.9297','108.38','TBP',1.3940,''),
+('32.12.40002','Pulau Candikian','5.8067','108.4552','TBP',0.0018,''),
+('32.12.40003','Pulau Gosongtengah','5.8685','108.406','TBP',0.0004,''),
+('32.18.40001','Pulau Balekambang','7.7828','108.5031','TBP',0.0037,''),
+('32.18.40002','Pulau Batununggul','7.754','108.5066','TBP',0.0014,''),
+('32.18.40003','Pulau Batupayung','7.7754','108.5057','TBP',0.0007,''),
+('32.18.40004','Pulau Batupayung Leutik','7.7918','108.4985','TBP',NULL,''),
+('32.18.40005','Pulau Manggar','7.7878','108.5008','TBP',0.0013,''),
+('32.18.40006','Pulau Sebrotan','7.7886','108.5003','TBP',0.0049,''),
+('32.18.40007','Pulau Sodonggede','7.7938','108.4967','TBP',0.0034,'');
 
 -- Provinsi JAWA_TENGAH
 INSERT INTO wilayah_pulau(kode,nama,lat,lng,status)
@@ -5452,7 +5453,7 @@ VALUES
 ('53.14.40070','Pulau Kanaker Telu','10.9228','122.9153','TBP'),
 ('53.14.40071','Pulau Keko Ana','10.5844','123.365','TBP'),
 ('53.14.40072','Pulau Keko Tua','10.5856','123.3642','TBP'),
-('53.14.40073','Pulau Dengka','10.7292','122.9506','0.5521'),
+('53.14.40073','Pulau Dengka','10.7292','122.9506','TBP'),
 ('53.14.40074','Pulau Lai','10.8719','123.0614','TBP'),
 ('53.14.40075','Pulau Landu','10.9278','122.9511','BP'),
 ('53.14.40076','Pulau Lemina Ana','10.565','123.3878','TBP'),
@@ -6947,7 +6948,7 @@ VALUES
 ('71.05.40001','Pulau Benteng','-1.3131','124.5128','TBP'),
 ('71.05.40002','Pulau Burung','-1.3089','124.5119','Alokasi pulau semula berada di Kabupaten Minahasa Tenggara'),
 ('71.05.40003','Pulau Cepatu','-1.3142','124.5125','TBP'),
-('71.05.40004','Pulau Tatapaan','-1.3003','124.5075','0.7388'),
+('71.05.40004','Pulau Tatapaan','-1.3003','124.5075','TBP'),
 ('71.06.40001','Pulau Arengkambing','-1.7686','125.1758','TBP'),
 ('71.06.40002','Pulau Bangka','-1.7928','125.1503','BP'),
 ('71.06.40003','Pulau Batubesar','-1.8047','125.0503','TBP'),
@@ -9672,7 +9673,7 @@ VALUES
 ('74.10.40031','Pulau Witaitonga','4.8475','123.1136','BP'),
 ('74.12.40001','Pulau Lensea Bakti','4.1014','123.2519',''),
 ('74.12.40002','Pulau Rapea Indah','4.0942','123.2558',''),
-('74.12.40003','Pulau Wawonii','4.1139','123.1019','703.8652'),
+('74.12.40003','Pulau Wawonii','4.1139','123.1019','BP'),
 ('74.13.40001','Pulau Totobo Tiga','4.5839','122.3219',''),
 ('74.13.40002','Pulau Bakuku','4.6436','122.5897','TBP'),
 ('74.13.40003','Pulau Balu','4.7344','122.3531','BP'),
@@ -12350,7 +12351,7 @@ VALUES
 ('82.72.40014','Pulau Sosa Gamgau Moi','-0.7461','127.4428','TBP');
 
 -- Provinsi PAPUA
-INSERT INTO wilayah_pulau(kode,nama,lat,lng,status)
+INSERT INTO wilayah_pulau(kode,nama,lat,lng,notes)
 VALUES
 ('91.03.40001','Pulau Ajakua','2.4369','140.5592','TBP'),
 ('91.03.40002','Pulau Ajava','2.4381','140.6064','TBP'),
@@ -16219,7 +16220,8 @@ VALUES
 ('96.03.41621','Pulau Olobi Ganan Yef Deni','2.1628','130.5067','TBP'),
 ('96.03.41622','Pulau Olobi Ganan Yef Lak','2.1617','130.5042','TBP'),
 ('96.03.41623','Pulau Olobi Ganan Yef Tapa','2.1625','130.5042','TBP'),
-('96.03.41624','Pulau Olobi Ganan Yefto Mubul','2.1619','130.5072','6.03.41625'),
+('96.03.41624','Pulau Olobi Ganan Yefto Mubul','2.1619','130.5072','TBP'),
+('96.03.41625','Pulau Olobi Pale','2.156847','130.488142','TBP'),
 ('96.03.41626','Pulau Olobi Pale Atsa','2.1606','130.4803','TBP'),
 ('96.03.41627','Pulau Olobi Pale Fat','2.1625','130.485','TBP'),
 ('96.03.41628','Pulau Olobi Pale Fit','2.1586','130.4861','TBP'),
