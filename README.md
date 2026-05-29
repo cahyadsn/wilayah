@@ -183,12 +183,6 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - update data luas wilayah kabupaten Sarmi dan Mamberamo Raya 2025-07-06
 - update data luas wilayah kabupaten Teluk Bintuni dan Manokwari Selatan 2025-07-05
 
-[v2025.7]
-- update data jumlah penduduk di **db/wilayah_penduduk.sql**, Jumlah penduduk bersumbor dari Ditjen Kependudukan dan Pencatatan Sipil Kemendagri (Data Kependudukan Semester I Bulan DesemberTahun 2024)  2025-07-04
-- update data pulau di **db/wilayah_pulau.sql** berdasar dari Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi Geospasial (BIG) 2025-07-04
-- update data luas wilayah di **db/wilayah_level_1_2.sql** berdasar dari Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia 2025-07-04
-- menambahkan data luas wilayah Indonesia per propinsi, per kabupaten/kota berdasarkan di **db/wilayah_luas.sql**, data Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia 2025-07-04
-
 ## INFORMASI
 - data kode wilayah pemerintahan diperoleh dari https://drive.google.com/file/d/1o_m621D00TtwCwQMLn8XUnV3nolamPDm/view?usp=sharing
 - data polygon diperoleh dari website BIG(Badan Informasi Geospatial) di https://tanahair.indonesia.go.id
