@@ -166,6 +166,7 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - update penambahan data luas untuk db/wilayah_pulau.sql prov DI Yogyakarta 2026-05-29
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Bali 2026-05-29
 - update nama pulau dan penambahan data luas untuk db/wilayah_pulau.sql prov Jawa Barat 2026-05-29
+- penambahan unit test untuk /apps 2026-05-27
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Papua Selatan 2026-05-26
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Sumsel 2026-05-26
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Jambi 2026-05-20
