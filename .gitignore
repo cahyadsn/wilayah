@@ -3,8 +3,9 @@ dump-*
 /inc/db.php
 /src
 /CLAUDE.md
-/.claude/
-/.claudevendor/
+/.claude
+/.claudevendor
 .phpunit.result.cache
 composer.lock
-/tools/
+/tools
+/vendor
