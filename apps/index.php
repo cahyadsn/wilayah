@@ -5,8 +5,8 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit   : 2025-05-25 16:34:49
-author  	  : cahya dsn
+last edit   : 2026-06-01 21:54:34
+author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps
 ================================================================================
@@ -19,7 +19,7 @@ define("_AUTHOR","cahyadsn");
 $_SESSION['author']='cahyadsn';
 $_SESSION['ver']=sha1(rand());
 require_once 'inc/db.php';
-$version='2.8';
+$version='3.0';
 header('Expires: '.date('r'));
 header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Cache-Control: post-check=0, pre-check=0', FALSE);
