@@ -3,9 +3,9 @@
 BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 ================================================================================
 filename : change_color.php
-purpose  :
+purpose  : change theme and/or color
 create   : 170912
-last edit: 210304
+last edit: 2026-06-01 21:39:05
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -21,13 +21,15 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2017-2021 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 if(isset($_POST)){
     session_start();
+    //-- set web theme, default 'dark'
     if(isset($_POST['theme'])){
         $_SESSION['theme']=$_POST['theme']==='light'?'light':'dark';
     }
+    //-- set web color theme
     if(isset($_POST['color'])){
         $_SESSION['c']=$_POST['color'];
     }
