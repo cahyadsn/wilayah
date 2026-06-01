@@ -34,11 +34,13 @@ $wil=array(
 );
 if (isset($_GET['id']) && !empty($_GET['id'])){
 	$n=strlen($_GET['id']);
-	$query = $db->prepare("SELECT * FROM wilayah WHERE kode LIKE :id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
-	$query->execute(array(':id'=>$_GET['id'].'%',':m'=>$wil[$n][0]));
-	echo"<option value=''>Pilih {$wil[$n][1]}</option>";
-	while($d = $query->fetchObject())
-		echo "<option value='{$d->kode}'>{$d->nama}</option>";
+	if (isset($wil[$n])) {
+		$query = $db->prepare("SELECT * FROM wilayah WHERE kode LIKE :id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
+		$query->execute(array(':id'=>$_GET['id'].'%',':m'=>$wil[$n][0]));
+		echo"<option value=''>Pilih {$wil[$n][1]}</option>";
+		while($d = $query->fetchObject())
+			echo "<option value='{$d->kode}'>{$d->nama}</option>";
+	}
 }else{
 ?>
 <!DOCTYPE html>
