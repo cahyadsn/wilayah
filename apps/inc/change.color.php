@@ -25,5 +25,10 @@ copyright (c) 2017-2021 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 if(isset($_POST)){
     session_start();
-    $_SESSION['c']=$_POST['color'];
+    if(isset($_POST['theme'])){
+        $_SESSION['theme']=$_POST['theme']==='light'?'light':'dark';
+    }
+    if(isset($_POST['color'])){
+        $_SESSION['c']=$_POST['color'];
+    }
 }
