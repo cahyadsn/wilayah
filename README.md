@@ -162,13 +162,13 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 
 ## CHANGE LOG
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Jateng, Banten 2026-06-01
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Sumbar,Riau,DKI Jakarta 2026-05-31
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Papua Tengah 2026-05-30
-- update penambahan data luas untuk db/wilayah_pulau.sql prov DI Yogyakarta 2026-05-29
-- update penambahan data luas untuk db/wilayah_pulau.sql prov Bali 2026-05-29
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Bali, DI Yogyakarta 2026-05-29
 - update nama pulau dan penambahan data luas untuk db/wilayah_pulau.sql prov Jawa Barat 2026-05-29
 - penambahan unit test untuk /apps 2026-05-27
-- update penambahan data luas untuk db/wilayah_pulau.sql prov Papua Selatan 2026-05-26
-- update penambahan data luas untuk db/wilayah_pulau.sql prov Sumsel 2026-05-26
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Sumsel,Papua Selatan 2026-05-26
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Jambi 2026-05-20
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Bengkulu 2026-05-19
 - update penambahan kolom status dan luas untuk db/wilayah_pulau.sql 2026-05-19
