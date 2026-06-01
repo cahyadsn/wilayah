@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_ajax.php
 purpose  :
 create   : 170912
-last edit: 2024-12-19 10:31:03
+last edit: 2026-06-01 21:39:05
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -21,7 +21,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2017-2024 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 require_once "db.php";
 function fallbackBox($lat, $lng, $delta = 0.01) {
