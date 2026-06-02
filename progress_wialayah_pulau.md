@@ -26,7 +26,7 @@ progress update data luas pulau di db/wilayah_pulau.sql
 | 61      | Kalimantan Barat           |   260  | v |
 | 62      | Kalimantan Tengah          |    71  | v |
 | 63      | Kalimantan Selatan         |   165  | v |
-| 64      | Kalimantan Timur           |   244  |   |
+| 64      | Kalimantan Timur           |   244  | v |
 | 65      | Kalimantan Utara           |   196  |   |
 | 71      | Sulawesi Utara             |   382  |   |
 | 72      | Sulawesi Tengah            |  1600  |   |
