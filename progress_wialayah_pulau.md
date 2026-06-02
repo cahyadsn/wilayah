@@ -23,7 +23,7 @@ progress update data luas pulau di db/wilayah_pulau.sql
 | 51      | Bali                       |    41  | v |
 | 52      | Nusa Tenggara Barat        |   430  |   |
 | 53      | Nusa Tenggara Timur        |   653  |   |
-| 61      | Kalimantan Barat           |   260  |   |
+| 61      | Kalimantan Barat           |   260  | v |
 | 62      | Kalimantan Tengah          |    71  |   |
 | 63      | Kalimantan Selatan         |   165  |   |
 | 64      | Kalimantan Timur           |   244  |   |
