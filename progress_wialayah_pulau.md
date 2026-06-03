@@ -32,7 +32,7 @@ progress update data luas pulau di db/wilayah_pulau.sql
 | 72      | Sulawesi Tengah            |  1600  |   |
 | 73      | Sulawesi Selatan           |   394  |   |
 | 74      | Sulawesi Tenggara          |   591  |   |
-| 75      | Gorontalo                  |   127  |   |
+| 75      | Gorontalo                  |   127  | v |
 | 76      | Sulawesi Barat             |    69  | v |
 | 81      | Maluku*                    |  1422  |   |
 | 82      | Maluku Utara               |   975  |   |

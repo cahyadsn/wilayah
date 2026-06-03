@@ -5,7 +5,7 @@ filename : db/wilayah_pulau.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2430 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2026-06-03 14:16:27
+last edit: 2026-06-03 14:54:58
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
