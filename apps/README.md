@@ -9,10 +9,10 @@ Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah I
 [![GitHub stars](https://img.shields.io/github/stars/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/stargazers)
 
 ## DEMO
-tautan demo web [apps versi 2.8](https://wilayah.cahyadsn.com/apps) 
+tautan demo web [apps versi 3.0](https://wilayah.cahyadsn.com/apps) 
 
 ## SCREENSHOT
-[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/250525.png?raw=true 'wilayah apps web demo v2.8')](https://wilayah.cahyadsn.com/apps)
+[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2026_06_03_14_03_28.png?raw=true 'wilayah apps web demo v3.0')](https://wilayah.cahyadsn.com/apps)
 
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 untuk tingkat Provinsi dan Kota/Kabupaten beserta data latitude/longitude (koordinat) dan polygon boundaries-nya dan aplikasi sederhananya
 
