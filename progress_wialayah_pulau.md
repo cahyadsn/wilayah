@@ -13,7 +13,7 @@ progress update data luas pulau di db/wilayah_pulau.sql
 | 17      | Bengkulu                   |     9  | v |
 | 18      | Lampung                    |   172  | v |
 | 19      | Kepulauan Bangka Belitung  |   501  | v |
-| 21      | Kepulauan Riau             |  2028  |   |
+| 21      | Kepulauan Riau             |  2028  | v |
 | 31      | DKI Jakarta                |   113  | v |
 | 32      | Jawa Barat                 |    30  | v |
 | 33      | Jawa Tengah                |    71  | v |
