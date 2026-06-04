@@ -162,7 +162,7 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
 
 ## CHANGE LOG
-- update penambahan data luas untuk db/wilayah_pulau.sql prov Sulsel 2026-06-04 &#127775;
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Sulsel,Sulteng 2026-06-04 &#127775;
 - update penambahan data luas untuk db/wilayah_pulau.sql prov NTB, NTT, Kepri, Sulut, Sulbar 2026-06-03
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Babel, Kalbar, Kalteng, Kalsel, Kaltim, Kaltara 2026-06-02
 - update /apps ke ver 3.0 2026-06-01
