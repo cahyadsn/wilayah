@@ -37,7 +37,7 @@ progress update data luas pulau di db/wilayah_pulau.sql
 | 81      | Maluku*                    |  1422  | v |
 | 82      | Maluku Utara               |   975  | v |
 | 91      | Papua*                     |   544  | v |
-| 92      | Papua Barat                |  1498  |   |
+| 92      | Papua Barat                |  1498  | v |
 | 93      | Papua Selatan              |     7  | v |
 | 94      | Papua Tengah               |    50  | v |
 | 95      | Papua Pegunungan           |     0  |   |
