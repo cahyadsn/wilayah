@@ -1,8 +1,16 @@
 # CHANGE LOG 
-- update penambahan data luas untuk db/wilayah_pulau.sql prov Bali 2026-05-29
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Maluku,Malut,Papua,Papua Barat,Papua Barat Daya 2026-06-05 &#127775;
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Sulsel,Sulteng 2026-06-04
+- update penambahan data luas untuk db/wilayah_pulau.sql prov NTB, NTT, Kepri, Sulut, Sulbar 2026-06-03
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Babel, Kalbar, Kalteng, Kalsel, Kaltim, Kaltara 2026-06-02
+- update /apps ke ver 3.0 2026-06-01
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Jateng, Banten, Lampung, Jatim, Aceh, Sumut 2026-06-01
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Sumbar,Riau,DKI Jakarta 2026-05-31
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Papua Tengah 2026-05-30
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Bali, DI Yogyakarta 2026-05-29
 - update nama pulau dan penambahan data luas untuk db/wilayah_pulau.sql prov Jawa Barat 2026-05-29
-- update penambahan data luas untuk db/wilayah_pulau.sql prov Papua Selatan 2026-05-26
-- update penambahan data luas untuk db/wilayah_pulau.sql prov Sumsel 2026-05-26
+- penambahan unit test untuk /apps 2026-05-27
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Sumsel,Papua Selatan 2026-05-26
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Jambi 2026-05-20
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Bengkulu 2026-05-19
 - update penambahan kolom status dan luas untuk db/wilayah_pulau.sql 2026-05-19
