@@ -1,38 +1,40 @@
 # WILAYAH
-Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 menggunakan PHP+MySQL+AJaX
+Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 menggunakan PHP+MySQL+AJaX
 
 ## DEMO
-tautan demo web [apps versi 2.8](https://wilayah.cahyadsn.com/apps)
+tautan demo web [apps versi 3.0](https://wilayah.cahyadsn.com/apps)
 
 ## SCREENSHOT
-[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/250525.png?raw=true 'wilayah apps web demo v2.8')](https://wilayah.cahyadsn.com/apps)
+[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2026_06_03_14_03_28.png?raw=true 'wilayah apps web demo v3.0')](https://wilayah.cahyadsn.com/apps)
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
-- **db/wilayah.sql** sesuai dengan Kepmendagri No 300.2.2-2138 Tahun 2025 
-- **db/wilayah_level_1_2.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
-- **db/archive/wilayah_2023.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022
-- **db/archive/wilayah_2022.sql** sesuai Permendagri No 58 Tahun 2021 (_revised by Kepmendagri No. 050-145 Tahun 2022_)
+- **db/wilayah.sql** sesuai dengan Kepmendagri No. 300.2.2-2430 Tahun 2025 
+- **db/wilayah_level_1_2.sql** sesuai Kepmendagri No. 300.2.2-2430 Tahun 2025 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
+- **db/archive/wilayah_2023.sql** sesuai Kepmendagri No. 100.1.1-6117 Tahun 2022
+- **db/archive/wilayah_2022.sql** sesuai Permendagri No. 58 Tahun 2021 (_revised by Kepmendagri No. 050-145 Tahun 2022_)
 - **db/archive/wilayah_2020.sql** sesuai Permendagri No. 72 Tahun 2019 (_revised by Kepmendagri No.146.1-4717 Tahun 2020_)
-- **db/archive/wilayah_2018.sql** sesuai Permendagri No 137 tahun 2017
-- **db/archive/wilayah_2016.sql** sesuai Permendagri No 56 Tahun 2015
-- **db/archive/wilayah_level_1_2-2022.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries (mysql)
-- **db/archive/wilayah_level_1_2_postgresl.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries (postgresql)
+- **db/archive/wilayah_2018.sql** sesuai Permendagri No. 137 tahun 2017
+- **db/archive/wilayah_2016.sql** sesuai Permendagri No. 56 Tahun 2015
+- **db/archive/wilayah_level_1_2-2022.sql** sesuai Kepmendagri No. 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries (mysql)
+- **db/archive/wilayah_level_1_2_postgresl.sql** sesuai Kepmendagri No. 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries (postgresql)
 
 Kode dan Data Pulau Indonesia dalam database :
-- **db/wilayah_pulau.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
+- **db/wilayah_pulau.sql** sesuai Kepmendagri No 300.2.2-2430 Tahun 2025
+- **db/archive/pulau_2025.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 - **db/archive/pulau_2023.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022
 - **db/archive/pulau_2022.sql** sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022)
 
 Data Jumlah Penduduk Indonesia per propinsi dan per kabupaten/kota dalam database
-- **db/wilayah_penduduk.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 *
+- **db/wilayah_penduduk.sql** sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 *
 
 Data Luas wilayah Indonesia per popinsi dan per kabupaten/kota dalam database
-- **db/wilayah_luas.sql** sesuai dengan Kepmendagri No 300.2.2-2138 Tahun 2025 dan Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia
+- **db/wilayah_luas.sql** sesuai dengan Kepmendagri No 300.2.2-2430 Tahun 2025 dan Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia
 
 ## TAUTAN TERKAIT
-- Data kodepos vs kode wilayah administrasi pemerintahan Indoensia : https://github.com/cahyadsn/wilayah_kodepos
+- Data kodepos vs kode wilayah administrasi pemerintahan Indonesia : https://github.com/cahyadsn/wilayah_kodepos
 - Data referensi Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia : https://github.com/cahyadsn/wilayah_ref
 - Data boundaries/polygon berdasarkan kode wilayah adminsitrasi pemerintahan Indonesia : https://github.com/cahyadsn/wilayah_boundaries
+- Data logo/lambang berdasarkan kode wilayah adminsitrasi pemerintahan Indonesia (prov,kab/kota) : https://github.com/cahyadsn/wilayah_logo
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
@@ -41,8 +43,65 @@ Data Luas wilayah Indonesia per popinsi dan per kabupaten/kota dalam database
 [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)]()
 [![Donate](https://img.shields.io/badge/$-support-ff69b4.svg?style=flat)](https://paypal.me/cahyadwiana)
 
+## Data Kepmendagri No 300.2.2-2430 Tahun 2025
+Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 (wilayah.sql)
+
+| id_prov | nama                       | kab   | kota  | kec  | kel   | desa  |    luas     | penduduk  | pulau  |
+|---------|----------------------------|------:|------:|------|------:|------:|------------:|----------:|-------:|
+| 11      | Aceh*                      |   18  |    5  | 290  |    0  | 6500  |   56835.019 |   5623479 |   369* |
+| 12      | Sumatera Utara*            |   25  |    8  | 455  |  693  | 5417  |   72437.755 |  15640905 |   224* |
+| 13      | Sumatera Barat             |   12  |    7  | 179  |  230  | 1035  |   42107.674 |   5820359 |   219  |
+| 14      | Riau                       |   10  |    2  | 172  |  271  | 1591  |   89900.780 |   7099297 |   144  |
+| 15      | Jambi                      |    9  |    2  | 144  |  171  | 1414  |   49023.037 |   3834439 |    14  |
+| 16      | Sumatera Selatan           |   13  |    4  | 241  |  403  | 2856  |   86771.918 |   9064690 |    24  |
+| 17      | Bengkulu                   |    9  |    1  | 129  |  172  | 1341  |   20122.210 |   2127957 |     9  |
+| 18      | Lampung                    |   13  |    2  | 229  |  205  | 2446  |   33570.758 |   9144263 |   172  |
+| 19      | Kepulauan Bangka Belitung  |    6  |    1  |  47  |   84  |  309  |   16670.225 |   1549562 |   501  |
+| 21      | Kepulauan Riau             |    5  |    2  |  80  |  144  |  275  |    8170.375 |   2271890 |  2028  |
+| 31      | DKI Jakarta                |    1  |    5  |  44  |  267  |    0  |     661.530 |  11038216 |   113  |
+| 32      | Jawa Barat                 |   18  |    9  | 627  |  646  | 5311  |   37053.331 |  51316378 |    30  |
+| 33      | Jawa Tengah                |   29  |    6  | 576  |  753  | 7810  |   34347.428 |  38430645 |    71  |
+| 34      | DI Yogyakarta              |    4  |    1  |  78  |   46  |  392  |    3170.363 |   3743365 |    37  |
+| 35      | Jawa Timur                 |   29  |    9  | 666  |  773  | 7721  |   48055.876 |  41919906 |   538  |
+| 36      | Banten                     |    4  |    4  | 155  |  314  | 1238  |    9355.763 |  12881374 |    80  |
+| 51      | Bali                       |    8  |    1  |  57  |   80  |  636  |    5582.827 |   4375263 |    41  |
+| 52      | Nusa Tenggara Barat        |    8  |    2  | 117  |  145  | 1021  |   19631.991 |   5751295 |   430  |
+| 53      | Nusa Tenggara Timur        |   21  |    1  | 315  |  305  | 3137  |   46378.105 |   5700772 |   653  |
+| 61      | Kalimantan Barat           |   12  |    2  | 174  |   99  | 2046  |  147018.063 |   5646268 |   260  |
+| 62      | Kalimantan Tengah          |   13  |    1  | 136  |  139  | 1432  |  153430.363 |   2825290 |    71  |
+| 63      | Kalimantan Selatan         |   11  |    2  | 156  |  144  | 1872  |   37125.426 |   4305281 |   165  |
+| 64      | Kalimantan Timur           |    7  |    3  | 105  |  197  |  841  |  126951.758 |   4123303 |   244  |
+| 65      | Kalimantan Utara           |    4  |    1  |  55  |   35  |  447  |   69900.886 |    770627 |   196  |
+| 71      | Sulawesi Utara             |   11  |    4  | 171  |  332  | 1507  |   14488.429 |   2645291 |   382  |
+| 72      | Sulawesi Tengah            |   12  |    1  | 177  |  175  | 1842  |   61496.983 |   3219494 |  1600  |
+| 73      | Sulawesi Selatan           |   21  |    3  | 313  |  793  | 2266  |   45323.975 |   9528276 |   394  |
+| 74      | Sulawesi Tenggara          |   15  |    2  | 221  |  377  | 1908  |   36139.303 |   2824589 |   591  |
+| 75      | Gorontalo                  |    5  |    1  |  77  |   72  |  657  |   12024.982 |   1250960 |   127  |
+| 76      | Sulawesi Barat             |    6  |    0  |  69  |   73  |  575  |   16590.667 |   1466741 |    69  |
+| 81      | Maluku*                    |    9  |    2  | 119  |   35  | 1200  |   46133.832 |   1935586 |  1422  |
+| 82      | Maluku Utara               |    8  |    2  | 118  |  118  | 1067  |   31465.977 |   1394231 |   975  |
+| 91      | Papua*                     |    8  |    1  | 105  |   51  |  948  |   81383.315 |   1102360 |   544  |
+| 92      | Papua Barat                |    7  |    0  |  91  |   21  |  803  |   60308.590 |    576255 |  1498  |
+| 93      | Papua Selatan              |    4  |    0  |  82  |   13  |  677  |  117858.969 |    562220 |     7  |
+| 94      | Papua Tengah               |    8  |    0  | 131  |   36  | 1172  |   61079.587 |   1369112 |    50  |
+| 95      | Papua Pegunungan           |    8  |    0  | 252  |   10  | 2617  |   52508.656 |   1470518 |     0  |
+| 96+     | Papua Barat Daya           |    5  |    1  | 132  |   74  |  939  |   39103.058 |    623186 |  3082  |
+|         | TOTAL                      |  416  |   98  |7285  | 8496  |75266  | 1890179.784 | 284973643 | 17380  |
+
+**NOTE** :
+
+)* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 300.2.2-2138 Tahun 2025)
+- Nama Provinsi diurutkan sesuai dengan Kode Wilayah Administrasi Pemerintahan
+- Luas wilayah (dalam km persegi) bersumber dari Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia
+- Jumlah penduduk bersumber dari Ditjen Kependudukan dan Pencatatan Sipil Kemendagri (Data Kependudukan Semester II Bulan Desember Tahun 2024)
+- Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua) 
+- Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi Geospasial (BIG)
+- Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
+
+link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
+
 ## Data Kepmendagri No 300.2.2-2138 Tahun 2025
-Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 (wilayah.sql)
+Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 300.2.2-2138 Tahun 2025 (wilayah_2025.sql)
 
 | id_prov | nama                       | kab   | kota  | kec  | kel   | desa  |    luas     | penduduk  | pulau  |
 |---------|----------------------------|------:|------:|------|------:|------:|------------:|----------:|-------:|
@@ -91,15 +150,6 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 )* data mengalami perubahan dari data sebelumnya (data Kepmendagri No. 100.1.1-6117 Tahun 2022)
 
 )+ data baru dari Kepmendagri No. 300.2.2-2138 Tahun 2025
-
-- Nama Provinsi diurutkan sesuai dengan Kode Wilayah Administrasi Pemerintahan
-- Luas wilayah (dalam km persegi) bersumber dari Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia
-- Jumlah penduduk bersumber dari Ditjen Kependudukan dan Pencatatan Sipil Kemendagri (Data Kependudukan Semester II Bulan Desember Tahun 2024)
-- Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua) 
-- Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi Geospasial (BIG)
-- Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
-
-link demo bisa dilihat [di sini] https://wilayah.cahyadsn.com/
 
 ## Data Kepmendagri No 100.1.1-6117 Tahun 2022
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagrin No 100.1.1-6117 Tahun 2022 (wilayah.sql)
@@ -340,6 +390,35 @@ Database daerah sesuai Permendagri no 56 tahun 2015 (wilayah_2016.sql)
 
 
 ## Change Log
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Maluku,Malut,Papua,Papua Barat,Papua Barat Daya 2026-06-05 &#127775;
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Sulsel,Sulteng 2026-06-04
+- update penambahan data luas untuk db/wilayah_pulau.sql prov NTB, NTT, Kepri, Sulut, Sulbar 2026-06-03
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Babel, Kalbar, Kalteng, Kalsel, Kaltim, Kaltara 2026-06-02
+- update /apps ke ver 3.0 2026-06-01
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Jateng, Banten, Lampung, Jatim, Aceh, Sumut 2026-06-01
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Sumbar,Riau,DKI Jakarta 2026-05-31
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Papua Tengah 2026-05-30
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Bali, DI Yogyakarta 2026-05-29
+- update nama pulau dan penambahan data luas untuk db/wilayah_pulau.sql prov Jawa Barat 2026-05-29
+- penambahan unit test untuk /apps 2026-05-27
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Sumsel,Papua Selatan 2026-05-26
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Jambi 2026-05-20
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Bengkulu 2026-05-19
+- update penambahan kolom status dan luas untuk db/wilayah_pulau.sql 2026-05-19
+- penambahan Jules pada project 2026-05-14
+- update koordinat Kab Sorong di db/wilayah_level_1_2.sql 2026-05-08
+- update data kode pulau sesuai Keputusan Menteri Dalam Negeri Nomor 300.2.2-2430 tahun 2025 2026-05-07
+- update db/wilayah.sql , perbaikan nama desa Kwawor Kecil Mata Ata 2026-02-13
+- update db/wilayah dan db/wilayah_level_1_2, perbaikan nama Kabupaten Timor Tengah Selatan dan Pegunungan Bintang 2026-01-29
+- update db/wilayah_level_1_2, perbaikan nama kota padangsidimpuan (sebelumnya padangsidempuan) sesuai Undang-Undang Nomor 8 Tahun 2023 tentang Provinsi Sumatera Utara 2026-01-13
+- update main web ke v5.0, ubah library js dari zeptojs ke vanilla js, css color theme generated by php 2025-11-03
+- update README.md menambahkan informasi kodefikasi kode wilayah dan kode pulau 2025-11-03
+- update main web ke v4.0 (https://wilayah.cahyadsn.com) dan update data sesuai kepmendari No 300.2.2-2138 Th 2025 2025-07-23
+- verifikasi dan update data nama wilayah, menghilangkan double spasi 2025-07-17
+- update perbaikan nama desa di kab. ACeh Tenggara, Aceh Utara, Mamberamo Raya 2025-07-17
+- update data luas wilayah kabupaten Sarmi dan Mamberamo Raya 2025-07-06
+- update data luas wilayah kabupaten Teluk Bintuni dan Manokwari Selatan 2025-07-05
+
 ## RELEASE v2025.7 [2025-07-04]
 - update data jumlah penduduk di **db/wilayah_penduduk.sql**, Jumlah penduduk bersumbor dari Ditjen Kependudukan dan Pencatatan Sipil Kemendagri (Data Kependudukan Semester I Bulan DesemberTahun 2024)  2025-07-04
 - update data pulau di **db/wilayah_pulau.sql** berdasar dari Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi Geospasial (BIG) 2025-07-04
