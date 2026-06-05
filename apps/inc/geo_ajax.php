@@ -86,7 +86,7 @@ if (!empty($_GET['id'])){
     $n=strlen($_GET['id']);
     $m=($n==2?5:($n==5?8:13));
     $wil=($n==2?'Kota/Kab':($n==5?'Kecamatan':'Desa/Kelurahan'));
-    $query = $db->prepare("SELECT * FROM {$tbl_wilayah} WHERE kode LIKE CONCAT(:id, '%') AND CHAR_LENGTH(kode)=:m ORDER BY nama");
+    $query = $db->prepare("SELECT kode, nama FROM {$tbl_wilayah} WHERE kode LIKE CONCAT(:id, '%') AND CHAR_LENGTH(kode)=:m ORDER BY nama");
     $query->execute(array(':id'=>$_GET['id'],':m'=>$m));
     $opt="<option value=''>Pilih {$wil}</option>";
     while($d = $query->fetchObject()){
