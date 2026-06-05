@@ -35,7 +35,7 @@ $wil=array(
 if (isset($_GET['id']) && !empty($_GET['id'])){
 	$n=strlen($_GET['id']);
 	if (isset($wil[$n])) {
-		$query = $db->prepare("SELECT * FROM wilayah WHERE kode LIKE :id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
+		$query = $db->prepare("SELECT kode, nama FROM wilayah WHERE kode LIKE :id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
 		$query->execute(array(':id'=>$_GET['id'].'%',':m'=>$wil[$n][0]));
 		echo"<option value=''>Pilih {$wil[$n][1]}</option>";
 		while($d = $query->fetchObject())
