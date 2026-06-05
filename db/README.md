@@ -32,7 +32,7 @@ CREATE TABLE wilayah_pulau (
     nama VARCHAR(255),
     lat FLOAT,
     lng FLOAT,
-    status TEXT,
+    status VARCHAR(3),
     luas FLOAT DEFAULT NULL,
     notes TEXT,
     PRIMARY KEY (kode)

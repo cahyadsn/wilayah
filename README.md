@@ -157,12 +157,10 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## TODO
-- update database pulau sesuai Keputusan Menteri Dalam Negeri Nomor 300.2.2-2430 tahun 2025, penambahan data luas pulau (dev)
-- membuat repository wilayah_api untuk API kode data wilayah pemerintahan  (dev)
-- menambahkan API untuk data kode wilayah ke https://api.cahyadsn.com/ (dev)
+- penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- update penambahan data luas untuk db/wilayah_pulau.sql prov Papua 2026-06-05 &#127775;
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Maluku,Malut,Papua,Papua Barat,Papua Barat Daya 2026-06-05 &#127775;
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Sulsel,Sulteng 2026-06-04
 - update penambahan data luas untuk db/wilayah_pulau.sql prov NTB, NTT, Kepri, Sulut, Sulbar 2026-06-03
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Babel, Kalbar, Kalteng, Kalsel, Kaltim, Kaltara 2026-06-02
