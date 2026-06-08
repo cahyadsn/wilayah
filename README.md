@@ -160,7 +160,8 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- update penambahan data luas untuk db/wilayah_pulau.sql prov Maluku,Malut,Papua,Papua Barat,Papua Barat Daya 2026-06-05 &#127775;
+- bug fixing apps/inc/geo_ajax.php 2026-06-08 &#127775;
+- update penambahan data luas untuk db/wilayah_pulau.sql prov Maluku,Malut,Papua,Papua Barat,Papua Barat Daya 2026-06-05
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Sulsel,Sulteng 2026-06-04
 - update penambahan data luas untuk db/wilayah_pulau.sql prov NTB, NTT, Kepri, Sulut, Sulbar 2026-06-03
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Babel, Kalbar, Kalteng, Kalsel, Kaltim, Kaltara 2026-06-02
