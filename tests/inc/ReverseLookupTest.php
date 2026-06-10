@@ -1,113 +1,100 @@
 <?php
 
-namespace Tests\inc;
-
 use PHPUnit\Framework\TestCase;
 
 class ReverseLookupTest extends TestCase
 {
-    /**
-     * @runInSeparateProcess
-     * @preserveGlobalState disabled
-     */
     public static function setUpBeforeClass(): void
     {
-        // Provide dummy GET parameters so reverse_lookup.php doesn't just exit.
-        // It will proceed to try querying the database, but since we are in a test
-        // environment, the connection or query might fail. The script catches Throwable,
-        // echoes a JSON response, and continues to the end of the file, safely defining
-        // the functions, including buildChain.
-        $_GET['lat'] = 1;
-        $_GET['lng'] = 1;
+        // To safely include apps/inc/reverse_lookup.php which executes procedural code,
+        // we need to mock the environment to prevent it from exiting early.
 
-        // Suppress warnings from headers already sent or undefined $db
-        @ob_start();
-        @require_once realpath(__DIR__ . '/../../apps/inc/reverse_lookup.php');
-        @ob_get_clean();
+        // Mock a PDO connection for db.php inclusion if it's not already set
+        if (!isset($GLOBALS['db'])) {
+            $pdoMock = new class extends PDO {
+                public function __construct() {}
+                #[\ReturnTypeWillChange]
+                public function prepare($query, $options = []) {
+                    return new class {
+                        public function execute($params = null) { return true; }
+                        public function fetchAll($mode = null, ...$args) {
+                            return [['kode' => '11', 'nama' => 'Aceh', 'lat' => 0, 'lng' => 0]];
+                        }
+                        public function fetch($mode = null, $cursorOrientation = null, $cursorOffset = null) {
+                            return false;
+                        }
+                    };
+                }
+            };
+            $GLOBALS['db'] = $pdoMock;
+        }
+
+        // Set GET variables to prevent exit on missing coordinates
+        $_GET['lat'] = 0;
+        $_GET['lng'] = 0;
+
+        // Capture any output like headers or JSON
+        ob_start();
+
+        // Expose $db to the global scope since reverse_lookup.php expects it from db.php (which we bypass or supplement)
+        global $db;
+        $db = $GLOBALS['db'];
+
+        // Using @ to suppress "headers already sent" warnings
+        @require_once __DIR__ . '/../../apps/inc/reverse_lookup.php';
+
+        ob_end_clean();
     }
 
-    public function testBuildChainNormal()
+    public function testPointInRing(): void
     {
-        $names = [
-            '11' => 'Provinsi Aceh',
-            '11.01' => 'Kab. Aceh Selatan',
-            '11.01.01' => 'Kec. Bakongan',
-            '11.01.01.2001' => 'Kel. Keude Bakongan'
+        $ring = [
+            [0, 0],
+            [0, 10],
+            [10, 10],
+            [10, 0]
         ];
 
-        $result = buildChain('11.01.01.2001', $names);
+        // Point inside
+        $this->assertTrue(pointInRing(5, 5, $ring));
 
-        $this->assertEquals([
-            'prov' => ['kode' => '11', 'nama' => 'Provinsi Aceh'],
-            'kab'  => ['kode' => '11.01', 'nama' => 'Kab. Aceh Selatan'],
-            'kec'  => ['kode' => '11.01.01', 'nama' => 'Kec. Bakongan'],
-            'kel'  => ['kode' => '11.01.01.2001', 'nama' => 'Kel. Keude Bakongan'],
-        ], $result);
+        // Point outside
+        $this->assertFalse(pointInRing(15, 15, $ring));
+        $this->assertFalse(pointInRing(-5, 5, $ring));
+
+        // Invalid ring (< 3 points)
+        $this->assertFalse(pointInRing(5, 5, [[0, 0], [0, 10]]));
     }
 
-    public function testBuildChainEmpty()
+    public function testPointInPath(): void
     {
-        $result = buildChain('', []);
+        // Simple 1-ring path JSON
+        $singleRingJson = json_encode([
+            [
+                [0, 0], [0, 10], [10, 10], [10, 0]
+            ]
+        ]);
 
-        $this->assertEquals([
-            'prov' => ['kode' => '', 'nama' => null],
-            'kab'  => null,
-            'kec'  => null,
-            'kel'  => null,
-        ], $result);
-    }
+        $this->assertTrue(pointInPath(5, 5, $singleRingJson));
+        $this->assertFalse(pointInPath(15, 15, $singleRingJson));
 
-    public function testBuildChainShort()
-    {
-        $names = ['11' => 'Provinsi Aceh'];
-        $result = buildChain('11', $names);
+        // Multi-ring path JSON (e.g. islands)
+        $multiRingJson = json_encode([
+            [
+                [0, 0], [0, 10], [10, 10], [10, 0]
+            ],
+            [
+                [20, 20], [20, 30], [30, 30], [30, 20]
+            ]
+        ]);
 
-        $this->assertEquals([
-            'prov' => ['kode' => '11', 'nama' => 'Provinsi Aceh'],
-            'kab'  => null,
-            'kec'  => null,
-            'kel'  => null,
-        ], $result);
+        $this->assertTrue(pointInPath(5, 5, $multiRingJson));
+        $this->assertTrue(pointInPath(25, 25, $multiRingJson));
+        $this->assertFalse(pointInPath(15, 15, $multiRingJson));
 
-        $namesKab = ['11' => 'Provinsi Aceh', '11.01' => 'Kab. Aceh Selatan'];
-        $resultKab = buildChain('11.01', $namesKab);
-
-        $this->assertEquals([
-            'prov' => ['kode' => '11', 'nama' => 'Provinsi Aceh'],
-            'kab'  => ['kode' => '11.01', 'nama' => 'Kab. Aceh Selatan'],
-            'kec'  => null,
-            'kel'  => null,
-        ], $resultKab);
-    }
-
-    public function testBuildChainMissingNames()
-    {
-        $result = buildChain('11.01.01.2001', []);
-
-        $this->assertEquals([
-            'prov' => ['kode' => '11', 'nama' => null],
-            'kab'  => ['kode' => '11.01', 'nama' => null],
-            'kec'  => ['kode' => '11.01.01', 'nama' => null],
-            'kel'  => ['kode' => '11.01.01.2001', 'nama' => null],
-        ], $result);
-    }
-
-    public function testBuildChainPartialNames()
-    {
-        $names = [
-            '11' => 'Provinsi Aceh',
-            // Missing kab
-            '11.01.01' => 'Kec. Bakongan',
-            // Missing kel
-        ];
-
-        $result = buildChain('11.01.01.2001', $names);
-
-        $this->assertEquals([
-            'prov' => ['kode' => '11', 'nama' => 'Provinsi Aceh'],
-            'kab'  => ['kode' => '11.01', 'nama' => null],
-            'kec'  => ['kode' => '11.01.01', 'nama' => 'Kec. Bakongan'],
-            'kel'  => ['kode' => '11.01.01.2001', 'nama' => null],
-        ], $result);
+        // Empty or invalid inputs
+        $this->assertFalse(pointInPath(5, 5, ''));
+        $this->assertFalse(pointInPath(5, 5, 'not-json'));
+        $this->assertFalse(pointInPath(5, 5, '[]'));
     }
 }

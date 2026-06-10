@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_ajax.php
 purpose  :
 create   : 170912
-last edit: 2026-06-01 21:39:05
+last edit: 2026-06-08 09:05:48
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -61,16 +61,18 @@ function isPathReasonable($path, $lat, $lng, $kode) {
 
 $r=array('status'=>false,'error'=>'an error occured');
 if (!empty($_GET['id'])){
-  // Try wilayah_level_1_2 first (has geo data: lat, lng, path, luas, penduduk)
-  $query = $db->prepare("SELECT * FROM wilayah_level_1_2 WHERE kode=:id");
+  // Try get from table first (has geo data: lat, lng, path, luas, penduduk)
+  $query = $db->prepare("SELECT * FROM {$tbl_wilayah} WHERE kode=:id");
   $query->execute(array(':id'=>$_GET['id']));
   $d = $query->fetchObject();
   if(!empty($d) && !empty($d->kode)){
     $path=$d->path;
-    if(!isPathReasonable($path, $d->lat, $d->lng, $d->kode)){
-      $delta = (strlen($d->kode) >= 13 ? 0.004 : (strlen($d->kode) >= 8 ? 0.008 : 0.01));
-      $path = fallbackBox($d->lat, $d->lng, $delta);
-    }
+	if(empty($path)){
+		if(!isPathReasonable($path, $d->lat, $d->lng, $d->kode)){
+		  $delta = (strlen($d->kode) >= 13 ? 0.004 : (strlen($d->kode) >= 8 ? 0.008 : 0.01));
+		  $path = fallbackBox($d->lat, $d->lng, $delta);
+		}
+	}
     $data=array('kode'=>$d->kode,'nama'=>$d->nama,'lat'=>$d->lat,'lng'=>$d->lng,'path'=>$path,'luas'=>$d->luas,'penduduk'=>$d->penduduk);
     $r=array('status'=>true,'data'=>$data);
   } else {
