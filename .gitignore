@@ -9,3 +9,11 @@ dump-*
 composer.lock
 /tools
 /vendor
+# AI related folders
+/.agents
+/.antigravitycli
+/.kiro
+/.windsurf
+/.Jules
+/MEMORY.md
+/GEMINI.md
