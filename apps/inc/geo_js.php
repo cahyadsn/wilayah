@@ -5,17 +5,19 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_js.php
 purpose  : JavaScript for AJAX cascade, map, and counters
 create   : 170912
-last edit: 2025-06-01
+last edit: 2026-06-11 15:52:12
 author   : cahya dsn
 ================================================================================
 MIT License
-copyright (c) 2017-2025 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 session_start();
 header("Content-type: text/javascript");
+header('Cache-Control: public, max-age=31536000');
+header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000));
+header('Pragma: cache');
 if(isset($_SESSION['author']) && $_SESSION['author']=='cahyadsn'){
     $v=$_GET['v'];
-    session_destroy();
 } else {
     die('illegal call');
 }

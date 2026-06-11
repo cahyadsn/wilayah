@@ -5,13 +5,13 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit   : 2026-06-08 14:24:21
+last edit   : 2026-06-11 15:52:12
 author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps
 ================================================================================
 MIT License
-copyright (c) 2015-2025 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2015-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 session_start();
 $theme=isset($_SESSION['theme'])?$_SESSION['theme']:(isset($_GET['theme'])?$_GET['theme']:'light');
@@ -19,11 +19,10 @@ define("_AUTHOR","cahyadsn");
 $_SESSION['author']='cahyadsn';
 $_SESSION['ver']=sha1(rand());
 require_once 'inc/db.php';
-$version='3.0';
-header('Expires: '.date('r'));
-header('Cache-Control: no-store, no-cache, must-revalidate');
-header('Cache-Control: post-check=0, pre-check=0', FALSE);
-header('Pragma: no-cache');
+$version='3.0.1';
+header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + 86400));
+header('Cache-Control: public, max-age=86400');
+header('Pragma: cache');
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,9 +34,12 @@ header('Pragma: no-cache');
   <meta name="author" content="Cahya DSN" />
   <meta name="keywords" content="php, mysql, data, administrasi, wilayah, indonesia, kepmendagri,300.2.2-2430,2025, cahyadsn" />
 
-  <!-- Google Fonts -->
+  <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com">
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Leaflet -->
@@ -45,7 +47,7 @@ header('Pragma: no-cache');
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.css" />
 
-  <link rel="stylesheet" href="css/styles.css?v=<?php echo $version;?>" />
+  <link rel="stylesheet" href="css/styles.min.css?v=<?php echo $version;?>" />
 </head>
 <body class="theme-<?php echo $theme==='light'?'light':'dark'; ?>">
 
@@ -125,7 +127,7 @@ header('Pragma: no-cache');
                   <select name="prop" id="prop" class="form-select" onchange="ajax(this.value)">
                     <option value="">Pilih Provinsi</option>
                     <?php
-                    $cache_file = sys_get_temp_dir() . '/provinsi_cache.html';
+                    $cache_file = __DIR__ . '/cache/provinsi_cache.html';
                     $cache_ttl = 86400;
 
                     if (file_exists($cache_file) && (time() - filemtime($cache_file) < $cache_ttl)) {
@@ -200,9 +202,9 @@ header('Pragma: no-cache');
   <!-- ======== SCRIPTS ======== -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.js"></script>
-  <script src="inc/geo_js.php?v=<?php echo $_SESSION['ver'];?>"></script>
-  <script src="js/wilayah.js?id=<?php echo MD5(date('YmdHis'));?>"></script>
+  <script src="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.js" defer></script>
+  <script src="inc/geo_js.php?v=<?php echo $version;?>" defer></script>
+  <script src="js/wilayah.min.js?v=<?php echo $version;?>" defer></script>
 
 </body>
 </html>

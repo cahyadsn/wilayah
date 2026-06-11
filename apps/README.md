@@ -1,4 +1,4 @@
-# wilayah v3.0
+# wilayah v3.0.1
 Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 dengan PHP+MySQL+AJaX
 
 (Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Kepmendagri No 300.2.2-2430 Tahun 2025, utk aplikasi ini hanya menggunakan data level 1 dan 2 (provinsi dan kabupaten/kota) di /db/archive/wilayah_level_1_2.sql yang sesuai dengan Kepmendagri No 300.2.2-2430 Tahun 2025, dengan penambahan data lat/long/elv/timezone,boundaries/polygon,luas dan jumlah penduduk)
@@ -9,10 +9,10 @@ Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah I
 [![GitHub stars](https://img.shields.io/github/stars/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/stargazers)
 
 ## DEMO
-tautan demo web [apps versi 3.0](https://wilayah.cahyadsn.com/apps) 
+tautan demo web [apps versi 3.0.1](https://wilayah.cahyadsn.com/apps) 
 
 ## SCREENSHOT
-[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2026_06_03_14_03_28.png?raw=true 'wilayah apps web demo v3.0')](https://wilayah.cahyadsn.com/apps)
+[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2026_06_03_14_03_28.png?raw=true 'wilayah apps web demo v3.0.1')](https://wilayah.cahyadsn.com/apps)
 
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 untuk tingkat Provinsi dan Kota/Kabupaten beserta data latitude/longitude (koordinat) dan polygon boundaries-nya dan aplikasi sederhananya
 
@@ -81,6 +81,11 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/apps/) (data sesua
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## New Update
+- update performance optimization and metadata update v3.0.1 2026-06-11
+    - implementation of asset minification (CSS & JS)
+    - enhanced browser and server-side caching strategies
+    - optimized resource prioritization (preconnect & defer)
+    - standardization of file header blocks and metadata
 - update web apps demo ke v3.0 2026-06-01
 - update web apps demo ke v2.8 2025-08-04
 - update data luas wilayah di db/wilayah_level_1_2.sql berdasar dari Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia 2025-07-04

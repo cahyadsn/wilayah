@@ -2,10 +2,10 @@
 /*
 BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 ================================================================================
-filename : dp.php
+filename : db.php
 purpose  : configuration of database connection
 create   : 170912
-last edit: 2024-10-25 22:29:50
+last edit: 2026-06-11 15:52:12
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -21,7 +21,7 @@ SOFTWARE.
 
 See the MIT License for more details
 
-copyright (c) 2015-2021 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2015-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 $dbhost = getenv('DB_HOST') !== false ? getenv('DB_HOST') : 'localhost';
 $dbuser = getenv('DB_USER') !== false ? getenv('DB_USER') : 'root';

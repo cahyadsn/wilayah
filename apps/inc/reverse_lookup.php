@@ -1,8 +1,16 @@
 <?php
 /*
-Reverse lookup wilayah by clicked map coordinate.
-Prefer polygon containment on a small centroid-nearest candidate set, then fallback to nearest centroid.
-*/
+BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
+================================================================================
+filename : reverse_lookup.php
+purpose  : Reverse lookup wilayah by clicked map coordinate.
+create   : 2026-06-08
+last edit: 2026-06-11 15:52:12
+author   : cahya dsn
+================================================================================
+MIT License
+copyright (c) 2026 by cahya dsn; cahyadsn@gmail.com
+================================================================================*/
 require_once "db.php";
 header('Content-Type: application/json');
 
