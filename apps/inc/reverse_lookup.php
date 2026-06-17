@@ -12,6 +12,7 @@ MIT License
 copyright (c) 2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 require_once "db.php";
+require_once "geo_utils.php";
 header('Content-Type: application/json');
 
 function pointInRing($lat, $lng, $ring) {
@@ -49,32 +50,6 @@ function pointInPath($lat, $lng, $pathJson) {
     return false;
 }
 
-function pathLooksNearCentroid($pathJson, $lat, $lng, $kode) {
-    if (empty($pathJson)) return false;
-    $coords = json_decode($pathJson, true);
-    if (!is_array($coords) || empty($coords)) return false;
-    $points = (isset($coords[0][0]) && is_numeric($coords[0][0])) ? $coords : (is_array($coords[0]) ? $coords[0] : array());
-    if (empty($points)) return false;
-
-    $latMin = $latMax = (float) $points[0][0];
-    $lngMin = $lngMax = (float) $points[0][1];
-    foreach ($points as $pt) {
-        if (!is_array($pt) || count($pt) < 2) continue;
-        $plat = (float) $pt[0];
-        $plng = (float) $pt[1];
-        if ($plat < $latMin) $latMin = $plat;
-        if ($plat > $latMax) $latMax = $plat;
-        if ($plng < $lngMin) $lngMin = $plng;
-        if ($plng > $lngMax) $lngMax = $plng;
-    }
-
-    $centerLat = ($latMin + $latMax) / 2;
-    $centerLng = ($lngMin + $lngMax) / 2;
-    $codeLen = strlen($kode);
-    $threshold = ($codeLen >= 13 ? 0.03 : ($codeLen >= 8 ? 0.08 : 2.5));
-
-    return abs($centerLat - (float) $lat) <= $threshold && abs($centerLng - (float) $lng) <= $threshold;
-}
 
 function fallbackPathForCode($lat, $lng, $kode) {
     $codeLen = strlen($kode);
@@ -89,7 +64,7 @@ function fallbackPathForCode($lat, $lng, $kode) {
 
 function effectiveCandidatePath($candidate) {
     if (!empty($candidate['path'])
-        && pathLooksNearCentroid($candidate['path'], $candidate['lat'], $candidate['lng'], $candidate['kode'])) {
+        && isPathNearCentroid($candidate['path'], $candidate['lat'], $candidate['lng'], $candidate['kode'])) {
         return $candidate['path'];
     }
 
