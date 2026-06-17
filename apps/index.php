@@ -115,7 +115,7 @@ header('Pragma: cache');
 
             <div class="card-body">
               <!-- Preload indicator -->
-              <div id="preload">
+              <div id="preload" role="status" aria-live="polite">
                 <div class="spinner"></div>
                 <span>Loading...</span>
               </div>

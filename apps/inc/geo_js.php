@@ -427,14 +427,6 @@ function stateChanged() {
             return;
         }
 
-        // Update the appropriate dropdown
-        if (idx > 0) {
-            var sel = document.getElementById(wil[idx]);
-            if (sel && d.opt) {
-                sel.innerHTML = d.opt;
-            }
-        }
-
         // Cascade visibility: show target, hide deeper levels, reset them
         if (n == 2) {
             document.getElementById("kab_box").style.display = 'block';
@@ -448,6 +440,15 @@ function stateChanged() {
             document.getElementById("kel").innerHTML = "<option value=''>Pilih Desa</option>";
         } else if (n == 8) {
             document.getElementById("kel_box").style.display = 'block';
+        }
+
+        // Update the appropriate dropdown and focus it
+        if (idx > 0) {
+            var sel = document.getElementById(wil[idx]);
+            if (sel && d.opt) {
+                sel.innerHTML = d.opt;
+                sel.focus();
+            }
         }
 
         // Update info strip

@@ -1,1 +1,7 @@
-## 2026-05-15 - Improve form labels and icon-only theme buttons accessibility\n**Learning:** The legacy PHP view had several form labels unassociated with inputs, which reduces click targets and accessibility. Icon-only link elements used for the theme switcher were completely hidden from screen readers. These are common patterns in older HTML that benefit from targeted a11y attributes.\n**Action:** Always check form labels for `for` associations and icon-only buttons/links for `aria-label` and `title` tooltips to provide context.
+## 2024-05-20 - Auto-focusing dynamically revealed inputs
+**Learning:** Moving focus to newly populated dropdowns significantly improves keyboard navigation flow in multi-step forms, saving users from manually tabbing to the next input.
+**Action:** Always consider auto-focusing the next logical input field when an action (like a selection) causes it to appear or populate, provided it doesn't disrupt the user's expected flow.
+
+## 2024-05-20 - ARIA Live regions for AJAX loading
+**Learning:** Loading spinners alone are insufficient for screen reader users. Dynamic content updates need ARIA live regions to announce state changes.
+**Action:** Consistently use `role="status"` and `aria-live="polite"` on containers that hold loading indicators or dynamic status text to ensure screen readers announce them.
