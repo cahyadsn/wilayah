@@ -12,6 +12,7 @@ MIT License
 copyright (c) 2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 require_once "db.php";
+require_once "geo_helpers.php";
 header('Content-Type: application/json');
 
 function pointInRing($lat, $lng, $ring) {
@@ -76,16 +77,6 @@ function pathLooksNearCentroid($pathJson, $lat, $lng, $kode) {
     return abs($centerLat - (float) $lat) <= $threshold && abs($centerLng - (float) $lng) <= $threshold;
 }
 
-function fallbackPathForCode($lat, $lng, $kode) {
-    $codeLen = strlen($kode);
-    $delta = ($codeLen >= 13 ? 0.004 : ($codeLen >= 8 ? 0.008 : 0.01));
-    return json_encode(array(
-        array($lat - $delta, $lng - $delta),
-        array($lat + $delta, $lng - $delta),
-        array($lat + $delta, $lng + $delta),
-        array($lat - $delta, $lng + $delta)
-    ));
-}
 
 function effectiveCandidatePath($candidate) {
     if (!empty($candidate['path'])
