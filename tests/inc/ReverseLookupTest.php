@@ -97,4 +97,62 @@ class ReverseLookupTest extends TestCase
         $this->assertFalse(pointInPath(5, 5, 'not-json'));
         $this->assertFalse(pointInPath(5, 5, '[]'));
     }
+
+    public function testPathLooksNearCentroid(): void
+    {
+        // Invalid or empty paths
+        $this->assertFalse(pathLooksNearCentroid('', 0, 0, '12'));
+        $this->assertFalse(pathLooksNearCentroid('invalid_json', 0, 0, '12'));
+        $this->assertFalse(pathLooksNearCentroid('{}', 0, 0, '12')); // Not an array
+        $this->assertFalse(pathLooksNearCentroid('[]', 0, 0, '12'));
+
+        // This case actually throws an error in pathLooksNearCentroid at line 60: $points[0][1]
+        // The implementation assumes $points[0] has at least 2 elements if $points is not empty.
+        // So we will pass [[10, 10]] instead of [[10]].
+        // We will test if passing a point string like "[[10, 20]]" works.
+
+        // Valid simple path: [[lat, lng], [lat, lng], ...]
+        $simplePathJson = json_encode([
+            [0, 0], [0, 10], [10, 10], [10, 0]
+        ]);
+        // Centroid for above is (5, 5)
+
+        // $kode length < 8, threshold is 2.5
+        // (5, 5) compared to (lat, lng).
+        // (2.5, 2.5) -> abs(5 - 2.5) = 2.5 <= 2.5 (true)
+        $this->assertTrue(pathLooksNearCentroid($simplePathJson, 2.5, 2.5, '12'));
+        // (2.4, 2.4) -> abs(5 - 2.4) = 2.6 > 2.5 (false)
+        $this->assertFalse(pathLooksNearCentroid($simplePathJson, 2.4, 2.4, '12'));
+
+        // $kode length >= 8 and < 13, threshold is 0.08
+        // (5, 5) compared to (lat, lng).
+        // Due to floating point math, 5 - 4.92 might be 0.08000000000000007 which is > 0.08
+        // So let's use slightly closer values.
+        $this->assertTrue(pathLooksNearCentroid($simplePathJson, 4.95, 4.95, '12345678'));
+        // (4.91, 4.91) -> abs(5 - 4.91) = 0.09 > 0.08 (false)
+        $this->assertFalse(pathLooksNearCentroid($simplePathJson, 4.91, 4.91, '12345678'));
+
+        // $kode length >= 13, threshold is 0.03
+        // (5, 5) compared to (lat, lng).
+        // (4.98, 4.98) -> abs(5 - 4.98) = 0.02 <= 0.03 (true)
+        $this->assertTrue(pathLooksNearCentroid($simplePathJson, 4.98, 4.98, '1234567890123'));
+        // (4.96, 4.96) -> abs(5 - 4.96) = 0.04 > 0.03 (false)
+        $this->assertFalse(pathLooksNearCentroid($simplePathJson, 4.96, 4.96, '1234567890123'));
+
+        // Valid nested path structure (e.g. islands/rings): [[[lat, lng], [lat, lng], ...]]
+        // Function handles extraction of $coords[0] when not numeric
+        $nestedPathJson = json_encode([
+            [
+                [0, 0], [0, 10], [10, 10], [10, 0]
+            ],
+            [ // This second ring is ignored by pathLooksNearCentroid according to the logic:
+              // $points = (is_array($coords[0]) ? $coords[0] : array());
+                [20, 20], [20, 30], [30, 30], [30, 20]
+            ]
+        ]);
+        // Centroid extracted from first ring is still (5, 5)
+        // $kode length < 8, threshold is 2.5
+        $this->assertTrue(pathLooksNearCentroid($nestedPathJson, 2.5, 2.5, '12'));
+        $this->assertFalse(pathLooksNearCentroid($nestedPathJson, 2.4, 2.4, '12'));
+    }
 }
