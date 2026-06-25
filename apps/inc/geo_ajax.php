@@ -24,12 +24,7 @@ See the MIT License for more details
 copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 require_once "db.php";
-function fallbackBox($lat, $lng, $delta = 0.01) {
-  return '[['.($lat-$delta).','.($lng-$delta).'],'
-       .'['.($lat+$delta).','.($lng-$delta).'],'
-       .'['.($lat+$delta).','.($lng+$delta).'],'
-       .'['.($lat-$delta).','.($lng+$delta).']]';
-}
+require_once "geo_helpers.php";
 
 function isPathReasonable($path, $lat, $lng, $kode) {
   if (empty($path) || $lat === null || $lng === null) return false;
