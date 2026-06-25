@@ -51,6 +51,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
 			td,select {width:240px;}
 			#kab_box,#kec_box,#kel_box{display:none;}
 		 </style>
+		<script src="apps/js/ajax.js"></script>
 		<script>
 		var my_ajax=do_ajax();
 		var ids;
@@ -63,11 +64,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
 				my_ajax.open("GET",url,true);
 				my_ajax.send(null);
 			}
-		}
-		function do_ajax(){
-			if (window.XMLHttpRequest) return new XMLHttpRequest();
-			if (window.ActiveXObject) return new ActiveXObject("Microsoft.XMLHTTP");
-			return null;
 		}
 		function stateChanged(){
 			var n=ids.length;
