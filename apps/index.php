@@ -203,6 +203,7 @@ header('Pragma: cache');
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.js" defer></script>
+  <script src="js/ajax.js" defer></script>
   <script src="inc/geo_js.php?v=<?php echo $version;?>" defer></script>
   <script src="js/wilayah.min.js?v=<?php echo $version;?>" defer></script>
 
