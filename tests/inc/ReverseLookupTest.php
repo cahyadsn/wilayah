@@ -97,4 +97,55 @@ class ReverseLookupTest extends TestCase
         $this->assertFalse(pointInPath(5, 5, 'not-json'));
         $this->assertFalse(pointInPath(5, 5, '[]'));
     }
+
+    public function testFallbackPathForCode(): void
+    {
+        $lat = -6.200000;
+        $lng = 106.816666;
+
+        // Test with short code (< 8 chars), delta should be 0.01
+        $shortCode = '11.01';
+        $expectedDelta1 = 0.01;
+        $expectedJson1 = json_encode([
+            [$lat - $expectedDelta1, $lng - $expectedDelta1],
+            [$lat + $expectedDelta1, $lng - $expectedDelta1],
+            [$lat + $expectedDelta1, $lng + $expectedDelta1],
+            [$lat - $expectedDelta1, $lng + $expectedDelta1]
+        ]);
+        $this->assertJsonStringEqualsJsonString(
+            $expectedJson1,
+            fallbackPathForCode($lat, $lng, $shortCode),
+            'Fallback path for short code (<8) is incorrect'
+        );
+
+        // Test with medium code (8 <= chars < 13), delta should be 0.008
+        $mediumCode = '11.01.01'; // 8 chars
+        $expectedDelta2 = 0.008;
+        $expectedJson2 = json_encode([
+            [$lat - $expectedDelta2, $lng - $expectedDelta2],
+            [$lat + $expectedDelta2, $lng - $expectedDelta2],
+            [$lat + $expectedDelta2, $lng + $expectedDelta2],
+            [$lat - $expectedDelta2, $lng + $expectedDelta2]
+        ]);
+        $this->assertJsonStringEqualsJsonString(
+            $expectedJson2,
+            fallbackPathForCode($lat, $lng, $mediumCode),
+            'Fallback path for medium code (>=8, <13) is incorrect'
+        );
+
+        // Test with long code (>= 13 chars), delta should be 0.004
+        $longCode = '11.01.01.2001'; // 13 chars
+        $expectedDelta3 = 0.004;
+        $expectedJson3 = json_encode([
+            [$lat - $expectedDelta3, $lng - $expectedDelta3],
+            [$lat + $expectedDelta3, $lng - $expectedDelta3],
+            [$lat + $expectedDelta3, $lng + $expectedDelta3],
+            [$lat - $expectedDelta3, $lng + $expectedDelta3]
+        ]);
+        $this->assertJsonStringEqualsJsonString(
+            $expectedJson3,
+            fallbackPathForCode($lat, $lng, $longCode),
+            'Fallback path for long code (>=13) is incorrect'
+        );
+    }
 }
