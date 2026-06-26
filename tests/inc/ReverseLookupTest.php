@@ -98,6 +98,49 @@ class ReverseLookupTest extends TestCase
         $this->assertFalse(pointInPath(5, 5, '[]'));
     }
 
+    public function testBuildChain(): void
+    {
+        $names = [
+            '11' => 'Aceh',
+            '11.01' => 'Kab. Aceh Selatan',
+            '11.01.01' => 'Kec. Bakongan',
+            '11.01.01.2001' => 'Keude Bakongan',
+        ];
+
+        // Level 1: Provinsi
+        $provChain = buildChain('11', $names);
+        $this->assertEquals(['kode' => '11', 'nama' => 'Aceh'], $provChain['prov']);
+        $this->assertNull($provChain['kab']);
+        $this->assertNull($provChain['kec']);
+        $this->assertNull($provChain['kel']);
+
+        // Level 2: Kabupaten
+        $kabChain = buildChain('11.01', $names);
+        $this->assertEquals(['kode' => '11', 'nama' => 'Aceh'], $kabChain['prov']);
+        $this->assertEquals(['kode' => '11.01', 'nama' => 'Kab. Aceh Selatan'], $kabChain['kab']);
+        $this->assertNull($kabChain['kec']);
+        $this->assertNull($kabChain['kel']);
+
+        // Level 3: Kecamatan
+        $kecChain = buildChain('11.01.01', $names);
+        $this->assertEquals(['kode' => '11', 'nama' => 'Aceh'], $kecChain['prov']);
+        $this->assertEquals(['kode' => '11.01', 'nama' => 'Kab. Aceh Selatan'], $kecChain['kab']);
+        $this->assertEquals(['kode' => '11.01.01', 'nama' => 'Kec. Bakongan'], $kecChain['kec']);
+        $this->assertNull($kecChain['kel']);
+
+        // Level 4: Kelurahan
+        $kelChain = buildChain('11.01.01.2001', $names);
+        $this->assertEquals(['kode' => '11', 'nama' => 'Aceh'], $kelChain['prov']);
+        $this->assertEquals(['kode' => '11.01', 'nama' => 'Kab. Aceh Selatan'], $kelChain['kab']);
+        $this->assertEquals(['kode' => '11.01.01', 'nama' => 'Kec. Bakongan'], $kelChain['kec']);
+        $this->assertEquals(['kode' => '11.01.01.2001', 'nama' => 'Keude Bakongan'], $kelChain['kel']);
+
+        // Edge case: Names are not found in the array (e.g. empty names array)
+        $missingNamesChain = buildChain('11.01.01.2001', []);
+        $this->assertEquals(['kode' => '11', 'nama' => null], $missingNamesChain['prov']);
+        $this->assertEquals(['kode' => '11.01', 'nama' => null], $missingNamesChain['kab']);
+        $this->assertEquals(['kode' => '11.01.01', 'nama' => null], $missingNamesChain['kec']);
+        $this->assertEquals(['kode' => '11.01.01.2001', 'nama' => null], $missingNamesChain['kel']);
     public function testFallbackPathForCode(): void
     {
         $lat = -6.200000;
