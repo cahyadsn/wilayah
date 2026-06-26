@@ -69,4 +69,72 @@ class GeoAjaxTest extends TestCase {
         $expected = '[[500.5,1500.5],[1500.5,1500.5],[1500.5,2500.5],[500.5,2500.5]]';
         $this->assertEquals($expected, fallbackBox($lat, $lng, $delta));
     }
+
+    // --- Tests for isPathReasonable ---
+
+    public function testIsPathReasonableEmptyOrNullInputs() {
+        // empty path
+        $this->assertFalse(isPathReasonable("", 0, 0, "12"));
+        // null lat
+        $this->assertFalse(isPathReasonable("[[0,0]]", null, 0, "12"));
+        // null lng
+        $this->assertFalse(isPathReasonable("[[0,0]]", 0, null, "12"));
+    }
+
+    public function testIsPathReasonableInvalidJson() {
+        $this->assertFalse(isPathReasonable("invalid_json", 0, 0, "12"));
+    }
+
+    public function testIsPathReasonableEmptyOrInvalidArray() {
+        $this->assertFalse(isPathReasonable("[]", 0, 0, "12"));
+        $this->assertFalse(isPathReasonable("[[]]", 0, 0, "12"));
+        // Invalid array structure (not numbers)
+        $this->assertFalse(isPathReasonable('["a","b"]', 0, 0, "12"));
+    }
+
+    public function testIsPathReasonableValidPathKodeLen13() {
+        // Threshold: 0.03
+        $lat = -6.2;
+        $lng = 106.8;
+        $kode = "1234567890123";
+        // Path center is exactly at lat, lng
+        $path = '[[-6.21, 106.79], [-6.19, 106.81]]';
+        $this->assertTrue(isPathReasonable($path, $lat, $lng, $kode));
+
+        // Center shifted by slightly less than 0.03 to avoid floating point issues, should be true
+        $pathShifted = '[[-6.18, 106.82], [-6.17, 106.83]]'; // Center: -6.175, 106.825, diff lat: 0.025, diff lng: 0.025
+        $this->assertTrue(isPathReasonable($pathShifted, $lat, $lng, $kode));
+
+        // Center shifted by > 0.03, should be false
+        $pathFar = '[[-6.15, 106.85], [-6.13, 106.87]]'; // Center: -6.14, 106.86, diff: >0.03
+        $this->assertFalse(isPathReasonable($pathFar, $lat, $lng, $kode));
+    }
+
+    public function testIsPathReasonableValidPathKodeLen8() {
+        // Threshold: 0.08
+        $lat = -6.2;
+        $lng = 106.8;
+        $kode = "12345678";
+        // Path center shifted by slightly less than 0.08
+        $path = '[[-6.14, 106.86], [-6.12, 106.88]]'; // Center: -6.13, 106.87, diff: 0.07
+        $this->assertTrue(isPathReasonable($path, $lat, $lng, $kode));
+
+        // Path center shifted by > 0.08
+        $pathFar = '[[-6.11, 106.89], [-6.09, 106.91]]'; // Center: -6.10, 106.90, diff: 0.10
+        $this->assertFalse(isPathReasonable($pathFar, $lat, $lng, $kode));
+    }
+
+    public function testIsPathReasonableValidPathKodeLen2() {
+        // Threshold: 2.5
+        $lat = -6.2;
+        $lng = 106.8;
+        $kode = "12";
+        // Path center shifted by slightly less than 2.5
+        $path = '[[-4.0, 109.0], [-3.8, 109.2]]'; // Center: -3.9, 109.1, diff lat: 2.3, lng: 2.3
+        $this->assertTrue(isPathReasonable($path, $lat, $lng, $kode));
+
+        // Path center shifted by > 2.5
+        $pathFar = '[[-3.0, 110.0], [-2.8, 110.2]]'; // Center: -2.9, 110.1, diff: >2.5
+        $this->assertFalse(isPathReasonable($pathFar, $lat, $lng, $kode));
+    }
 }

@@ -32,11 +32,6 @@ var ids, my_id, my_z;
 var wil = new Array('prov', 'kota', 'kec', 'kel');
 
 // --- AJAX helpers ---
-function do_ajax() {
-    if (window.XMLHttpRequest) return new XMLHttpRequest();
-    if (window.ActiveXObject) return new ActiveXObject("Microsoft.XMLHTTP");
-    return null;
-}
 
 var my_ajax = do_ajax();
 
