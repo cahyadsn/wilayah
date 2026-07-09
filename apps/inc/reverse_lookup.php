@@ -36,7 +36,7 @@ function pointInRing($lat, $lng, $ring) {
 
 function pointInPath($lat, $lng, $pathJson) {
     if (empty($pathJson)) return false;
-    $coords = json_decode($pathJson, true);
+    $coords = is_string($pathJson) ? json_decode($pathJson, true) : $pathJson;
     if (!is_array($coords) || empty($coords)) return false;
 
     if (isset($coords[0][0]) && is_numeric($coords[0][0])) {
@@ -111,6 +111,9 @@ try {
     $nearest = $candidates[0];
     $matched = null;
     foreach ($candidates as $candidate) {
+        if (!empty($candidate['path']) && is_string($candidate['path'])) {
+            $candidate['path'] = json_decode($candidate['path'], true);
+        }
         $candidatePath = effectiveCandidatePath($candidate);
         if (!empty($candidatePath) && pointInPath($lat, $lng, $candidatePath)) {
             $matched = $candidate;
