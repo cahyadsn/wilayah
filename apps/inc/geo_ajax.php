@@ -81,12 +81,22 @@ if (!empty($_GET['id'])){
     $n=strlen($_GET['id']);
     $m=($n==2?5:($n==5?8:13));
     $wil=($n==2?'Kota/Kab':($n==5?'Kecamatan':'Desa/Kelurahan'));
-    $query = $db->prepare("SELECT kode, nama FROM {$tbl_wilayah} WHERE kode LIKE CONCAT(:id, '%') AND CHAR_LENGTH(kode)=:m ORDER BY nama");
-    $query->execute(array(':id'=>$_GET['id'],':m'=>$m));
-    $opt="<option value=''>Pilih {$wil}</option>";
-    while($d = $query->fetchObject()){
-        $opt.="<option value='{$d->kode}'>{$d->nama}</option>";
+
+    $cache_file = sys_get_temp_dir() . '/geo_opt_cache_' . md5($_GET['id']) . '.html';
+    $cache_ttl = 86400; // 1 day
+
+    if (file_exists($cache_file) && (time() - filemtime($cache_file) < $cache_ttl)) {
+        $opt = file_get_contents($cache_file);
+    } else {
+        $query = $db->prepare("SELECT kode, nama FROM {$tbl_wilayah} WHERE kode LIKE CONCAT(:id, '%') AND CHAR_LENGTH(kode)=:m ORDER BY nama");
+        $query->execute(array(':id'=>$_GET['id'],':m'=>$m));
+        $opt="<option value=''>Pilih {$wil}</option>";
+        while($d = $query->fetchObject()){
+            $opt.="<option value='{$d->kode}'>{$d->nama}</option>";
+        }
+        file_put_contents($cache_file, $opt, LOCK_EX);
     }
+
     $r['opt']=$opt;
     $r['n']=$n;
   }
