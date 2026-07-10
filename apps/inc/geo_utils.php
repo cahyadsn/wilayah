@@ -12,7 +12,7 @@ terms of the MIT License.
 
 function isPathNearCentroid($path, $lat, $lng, $kode) {
     if (empty($path) || $lat === null || $lng === null) return false;
-    $coords = json_decode($path, true);
+    $coords = is_string($path) ? json_decode($path, true) : $path;
     if (!is_array($coords) || empty($coords)) return false;
 
     $points = (isset($coords[0][0]) && is_numeric($coords[0][0])) ? $coords : (is_array($coords[0]) ? $coords[0] : array());
