@@ -250,4 +250,68 @@ class ReverseLookupTest extends TestCase
             'Fallback path for long code (>=13) is incorrect'
         );
     }
+
+    public function testEffectiveCandidatePath(): void
+    {
+        $lat = 5.0;
+        $lng = 5.0;
+        $kode = '12';
+
+        // Scenario A: Valid path near centroid
+        $simplePathJson = json_encode([
+            [0, 0], [0, 10], [10, 10], [10, 0]
+        ]);
+
+        $candidateA = [
+            'lat' => $lat,
+            'lng' => $lng,
+            'kode' => $kode,
+            'path' => $simplePathJson
+        ];
+
+        // Should return the exact original path
+        $this->assertEquals($simplePathJson, effectiveCandidatePath($candidateA));
+
+        // Scenario B: Invalid path near centroid (but valid coordinates)
+        // Centroid of the path is (5, 5). Lat/lng is (50, 50). isPathNearCentroid will fail.
+        $candidateB = [
+            'lat' => 50.0,
+            'lng' => 50.0,
+            'kode' => $kode,
+            'path' => $simplePathJson
+        ];
+
+        $fallbackB = fallbackPathForCode(50.0, 50.0, $kode);
+        $this->assertJsonStringEqualsJsonString($fallbackB, effectiveCandidatePath($candidateB));
+
+        // Scenario C: No path (but valid coordinates)
+        $candidateC = [
+            'lat' => $lat,
+            'lng' => $lng,
+            'kode' => $kode
+        ];
+
+        $fallbackC = fallbackPathForCode($lat, $lng, $kode);
+        $this->assertJsonStringEqualsJsonString($fallbackC, effectiveCandidatePath($candidateC));
+
+        // Scenario D: Null coordinates or code
+        $candidateD1 = ['lat' => $lat, 'lng' => $lng, 'kode' => null];
+        $candidateD2 = ['lat' => $lat, 'lng' => null, 'kode' => $kode];
+        $candidateD3 = ['lat' => null, 'lng' => $lng, 'kode' => $kode];
+
+        $this->assertNull(effectiveCandidatePath($candidateD1));
+        $this->assertNull(effectiveCandidatePath($candidateD2));
+        $this->assertNull(effectiveCandidatePath($candidateD3));
+
+        // Scenario E: Null coordinate with path
+        // (kode shouldn't be null because it's passed to isPathNearCentroid which expects string)
+        // However, effectiveCandidatePath doesn't check if $kode is set in the first if condition.
+        // It relies on isPathNearCentroid checking it.
+        // We will just test missing coordinates.
+        $candidateE2 = ['lat' => $lat, 'lng' => null, 'kode' => $kode, 'path' => $simplePathJson];
+        $candidateE3 = ['lat' => null, 'lng' => $lng, 'kode' => $kode, 'path' => $simplePathJson];
+
+        $this->assertNull(effectiveCandidatePath($candidateE2));
+        $this->assertNull(effectiveCandidatePath($candidateE3));
+    }
 }
