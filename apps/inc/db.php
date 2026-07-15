@@ -32,5 +32,6 @@ $tbl_wilayah="wilayah_level_1_2";
 try {
   $db = new PDO($db_dsn, $dbuser, $dbpass);
 } catch (PDOException $e) {
-  echo 'Connection failed: '.$e->getMessage();
+  error_log('Connection failed: ' . $e->getMessage());
+  echo 'Connection failed: Database error occurred.';
 }
