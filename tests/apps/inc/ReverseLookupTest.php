@@ -38,12 +38,16 @@ class ReverseLookupTest extends TestCase
         $cwd = getcwd();
         chdir(dirname($this->reverseLookupFile));
 
+        $tempLogFile = sys_get_temp_dir() . '/test_error_reverse_lookup.log';
         $originalErrorLog = ini_get('error_log');
-        ini_set('error_log', '/dev/null');
+        ini_set('error_log', $tempLogFile);
 
         include basename($this->reverseLookupFile);
 
         ini_set('error_log', $originalErrorLog);
+        if (file_exists($tempLogFile)) {
+            @unlink($tempLogFile);
+        }
         chdir($cwd);
 
         $output = ob_get_clean();

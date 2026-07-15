@@ -45,17 +45,19 @@ vendor/bin/phpunit --coverage-html coverage
 
 ## Current Tests
 
-### apps/index_php_test.php
+### Main Application Tests
+- **[tests/apps/index_php_test.php](file:///D:/laragon/repo/wilayah/tests/apps/index_php_test.php)**: Validates theme handling, session initialization, meta tags, Leaflet integration, caching headers, and database connectivity.
+- **[tests/IndexGetParameterTest.php](file:///D:/laragon/repo/wilayah/tests/IndexGetParameterTest.php)**: Tests query string parameters on the index page, ensuring invalid inputs are handled gracefully and valid ones fetch correctly using mocks.
 
-Tests for `apps/index.php` including:
-- Database connection parameters
-- Session initialization
-- Theme handling
-- HTML structure and meta tags
-- Leaflet.js integration
-- Province dropdown queries
-- Form elements
-- AJAX endpoint definitions
+### Includes & AJAX Handler Tests
+- **[tests/apps/inc/GeoAjaxTest.php](file:///D:/laragon/repo/wilayah/tests/apps/inc/GeoAjaxTest.php)**: Tests AJAX responses, coordinates validation (`isPathReasonable`), and boundaries generation (`fallbackBox`).
+- **[tests/apps/inc/ReverseLookupTest.php](file:///D:/laragon/repo/wilayah/tests/apps/inc/ReverseLookupTest.php)**: Verifies the reverse lookup handler's error handling catch blocks and JSON error reporting.
+
+### Core Helpers & Utility Tests
+- **[tests/inc/ChangeColorTest.php](file:///D:/laragon/repo/wilayah/tests/inc/ChangeColorTest.php)**: Tests session-based theme color modification handler.
+- **[tests/inc/GeoHelpersTest.php](file:///D:/laragon/repo/wilayah/tests/inc/GeoHelpersTest.php)**: Validates fallback bounding boxes for region coordinates.
+- **[tests/inc/GeoUtilsTest.php](file:///D:/laragon/repo/wilayah/tests/inc/GeoUtilsTest.php)**: Tests geographic vector computations and path-to-centroid distance thresholds.
+- **[tests/inc/ReverseLookupTest.php](file:///D:/laragon/repo/wilayah/tests/inc/ReverseLookupTest.php)**: Tests polygon intersection (`pointInPath`/`pointInRing`) and coordinate mapping.
 
 ## Writing New Tests
 

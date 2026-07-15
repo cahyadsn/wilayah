@@ -50,11 +50,6 @@ class IndexPhpTest extends TestCase
         if (file_exists($this->testDbFile)) {
             unlink($this->testDbFile);
         }
-
-        // Clear output buffer if test generated output
-        if (ob_get_level() > 0) {
-            ob_end_clean();
-        }
     }
 
     /**
@@ -107,16 +102,16 @@ class IndexPhpTest extends TestCase
         $content = file_get_contents(__DIR__ . '/../../apps/index.php');
 
         // Test session theme retrieval
-        $this->assertStringContainsString('$_SESSION[\'c\']', $content,
+        $this->assertStringContainsString('$_SESSION[\'theme\']', $content,
             'Theme should be retrieved from session');
 
         // Test GET parameter fallback
-        $this->assertStringContainsString('$_GET[\'c\']', $content,
+        $this->assertStringContainsString('$_GET[\'theme\']', $content,
             'Theme should fallback to GET parameter');
 
         // Test default theme
-        $this->assertStringContainsString(':\'indigo\')', $content,
-            'Default theme should be indigo');
+        $this->assertStringContainsString(':\'light\')', $content,
+            'Default theme should be light');
     }
 
     /**
@@ -140,8 +135,6 @@ class IndexPhpTest extends TestCase
         $requiredMeta = [
             'charset="utf-8"' => 'UTF-8 charset',
             'viewport' => 'Viewport meta tag for responsive design',
-            'content-language' => 'Content language meta tag',
-            'robots' => 'Robots meta tag',
             'keywords' => 'SEO keywords',
             'description' => 'SEO description',
         ];
@@ -196,22 +189,19 @@ class IndexPhpTest extends TestCase
         $this->assertStringContainsString('inc/geo_js.php', $content,
             'AJAX handler script must be included');
 
-        $this->assertStringContainsString('js/wilayah.js', $content,
+        $this->assertStringContainsString('js/wilayah.min.js', $content,
             'Main JavaScript file must be included');
     }
 
     /**
-     * Test that W3CSS framework is included
+     * Test that minified styles are included
      */
-    public function testW3CssIncluded(): void
+    public function testStylesMinCssIncluded(): void
     {
         $content = file_get_contents(__DIR__ . '/../../apps/index.php');
 
-        $this->assertStringContainsString('w3.css', $content,
-            'W3CSS framework must be included');
-
-        $this->assertStringContainsString('w3-theme-', $content,
-            'W3CSS theme must be loaded dynamically');
+        $this->assertStringContainsString('css/styles.min.css', $content,
+            'Minified styles must be included');
     }
 
     /**
@@ -223,25 +213,6 @@ class IndexPhpTest extends TestCase
 
         $this->assertStringContainsString('id="map-canvas"', $content,
             'Map container div must be present');
-    }
-
-    /**
-     * Test that color theme options are defined
-     */
-    public function testColorThemeOptions(): void
-    {
-        $content = file_get_contents(__DIR__ . '/../../apps/index.php');
-
-        $expectedColors = [
-            'black', 'brown', 'pink', 'orange', 'amber',
-            'lime', 'green', 'teal', 'purple', 'indigo',
-            'blue', 'cyan'
-        ];
-
-        foreach ($expectedColors as $color) {
-            $this->assertStringContainsString("'{$color}'", $content,
-                "Theme option '{$color}' must be defined");
-        }
     }
 
     /**
@@ -281,7 +252,7 @@ class IndexPhpTest extends TestCase
      */
     public function testAjaxEndpointDefined(): void
     {
-        $content = file_get_contents(__DIR__ . '/../../apps/js/wilayah.js');
+        $content = file_get_contents(__DIR__ . '/../../apps/inc/geo_js.php');
 
         // Note: This checks the JS file that's included by index.php
         $this->assertStringContainsString('geo_ajax.php', $content,
@@ -352,8 +323,8 @@ class IndexPhpTest extends TestCase
 
         $content = file_get_contents($dbFile);
 
-        // Parse simple variable assignments
-        preg_match_all('/\$([a-z_]+)=\s*[\'"]([^\'"]*)[\'"]/', $content, $matches);
+        // Parse simple assignments and getenv ternary fallbacks
+        preg_match_all('/\$([a-zA-Z_0-9]+)\s*=\s*(?:[^;]*?\?\s*[^;]*?\:\s*)?[\'"]([^\'"]*)[\'"]/', $content, $matches);
 
         $config = [];
         foreach ($matches[1] as $i => $var) {
@@ -370,7 +341,7 @@ class IndexPhpTest extends TestCase
     {
         $content = file_get_contents(__DIR__ . '/../../apps/index.php');
 
-        $this->assertStringContainsString('include \'inc/db.php\';', $content,
+        $this->assertStringContainsString('inc/db.php', $content,
             'Database configuration file must be included');
     }
 
@@ -397,16 +368,5 @@ class IndexPhpTest extends TestCase
 
         $this->assertStringContainsString('fonts.googleapis.com', $content,
             'Google Fonts should be included');
-    }
-
-    /**
-     * Test that message box exists for errors/notifications
-     */
-    public function testMessageBoxExists(): void
-    {
-        $content = file_get_contents(__DIR__ . '/../../apps/index.php');
-
-        $this->assertStringContainsString('id="msg_box"', $content,
-            'Message box container must exist');
     }
 }

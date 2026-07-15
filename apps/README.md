@@ -81,6 +81,11 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/apps/) (data sesua
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## New Update
+- security patches and unit testing enhancements 2026-07-15
+    - fixed session bypass vulnerability by removing hardcoded author session in index.php
+    - added secure login (login.php) and logout (logout.php) flows
+    - prevented information exposure in database connection errors and reverse lookup API catch blocks
+    - added comprehensive unit tests for reverse lookup and geolocation helper functions
 - update performance optimization and metadata update v3.0.1 2026-06-11
     - implementation of asset minification (CSS & JS)
     - enhanced browser and server-side caching strategies
