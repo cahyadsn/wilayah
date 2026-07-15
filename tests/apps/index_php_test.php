@@ -92,8 +92,8 @@ class IndexPhpTest extends TestCase
         $this->assertStringContainsString('session_start()', $content,
             'Session must be started at the beginning of the file');
 
-        $this->assertStringContainsString('$_SESSION[\'author\']=\'cahyadsn\'', $content,
-            'Session author must be set');
+        $this->assertStringNotContainsString('$_SESSION[\'author\']=\'cahyadsn\'', $content,
+            'Session author should not be hardcoded in index.php');
 
         $this->assertStringContainsString('$_SESSION[\'ver\']', $content,
             'Session version must be set');
