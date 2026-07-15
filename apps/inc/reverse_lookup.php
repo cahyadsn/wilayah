@@ -153,7 +153,8 @@ try {
         )
     );
 } catch (Throwable $e) {
-    $response = array('status' => false, 'error' => $e->getMessage());
+    error_log('Reverse lookup error: ' . $e->getMessage());
+    $response = array('status' => false, 'error' => 'Internal Server Error');
 }
 
 echo json_encode($response);

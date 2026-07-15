@@ -38,8 +38,12 @@ class ReverseLookupTest extends TestCase
         $cwd = getcwd();
         chdir(dirname($this->reverseLookupFile));
 
+        $originalErrorLog = ini_get('error_log');
+        ini_set('error_log', '/dev/null');
+
         include basename($this->reverseLookupFile);
 
+        ini_set('error_log', $originalErrorLog);
         chdir($cwd);
 
         $output = ob_get_clean();
@@ -50,6 +54,6 @@ class ReverseLookupTest extends TestCase
         $this->assertArrayHasKey('status', $decoded);
         $this->assertFalse($decoded['status']);
         $this->assertArrayHasKey('error', $decoded);
-        $this->assertEquals('Mocked database failure', $decoded['error']);
+        $this->assertEquals('Internal Server Error', $decoded['error']);
     }
 }
