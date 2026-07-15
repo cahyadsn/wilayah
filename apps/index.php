@@ -16,7 +16,6 @@ copyright (c) 2015-2026 by cahya dsn; cahyadsn@gmail.com
 session_start();
 $theme=isset($_SESSION['theme'])?$_SESSION['theme']:(isset($_GET['theme'])?$_GET['theme']:'light');
 define("_AUTHOR","cahyadsn");
-$_SESSION['author']='cahyadsn';
 $_SESSION['ver']=sha1(rand());
 require_once 'inc/db.php';
 $version='3.0.1';
