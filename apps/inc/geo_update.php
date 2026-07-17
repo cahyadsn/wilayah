@@ -35,15 +35,27 @@ if(isset($_POST['id'])){
   $sql="UPDATE {$tbl_wilayah} SET ";
   $field=$data=array();
   foreach($fields as $f){
-    if(isset($_POST[$f]) && !empty($_POST[$f])){
-      $field[]="{$f}=:{$f}";
-      $data[":{$f}"]=strip_tags($_POST[$f]);
+    if(isset($_POST[$f]) && $_POST[$f] !== ''){
+      if ($f === 'lat' || $f === 'lng') {
+        $field[]="{$f}=:{$f}";
+        $data[":{$f}"]=(float)$_POST[$f];
+      } elseif ($f === 'path') {
+        $decoded = json_decode($_POST[$f], true);
+        if ($decoded !== null || $_POST[$f] === '') {
+          $field[]="{$f}=:{$f}";
+          $data[":{$f}"]=$_POST[$f];
+        }
+      }
     }
   }
-  $sql.=implode(',',$field)." WHERE kode=:id";
-  $data[':id']=$_POST['id'];
-  $query = $db->prepare($sql);
-  $query->execute($data);
-  $r=array('status'=>true,'msg'=>'data saved '.$sql.json_encode($data));
+  if (!empty($field)) {
+    $sql.=implode(',',$field)." WHERE kode=:id";
+    $data[':id']=$_POST['id'];
+    $query = $db->prepare($sql);
+    $query->execute($data);
+    $r=array('status'=>true,'msg'=>'data saved '.$sql.json_encode($data));
+  } else {
+    $r=array('status'=>false,'msg'=>'No valid fields to update');
+  }
 }
 echo json_encode($r);

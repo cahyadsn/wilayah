@@ -60,11 +60,9 @@ if (!empty($_GET['id'])){
   $d = $query->fetchObject();
   if(!empty($d) && !empty($d->kode)){
     $path=$d->path;
-	if(empty($path)){
-		if(!isPathReasonable($path, $d->lat, $d->lng, $d->kode)){
-		  $delta = (strlen($d->kode) >= 13 ? 0.004 : (strlen($d->kode) >= 8 ? 0.008 : 0.01));
-		  $path = fallbackBox($d->lat, $d->lng, $delta);
-		}
+	if(empty($path) || !isPathReasonable($path, $d->lat, $d->lng, $d->kode)){
+	  $delta = (strlen($d->kode) >= 13 ? 0.004 : (strlen($d->kode) >= 8 ? 0.008 : 0.01));
+	  $path = fallbackBox($d->lat, $d->lng, $delta);
 	}
     $data=array('kode'=>$d->kode,'nama'=>$d->nama,'lat'=>$d->lat,'lng'=>$d->lng,'path'=>$path,'luas'=>$d->luas,'penduduk'=>$d->penduduk);
     $r=array('status'=>true,'data'=>$data);

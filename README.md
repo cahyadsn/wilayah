@@ -160,7 +160,20 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-07-02 09:42:38] release v2026.7 
+- [2026-07-17] 🆕
+  - Fix logic bug for empty or unreasonable geo paths in `apps/inc/geo_ajax.php`
+  - Fix potential SQL syntax crash and add strict float/JSON coordinate sanitization in `apps/inc/geo_update.php`
+- [2026-07-15]
+  - Fix hardcoded session author bypass vulnerability in `index.php` and add `apps/login.php` secure login/logout
+  - Prevent database information exposure in DSN/catch blocks
+- [2026-07-10]
+  - Add unit tests for `effectiveCandidatePath`, `isPathNearCentroid`, and Reverse Lookup Throwable catch block
+- [2026-07-09]
+  - Implement file-based caching for sub-region dropdowns in `geo_ajax.php`
+  - Optimize `json_decode` redundant parsing in reverse lookup
+- [2026-07-03]
+  - Add unit tests for `fallbackBox` in `geo_helpers.php`
+- [2026-07-02 09:42:38] release v2026.7
 
 ## INFORMASI
 - data kode wilayah pemerintahan diperoleh dari https://drive.google.com/file/d/1o_m621D00TtwCwQMLn8XUnV3nolamPDm/view?usp=sharing

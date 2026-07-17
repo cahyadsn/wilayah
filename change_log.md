@@ -1,4 +1,16 @@
 # CHANGE LOG 
+
+## LATEST UPDATES
+- Fix logic bug for empty or unreasonable geo paths in apps/inc/geo_ajax.php 2026-07-17
+- Fix potential SQL syntax crash and add strict float/JSON coordinate sanitization in apps/inc/geo_update.php 2026-07-17
+- Update unit tests 2026-07-15
+- Fix hardcoded session author bypass vulnerability in index/tests 2026-07-15
+- Prevent information exposure in database connection and reverse lookup error handling catch blocks 2026-07-15
+- Add unit tests for effectiveCandidatePath, Reverse Lookup catch block, and isPathNearCentroid 2026-07-02
+- Implement file-based caching for sub-region dropdowns 2026-07-02
+- Optimize json_decode in reverse lookup 2026-07-02
+- Add tests for fallbackBox in geo_helpers 2026-07-02
+
 ## RELEASE v2026.7 [2026-07-02 09:42:38]
 - bug fixing apps/inc/geo_ajax.php 2026-06-08 &#127775;
 - update penambahan data luas untuk db/wilayah_pulau.sql prov Maluku,Malut,Papua,Papua Barat,Papua Barat Daya 2026-06-05
