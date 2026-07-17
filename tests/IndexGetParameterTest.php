@@ -41,6 +41,10 @@ class IndexGetParameterTest extends TestCase
      */
     public function testValidGetIdLengthWithMockDb()
     {
+        // Suppress errors about failing to connect to invalid DB host
+        $original = ini_get('error_log');
+        ini_set('error_log', '/dev/null');
+
         $_GET['id'] = '11';
 
         // We will create a mock PDO to replace the one created in db.php
@@ -76,6 +80,7 @@ class IndexGetParameterTest extends TestCase
         $this->assertStringContainsString('Pilih Kota/Kabupaten', $output);
         $this->assertStringContainsString('11.01', $output);
         $this->assertStringContainsString('KAB. SIMEULUE', $output);
+        ini_set('error_log', $original);
     }
 
     protected function tearDown(): void
