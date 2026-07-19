@@ -22,9 +22,14 @@ class ReverseLookupTest extends TestCase
 
         putenv('DB_HOST=invalid');
 
+        $original = ini_get('error_log');
+        ini_set('error_log', '/dev/null');
+
         ob_start();
         require_once $this->dbFile;
         ob_get_clean();
+
+        ini_set('error_log', $original);
 
         $mockPdo = $this->createMock(PDO::class);
         $mockPdo->method('prepare')
