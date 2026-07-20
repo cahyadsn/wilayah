@@ -88,10 +88,11 @@ if (!empty($_GET['id'])){
     } else {
         $query = $db->prepare("SELECT kode, nama FROM {$tbl_wilayah} WHERE kode LIKE CONCAT(:id, '%') AND CHAR_LENGTH(kode)=:m ORDER BY nama");
         $query->execute(array(':id'=>$_GET['id'],':m'=>$m));
-        $opt="<option value=''>Pilih {$wil}</option>";
+        $opt_arr = ["<option value=''>Pilih {$wil}</option>"];
         while($d = $query->fetchObject()){
-            $opt.="<option value='{$d->kode}'>{$d->nama}</option>";
+            $opt_arr[] = "<option value='{$d->kode}'>{$d->nama}</option>";
         }
+        $opt = implode('', $opt_arr);
         file_put_contents($cache_file, $opt, LOCK_EX);
     }
 
