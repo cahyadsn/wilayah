@@ -55,7 +55,7 @@ function isPathReasonable($path, $lat, $lng, $kode) {
 $r=array('status'=>false,'error'=>'an error occured');
 if (!empty($_GET['id'])){
   // Try get from table first (has geo data: lat, lng, path, luas, penduduk)
-  $query = $db->prepare("SELECT * FROM {$tbl_wilayah} WHERE kode=:id");
+  $query = $db->prepare("SELECT kode, nama, lat, lng, path, luas, penduduk FROM {$tbl_wilayah} WHERE kode=:id");
   $query->execute(array(':id'=>$_GET['id']));
   $d = $query->fetchObject();
   if(!empty($d) && !empty($d->kode)){
@@ -68,7 +68,7 @@ if (!empty($_GET['id'])){
     $r=array('status'=>true,'data'=>$data);
   } else {
     // Fallback to wilayah table (kode + nama only)
-    $query = $db->prepare("SELECT * FROM {$tbl_wilayah} WHERE kode=:id");
+    $query = $db->prepare("SELECT kode, nama, lat, lng, path, luas, penduduk FROM {$tbl_wilayah} WHERE kode=:id");
     $query->execute(array(':id'=>$_GET['id']));
     $d = $query->fetchObject();
     if(!empty($d) && !empty($d->kode)){
