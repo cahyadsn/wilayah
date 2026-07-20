@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : reverse_lookup.php
 purpose  : Reverse lookup wilayah by clicked map coordinate.
 create   : 2026-06-08
-last edit: 2026-06-11 15:52:12
+last edit: 2026-07-15 00:26:37
 author   : cahya dsn
 ================================================================================
 MIT License

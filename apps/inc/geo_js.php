@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_js.php
 purpose  : JavaScript for AJAX cascade, map, and counters
 create   : 170912
-last edit: 2026-06-11 15:52:12
+last edit: 2026-06-17 13:42:39
 author   : cahya dsn
 ================================================================================
 MIT License

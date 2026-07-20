@@ -160,7 +160,13 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-07-17] 🆕
+- [2026-07-20] 🆕
+  - Optimize string concatenation loop using array implode in `apps/inc/geo_ajax.php`
+  - Optimize SQL query in `apps/inc/geo_ajax.php` to select only required columns
+  - Update file header date blocks to match git modification history
+- [2026-07-19]
+  - Add test coverage for theme parameter in `apps/inc/change.color.php`
+- [2026-07-17]
   - Fix logic bug for empty or unreasonable geo paths in `apps/inc/geo_ajax.php`
   - Fix potential SQL syntax crash and add strict float/JSON coordinate sanitization in `apps/inc/geo_update.php`
 - [2026-07-15]
