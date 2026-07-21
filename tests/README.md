@@ -47,10 +47,12 @@ vendor/bin/phpunit --coverage-html coverage
 
 ### Main Application Tests
 - **[tests/apps/index_php_test.php](file:///D:/laragon/repo/wilayah/tests/apps/index_php_test.php)**: Validates theme handling, session initialization, meta tags, Leaflet integration, caching headers, and database connectivity.
+- **[tests/AppsLoginTest.php](file:///D:/laragon/repo/wilayah/tests/AppsLoginTest.php)**: Tests secure login and logout authentication handlers (`apps/login.php`).
 - **[tests/IndexGetParameterTest.php](file:///D:/laragon/repo/wilayah/tests/IndexGetParameterTest.php)**: Tests query string parameters on the index page, ensuring invalid inputs are handled gracefully and valid ones fetch correctly using mocks.
 
 ### Includes & AJAX Handler Tests
 - **[tests/apps/inc/GeoAjaxTest.php](file:///D:/laragon/repo/wilayah/tests/apps/inc/GeoAjaxTest.php)**: Tests AJAX responses, coordinates validation (`isPathReasonable`), and boundaries generation (`fallbackBox`).
+- **[tests/apps/inc/GeoUpdateTest.php](file:///D:/laragon/repo/wilayah/tests/apps/inc/GeoUpdateTest.php)**: Tests coordinate update authorization, SQL injection prevention, parameter validation, and float/JSON sanitization (`apps/inc/geo_update.php`).
 - **[tests/apps/inc/ReverseLookupTest.php](file:///D:/laragon/repo/wilayah/tests/apps/inc/ReverseLookupTest.php)**: Verifies the reverse lookup handler's error handling catch blocks and JSON error reporting.
 
 ### Core Helpers & Utility Tests
