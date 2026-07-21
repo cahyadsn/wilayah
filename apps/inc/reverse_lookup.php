@@ -110,9 +110,13 @@ try {
 
     $nearest = $candidates[0];
     $matched = null;
+    $decodedPaths = array();
     foreach ($candidates as $candidate) {
         if (!empty($candidate['path']) && is_string($candidate['path'])) {
-            $candidate['path'] = json_decode($candidate['path'], true);
+            if (!isset($decodedPaths[$candidate['path']])) {
+                $decodedPaths[$candidate['path']] = json_decode($candidate['path'], true);
+            }
+            $candidate['path'] = $decodedPaths[$candidate['path']];
         }
         $candidatePath = effectiveCandidatePath($candidate);
         if (!empty($candidatePath) && pointInPath($lat, $lng, $candidatePath)) {
