@@ -64,6 +64,8 @@ class ReverseLookupTest extends TestCase
         $this->assertFalse(pointInRing(-5, 5, $ring));
 
         // Invalid ring (< 3 points)
+        $this->assertFalse(pointInRing(5, 5, []));
+        $this->assertFalse(pointInRing(5, 5, [[0, 0]]));
         $this->assertFalse(pointInRing(5, 5, [[0, 0], [0, 10]]));
     }
 
