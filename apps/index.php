@@ -134,10 +134,11 @@ header('Pragma: cache');
                     } else {
                       $query=$db->prepare("SELECT kode,nama FROM {$tbl_wilayah} WHERE CHAR_LENGTH(kode)=2 ORDER BY nama");
                       $query->execute();
-                      $html = '';
+                      $arr = [];
                       while ($data=$query->fetchObject()){
-                        $html .= '<option value="'.$data->kode.'">'.$data->nama.'</option>';
+                        $arr[] = '<option value="'.$data->kode.'">'.$data->nama.'</option>';
                       }
+                      $html = implode('', $arr);
                       file_put_contents($cache_file, $html, LOCK_EX);
                       echo $html;
                     }
