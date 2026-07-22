@@ -162,7 +162,12 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-07-21] 🆕
+- [2026-07-22] 🆕
+  - Optimize fallback query in `apps/inc/geo_ajax.php` to select only required columns (`kode`, `nama`)
+  - Optimize HTML options generation loop using array implode in `apps/index.php`
+  - Remove deprecated `ActiveXObject` fallback from `apps/js/ajax.js`
+  - Add test coverage for invalid ring coordinates (empty, 1-point, and 2-point arrays) in `tests/inc/ReverseLookupTest.php`
+- [2026-07-21]
   - Optimize `json_decode` in `apps/inc/reverse_lookup.php` with local string dictionary caching
   - Optimize string concatenation using array implode in `index.php`
 - [2026-07-20]
