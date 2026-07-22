@@ -68,7 +68,7 @@ if (!empty($_GET['id'])){
     $r=array('status'=>true,'data'=>$data);
   } else {
     // Fallback to wilayah table (kode + nama only)
-    $query = $db->prepare("SELECT kode, nama, lat, lng, path, luas, penduduk FROM {$tbl_wilayah} WHERE kode=:id");
+    $query = $db->prepare("SELECT kode, nama FROM {$tbl_wilayah} WHERE kode=:id");
     $query->execute(array(':id'=>$_GET['id']));
     $d = $query->fetchObject();
     if(!empty($d) && !empty($d->kode)){
