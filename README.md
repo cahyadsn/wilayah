@@ -162,6 +162,11 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
+- [2026-07-26] 🆕
+  - Optimize `isPathNearCentroid` loop using `array_column` in `apps/inc/geo_utils.php`
+  - Refactor `apps/inc/geo_ajax.php` to use a helper for fallback paths
+  - Add test coverage for fallback logic in `apps/inc/geo_ajax.php` and improve database configuration tests
+  - Update file header date blocks to match Git commit modification history
 - [2026-07-23] 🆕
   - Refactor legacy AJAX library dependency in `index.php` to use the modern standard `fetch()` API
   - Implement nested dropdown state resetting in `index.php` to prevent carrying over stale data across selections

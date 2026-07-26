@@ -1,6 +1,15 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Optimize isPathNearCentroid loop using array_column in apps/inc/geo_utils.php 2026-07-26
+- Refactor apps/inc/geo_ajax.php to use fallback helper 2026-07-26
+- Add PHPUnit test coverage for fallback logic and database config 2026-07-26
+- Update file header date blocks to match git modification history 2026-07-26
+- Refactor index.php to use fetch API and implement state resetting 2026-07-23
+- Optimize fallback query in apps/inc/geo_ajax.php 2026-07-22
+- Optimize HTML option generation loop using array implode in apps/index.php 2026-07-22
+- Remove ActiveXObject fallback from apps/js/ajax.js 2026-07-22
+- Add tests for invalid ring coordinates in reverse lookup 2026-07-22
 - Optimize json_decode in apps/inc/reverse_lookup.php 2026-07-21
 - Optimize string concatenation in index.php 2026-07-21
 - Optimize string concatenation loop using array implode in apps/inc/geo_ajax.php 2026-07-20
