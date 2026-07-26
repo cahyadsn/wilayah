@@ -137,4 +137,78 @@ class GeoAjaxTest extends TestCase {
         $pathFar = '[[-3.0, 110.0], [-2.8, 110.2]]'; // Center: -2.9, 110.1, diff: >2.5
         $this->assertFalse(isPathReasonable($pathFar, $lat, $lng, $kode));
     }
+
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testGeoAjaxFallbackLogic() {
+        // This test must run in a separate process, but PHPUnit might still run setUp()
+        // before launching the separate process, or setUp() inside the process might include it.
+        // Wait, if setUp() does require_once, it's done. But geo_ajax.php has functions.
+        // We will read geo_ajax.php, replace function declarations and require_once, and eval it,
+        // or we just let it run if it's a completely fresh process.
+        // Let's use file_get_contents and remove the function isPathReasonable to avoid redeclaration,
+        // because setUp() includes it! No, wait, setUp() is run for EVERY test, including this one in the new process.
+
+        // Setup env so db.php doesn't actually connect to real DB but we can intercept it
+        putenv('DB_HOST=127.0.0.1');
+
+        $mockStmt = $this->createMock(\PDOStatement::class);
+        $mockStmt->expects($this->exactly(2))
+                 ->method('execute')
+                 ->willReturn(true);
+        $mockStmt->expects($this->exactly(2))
+                 ->method('fetchObject')
+                 ->willReturnOnConsecutiveCalls(
+                     false, // First query returns empty
+                     (object)['kode' => '12', 'nama' => 'Fallback Name'] // Second query fallback
+                 );
+
+        $mockPdo = $this->createMock(\PDO::class);
+        $mockPdo->expects($this->exactly(2))
+                ->method('prepare')
+                ->willReturn($mockStmt);
+
+        // Include db.php first to mock the $db connection it creates
+        $originalErrorLog = ini_get('error_log');
+        ini_set('error_log', '/dev/null');
+        ob_start();
+        @require_once __DIR__ . "/../../../apps/inc/db.php";
+        ob_end_clean();
+        ini_set('error_log', $originalErrorLog);
+
+        global $db, $tbl_wilayah;
+        $db = $mockPdo;
+        $tbl_wilayah = 'wilayah';
+
+        $_GET = ['id' => '12', 'geo' => '1'];
+
+        // Execute the procedural script capturing its output
+        // We need to strip out function isPathReasonable because setUp() already included geo_ajax.php once
+        // and PHP does not allow redeclaring functions.
+        $script = file_get_contents(__DIR__ . "/../../../apps/inc/geo_ajax.php");
+
+        // Strip require_once and the function declaration block
+        $script = preg_replace('/require_once\s+[^;]+;/', '', $script);
+        // Using a regex to remove function isPathReasonable(...) { ... }
+        // Since it's a bit complex to regex a function with nested braces, we can just
+        // replace the function keyword to create a dummy name, or better, since we know its exact structure:
+        $script = str_replace('function isPathReasonable(', 'function dummy_isPathReasonable_test_avoid_redeclare(', $script);
+
+        ob_start();
+        eval('?>' . $script);
+        $output = ob_get_clean();
+
+        $result = json_decode($output, true);
+        $this->assertIsArray($result, "Expected JSON output to decode to an array");
+        $this->assertTrue($result['status']);
+        $this->assertEquals('12', $result['data']['kode']);
+        $this->assertEquals('Fallback Name', $result['data']['nama']);
+        $this->assertEquals(-6.17501, $result['data']['lat']);
+        $this->assertEquals(106.820497, $result['data']['lng']);
+        $this->assertEquals('', $result['data']['path']);
+        $this->assertEquals(0, $result['data']['luas']);
+        $this->assertEquals(0, $result['data']['penduduk']);
+    }
 }
