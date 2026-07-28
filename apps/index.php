@@ -136,7 +136,8 @@ header('Pragma: cache');
                       $query->execute();
                       $arr = [];
                       while ($data=$query->fetchObject()){
-                        $arr[] = '<option value="'.$data->kode.'">'.$data->nama.'</option>';
+                        $nama = htmlspecialchars($data->nama, ENT_QUOTES, 'UTF-8');
+                        $arr[] = '<option value="'.$data->kode.'">'.$nama.'</option>';
                       }
                       $html = implode('', $arr);
                       file_put_contents($cache_file, $html, LOCK_EX);
