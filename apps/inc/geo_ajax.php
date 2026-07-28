@@ -89,7 +89,8 @@ if (!empty($_GET['id'])){
         $query->execute(array(':id'=>$_GET['id'],':m'=>$m));
         $opt_arr = ["<option value=''>Pilih {$wil}</option>"];
         while($d = $query->fetchObject()){
-            $opt_arr[] = "<option value='{$d->kode}'>{$d->nama}</option>";
+            $nama = htmlspecialchars($d->nama, ENT_QUOTES, 'UTF-8');
+            $opt_arr[] = "<option value='{$d->kode}'>{$nama}</option>";
         }
         $opt = implode('', $opt_arr);
         file_put_contents($cache_file, $opt, LOCK_EX);

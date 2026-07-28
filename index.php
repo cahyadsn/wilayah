@@ -38,8 +38,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
 		$query = $db->prepare("SELECT kode, nama FROM wilayah WHERE kode LIKE :id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
 		$query->execute(array(':id'=>$_GET['id'].'%',':m'=>$wil[$n][0]));
 		echo"<option value=''>Pilih {$wil[$n][1]}</option>";
-		while($d = $query->fetchObject())
-			echo "<option value='{$d->kode}'>{$d->nama}</option>";
+		while($d = $query->fetchObject()) {
+			$nama = htmlspecialchars($d->nama, ENT_QUOTES, 'UTF-8');
+			echo "<option value='{$d->kode}'>{$nama}</option>";
+		}
 	}
 }else{
 ?>
@@ -120,7 +122,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
 						$query->execute();
 						$arr = [];
 						while ($data=$query->fetchObject()){
-							$arr[] = '<option value="'.$data->kode.'">'.$data->nama.'</option>';
+							$nama = htmlspecialchars($data->nama, ENT_QUOTES, 'UTF-8');
+							$arr[] = '<option value="'.$data->kode.'">'.$nama.'</option>';
 						}
 						$html = implode('', $arr);
 						file_put_contents($cache_file, $html, LOCK_EX);
