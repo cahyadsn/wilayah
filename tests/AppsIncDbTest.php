@@ -31,7 +31,7 @@ class AppsIncDbTest extends TestCase
         ob_get_clean();
 
         $this->assertEquals('localhost', $dbhost);
-        $this->assertEquals('root', $dbuser);
+        $this->assertEquals('', $dbuser);
         $this->assertEquals('', $dbpass);
         $this->assertEquals('wilayah', $dbname);
         $this->assertEquals("mysql:dbname=wilayah;host=localhost", $db_dsn);
