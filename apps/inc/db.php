@@ -24,7 +24,7 @@ See the MIT License for more details
 copyright (c) 2015-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 $dbhost = getenv('DB_HOST') !== false ? getenv('DB_HOST') : 'localhost';
-$dbuser = getenv('DB_USER') !== false ? getenv('DB_USER') : 'root';
+$dbuser = getenv('DB_USER') !== false ? getenv('DB_USER') : '';
 $dbpass = getenv('DB_PASS') !== false ? getenv('DB_PASS') : '';
 $dbname = getenv('DB_NAME') !== false ? getenv('DB_NAME') : 'wilayah';
 $db_dsn = "mysql:dbname=$dbname;host=$dbhost";
