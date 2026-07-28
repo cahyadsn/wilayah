@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit   : 2026-07-22 02:41:54
+last edit   : 2026-07-28 16:40:44
 author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps

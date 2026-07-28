@@ -162,16 +162,21 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-07-26] 🆕
+- [2026-07-28] 🆕
+  - Fix DOM-based XSS vulnerability in `apps/inc/geo_js.php` by using `DOMParser`
+  - Fix security vulnerability by removing default `root` user from `apps/inc/db.php`
+  - Fix XSS vulnerabilities in `index.php`, `apps/index.php`, and `apps/inc/geo_ajax.php` by escaping database output
+  - Update file header info last edit timestamps to the current date
+- [2026-07-26]
   - Optimize `isPathNearCentroid` loop using `array_column` in `apps/inc/geo_utils.php`
   - Refactor `apps/inc/geo_ajax.php` to use a helper for fallback paths
   - Add test coverage for fallback logic in `apps/inc/geo_ajax.php` and improve database configuration tests
   - Update file header date blocks to match Git commit modification history
-- [2026-07-23] 🆕
+- [2026-07-23]
   - Refactor legacy AJAX library dependency in `index.php` to use the modern standard `fetch()` API
   - Implement nested dropdown state resetting in `index.php` to prevent carrying over stale data across selections
   - Fix HTML validation bug (incorrect closing `</select>` tag) in `index.php`
-- [2026-07-22] 🆕
+- [2026-07-22]
   - Optimize fallback query in `apps/inc/geo_ajax.php` to select only required columns (`kode`, `nama`)
   - Optimize HTML options generation loop using array implode in `apps/index.php`
   - Remove deprecated `ActiveXObject` fallback from `apps/js/ajax.js`
