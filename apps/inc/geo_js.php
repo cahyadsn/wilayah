@@ -31,6 +31,22 @@ if(isset($_SESSION['author']) && $_SESSION['author']=='cahyadsn'){
 var ids, my_id, my_z;
 var wil = new Array('prov', 'kota', 'kec', 'kel');
 
+function setSafeSelectOptions(selectElement, optionsHtml) {
+    selectElement.innerHTML = '';
+    var parser = new DOMParser();
+    var doc = parser.parseFromString('<select>' + (optionsHtml || '') + '</select>', 'text/html');
+    var options = doc.querySelectorAll('option');
+    for (var i = 0; i < options.length; i++) {
+        var opt = document.createElement('option');
+        opt.value = options[i].getAttribute('value') || '';
+        opt.textContent = options[i].textContent;
+        if (options[i].hasAttribute('selected')) {
+            opt.setAttribute('selected', 'selected');
+        }
+        selectElement.appendChild(opt);
+    }
+}
+
 // --- AJAX helpers ---
 
 var my_ajax = do_ajax();
@@ -89,7 +105,7 @@ function loadChildren(parentKode, targetSelectId, targetBoxId) {
         .then(function(result) {
             var select = document.getElementById(targetSelectId);
             var box = document.getElementById(targetBoxId);
-            if (select && result.opt) select.innerHTML = result.opt;
+            if (select && result.opt) setSafeSelectOptions(select, result.opt);
             if (box) box.style.display = 'block';
             return result;
         });
@@ -441,7 +457,7 @@ function stateChanged() {
         if (idx > 0) {
             var sel = document.getElementById(wil[idx]);
             if (sel && d.opt) {
-                sel.innerHTML = d.opt;
+                setSafeSelectOptions(sel, d.opt);
                 sel.focus();
             }
         }
