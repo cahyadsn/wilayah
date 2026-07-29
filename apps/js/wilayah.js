@@ -55,10 +55,16 @@ document.addEventListener('DOMContentLoaded', function() {
             var nextTheme = currentTheme === 'light' ? 'dark' : 'light';
             applyTheme(nextTheme);
 
+            var csrfToken = '';
+            var csrfMeta = document.querySelector('meta[name="csrf-token"]');
+            if (csrfMeta) {
+                csrfToken = csrfMeta.getAttribute('content');
+            }
+
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'inc/change.color.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send('theme=' + encodeURIComponent(nextTheme));
+            xhr.send('theme=' + encodeURIComponent(nextTheme) + '&csrf_token=' + encodeURIComponent(csrfToken));
         });
     }
 
