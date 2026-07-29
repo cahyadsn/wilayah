@@ -39,8 +39,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
 		$query->execute(array(':id'=>$_GET['id'].'%',':m'=>$wil[$n][0]));
 		echo"<option value=''>Pilih {$wil[$n][1]}</option>";
 		while($d = $query->fetchObject()) {
+			$kode = htmlspecialchars($d->kode, ENT_QUOTES, 'UTF-8');
 			$nama = htmlspecialchars($d->nama, ENT_QUOTES, 'UTF-8');
-			echo "<option value='{$d->kode}'>{$nama}</option>";
+			echo "<option value='{$kode}'>{$nama}</option>";
 		}
 	}
 }else{
@@ -122,8 +123,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
 						$query->execute();
 						$arr = [];
 						while ($data=$query->fetchObject()){
+							$kode = htmlspecialchars($data->kode, ENT_QUOTES, 'UTF-8');
 							$nama = htmlspecialchars($data->nama, ENT_QUOTES, 'UTF-8');
-							$arr[] = '<option value="'.$data->kode.'">'.$nama.'</option>';
+							$arr[] = '<option value="'.$kode.'">'.$nama.'</option>';
 						}
 						$html = implode('', $arr);
 						file_put_contents($cache_file, $html, LOCK_EX);
