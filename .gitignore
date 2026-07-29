@@ -18,3 +18,8 @@ composer.lock
 /.Jules
 /MEMORY.md
 /GEMINI.md
+# Local application cache files
+/cache/*
+!/cache/.gitkeep
+/apps/cache/*
+!/apps/cache/.gitkeep

@@ -79,7 +79,7 @@ if (!empty($_GET['id'])){
     $m=($n==2?5:($n==5?8:13));
     $wil=($n==2?'Kota/Kab':($n==5?'Kecamatan':'Desa/Kelurahan'));
 
-    $cache_file = sys_get_temp_dir() . '/geo_opt_cache_' . md5($_GET['id']) . '.html';
+    $cache_file = __DIR__ . '/../cache/geo_opt_cache_' . md5($_GET['id']) . '.html';
     $cache_ttl = 86400; // 1 day
 
     if (file_exists($cache_file) && (time() - filemtime($cache_file) < $cache_ttl)) {
