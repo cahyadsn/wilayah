@@ -23,8 +23,15 @@ See the MIT License for more details
 
 copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
-if(isset($_POST)){
+if(isset($_POST) && !empty($_POST)){
     session_start();
+
+    // Verify CSRF token
+    if (empty($_POST['csrf_token']) || empty($_SESSION['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+        http_response_code(403);
+        die('CSRF token validation failed');
+    }
+
     //-- set web theme, default 'dark'
     if(isset($_POST['theme'])){
         $_SESSION['theme']=$_POST['theme']==='light'?'light':'dark';

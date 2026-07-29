@@ -14,6 +14,9 @@ MIT License
 copyright (c) 2015-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 session_start();
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
 $theme=isset($_SESSION['theme'])?$_SESSION['theme']:(isset($_GET['theme'])?$_GET['theme']:'light');
 define("_AUTHOR","cahyadsn");
 $_SESSION['ver']=sha1(rand());
@@ -32,6 +35,8 @@ header('Pragma: cache');
   <meta name="description" content="Data wilayah administrasi Indonesia sesuai Kepmendagri No 300.2.2-2430 Tahun 2025" />
   <meta name="author" content="Cahya DSN" />
   <meta name="keywords" content="php, mysql, data, administrasi, wilayah, indonesia, kepmendagri,300.2.2-2430,2025, cahyadsn" />
+
+  <meta name="csrf-token" content="<?php echo $_SESSION['csrf_token']; ?>">
 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
