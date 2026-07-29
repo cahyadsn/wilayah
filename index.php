@@ -113,7 +113,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
 				<select id="prov" onchange="ajax(this.value)">
 					<option value="">Provinsi</option>
 					<?php 
-					$cache_file = sys_get_temp_dir() . '/provinsi_cache.html';
+					$cache_file = __DIR__ . '/cache/provinsi_cache.html';
 					$cache_ttl = 86400;
 
 					if (file_exists($cache_file) && (time() - filemtime($cache_file) < $cache_ttl)) {
