@@ -79,7 +79,11 @@ if (!empty($_GET['id'])){
     $m=($n==2?5:($n==5?8:13));
     $wil=($n==2?'Kota/Kab':($n==5?'Kecamatan':'Desa/Kelurahan'));
 
-    $cache_file = __DIR__ . '/../cache/geo_opt_cache_' . md5($_GET['id']) . '.html';
+    $cache_dir = dirname(__DIR__) . '/cache';
+    if (!is_dir($cache_dir)) {
+        mkdir($cache_dir, 0755, true);
+    }
+    $cache_file = $cache_dir . '/geo_opt_cache_' . md5($_GET['id']) . '.html';
     $cache_ttl = 86400; // 1 day
 
     if (file_exists($cache_file) && (time() - filemtime($cache_file) < $cache_ttl)) {
@@ -89,8 +93,9 @@ if (!empty($_GET['id'])){
         $query->execute(array(':id'=>$_GET['id'],':m'=>$m));
         $opt_arr = ["<option value=''>Pilih {$wil}</option>"];
         while($d = $query->fetchObject()){
+            $kode = htmlspecialchars($d->kode, ENT_QUOTES, 'UTF-8');
             $nama = htmlspecialchars($d->nama, ENT_QUOTES, 'UTF-8');
-            $opt_arr[] = "<option value='{$d->kode}'>{$nama}</option>";
+            $opt_arr[] = "<option value='{$kode}'>{$nama}</option>";
         }
         $opt = implode('', $opt_arr);
         file_put_contents($cache_file, $opt, LOCK_EX);
