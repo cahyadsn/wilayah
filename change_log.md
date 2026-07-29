@@ -1,6 +1,8 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Update file header info last edit timestamps to the current date 2026-07-30
+- Fix CSRF, secure cache directory, and escape database output for security vulnerabilities 2026-07-28
 - Optimize isPathNearCentroid loop using array_column in apps/inc/geo_utils.php 2026-07-26
 - Refactor apps/inc/geo_ajax.php to use fallback helper 2026-07-26
 - Add PHPUnit test coverage for fallback logic and database config 2026-07-26
