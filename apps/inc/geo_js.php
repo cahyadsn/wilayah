@@ -218,11 +218,17 @@ function getThemeAwareLabelOverlay() {
 function setBaseLayer(name) {
     if (!map || !baseLayers[name]) return;
 
-    Object.keys(baseLayers).forEach(function(layerName) {
-        if (map.hasLayer(baseLayers[layerName])) {
-            map.removeLayer(baseLayers[layerName]);
+    if (currentBaseLayer && baseLayers[currentBaseLayer]) {
+        if (map.hasLayer(baseLayers[currentBaseLayer])) {
+            map.removeLayer(baseLayers[currentBaseLayer]);
         }
-    });
+    } else {
+        Object.keys(baseLayers).forEach(function(layerName) {
+            if (map.hasLayer(baseLayers[layerName])) {
+                map.removeLayer(baseLayers[layerName]);
+            }
+        });
+    }
 
     baseLayers[name].addTo(map);
     currentBaseLayer = name;
