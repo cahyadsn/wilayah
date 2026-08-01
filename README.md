@@ -6,7 +6,7 @@ Kode dan Data Wilayah Administrasi Pemerintahan dan Kode Pulau Indonesia sesuai 
 [![GitHub forks](https://img.shields.io/github/forks/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/network)
 [![GitHub stars](https://img.shields.io/github/stars/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/stargazers)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cahyadsn/wilayah)
-[![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)]()
+[![GitHub last commit](https://img.shields.io/github/last-commit/cahyadsn/wilayah.svg?style=flat)](https://github.com/cahyadsn/wilayah)
 [![Donate](https://img.shields.io/badge/$-support-ff69b4.svg?style=flat)](https://paypal.me/cahyadwiana)
 
 ## DEMO
@@ -162,7 +162,10 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-07-30] 🆕
+- [2026-08-01] 🆕
+  - Optimize min/max coordinate extraction using native `array_column` in `apps/inc/geo_ajax.php`
+  - Optimize `setBaseLayer` performance in `apps/inc/geo_js.php` by tracking `currentBaseLayer` directly
+- [2026-07-30]
   - Update file header info last edit timestamps to the current date
 - [2026-07-28]
   - Fix DOM-based XSS vulnerability in `apps/inc/geo_js.php` by using `DOMParser`
