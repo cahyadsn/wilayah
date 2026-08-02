@@ -38,6 +38,6 @@ if(isset($_POST) && !empty($_POST)){
     }
     //-- set web color theme
     if(isset($_POST['color'])){
-        $_SESSION['c']=$_POST['color'];
+        $_SESSION['c']=htmlspecialchars($_POST['color'], ENT_QUOTES, 'UTF-8');
     }
 }
