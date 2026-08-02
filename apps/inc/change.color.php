@@ -24,6 +24,11 @@ See the MIT License for more details
 copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 if(isset($_POST) && !empty($_POST)){
+    session_set_cookie_params([
+        'secure' => true,
+        'httponly' => true,
+        'samesite' => 'Strict'
+    ]);
     session_start();
 
     // Verify CSRF token
