@@ -162,7 +162,11 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-08-01] 🆕
+- [2026-08-03] 🆕
+  - Enforce secure session cookie parameters across the application
+  - Sanitize color POST data in `apps/inc/change.color.php` to prevent XSS
+  - Add PHPUnit test coverage for CSRF token generation in `index.php` and invalid JSON paths in geo update
+- [2026-08-01]
   - Optimize min/max coordinate extraction using native `array_column` in `apps/inc/geo_ajax.php`
   - Optimize `setBaseLayer` performance in `apps/inc/geo_js.php` by tracking `currentBaseLayer` directly
 - [2026-07-30]

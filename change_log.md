@@ -1,6 +1,9 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Enforce secure session cookie parameters 2026-08-02
+- Sanitize color POST data in change.color.php to prevent XSS 2026-08-02
+- Add PHPUnit test coverage for CSRF token generation and invalid JSON paths 2026-08-02
 - Update file header info last edit timestamps to the current date 2026-08-01
 - Update file header info last edit timestamps to the current date 2026-07-30
 - Fix CSRF, secure cache directory, and escape database output for security vulnerabilities 2026-07-28
