@@ -13,6 +13,11 @@ source code : https://github.com/cahyadsn/wilayah/apps
 MIT License
 copyright (c) 2015-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
 session_start();
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));

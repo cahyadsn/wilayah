@@ -23,6 +23,11 @@ See the MIT License for more details
 
 copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
 session_start();
 if (!isset($_SESSION['author']) || $_SESSION['author'] !== 'cahyadsn') {
     die(json_encode(array('status' => false, 'msg' => 'unauthorized')));

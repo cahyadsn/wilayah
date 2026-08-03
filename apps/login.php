@@ -1,4 +1,9 @@
 <?php
+session_set_cookie_params([
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
 session_start();
 
 // Handle logout if requested (optional fallback or cleanup)
