@@ -124,6 +124,33 @@ PHP;
         $this->assertEquals('No valid fields to update', $decoded['msg']);
     }
 
+    public function testInvalidJsonPath()
+    {
+        $_POST['id'] = '1234';
+        $_POST['path'] = 'invalid_json';
+
+        putenv('DB_HOST=127.0.0.1');
+
+        $originalErrorLog = ini_get('error_log');
+        ini_set('error_log', '/dev/null');
+        ob_start();
+        @require_once $this->dbFile;
+        ob_end_clean();
+        ini_set('error_log', $originalErrorLog);
+
+        ob_start();
+        $cwd = getcwd();
+        chdir(dirname($this->geoUpdateFile));
+        @include basename($this->geoUpdateFile);
+        chdir($cwd);
+        $output = ob_get_clean();
+
+        $this->assertJson($output);
+        $decoded = json_decode($output, true);
+        $this->assertFalse($decoded['status']);
+        $this->assertEquals('No valid fields to update', $decoded['msg']);
+    }
+
     public function testValidUpdate()
     {
         $_POST['id'] = '1234';
