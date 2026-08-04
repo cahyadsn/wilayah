@@ -29,8 +29,11 @@ session_set_cookie_params([
     'samesite' => 'Strict'
 ]);
 session_start();
+
+header('Content-Type: application/json; charset=utf-8');
+
 if (!isset($_SESSION['author']) || $_SESSION['author'] !== 'cahyadsn') {
-    die(json_encode(array('status' => false, 'msg' => 'unauthorized')));
+    die(json_encode(array('status' => false, 'msg' => 'unauthorized'), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP));
 }
 
 require_once "db.php";
@@ -63,4 +66,4 @@ if(isset($_POST['id'])){
     $r=array('status'=>false,'msg'=>'No valid fields to update');
   }
 }
-echo json_encode($r);
+echo json_encode($r, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);
