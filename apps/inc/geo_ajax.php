@@ -75,14 +75,6 @@ if (!empty($_GET['id'])){
 	}
     $data=array('kode'=>$d->kode,'nama'=>$d->nama,'lat'=>$d->lat,'lng'=>$d->lng,'path'=>$path,'luas'=>$d->luas,'penduduk'=>$d->penduduk);
     $r=array('status'=>true,'data'=>$data);
-  } else {
-    // Fallback to wilayah table (kode + nama only)
-    $query = $db->prepare("SELECT kode, nama FROM {$tbl_wilayah} WHERE kode=:id");
-    $query->execute(array(':id'=>$_GET['id']));
-    $d = $query->fetchObject();
-    if(!empty($d) && !empty($d->kode)){
-      $r=array('status'=>true,'data'=>array('kode'=>$d->kode,'nama'=>$d->nama,'lat'=>-6.17501,'lng'=>106.820497,'path'=>'','luas'=>0,'penduduk'=>0));
-    }
   }
   if(empty($_GET['geo'])){
     $n=strlen($_GET['id']);
