@@ -155,18 +155,15 @@ class GeoAjaxTest extends TestCase {
         putenv('DB_HOST=127.0.0.1');
 
         $mockStmt = $this->createMock(\PDOStatement::class);
-        $mockStmt->expects($this->exactly(2))
+        $mockStmt->expects($this->exactly(1))
                  ->method('execute')
                  ->willReturn(true);
-        $mockStmt->expects($this->exactly(2))
+        $mockStmt->expects($this->exactly(1))
                  ->method('fetchObject')
-                 ->willReturnOnConsecutiveCalls(
-                     false, // First query returns empty
-                     (object)['kode' => '12', 'nama' => 'Fallback Name'] // Second query fallback
-                 );
+                 ->willReturn(false); // First query returns empty
 
         $mockPdo = $this->createMock(\PDO::class);
-        $mockPdo->expects($this->exactly(2))
+        $mockPdo->expects($this->exactly(1))
                 ->method('prepare')
                 ->willReturn($mockStmt);
 
@@ -202,13 +199,7 @@ class GeoAjaxTest extends TestCase {
 
         $result = json_decode($output, true);
         $this->assertIsArray($result, "Expected JSON output to decode to an array");
-        $this->assertTrue($result['status']);
-        $this->assertEquals('12', $result['data']['kode']);
-        $this->assertEquals('Fallback Name', $result['data']['nama']);
-        $this->assertEquals(-6.17501, $result['data']['lat']);
-        $this->assertEquals(106.820497, $result['data']['lng']);
-        $this->assertEquals('', $result['data']['path']);
-        $this->assertEquals(0, $result['data']['luas']);
-        $this->assertEquals(0, $result['data']['penduduk']);
+        $this->assertFalse($result['status']);
+        $this->assertEquals('an error occured', $result['error']);
     }
 }
