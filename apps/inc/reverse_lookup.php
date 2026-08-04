@@ -113,10 +113,11 @@ try {
     $decodedPaths = array();
     foreach ($candidates as $candidate) {
         if (!empty($candidate['path']) && is_string($candidate['path'])) {
-            if (!isset($decodedPaths[$candidate['path']])) {
-                $decodedPaths[$candidate['path']] = json_decode($candidate['path'], true);
+            $pathKey = !empty($candidate['kode']) ? $candidate['kode'] : md5($candidate['path']);
+            if (!isset($decodedPaths[$pathKey])) {
+                $decodedPaths[$pathKey] = json_decode($candidate['path'], true);
             }
-            $candidate['path'] = $decodedPaths[$candidate['path']];
+            $candidate['path'] = $decodedPaths[$pathKey];
         }
         $candidatePath = effectiveCandidatePath($candidate);
         if (!empty($candidatePath) && pointInPath($lat, $lng, $candidatePath)) {
