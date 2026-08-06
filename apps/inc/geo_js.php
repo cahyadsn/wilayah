@@ -21,9 +21,7 @@ header("Content-type: text/javascript");
 header('Cache-Control: public, max-age=31536000');
 header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000));
 header('Pragma: cache');
-if(isset($_SESSION['author']) && $_SESSION['author']=='cahyadsn'){
-    $v=$_GET['v'];
-} else {
+if (!isset($_SESSION['author']) || $_SESSION['author'] !== 'cahyadsn') {
     die('illegal call');
 }
 ?>
