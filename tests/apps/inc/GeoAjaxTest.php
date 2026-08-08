@@ -20,7 +20,11 @@ class GeoAjaxTest extends TestCase {
 
         // Include the procedural script and capture output to prevent "headers already sent"
         ob_start();
-        require_once __DIR__ . '/../../../apps/inc/geo_ajax.php';
+        // Since geo_ajax.php now outputs headers, we can't just require it if we want to run multiple tests
+        // But we need the function isPathReasonable. Since we need to test isPathReasonable,
+        // let's suppress header errors during tests or just skip including if we are going to run tests that don't need it.
+        // Or we can mock the header function.
+        @require_once __DIR__ . '/../../../apps/inc/geo_ajax.php';
         ob_end_clean();
     }
 
