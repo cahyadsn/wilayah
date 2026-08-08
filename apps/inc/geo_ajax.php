@@ -92,7 +92,7 @@ if (!empty($_GET['id'])){
         $opt = file_get_contents($cache_file);
     } else {
         $query = $db->prepare("SELECT kode, nama FROM {$tbl_wilayah} WHERE kode LIKE CONCAT(:id, '%') AND CHAR_LENGTH(kode)=:m ORDER BY nama");
-        $query->execute(array(':id'=>$_GET['id'],':m'=>$m));
+        $query->execute(array(':id'=>addcslashes($_GET['id'], '%_\\'),':m'=>$m));
         $opt_arr = ["<option value=''>Pilih {$wil}</option>"];
         while($d = $query->fetchObject()){
             $kode = htmlspecialchars($d->kode, ENT_QUOTES, 'UTF-8');
