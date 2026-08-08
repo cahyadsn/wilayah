@@ -49,7 +49,7 @@ class AppsLoginTest extends TestCase
         $_POST['password'] = 'secret';
 
         putenv('ADMIN_USER=admin');
-        putenv('ADMIN_PASS=secret');
+        putenv('ADMIN_PASS=' . password_hash('secret', PASSWORD_DEFAULT));
 
         $output = $this->runLoginScript();
 
@@ -71,7 +71,7 @@ class AppsLoginTest extends TestCase
         $_POST['password'] = 'wrong_secret';
 
         putenv('ADMIN_USER=admin');
-        putenv('ADMIN_PASS=secret');
+        putenv('ADMIN_PASS=' . password_hash('secret', PASSWORD_DEFAULT));
 
         $output = $this->runLoginScript();
 

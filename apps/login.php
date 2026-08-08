@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $expectedUser = getenv('ADMIN_USER');
     $expectedPass = getenv('ADMIN_PASS');
 
-    if ($expectedUser && $expectedPass && $username === $expectedUser && is_string($password) && hash_equals($expectedPass, $password)) {
+    if ($expectedUser && $expectedPass && $username === $expectedUser && is_string($password) && password_verify($password, $expectedPass)) {
         $_SESSION['author'] = 'cahyadsn'; // Value expected by geo_update.php
         header("Location: index.php");
         exit;
