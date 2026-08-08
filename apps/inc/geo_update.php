@@ -36,6 +36,10 @@ if (!isset($_SESSION['author']) || $_SESSION['author'] !== 'cahyadsn') {
     die(json_encode(array('status' => false, 'msg' => 'unauthorized'), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP));
 }
 
+if (empty($_POST['csrf_token']) || empty($_SESSION['csrf_token']) || !is_string($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+    die(json_encode(array('status' => false, 'msg' => 'csrf token validation failed'), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP));
+}
+
 require_once "db.php";
 $r=array('status'=>false,'msg'=>'do nothing');
 $fields=array('lat','lng','path');
