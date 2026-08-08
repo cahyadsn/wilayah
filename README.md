@@ -162,7 +162,12 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-08-06] 🆕
+- [2026-08-08] 🆕
+  - Prevent wildcard injection in PDO LIKE clauses
+  - Fix missing CSRF validation in `geo_update.php`
+  - Security fix: Add Content-Type header and secure JSON encoding in JSON responses
+  - Replace `hash_equals` with `password_verify` in `login.php` for secure password verification
+- [2026-08-06]
   - Fix timing attack vulnerability in `apps/login.php` by using constant-time comparison (`hash_equals`) and type checking
   - Refactor `apps/inc/geo_js.php` to remove unused `$v` variable and empty conditional block
 - [2026-08-04]
