@@ -20,9 +20,11 @@ class GeoUpdateTest extends TestCase
 
         // Setup default authorized session for tests that don't want to die()
         $_SESSION['author'] = 'cahyadsn';
+        $_SESSION['csrf_token'] = 'test_token';
 
         // Reset $_POST
         $_POST = [];
+        $_POST['csrf_token'] = 'test_token';
     }
 
     public function testUnauthorizedAccessNoSession()
@@ -46,6 +48,54 @@ PHP;
         $decoded = json_decode($output, true);
         $this->assertFalse($decoded['status']);
         $this->assertEquals('unauthorized', $decoded['msg']);
+    }
+
+    public function testCsrfTokenMissing()
+    {
+        $script = <<<PHP
+<?php
+session_start();
+\$_SESSION['author'] = 'cahyadsn';
+\$_SESSION['csrf_token'] = 'test_token';
+// \$_POST['csrf_token'] is missing
+ob_start();
+@include '{$this->geoUpdateFile}';
+\$output = ob_get_clean();
+echo \$output;
+PHP;
+        $tmpFile = tempnam(sys_get_temp_dir(), 'test_');
+        file_put_contents($tmpFile, $script);
+        $output = exec('php ' . escapeshellarg($tmpFile) . ' 2>/dev/null');
+        unlink($tmpFile);
+
+        $this->assertJson($output);
+        $decoded = json_decode($output, true);
+        $this->assertFalse($decoded['status']);
+        $this->assertEquals('csrf token validation failed', $decoded['msg']);
+    }
+
+    public function testCsrfTokenInvalid()
+    {
+        $script = <<<PHP
+<?php
+session_start();
+\$_SESSION['author'] = 'cahyadsn';
+\$_SESSION['csrf_token'] = 'test_token';
+\$_POST['csrf_token'] = 'wrong_token';
+ob_start();
+@include '{$this->geoUpdateFile}';
+\$output = ob_get_clean();
+echo \$output;
+PHP;
+        $tmpFile = tempnam(sys_get_temp_dir(), 'test_');
+        file_put_contents($tmpFile, $script);
+        $output = exec('php ' . escapeshellarg($tmpFile) . ' 2>/dev/null');
+        unlink($tmpFile);
+
+        $this->assertJson($output);
+        $decoded = json_decode($output, true);
+        $this->assertFalse($decoded['status']);
+        $this->assertEquals('csrf token validation failed', $decoded['msg']);
     }
 
     public function testUnauthorizedAccessWrongAuthor()
