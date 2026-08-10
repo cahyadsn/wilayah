@@ -39,6 +39,7 @@ function setSafeSelectOptions(selectElement, optionsHtml) {
     var parser = new DOMParser();
     var doc = parser.parseFromString('<select>' + (optionsHtml || '') + '</select>', 'text/html');
     var options = doc.querySelectorAll('option');
+    var fragment = document.createDocumentFragment();
     for (var i = 0; i < options.length; i++) {
         var opt = document.createElement('option');
         opt.value = options[i].getAttribute('value') || '';
@@ -46,8 +47,9 @@ function setSafeSelectOptions(selectElement, optionsHtml) {
         if (options[i].hasAttribute('selected')) {
             opt.setAttribute('selected', 'selected');
         }
-        selectElement.appendChild(opt);
+        fragment.appendChild(opt);
     }
+    selectElement.appendChild(fragment);
 }
 
 // --- AJAX helpers ---
