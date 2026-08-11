@@ -31,7 +31,7 @@ if (!isset($_SESSION['author']) || $_SESSION['author'] !== 'cahyadsn') {
    Pure JS, no GSAP dependency
    ============================================================ */
 
-var ids, my_id, my_z;
+var ids;
 var wil = new Array('prov', 'kota', 'kec', 'kel');
 
 function setSafeSelectOptions(selectElement, optionsHtml) {
