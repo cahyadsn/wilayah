@@ -162,7 +162,12 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-08-10] 🆕
+- [2026-08-12] 🆕
+  - Remove unused `$_SESSION['ver']` in [`index.php`](file:///D:/laragon/repo/wilayah/index.php)
+- [2026-08-11]
+  - Clean up unused variables in [`apps/inc/geo_js.php`](file:///D:/laragon/repo/wilayah/apps/inc/geo_js.php)
+  - Add PHPUnit unit tests for `buildChain` function in [`apps/inc/reverse_lookup.php`](file:///D:/laragon/repo/wilayah/apps/inc/reverse_lookup.php)
+- [2026-08-10]
   - Optimize DOM insertions in select options using `DocumentFragment` in `apps/inc/geo_js.php`
   - Optimize coordinate array allocation / bounding box calculation in `apps/inc/geo_ajax.php`
 - [2026-08-08]
