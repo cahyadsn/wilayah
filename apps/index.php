@@ -24,7 +24,6 @@ if (empty($_SESSION['csrf_token'])) {
 }
 $theme=isset($_SESSION['theme'])?$_SESSION['theme']:(isset($_GET['theme'])?$_GET['theme']:'light');
 define("_AUTHOR","cahyadsn");
-$_SESSION['ver']=sha1(rand());
 require_once 'inc/db.php';
 $version='3.0.1';
 header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + 86400));

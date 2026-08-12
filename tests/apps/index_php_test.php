@@ -89,9 +89,6 @@ class IndexPhpTest extends TestCase
 
         $this->assertStringNotContainsString('$_SESSION[\'author\']=\'cahyadsn\'', $content,
             'Session author should not be hardcoded in index.php');
-
-        $this->assertStringContainsString('$_SESSION[\'ver\']', $content,
-            'Session version must be set');
     }
 
     /**
