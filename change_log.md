@@ -1,6 +1,25 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Fix syntax errors, coordinate formats, and column positioning in db/wilayah_pulau.sql 2026-08-12
+- Remove unused $_SESSION['ver'] in index.php 2026-08-12
+- Clean up unused variables in apps/inc/geo_js.php 2026-08-11
+- Add PHPUnit unit tests for buildChain function in apps/inc/reverse_lookup.php 2026-08-11
+- Optimize DOM insertions in select options using DocumentFragment in apps/inc/geo_js.php 2026-08-10
+- Optimize coordinate array allocation / bounding box calculation in apps/inc/geo_ajax.php 2026-08-10
+- Prevent wildcard injection in PDO LIKE clauses 2026-08-08
+- Fix missing CSRF validation in geo_update.php 2026-08-08
+- Security fix: Add Content-Type header and secure JSON encoding in JSON responses 2026-08-08
+- Replace hash_equals with password_verify in login.php for secure password verification 2026-08-08
+- Fix timing attack vulnerability in apps/login.php by using constant-time comparison (hash_equals) and type checking 2026-08-06
+- Refactor apps/inc/geo_js.php to remove unused $v variable and empty conditional block 2026-08-06
+- Optimize memory usage in reverse lookup path decoding caching in apps/inc/reverse_lookup.php 2026-08-04
+- Optimize min/max bounds calculation in isPathNearCentroid within apps/inc/geo_utils.php by removing array_column 2026-08-04
+- Fix potential XSS vulnerability in apps/inc/geo_update.php JSON responses 2026-08-04
+- Remove redundant fallback query in apps/inc/geo_ajax.php 2026-08-04
+- Enforce secure session cookie parameters across the application 2026-08-03
+- Sanitize color POST data in apps/inc/change.color.php to prevent XSS 2026-08-03
+- Add PHPUnit test coverage for CSRF token generation in index.php and invalid JSON paths in geo update 2026-08-03
 - Enforce secure session cookie parameters 2026-08-02
 - Sanitize color POST data in change.color.php to prevent XSS 2026-08-02
 - Add PHPUnit test coverage for CSRF token generation and invalid JSON paths 2026-08-02

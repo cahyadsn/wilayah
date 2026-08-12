@@ -163,6 +163,7 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 
 ## CHANGE LOG
 - [2026-08-12] 🆕
+  - Fix syntax errors, coordinate formats, and column positioning in [`db/wilayah_pulau.sql`](file:///D:/laragon/repo/wilayah/db/wilayah_pulau.sql)
   - Remove unused `$_SESSION['ver']` in [`index.php`](file:///D:/laragon/repo/wilayah/index.php)
 - [2026-08-11]
   - Clean up unused variables in [`apps/inc/geo_js.php`](file:///D:/laragon/repo/wilayah/apps/inc/geo_js.php)
