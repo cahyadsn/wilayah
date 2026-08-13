@@ -162,7 +162,9 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-08-12] 🆕
+- [2026-08-13] 🆕
+  - Update all syntax checker scripts in [`tools/*.js`](file:///D:/laragon/repo/wilayah/tools/) to parse `INSERT INTO` statements and validate against duplicate `kode` values.
+- [2026-08-12]
   - Fix syntax errors, coordinate formats, and column positioning in [`db/wilayah_pulau.sql`](file:///D:/laragon/repo/wilayah/db/wilayah_pulau.sql)
   - Remove unused `$_SESSION['ver']` in [`index.php`](file:///D:/laragon/repo/wilayah/index.php)
 - [2026-08-11]
