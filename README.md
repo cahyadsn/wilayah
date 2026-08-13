@@ -157,6 +157,26 @@ Kode Pulau berjumlah 9 (sembilan) digit terdiri dari:
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.72-2019) https://www.kemendagri.go.id/page/read/48/peraturan-menteri-dalam-negeri-no72-tahun-2019 (Berita Negara Republik Indonesia Tahun 2019 Nomor 1327, Ditetapkan pada tanggal 8 Oktober 2019)
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.137-2017) http://www.kemendagri.go.id/produk-hukum/2018/01/18/kode-dan-data-wilayah-administrasi-pemerintahan-tahun-2017 (Berita Negara Republik Indonesia Tahun 2017 Nomor 1955, Ditetapkan pada tanggal 27 Desember 2017)
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
+## PENGUJIAN DATABASE
+
+Untuk memeriksa validitas sintaksis file SQL di dalam direktori `db/` serta mendeteksi duplikasi nilai `'kode'`, Anda dapat menjalankan skrip pemeriksa (syntax checker) berbasis Node.js yang terdapat pada folder `tools/`:
+
+```bash
+# Memeriksa data wilayah utama
+node tools/check_sql_wilayah.js
+
+# Memeriksa data wilayah tingkat 1 & 2 (Provinsi, Kab/Kota) beserta batas wilayah (polygon)
+node tools/check_sql_wilayah_level_1_2.js
+
+# Memeriksa data luas wilayah
+node tools/check_sql_wilayah_luas.js
+
+# Memeriksa data penduduk wilayah
+node tools/check_sql_wilayah_penduduk.js
+
+# Memeriksa data pulau
+node tools/check_sql_wilayah_pulau.js
+```
 
 ## TODO
 - penambahan data kode pulau di web demo
