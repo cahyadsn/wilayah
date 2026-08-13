@@ -89,6 +89,12 @@ if ($lat === null || $lng === null) {
 }
 
 try {
+    $deg = 2.0;
+    $minLat = $lat - $deg;
+    $maxLat = $lat + $deg;
+    $minLng = $lng - $deg;
+    $maxLng = $lng + $deg;
+
     $sql = "SELECT kode, nama, lat, lng, path,
                    (6371 * ACOS(
                        COS(RADIANS(:lat)) * COS(RADIANS(lat)) * COS(RADIANS(lng) - RADIANS(:lng)) +
@@ -96,11 +102,17 @@ try {
                    )) AS distance_km
             FROM wilayah_level_1_2
             WHERE lat IS NOT NULL AND lng IS NOT NULL
+              AND lat BETWEEN :minLat AND :maxLat
+              AND lng BETWEEN :minLng AND :maxLng
             ORDER BY distance_km ASC
             LIMIT 30";
 
     $query = $db->prepare($sql);
-    $query->execute(array(':lat' => $lat, ':lng' => $lng));
+    $query->execute(array(
+        ':lat' => $lat, ':lng' => $lng,
+        ':minLat' => $minLat, ':maxLat' => $maxLat,
+        ':minLng' => $minLng, ':maxLng' => $maxLng
+    ));
     $candidates = $query->fetchAll(PDO::FETCH_ASSOC);
 
     if (!$candidates) {
