@@ -326,7 +326,7 @@ function initBaseMapMenu() {
     baseMapMenuControl.onAdd = function() {
         var container = L.DomUtil.create('div', 'leaflet-bar basemap-menu');
         container.innerHTML = [
-            '<button type="button" class="basemap-menu-toggle" id="basemapMenuToggle" aria-label="Buka pilihan peta dasar" title="Peta dasar">',
+            '<button type="button" class="basemap-menu-toggle" id="basemapMenuToggle" aria-label="Buka pilihan peta dasar" title="Peta dasar" aria-expanded="false">',
             '  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5l5-2.5 6 2.5 5-2.5v11.5l-5 2.5-6-2.5-5 2.5V7.5z"></path><path d="M9 5v11.5"></path><path d="M15 7.5V19"></path><path d="M6.2 8.5l2.8-1.4"></path><path d="M16.8 8.5l2.2-1.1"></path></svg>',
             '  <span id="basemapCurrentLabel">Peta</span>',
             '</button>',
@@ -368,7 +368,8 @@ function initBaseMapMenu() {
 
     if (toggle && container) {
         toggle.addEventListener('click', function() {
-            container.classList.toggle('is-open');
+            var isOpen = container.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
     }
 
@@ -376,7 +377,10 @@ function initBaseMapMenu() {
         option.addEventListener('click', function() {
             var name = this.getAttribute('data-layer-name');
             setBaseLayer(name);
-            if (container) container.classList.remove('is-open');
+            if (container) {
+                container.classList.remove('is-open');
+                if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            }
         });
     });
 
@@ -388,7 +392,10 @@ function initBaseMapMenu() {
     }
 
     map.on('click', function(event) {
-        if (container) container.classList.remove('is-open');
+        if (container) {
+            container.classList.remove('is-open');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        }
         if (event && event.latlng) {
             reverseLookupFromMapClick(event.latlng);
         }
