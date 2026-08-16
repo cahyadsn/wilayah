@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var label = collapsed ? 'Buka panel selector' : 'Tutup panel selector';
         sidebarToggle.setAttribute('aria-label', label);
         sidebarToggle.setAttribute('title', label);
+        sidebarToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
 
         try {
             localStorage.setItem(sidebarStorageKey, collapsed ? '1' : '0');

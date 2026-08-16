@@ -113,7 +113,7 @@ header('Pragma: cache');
                     <small>Sesuai Kepmendagri No 300.2.2-2430 Tahun 2025</small>
                   </div>
                 </div>
-                <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Tutup panel selector" title="Tutup panel selector">
+                <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Tutup panel selector" title="Tutup panel selector" aria-expanded="true">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M14.5 6.5L9 12l5.5 5.5"></path>
                   </svg>
