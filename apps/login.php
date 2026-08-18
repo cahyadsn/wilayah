@@ -6,7 +6,6 @@ session_set_cookie_params([
 ]);
 session_start();
 
-// Handle logout if requested (optional fallback or cleanup)
 if (isset($_GET['logout'])) {
     session_destroy();
     header("Location: index.php");
