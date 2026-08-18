@@ -182,7 +182,12 @@ node tools/check_sql_wilayah_pulau.js
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-08-13] 🆕
+- [2026-08-18] 🆕
+  - Remove unnecessary commented-out code in [`apps/login.php`](file:///D:/laragon/repo/wilayah/apps/login.php)
+- [2026-08-16]
+  - Add `aria-expanded` and accessibility enhancements to dynamic UI toggles in [`apps/inc/geo_js.php`](file:///D:/laragon/repo/wilayah/apps/inc/geo_js.php), [`apps/index.php`](file:///D:/laragon/repo/wilayah/apps/index.php), and [`apps/js/wilayah.js`](file:///D:/laragon/repo/wilayah/apps/js/wilayah.js)
+- [2026-08-13]
+  - Optimize reverse lookup spatial query in [`apps/inc/reverse_lookup.php`](file:///D:/laragon/repo/wilayah/apps/inc/reverse_lookup.php) with a 2.0-degree bounding box pre-filter to speed up execution
   - Update all syntax checker scripts in [`tools/*.js`](file:///D:/laragon/repo/wilayah/tools/) to parse `INSERT INTO` statements and validate against duplicate `kode` values.
 - [2026-08-12]
   - Fix syntax errors, coordinate formats, and column positioning in [`db/wilayah_pulau.sql`](file:///D:/laragon/repo/wilayah/db/wilayah_pulau.sql)
