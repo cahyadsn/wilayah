@@ -127,7 +127,7 @@ class ReverseLookupTest extends TestCase
         putenv('DB_HOST=invalid');
 
         $original = ini_get('error_log');
-        ini_set('error_log', '/dev/null');
+        ini_set('error_log', strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null');
 
         ob_start();
         require_once $this->dbFile;

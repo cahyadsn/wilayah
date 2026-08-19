@@ -84,8 +84,8 @@ class IndexPhpTest extends TestCase
         // Parse index.php for session initialization
         $content = file_get_contents(__DIR__ . '/../../apps/index.php');
 
-        $this->assertStringContainsString('session_start()', $content,
-            'Session must be started at the beginning of the file');
+        $this->assertStringContainsString('session.php', $content,
+            'Session helper must be included at the beginning of the file');
 
         $this->assertStringNotContainsString('$_SESSION[\'author\']=\'cahyadsn\'', $content,
             'Session author should not be hardcoded in index.php');

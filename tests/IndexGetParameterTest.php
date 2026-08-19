@@ -7,7 +7,6 @@ use PDO;
 
 class IndexGetParameterTest extends TestCase
 {
-    private $dbFile = __DIR__ . '/../apps/inc/db.php';
     private $indexFile = __DIR__ . '/../index.php';
 
     public function testInvalidGetIdLengthHandlesGracefully()
@@ -16,7 +15,9 @@ class IndexGetParameterTest extends TestCase
         $_GET['id'] = '1';
 
         ob_start();
-        include $this->indexFile;
+        $code = file_get_contents($this->indexFile);
+        $code = str_replace("require_once 'apps/inc/db.php';", '', $code);
+        eval('?>' . $code);
         $output = ob_get_clean();
 
         // The output should be completely empty and not throw any undefined index errors
@@ -29,7 +30,9 @@ class IndexGetParameterTest extends TestCase
         $_GET['id'] = '123';
 
         ob_start();
-        include $this->indexFile;
+        $code = file_get_contents($this->indexFile);
+        $code = str_replace("require_once 'apps/inc/db.php';", '', $code);
+        eval('?>' . $code);
         $output = ob_get_clean();
 
         $this->assertEmpty(trim($output), 'Expected empty output for invalid ID length');
@@ -41,10 +44,6 @@ class IndexGetParameterTest extends TestCase
      */
     public function testValidGetIdLengthWithMockDb()
     {
-        // Suppress errors about failing to connect to invalid DB host
-        $original = ini_get('error_log');
-        ini_set('error_log', '/dev/null');
-
         $_GET['id'] = '11';
 
         // We will create a mock PDO to replace the one created in db.php
@@ -63,24 +62,19 @@ class IndexGetParameterTest extends TestCase
         $mockPdo = $this->createMock(PDO::class);
         $mockPdo->method('prepare')->willReturn($mockStatement);
 
-        // Disable DB output
-        putenv('DB_HOST=invalid');
-        ob_start();
-        require_once $this->dbFile;
-        ob_get_clean();
-
-        // Override the global $db created by db.php
+        // Override the global $db and bypass db.php
         global $db, $wil;
         $db = $mockPdo;
 
         ob_start();
-        include $this->indexFile;
+        $code = file_get_contents($this->indexFile);
+        $code = str_replace("require_once 'apps/inc/db.php';", '', $code);
+        eval('?>' . $code);
         $output = ob_get_clean();
 
         $this->assertStringContainsString('Pilih Kota/Kabupaten', $output);
         $this->assertStringContainsString('11.01', $output);
         $this->assertStringContainsString('KAB. SIMEULUE', $output);
-        ini_set('error_log', $original);
     }
 
     protected function tearDown(): void

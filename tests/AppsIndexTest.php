@@ -16,7 +16,7 @@ class AppsIndexTest extends TestCase
     {
         // Suppress errors about failing to connect to invalid DB host
         $original = ini_get('error_log');
-        ini_set('error_log', '/dev/null');
+        ini_set('error_log', strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null');
 
         // Simulate an empty session
         $_SESSION = [];
@@ -28,6 +28,7 @@ class AppsIndexTest extends TestCase
 
         // Suppress headers to prevent "headers already sent" errors in PHPUnit
         $code = str_replace('header(', '@header(', $code);
+        $code = str_replace("require_once __DIR__ . '/inc/session.php';", 'session_start();', $code);
 
         // Change working directory to ensure relative requires like 'inc/db.php' resolve correctly
         $oldCwd = getcwd();
@@ -47,7 +48,7 @@ class AppsIndexTest extends TestCase
         // Let's replace the require_once 'inc/db.php'; to set up the mock database connection correctly.
         $code = str_replace(
             "require_once 'inc/db.php';",
-            "require_once 'inc/db.php'; global \$db; \$db = \$GLOBALS['mockPdo']; \$tbl_wilayah = 'wilayah';",
+            "global \$db; \$db = \$GLOBALS['mockPdo']; \$tbl_wilayah = 'wilayah';",
             $code
         );
 

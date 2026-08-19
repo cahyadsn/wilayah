@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_update.php
 purpose  :
 create   : 170912
-last edit: 2026-07-20 07:54:14
+last edit: 2026-08-19 08:06:19
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -23,12 +23,7 @@ See the MIT License for more details
 
 copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
-session_set_cookie_params([
-    'secure' => true,
-    'httponly' => true,
-    'samesite' => 'Strict'
-]);
-session_start();
+require_once __DIR__ . '/session.php';
 
 header('Content-Type: application/json; charset=utf-8');
 

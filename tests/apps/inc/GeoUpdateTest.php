@@ -41,7 +41,7 @@ echo \$output;
 PHP;
         $tmpFile = tempnam(sys_get_temp_dir(), 'test_');
         file_put_contents($tmpFile, $script);
-        $output = exec('php ' . escapeshellarg($tmpFile) . ' 2>/dev/null');
+        $output = exec('php ' . escapeshellarg($tmpFile) . ' 2>' . (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null'));
         unlink($tmpFile);
 
         $this->assertJson($output);
@@ -65,7 +65,7 @@ echo \$output;
 PHP;
         $tmpFile = tempnam(sys_get_temp_dir(), 'test_');
         file_put_contents($tmpFile, $script);
-        $output = exec('php ' . escapeshellarg($tmpFile) . ' 2>/dev/null');
+        $output = exec('php ' . escapeshellarg($tmpFile) . ' 2>' . (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null'));
         unlink($tmpFile);
 
         $this->assertJson($output);
@@ -89,7 +89,7 @@ echo \$output;
 PHP;
         $tmpFile = tempnam(sys_get_temp_dir(), 'test_');
         file_put_contents($tmpFile, $script);
-        $output = exec('php ' . escapeshellarg($tmpFile) . ' 2>/dev/null');
+        $output = exec('php ' . escapeshellarg($tmpFile) . ' 2>' . (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null'));
         unlink($tmpFile);
 
         $this->assertJson($output);
@@ -111,7 +111,7 @@ echo \$output;
 PHP;
         $tmpFile = tempnam(sys_get_temp_dir(), 'test_');
         file_put_contents($tmpFile, $script);
-        $output = exec('php ' . escapeshellarg($tmpFile) . ' 2>/dev/null');
+        $output = exec('php ' . escapeshellarg($tmpFile) . ' 2>' . (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null'));
         unlink($tmpFile);
 
         $this->assertJson($output);
@@ -126,7 +126,7 @@ PHP;
         putenv('DB_HOST=127.0.0.1');
 
         $originalErrorLog = ini_get('error_log');
-        ini_set('error_log', '/dev/null');
+        ini_set('error_log', strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null');
         ob_start();
         @require_once $this->dbFile;
         ob_end_clean();
@@ -155,7 +155,7 @@ PHP;
         putenv('DB_HOST=127.0.0.1');
 
         $originalErrorLog = ini_get('error_log');
-        ini_set('error_log', '/dev/null');
+        ini_set('error_log', strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null');
         ob_start();
         @require_once $this->dbFile;
         ob_end_clean();
@@ -182,7 +182,7 @@ PHP;
         putenv('DB_HOST=127.0.0.1');
 
         $originalErrorLog = ini_get('error_log');
-        ini_set('error_log', '/dev/null');
+        ini_set('error_log', strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null');
         ob_start();
         @require_once $this->dbFile;
         ob_end_clean();
@@ -211,7 +211,7 @@ PHP;
         putenv('DB_HOST=invalid');
 
         $originalErrorLog = ini_get('error_log');
-        ini_set('error_log', '/dev/null');
+        ini_set('error_log', strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null');
         ob_start();
         @require_once $this->dbFile;
         ob_end_clean();

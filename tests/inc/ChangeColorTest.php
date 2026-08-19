@@ -27,7 +27,7 @@ class ChangeColorTest extends TestCase
 
         ob_start();
         $code = file_get_contents($this->targetFile);
-        $code = str_replace('session_start();', '', $code);
+        $code = str_replace("require_once __DIR__ . '/session.php';", '', $code);
         eval('?>' . $code);
         ob_get_clean();
 
@@ -53,7 +53,7 @@ class ChangeColorTest extends TestCase
 
         ob_start();
         $code = file_get_contents($this->targetFile);
-        $code = str_replace('session_start();', '', $code);
+        $code = str_replace("require_once __DIR__ . '/session.php';", '', $code);
         eval('?>' . $code);
         ob_get_clean();
 
@@ -79,7 +79,7 @@ class ChangeColorTest extends TestCase
 
         ob_start();
         $code = file_get_contents($this->targetFile);
-        $code = str_replace('session_start();', '', $code);
+        $code = str_replace("require_once __DIR__ . '/session.php';", '', $code);
         eval('?>' . $code);
         ob_get_clean();
 
@@ -105,7 +105,7 @@ class ChangeColorTest extends TestCase
 
         ob_start();
         $code = file_get_contents($this->targetFile);
-        $code = str_replace('session_start();', '', $code);
+        $code = str_replace("require_once __DIR__ . '/session.php';", '', $code);
         eval('?>' . $code);
         ob_get_clean();
 
@@ -130,7 +130,7 @@ class ChangeColorTest extends TestCase
 
         ob_start();
         $code = file_get_contents($this->targetFile);
-        $code = str_replace('session_start();', '', $code);
+        $code = str_replace("require_once __DIR__ . '/session.php';", '', $code);
         $code = str_replace('die(\'CSRF token validation failed\');', 'echo "CSRF token validation failed"; return;', $code);
         eval('?>' . $code);
         $output = ob_get_clean();

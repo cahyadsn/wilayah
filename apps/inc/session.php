@@ -2,10 +2,9 @@
 /*
 BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 ================================================================================
-filename : change.color.php
-purpose  : change theme and/or color
-create   : 170912
-last edit: 2026-08-19 08:06:19
+filename : session.php
+purpose  : secure and centralized session configuration
+create   : 2026-08-19
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -23,21 +22,12 @@ See the MIT License for more details
 
 copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
-if(isset($_POST) && !empty($_POST)){
-    require_once __DIR__ . '/session.php';
-
-    // Verify CSRF token
-    if (empty($_POST['csrf_token']) || empty($_SESSION['csrf_token']) || !is_string($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-        http_response_code(403);
-        die('CSRF token validation failed');
-    }
-
-    //-- set web theme, default 'dark'
-    if(isset($_POST['theme'])){
-        $_SESSION['theme']=$_POST['theme']==='light'?'light':'dark';
-    }
-    //-- set web color theme
-    if(isset($_POST['color'])){
-        $_SESSION['c']=htmlspecialchars($_POST['color'], ENT_QUOTES, 'UTF-8');
-    }
+if (session_status() === PHP_SESSION_NONE) {
+    $secure = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+    session_set_cookie_params([
+        'secure' => $secure,
+        'httponly' => true,
+        'samesite' => 'Strict'
+    ]);
+    session_start();
 }

@@ -16,6 +16,7 @@ class AppsLoginTest extends TestCase
         ob_start();
         $code = file_get_contents($this->loginFile);
         $code = str_replace('header(', '@header(', $code);
+        $code = str_replace("require_once __DIR__ . '/inc/session.php';", 'session_start();', $code);
         $code = str_replace('exit;', 'echo "EXIT_CALLED"; return;', $code);
         eval('?>' . $code);
         return ob_get_clean();

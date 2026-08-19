@@ -182,19 +182,25 @@ node tools/check_sql_wilayah_pulau.js
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-08-18] 🆕
-  - Remove unnecessary commented-out code in [`apps/login.php`](file:///D:/laragon/repo/wilayah/apps/login.php)
+- [2026-08-19] 🆕
+  - Centralize session management by creating a secure [`apps/inc/session.php`](apps/inc/session.php) config file.
+  - Mitigate Session Fixation by regenerating session IDs (`session_regenerate_id(true)`) upon successful authentication.
+  - Implement complete session cookie invalidation on logout.
+  - Remove unauthenticated session gating from [`apps/inc/geo_js.php`](apps/inc/geo_js.php) to allow public map access.
+  - Enhance CSRF validation type-checking and fix Windows-specific unit test execution/timeout bugs.
+- [2026-08-18]
+  - Remove unnecessary commented-out code in [`apps/login.php`](apps/login.php)
 - [2026-08-16]
-  - Add `aria-expanded` and accessibility enhancements to dynamic UI toggles in [`apps/inc/geo_js.php`](file:///D:/laragon/repo/wilayah/apps/inc/geo_js.php), [`apps/index.php`](file:///D:/laragon/repo/wilayah/apps/index.php), and [`apps/js/wilayah.js`](file:///D:/laragon/repo/wilayah/apps/js/wilayah.js)
+  - Add `aria-expanded` and accessibility enhancements to dynamic UI toggles in [`apps/inc/geo_js.php`](apps/inc/geo_js.php), [`apps/index.php`](apps/index.php), and [`apps/js/wilayah.js`](apps/js/wilayah.js)
 - [2026-08-13]
-  - Optimize reverse lookup spatial query in [`apps/inc/reverse_lookup.php`](file:///D:/laragon/repo/wilayah/apps/inc/reverse_lookup.php) with a 2.0-degree bounding box pre-filter to speed up execution
-  - Update all syntax checker scripts in [`tools/*.js`](file:///D:/laragon/repo/wilayah/tools/) to parse `INSERT INTO` statements and validate against duplicate `kode` values.
+  - Optimize reverse lookup spatial query in [`apps/inc/reverse_lookup.php`](apps/inc/reverse_lookup.php) with a 2.0-degree bounding box pre-filter to speed up execution
+  - Update all syntax checker scripts in [`tools/*.js`](tools/) to parse `INSERT INTO` statements and validate against duplicate `kode` values.
 - [2026-08-12]
-  - Fix syntax errors, coordinate formats, and column positioning in [`db/wilayah_pulau.sql`](file:///D:/laragon/repo/wilayah/db/wilayah_pulau.sql)
-  - Remove unused `$_SESSION['ver']` in [`index.php`](file:///D:/laragon/repo/wilayah/index.php)
+  - Fix syntax errors, coordinate formats, and column positioning in [`db/wilayah_pulau.sql`](db/wilayah_pulau.sql)
+  - Remove unused `$_SESSION['ver']` in [`index.php`](index.php)
 - [2026-08-11]
-  - Clean up unused variables in [`apps/inc/geo_js.php`](file:///D:/laragon/repo/wilayah/apps/inc/geo_js.php)
-  - Add PHPUnit unit tests for `buildChain` function in [`apps/inc/reverse_lookup.php`](file:///D:/laragon/repo/wilayah/apps/inc/reverse_lookup.php)
+  - Clean up unused variables in [`apps/inc/geo_js.php`](apps/inc/geo_js.php)
+  - Add PHPUnit unit tests for `buildChain` function in [`apps/inc/reverse_lookup.php`](apps/inc/reverse_lookup.php)
 - [2026-08-10]
   - Optimize DOM insertions in select options using `DocumentFragment` in `apps/inc/geo_js.php`
   - Optimize coordinate array allocation / bounding box calculation in `apps/inc/geo_ajax.php`

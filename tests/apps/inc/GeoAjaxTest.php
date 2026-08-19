@@ -173,7 +173,7 @@ class GeoAjaxTest extends TestCase {
 
         // Include db.php first to mock the $db connection it creates
         $originalErrorLog = ini_get('error_log');
-        ini_set('error_log', '/dev/null');
+        ini_set('error_log', strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null');
         ob_start();
         @require_once __DIR__ . "/../../../apps/inc/db.php";
         ob_end_clean();
