@@ -53,4 +53,40 @@ class GeoHelpersTest extends TestCase {
         $expected = '[[500.5,1500.5],[1500.5,1500.5],[1500.5,2500.5],[500.5,2500.5]]';
         $this->assertEquals($expected, fallbackBox($lat, $lng, $delta));
     }
+
+    public function testFallbackPathForCodeLength13() {
+        $lat = -6.2;
+        $lng = 106.8;
+        $kode = '1234567890123'; // 13 characters
+        $delta = 0.004;
+        $expected = fallbackBox($lat, $lng, $delta);
+        $this->assertEquals($expected, fallbackPathForCode($lat, $lng, $kode));
+    }
+
+    public function testFallbackPathForCodeLength8() {
+        $lat = -6.2;
+        $lng = 106.8;
+        $kode = '12345678'; // 8 characters
+        $delta = 0.008;
+        $expected = fallbackBox($lat, $lng, $delta);
+        $this->assertEquals($expected, fallbackPathForCode($lat, $lng, $kode));
+    }
+
+    public function testFallbackPathForCodeShort() {
+        $lat = -6.2;
+        $lng = 106.8;
+        $kode = '1234'; // 4 characters (less than 8)
+        $delta = 0.01;
+        $expected = fallbackBox($lat, $lng, $delta);
+        $this->assertEquals($expected, fallbackPathForCode($lat, $lng, $kode));
+    }
+
+    public function testFallbackPathForCodeEmpty() {
+        $lat = -6.2;
+        $lng = 106.8;
+        $kode = ''; // 0 characters
+        $delta = 0.01;
+        $expected = fallbackBox($lat, $lng, $delta);
+        $this->assertEquals($expected, fallbackPathForCode($lat, $lng, $kode));
+    }
 }
