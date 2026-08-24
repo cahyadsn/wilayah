@@ -36,6 +36,7 @@ class ReverseLookupTest extends TestCase
         chdir(dirname($this->reverseLookupFile));
         require_once dirname($this->reverseLookupFile) . '/geo_utils.php';
         @require_once basename($this->reverseLookupFile);
+        @require_once __DIR__ . '/../../../apps/inc/geo_utils.php';
         chdir($cwd);
         ob_end_clean();
 
