@@ -35,6 +35,7 @@ class ReverseLookupTest extends TestCase
         $cwd = getcwd();
         chdir(dirname($this->reverseLookupFile));
         @require_once basename($this->reverseLookupFile);
+        @require_once __DIR__ . '/../../../apps/inc/geo_utils.php';
         chdir($cwd);
         ob_end_clean();
 
@@ -47,6 +48,59 @@ class ReverseLookupTest extends TestCase
         } else {
             unset($GLOBALS['db']);
         }
+    }
+
+    public function testEffectiveCandidatePath()
+    {
+        $this->loadReverseLookupFunctions();
+
+        $lat = 5.0;
+        $lng = 5.0;
+        $kode = '12';
+
+        $simplePathJson = json_encode([
+            [0, 0], [0, 10], [10, 10], [10, 0]
+        ]);
+
+        $candidateA = [
+            'lat' => $lat,
+            'lng' => $lng,
+            'kode' => $kode,
+            'path' => $simplePathJson
+        ];
+
+        // 1. Valid path near centroid
+        $this->assertEquals($simplePathJson, effectiveCandidatePath($candidateA));
+
+        // 2. Invalid path near centroid (but valid coordinates)
+        $candidateB = [
+            'lat' => 50.0,
+            'lng' => 50.0,
+            'kode' => $kode,
+            'path' => $simplePathJson
+        ];
+
+        $fallbackB = fallbackPathForCode(50.0, 50.0, $kode);
+        $this->assertJsonStringEqualsJsonString($fallbackB, effectiveCandidatePath($candidateB));
+
+        // 3. No path (but valid coordinates)
+        $candidateC = [
+            'lat' => $lat,
+            'lng' => $lng,
+            'kode' => $kode
+        ];
+
+        $fallbackC = fallbackPathForCode($lat, $lng, $kode);
+        $this->assertJsonStringEqualsJsonString($fallbackC, effectiveCandidatePath($candidateC));
+
+        // 4. Missing required coordinates or kode
+        $candidateD1 = ['lat' => $lat, 'lng' => $lng]; // Missing kode
+        $candidateD2 = ['lat' => $lat, 'kode' => $kode]; // Missing lng
+        $candidateD3 = ['lng' => $lng, 'kode' => $kode]; // Missing lat
+
+        $this->assertNull(effectiveCandidatePath($candidateD1));
+        $this->assertNull(effectiveCandidatePath($candidateD2));
+        $this->assertNull(effectiveCandidatePath($candidateD3));
     }
 
     public function testBuildChainFull()
