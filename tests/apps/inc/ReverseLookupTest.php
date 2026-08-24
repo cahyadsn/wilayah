@@ -34,6 +34,7 @@ class ReverseLookupTest extends TestCase
         ob_start();
         $cwd = getcwd();
         chdir(dirname($this->reverseLookupFile));
+        require_once dirname($this->reverseLookupFile) . '/geo_utils.php';
         @require_once basename($this->reverseLookupFile);
         chdir($cwd);
         ob_end_clean();
@@ -47,6 +48,82 @@ class ReverseLookupTest extends TestCase
         } else {
             unset($GLOBALS['db']);
         }
+    }
+
+    public function testEffectiveCandidatePathValid()
+    {
+        $this->loadReverseLookupFunctions();
+
+        $candidate = [
+            'lat' => 10,
+            'lng' => 20,
+            'kode' => '12',
+            'path' => '[[[10, 20], [10.1, 20], [10, 20.1]]]'
+        ];
+
+        $result = effectiveCandidatePath($candidate);
+        $this->assertEquals('[[[10, 20], [10.1, 20], [10, 20.1]]]', $result);
+    }
+
+    public function testEffectiveCandidatePathNotNearCentroidFallsBack()
+    {
+        $this->loadReverseLookupFunctions();
+
+        $candidate = [
+            'lat' => 10,
+            'lng' => 20,
+            'kode' => '12',
+            'path' => '[[[30, 40], [31, 41], [32, 42]]]' // Way off
+        ];
+
+        $result = effectiveCandidatePath($candidate);
+
+        // Code len is 2 (>= 0 and < 8), delta is 0.01
+        // (float)$lat = 10, (float)$lng = 20
+        $expected = json_encode([
+            [10 - 0.01, 20 - 0.01],
+            [10 + 0.01, 20 - 0.01],
+            [10 + 0.01, 20 + 0.01],
+            [10 - 0.01, 20 + 0.01]
+        ]);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testEffectiveCandidatePathEmptyPathFallsBack()
+    {
+        $this->loadReverseLookupFunctions();
+
+        $candidate = [
+            'lat' => 10,
+            'lng' => 20,
+            'kode' => '12',
+            'path' => ''
+        ];
+
+        $result = effectiveCandidatePath($candidate);
+
+        $expected = json_encode([
+            [10 - 0.01, 20 - 0.01],
+            [10 + 0.01, 20 - 0.01],
+            [10 + 0.01, 20 + 0.01],
+            [10 - 0.01, 20 + 0.01]
+        ]);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testEffectiveCandidatePathMissingCoordsReturnsNull()
+    {
+        $this->loadReverseLookupFunctions();
+
+        $candidate = [
+            'lat' => null, // missing coordinate
+            'lng' => 20,
+            'kode' => '12',
+            'path' => ''
+        ];
+
+        $result = effectiveCandidatePath($candidate);
+        $this->assertNull($result);
     }
 
     public function testBuildChainFull()
