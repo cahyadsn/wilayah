@@ -1,6 +1,13 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Update change_log.md and README.md with previous session/security changes, update version references from 3.0 to 3.0.1, and update file header timestamps 2026-08-24
+- Centralize session management by creating a secure apps/inc/session.php config file 2026-08-19
+- Mitigate Session Fixation by regenerating session IDs (session_regenerate_id(true)) upon successful authentication 2026-08-19
+- Implement complete session cookie invalidation on logout 2026-08-19
+- Remove unauthenticated session gating from apps/inc/geo_js.php to allow public map access 2026-08-19
+- Enhance CSRF validation type-checking and fix Windows-specific unit test execution/timeout bugs 2026-08-19
+- Remove unnecessary commented-out code in apps/login.php 2026-08-18
 - Fix syntax errors, coordinate formats, and column positioning in db/wilayah_pulau.sql 2026-08-12
 - Remove unused $_SESSION['ver'] in index.php 2026-08-12
 - Clean up unused variables in apps/inc/geo_js.php 2026-08-11

@@ -10,10 +10,10 @@ Kode dan Data Wilayah Administrasi Pemerintahan dan Kode Pulau Indonesia sesuai 
 [![Donate](https://img.shields.io/badge/$-support-ff69b4.svg?style=flat)](https://paypal.me/cahyadwiana)
 
 ## DEMO
-tautan demo web [apps versi 3.0](https://wilayah.cahyadsn.com/apps)
+tautan demo web [apps versi 3.0.1](https://wilayah.cahyadsn.com/apps)
 
 ## SCREENSHOT
-[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2026_06_03_14_03_28.png?raw=true 'wilayah apps web demo v3.0')](https://wilayah.cahyadsn.com/apps)
+[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2026_06_03_14_03_28.png?raw=true 'wilayah apps web demo v3.0.1')](https://wilayah.cahyadsn.com/apps)
 
 Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - **db/wilayah.sql** sesuai dengan Kepmendagri No. 300.2.2-2430 Tahun 2025 
@@ -182,7 +182,11 @@ node tools/check_sql_wilayah_pulau.js
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-08-19] 🆕
+- [2026-08-24] 🆕
+  - Update `change_log.md` with previous session/security changes.
+  - Update version reference in `README.md` from `3.0` to `3.0.1`.
+  - Update file header timestamps on modified files.
+- [2026-08-19]
   - Centralize session management by creating a secure [`apps/inc/session.php`](apps/inc/session.php) config file.
   - Mitigate Session Fixation by regenerating session IDs (`session_regenerate_id(true)`) upon successful authentication.
   - Implement complete session cookie invalidation on logout.
