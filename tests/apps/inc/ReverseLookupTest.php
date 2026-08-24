@@ -34,6 +34,7 @@ class ReverseLookupTest extends TestCase
         ob_start();
         $cwd = getcwd();
         chdir(dirname($this->reverseLookupFile));
+        require_once dirname($this->reverseLookupFile) . '/geo_utils.php';
         @require_once basename($this->reverseLookupFile);
         @require_once __DIR__ . '/../../../apps/inc/geo_utils.php';
         chdir($cwd);
@@ -50,57 +51,80 @@ class ReverseLookupTest extends TestCase
         }
     }
 
-    public function testEffectiveCandidatePath()
+    public function testEffectiveCandidatePathValid()
     {
         $this->loadReverseLookupFunctions();
 
-        $lat = 5.0;
-        $lng = 5.0;
-        $kode = '12';
+        $candidate = [
+            'lat' => 10,
+            'lng' => 20,
+            'kode' => '12',
+            'path' => '[[[10, 20], [10.1, 20], [10, 20.1]]]'
+        ];
 
-        $simplePathJson = json_encode([
-            [0, 0], [0, 10], [10, 10], [10, 0]
+        $result = effectiveCandidatePath($candidate);
+        $this->assertEquals('[[[10, 20], [10.1, 20], [10, 20.1]]]', $result);
+    }
+
+    public function testEffectiveCandidatePathNotNearCentroidFallsBack()
+    {
+        $this->loadReverseLookupFunctions();
+
+        $candidate = [
+            'lat' => 10,
+            'lng' => 20,
+            'kode' => '12',
+            'path' => '[[[30, 40], [31, 41], [32, 42]]]' // Way off
+        ];
+
+        $result = effectiveCandidatePath($candidate);
+
+        // Code len is 2 (>= 0 and < 8), delta is 0.01
+        // (float)$lat = 10, (float)$lng = 20
+        $expected = json_encode([
+            [10 - 0.01, 20 - 0.01],
+            [10 + 0.01, 20 - 0.01],
+            [10 + 0.01, 20 + 0.01],
+            [10 - 0.01, 20 + 0.01]
         ]);
+        $this->assertEquals($expected, $result);
+    }
 
-        $candidateA = [
-            'lat' => $lat,
-            'lng' => $lng,
-            'kode' => $kode,
-            'path' => $simplePathJson
+    public function testEffectiveCandidatePathEmptyPathFallsBack()
+    {
+        $this->loadReverseLookupFunctions();
+
+        $candidate = [
+            'lat' => 10,
+            'lng' => 20,
+            'kode' => '12',
+            'path' => ''
         ];
 
-        // 1. Valid path near centroid
-        $this->assertEquals($simplePathJson, effectiveCandidatePath($candidateA));
+        $result = effectiveCandidatePath($candidate);
 
-        // 2. Invalid path near centroid (but valid coordinates)
-        $candidateB = [
-            'lat' => 50.0,
-            'lng' => 50.0,
-            'kode' => $kode,
-            'path' => $simplePathJson
+        $expected = json_encode([
+            [10 - 0.01, 20 - 0.01],
+            [10 + 0.01, 20 - 0.01],
+            [10 + 0.01, 20 + 0.01],
+            [10 - 0.01, 20 + 0.01]
+        ]);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testEffectiveCandidatePathMissingCoordsReturnsNull()
+    {
+        $this->loadReverseLookupFunctions();
+
+        $candidate = [
+            'lat' => null, // missing coordinate
+            'lng' => 20,
+            'kode' => '12',
+            'path' => ''
         ];
 
-        $fallbackB = fallbackPathForCode(50.0, 50.0, $kode);
-        $this->assertJsonStringEqualsJsonString($fallbackB, effectiveCandidatePath($candidateB));
-
-        // 3. No path (but valid coordinates)
-        $candidateC = [
-            'lat' => $lat,
-            'lng' => $lng,
-            'kode' => $kode
-        ];
-
-        $fallbackC = fallbackPathForCode($lat, $lng, $kode);
-        $this->assertJsonStringEqualsJsonString($fallbackC, effectiveCandidatePath($candidateC));
-
-        // 4. Missing required coordinates or kode
-        $candidateD1 = ['lat' => $lat, 'lng' => $lng]; // Missing kode
-        $candidateD2 = ['lat' => $lat, 'kode' => $kode]; // Missing lng
-        $candidateD3 = ['lng' => $lng, 'kode' => $kode]; // Missing lat
-
-        $this->assertNull(effectiveCandidatePath($candidateD1));
-        $this->assertNull(effectiveCandidatePath($candidateD2));
-        $this->assertNull(effectiveCandidatePath($candidateD3));
+        $result = effectiveCandidatePath($candidate);
+        $this->assertNull($result);
     }
 
     public function testBuildChainFull()
