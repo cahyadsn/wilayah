@@ -12,6 +12,32 @@ class ChangeColorTest extends TestCase
      * @runInSeparateProcess
      * @preserveGlobalState disabled
      */
+    public function testColorIgnoresNonStringInput()
+    {
+        // Simulate a POST request setting 'color' to an array
+        $_POST['color'] = ['blue'];
+        $csrfToken = 'valid_token';
+        $_POST['csrf_token'] = $csrfToken;
+
+        // Ensure session array exists to catch the set
+        if (session_status() === PHP_SESSION_NONE) {
+            $_SESSION = [];
+        }
+        $_SESSION['csrf_token'] = $csrfToken;
+
+        ob_start();
+        $code = file_get_contents($this->targetFile);
+        $code = str_replace("require_once __DIR__ . '/session.php';", '', $code);
+        eval('?>' . $code);
+        ob_get_clean();
+
+        $this->assertArrayNotHasKey('c', $_SESSION, 'Session variable "c" should not be set when POST "color" is an array.');
+    }
+
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
     public function testColorIsSetInSession()
     {
         // Simulate a POST request setting 'color'

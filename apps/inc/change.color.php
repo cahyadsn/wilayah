@@ -37,7 +37,7 @@ if(isset($_POST) && !empty($_POST)){
         $_SESSION['theme']=$_POST['theme']==='light'?'light':'dark';
     }
     //-- set web color theme
-    if(isset($_POST['color'])){
+    if(isset($_POST['color']) && is_string($_POST['color'])){
         $_SESSION['c']=htmlspecialchars($_POST['color'], ENT_QUOTES, 'UTF-8');
     }
 }
