@@ -38,7 +38,7 @@ if (empty($_POST['csrf_token']) || empty($_SESSION['csrf_token']) || !is_string(
 require_once "db.php";
 $r=array('status'=>false,'msg'=>'do nothing');
 $fields=array('lat','lng','path');
-if(isset($_POST['id'])){
+if(isset($_POST['id']) && is_string($_POST['id'])){
   $sql="UPDATE {$tbl_wilayah} SET ";
   $field=$data=array();
   foreach($fields as $f){

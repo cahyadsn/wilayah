@@ -120,6 +120,35 @@ PHP;
         $this->assertEquals('unauthorized', $decoded['msg']);
     }
 
+    public function testIdIsArray()
+    {
+        // Provide an array instead of a string
+        $_POST['id'] = ['1234'];
+
+        putenv('DB_HOST=127.0.0.1');
+
+        $originalErrorLog = ini_get('error_log');
+        ini_set('error_log', strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null');
+        ob_start();
+        @require_once $this->dbFile;
+        ob_end_clean();
+        ini_set('error_log', $originalErrorLog);
+
+        ob_start();
+        $cwd = getcwd();
+        chdir(dirname($this->geoUpdateFile));
+
+        @include basename($this->geoUpdateFile);
+
+        chdir($cwd);
+        $output = ob_get_clean();
+
+        $this->assertJson($output);
+        $decoded = json_decode($output, true);
+        $this->assertFalse($decoded['status']);
+        $this->assertEquals('do nothing', $decoded['msg']);
+    }
+
     public function testNoIdProvided()
     {
         // Require db.php first so require_once in target script skips it
