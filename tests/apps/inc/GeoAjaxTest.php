@@ -206,4 +206,42 @@ class GeoAjaxTest extends TestCase {
         $this->assertFalse($result['status']);
         $this->assertEquals('an error occured', $result['error']);
     }
+
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testGeoAjaxIdIsArray() {
+        // Setup env so db.php doesn't actually connect to real DB but we can intercept it
+        putenv('DB_HOST=127.0.0.1');
+
+        $mockPdo = $this->createMock(\PDO::class);
+
+        // Include db.php first to mock the $db connection it creates
+        $originalErrorLog = ini_get('error_log');
+        ini_set('error_log', strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'NUL' : '/dev/null');
+        ob_start();
+        @require_once __DIR__ . "/../../../apps/inc/db.php";
+        ob_end_clean();
+        ini_set('error_log', $originalErrorLog);
+
+        global $db, $tbl_wilayah;
+        $db = $mockPdo;
+        $tbl_wilayah = 'wilayah';
+
+        $_GET = ['id' => ['an_array']];
+
+        $script = file_get_contents(__DIR__ . "/../../../apps/inc/geo_ajax.php");
+        $script = preg_replace('/require_once\s+[^;]+;/', '', $script);
+        $script = str_replace('function isPathReasonable(', 'function dummy_isPathReasonable_test_avoid_redeclare_array(', $script);
+
+        ob_start();
+        eval('?>' . $script);
+        $output = ob_get_clean();
+
+        $result = json_decode($output, true);
+        $this->assertIsArray($result, "Expected JSON output to decode to an array");
+        $this->assertFalse($result['status']);
+        $this->assertEquals('an error occured', $result['error']);
+    }
 }
