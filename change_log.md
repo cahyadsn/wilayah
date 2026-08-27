@@ -1,6 +1,10 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Fix missing type validation on $_GET['id'] in Geo Ajax endpoint (apps/inc/geo_ajax.php) and add unit tests (tests/apps/inc/GeoAjaxTest.php) 2026-08-27
+- Fix TypeError in change.color.php due to missing validation (apps/inc/change.color.php) and add unit tests (tests/inc/ChangeColorTest.php) 2026-08-27
+- Validate $_GET['id'] is string before string operations in index.php 2026-08-27
+- Add type validation for id parameter in geo_update endpoint (apps/inc/geo_update.php) and add unit tests (tests/apps/inc/GeoUpdateTest.php) 2026-08-27
 - Update change_log.md and README.md with previous session/security changes, update version references from 3.0 to 3.0.1, and update file header timestamps 2026-08-24
 - Centralize session management by creating a secure apps/inc/session.php config file 2026-08-19
 - Mitigate Session Fixation by regenerating session IDs (session_regenerate_id(true)) upon successful authentication 2026-08-19

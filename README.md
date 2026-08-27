@@ -182,7 +182,12 @@ node tools/check_sql_wilayah_pulau.js
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-08-24] 🆕
+- [2026-08-27] 🆕
+  - Fix missing type validation on `$_GET['id']` in Geo Ajax endpoint ([`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php)) and add unit tests ([`tests/apps/inc/GeoAjaxTest.php`](tests/apps/inc/GeoAjaxTest.php)).
+  - Fix TypeError in `change.color.php` due to missing validation ([`apps/inc/change.color.php`](apps/inc/change.color.php)) and add unit tests ([`tests/inc/ChangeColorTest.php`](tests/inc/ChangeColorTest.php)).
+  - Validate `$_GET['id']` is string before string operations in [`index.php`](index.php).
+  - Add type validation for `id` parameter in `geo_update` endpoint ([`apps/inc/geo_update.php`](apps/inc/geo_update.php)) and add unit tests ([`tests/apps/inc/GeoUpdateTest.php`](tests/apps/inc/GeoUpdateTest.php)).
+- [2026-08-24]
   - Update `change_log.md` with previous session/security changes.
   - Update version reference in `README.md` from `3.0` to `3.0.1`.
   - Update file header timestamps on modified files.
