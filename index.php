@@ -32,7 +32,7 @@ $wil=array(
 	5=>array(8,'Kecamatan','kec'),
 	8=>array(13,'Kelurahan','kel')
 );
-if (isset($_GET['id']) && !empty($_GET['id'])){
+if (isset($_GET['id']) && is_string($_GET['id']) && !empty($_GET['id'])){
 	$n=strlen($_GET['id']);
 	if (isset($wil[$n])) {
 		$query = $db->prepare("SELECT kode, nama FROM wilayah WHERE kode LIKE :id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
