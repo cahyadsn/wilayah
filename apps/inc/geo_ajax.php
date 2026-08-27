@@ -56,7 +56,7 @@ function isPathReasonable($path, $lat, $lng, $kode) {
 }
 
 $r=array('status'=>false,'error'=>'an error occured');
-if (!empty($_GET['id'])){
+if (!empty($_GET['id']) && is_string($_GET['id'])){
   // Try get from table first (has geo data: lat, lng, path, luas, penduduk)
   $query = $db->prepare("SELECT kode, nama, lat, lng, path, luas, penduduk FROM {$tbl_wilayah} WHERE kode=:id");
   $query->execute(array(':id'=>$_GET['id']));
