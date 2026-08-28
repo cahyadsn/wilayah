@@ -15,7 +15,7 @@ tautan demo web [apps versi 3.0.1](https://wilayah.cahyadsn.com/apps)
 ## SCREENSHOT
 [![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2026_06_03_14_03_28.png?raw=true 'wilayah apps web demo v3.0.1')](https://wilayah.cahyadsn.com/apps)
 
-Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
+Kode dan Data Wilayah Pemerintahan Indonesia dalam database :
 - **db/wilayah.sql** sesuai dengan Kepmendagri No. 300.2.2-2430 Tahun 2025 
 - **db/wilayah_level_1_2.sql** sesuai Kepmendagri No. 300.2.2-2430 Tahun 2025 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries
 - **db/archive/wilayah_2023.sql** sesuai Kepmendagri No. 100.1.1-6117 Tahun 2022
@@ -24,7 +24,7 @@ Kode dan Data Wilayah Pemerintahan Indonesia  dalam database :
 - **db/archive/wilayah_2018.sql** sesuai Permendagri No. 137 tahun 2017
 - **db/archive/wilayah_2016.sql** sesuai Permendagri No. 56 Tahun 2015
 - **db/archive/wilayah_level_1_2-2022.sql** sesuai Kepmendagri No. 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries (mysql)
-- **db/archive/wilayah_level_1_2_postgresl.sql** sesuai Kepmendagri No. 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries (postgresql)
+- **db/archive/wilayah_level_1_2_postgresql.sql** sesuai Kepmendagri No. 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries (postgresql)
 
 Kode dan Data Pulau Indonesia dalam database :
 - **db/wilayah_pulau.sql** sesuai Kepmendagri No 300.2.2-2430 Tahun 2025
@@ -35,14 +35,14 @@ Kode dan Data Pulau Indonesia dalam database :
 Data Jumlah Penduduk Indonesia per propinsi dan per kabupaten/kota dalam database
 - **db/wilayah_penduduk.sql** sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 *
 
-Data Luas wilayah Indonesia per popinsi dan per kabupaten/kota dalam database
+Data Luas wilayah Indonesia per provinsi dan per kabupaten/kota dalam database
 - **db/wilayah_luas.sql** sesuai dengan Kepmendagri No 300.2.2-2430 Tahun 2025 dan Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia
 
 ## TAUTAN TERKAIT
 - Data kodepos vs kode wilayah administrasi pemerintahan Indonesia : https://github.com/cahyadsn/wilayah_kodepos
 - Data referensi Kode dan Data Wilayah Administrasi Pemerintahan dan Pulau Indonesia : https://github.com/cahyadsn/wilayah_ref
-- Data boundaries/polygon berdasarkan kode wilayah adminsitrasi pemerintahan Indonesia : https://github.com/cahyadsn/wilayah_boundaries
-- Data logo/lambang berdasarkan kode wilayah adminsitrasi pemerintahan Indonesia (prov,kab/kota) : https://github.com/cahyadsn/wilayah_logo
+- Data boundaries/polygon berdasarkan kode wilayah administrasi pemerintahan Indonesia : https://github.com/cahyadsn/wilayah_boundaries
+- Data logo/lambang berdasarkan kode wilayah administrasi pemerintahan Indonesia (prov,kab/kota) : https://github.com/cahyadsn/wilayah_logo
 - Implementasi API data kode wilayah administrasi pemerintahan Indonesia : https://github.com/cahyadsn/wilayah_api
 
 ## Data Kepmendagri No 300.2.2-2430 Tahun 2025
@@ -99,13 +99,12 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 - Jumlah penduduk bersumber dari Ditjen Kependudukan dan Pencatatan Sipil Kemendagri (Data Kependudukan Semester II Bulan Desember Tahun 2024)
 - Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua) 
 - Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi Geospasial (BIG)
-- Jumlah pulau termasuk 6 pulau besar ( Sumatera, Jawa, Kalimantan, Sulawesi, Timor, dan Papua
 
 > link demo bisa dilihat di sini : https://wilayah.cahyadsn.com/
 [![screenshot](https://github.com/cahyadsn/wilayah_web/blob/main/img/260724092313.png?raw=true 'wilayah web demo v6.10')](https://wilayah.cahyadsn.com/)
 
 ## KODEFIKASI DATA WILAYAH
-Kode Wilayah Administrasi Pemerintahan adalah serangkaian angka dan titik yang menunjukkan Kode dan Data Wilayah Administrasi Pemerintahan Indonesia pada setiap daerah/wilayah mulai dari tingkat desa/kelurahan, kecamatan, kota/kabupaten, hingga provinsi yang digunakan untuk mempermudah dan mempercepat pengeloaan wilayah administrasi pemerintahan Republik Indonesia.
+Kode Wilayah Administrasi Pemerintahan adalah serangkaian angka dan titik yang menunjukkan Kode dan Data Wilayah Administrasi Pemerintahan Indonesia pada setiap daerah/wilayah mulai dari tingkat desa/kelurahan, kecamatan, kota/kabupaten, hingga provinsi yang digunakan untuk mempermudah dan mempercepat pengelolaan wilayah administrasi pemerintahan Republik Indonesia.
 
 Berdasarkan Permendagri No 58 Tahun 2021 kodefikasi data wilayah administrasi pemerintahan dan pulau adalah sesuai aturan susunan sebagai berikut:
 
@@ -127,7 +126,7 @@ Kode untuk daerah kabupaten/kota terdiri dari 4 (empat) digit, yaitu:
 3. Digit ketiga dan keempat dari 4 (empat) digit Kode untuk kabupaten diisi dengan angka 01 (nol  satu)  sampai  dengan  69  (enam  puluh sembilan); dan
 4. Digit ketiga dan keempat dari 4 (empat) digit Kode untuk kota diisi dengan angka 71 (tujuh puluh satu) sampai dengan 99 (sembilan puluh sembilan).
 
-**Kode Kecematan**
+**Kode Kecamatan**
 Kode  untuk  Kecamatan  berjumlah  6  (enam)  digit yang terdiri dari Kode untuk daerah provinsi 2 (dua) digit, Kode untuk daerah kabupaten/kota berjumlah 2 (dua) digit, dan Kode untuk Kecamatan berjumlah 2 (dua) digit yang ditulis secara berurutan.
 
 **Kode Desa/Kelurahan**
@@ -182,7 +181,9 @@ node tools/check_sql_wilayah_pulau.js
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-08-27] 🆕
+- [2026-08-28] 🆕
+  - Optimize cache key generation in reverse lookup loop by replacing `md5()` with `crc32()` ([`apps/inc/reverse_lookup.php`](apps/inc/reverse_lookup.php)).
+- [2026-08-27]
   - Fix missing type validation on `$_GET['id']` in Geo Ajax endpoint ([`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php)) and add unit tests ([`tests/apps/inc/GeoAjaxTest.php`](tests/apps/inc/GeoAjaxTest.php)).
   - Fix TypeError in `change.color.php` due to missing validation ([`apps/inc/change.color.php`](apps/inc/change.color.php)) and add unit tests ([`tests/inc/ChangeColorTest.php`](tests/inc/ChangeColorTest.php)).
   - Validate `$_GET['id']` is string before string operations in [`index.php`](index.php).

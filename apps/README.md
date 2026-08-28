@@ -1,7 +1,7 @@
 # wilayah v3.0.1
-Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahah Indonesia sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 dengan PHP+MySQL+AJaX
+Aplikasi sederhana menggunakan Kode dan Data Wilayah Administrasi Pemerintahan Indonesia sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 dengan PHP+MySQL+AJaX
 
-(Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Kepmendagri No 300.2.2-2430 Tahun 2025, utk aplikasi ini hanya menggunakan data level 1 dan 2 (provinsi dan kabupaten/kota) di /db/archive/wilayah_level_1_2.sql yang sesuai dengan Kepmendagri No 300.2.2-2430 Tahun 2025, dengan penambahan data lat/long/elv/timezone,boundaries/polygon,luas dan jumlah penduduk)
+(Kode dan Data Wilayah Pemerintahan Indonesia  dalam db wilayah.sql sesuai Kepmendagri No 300.2.2-2430 Tahun 2025, utk aplikasi ini hanya menggunakan data level 1 dan 2 (provinsi dan kabupaten/kota) di db/wilayah_level_1_2.sql yang sesuai dengan Kepmendagri No 300.2.2-2430 Tahun 2025, dengan penambahan data lat/long/elv/timezone,boundaries/polygon,luas dan jumlah penduduk)
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/cahyadsn/wilayah.svg)](https://github.com/cahyadsn/wilayah/issues)
@@ -16,7 +16,7 @@ tautan demo web [apps versi 3.0.1](https://wilayah.cahyadsn.com/apps)
 
 Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 untuk tingkat Provinsi dan Kota/Kabupaten beserta data latitude/longitude (koordinat) dan polygon boundaries-nya dan aplikasi sederhananya
 
-Untuk aplikasi wilayah v2.8 ini mengguanakan database dengan nama tabel wilayah_level_1_2 yang terdapat di folder /db/archive/wilayah_level_1_2.sql
+Untuk aplikasi wilayah v3.0.1 ini menggunakan database dengan nama tabel wilayah_level_1_2 yang terdapat di folder db/wilayah_level_1_2.sql
 
 Sesuaikan data konfigurasi database yang ada di apps/inc/db.php
 
@@ -57,7 +57,7 @@ Sesuaikan data konfigurasi database yang ada di apps/inc/db.php
 | 91      | Papua                     |    8 |    1 |
 | 92      | Papua Barat               |    7 |    0 |
 | 93      | Papua Selatan             |    4 |    0 |
-| 94      | Papua Tenagh              |    8 |    0 |
+| 94      | Papua Tengah              |    8 |    0 |
 | 95      | Papua Pegunungan          |    8 |    0 |
 | 96      | Papua Barat Daya          |    5 |    1 |
 |         | TOTAL                     |  416 |   98 |
@@ -94,7 +94,7 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/apps/) (data sesua
 - update web apps demo ke v3.0 2026-06-01
 - update web apps demo ke v2.8 2025-08-04
 - update data luas wilayah di db/wilayah_level_1_2.sql berdasar dari Badan Informasi Geospasial berdasarkan Surat Deputi Bidang Informasi Geospasial Dasar Nomor B-16.10/DIGD-BIG/IGD.04.04/12/2024, Tanggal 16 Desember 2024, Hal Penghitungan Luas Wilayah di Seluruh Indonesia 2025-07-04
-- update data db/archive/wilayah_level_1_2.sql sesuai Kepmendagri Np. 300.2.2-2138 tahun 2025  2025-07-01
+- update data db/archive/wilayah_level_1_2.sql sesuai Kepmendagri No. 300.2.2-2138 tahun 2025  2025-07-01
 - update web apps demo ke v2.7 2025-05-13
 - update library javascript dari jquery ke zepto js (done 2025-01-27)
 - update data db/archive/wilayah_level_1_2.sql sesuai Kepmendagri No 100.1.1-6117 Tahun 2022 (done 2024-05-15)

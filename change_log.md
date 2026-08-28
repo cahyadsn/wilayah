@@ -1,6 +1,7 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Optimize cache key generation in reverse lookup loop by replacing md5() with crc32() (apps/inc/reverse_lookup.php) 2026-08-28
 - Fix missing type validation on $_GET['id'] in Geo Ajax endpoint (apps/inc/geo_ajax.php) and add unit tests (tests/apps/inc/GeoAjaxTest.php) 2026-08-27
 - Fix TypeError in change.color.php due to missing validation (apps/inc/change.color.php) and add unit tests (tests/inc/ChangeColorTest.php) 2026-08-27
 - Validate $_GET['id'] is string before string operations in index.php 2026-08-27
