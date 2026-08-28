@@ -125,7 +125,7 @@ try {
     $decodedPaths = array();
     foreach ($candidates as $candidate) {
         if (!empty($candidate['path']) && is_string($candidate['path'])) {
-            $pathKey = !empty($candidate['kode']) ? $candidate['kode'] : md5($candidate['path']);
+            $pathKey = !empty($candidate['kode']) ? $candidate['kode'] : crc32($candidate['path']);
             if (!isset($decodedPaths[$pathKey])) {
                 $decodedPaths[$pathKey] = json_decode($candidate['path'], true);
             }
