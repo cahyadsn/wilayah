@@ -127,6 +127,17 @@ class ReverseLookupTest extends TestCase
         $this->assertNull($result);
     }
 
+    public function testInvalidRingCoordinates()
+    {
+        $this->loadReverseLookupFunctions();
+
+        // Test coverage for invalid ring coordinates
+        $this->assertFalse(pointInRing(5, 5, null));
+        $this->assertFalse(pointInRing(5, 5, 'string'));
+        $this->assertFalse(pointInRing(5, 5, [ [0], [1], [2] ]));
+        $this->assertFalse(pointInRing(5, 5, [ ["a", "b"], ["c", "d"], ["e", "f"] ]));
+    }
+
     public function testBuildChainFull()
     {
         $this->loadReverseLookupFunctions();
