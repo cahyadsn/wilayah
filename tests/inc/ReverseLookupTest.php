@@ -316,4 +316,13 @@ class ReverseLookupTest extends TestCase
         $this->assertNull(effectiveCandidatePath($candidateE2));
         $this->assertNull(effectiveCandidatePath($candidateE3));
     }
+
+    public function testInvalidRingCoordinates()
+    {
+        // Add test coverage for invalid ring coordinates
+        $this->assertFalse(pointInRing(5, 5, null));
+        $this->assertFalse(pointInRing(5, 5, 'string'));
+        $this->assertFalse(pointInRing(5, 5, [ [0], [1], [2] ]));
+        $this->assertFalse(pointInRing(5, 5, [ ["a", "b"], ["c", "d"], ["e", "f"] ]));
+    }
 }
