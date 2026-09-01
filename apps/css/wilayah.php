@@ -23,7 +23,6 @@ See the MIT License for more details
 
 copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
-//if(!defined('_AUTHOR')) die('illegal access forbiden');
 header("Content-type: text/css");
 ?>
 body,h1,h1,h3,input {font-family:"Raleway", Arial, Sans-serif;}
