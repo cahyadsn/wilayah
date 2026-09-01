@@ -17,7 +17,7 @@ require_once __DIR__ . '/inc/session.php';
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
-$theme=isset($_SESSION['theme'])?$_SESSION['theme']:(isset($_GET['theme'])?$_GET['theme']:'light');
+$theme = $_SESSION['theme'] ?? $_GET['theme'] ?? 'light';
 define("_AUTHOR","cahyadsn");
 require_once 'inc/db.php';
 $version='3.0.1';
