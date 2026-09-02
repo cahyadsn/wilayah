@@ -65,6 +65,14 @@ document.addEventListener('DOMContentLoaded', function() {
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'inc/change.color.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status !== 200) {
+                    console.error('Failed to change theme: ' + xhr.statusText);
+                }
+            };
+            xhr.onerror = function() {
+                console.error('Network error occurred while trying to change theme');
+            };
             xhr.send('theme=' + encodeURIComponent(nextTheme) + '&csrf_token=' + encodeURIComponent(csrfToken));
         });
     }
