@@ -107,7 +107,7 @@ class IndexPhpTest extends TestCase
             'Theme should fallback to GET parameter');
 
         // Test default theme
-        $this->assertStringContainsString(':\'light\')', $content,
+        $this->assertStringContainsString('?? \'light\';', $content,
             'Default theme should be light');
     }
 
