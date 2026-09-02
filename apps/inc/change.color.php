@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : change.color.php
 purpose  : change theme and/or color
 create   : 170912
-last edit: 2026-08-24 10:43:38
+last edit: 2026-08-27 09:48:56
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the

@@ -1,6 +1,9 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Optimize CSS selector duplication, redundant rules, and conflicting overrides in apps/css/styles.css and apps/css/styles.min.css 2026-09-02
+- Fix duplicate heading selector (h1) and consolidate hidden element rules in apps/css/wilayah.php and src/css/wilayah.php 2026-09-02
+- Update file header last edit timestamps on modified files to match modification history 2026-09-02
 - Simplify theme fallback logic in apps/index.php using null coalescing operators and update unit test assertions (tests/apps/index_php_test.php) 2026-09-01
 - Add error and network failure handlers to AJAX theme change request in apps/js/wilayah.js and apps/js/wilayah.min.js 2026-09-01
 - Remove dead commented-out CSS code in apps/css/wilayah.php 2026-09-01

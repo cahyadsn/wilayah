@@ -181,7 +181,11 @@ node tools/check_sql_wilayah_pulau.js
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-09-01] 🆕
+- [2026-09-02] 🆕
+  - Optimize CSS selector duplication, redundant rules, and conflicting overrides in [`apps/css/styles.css`](apps/css/styles.css) and [`apps/css/styles.min.css`](apps/css/styles.min.css).
+  - Fix duplicate heading selector (`h1`) and consolidate hidden element rules in [`apps/css/wilayah.php`](apps/css/wilayah.php) and [`src/css/wilayah.php`](src/css/wilayah.php).
+  - Update file header `last edit` timestamps on modified files to match modification history.
+- [2026-09-01]
   - Simplify theme fallback logic in [`apps/index.php`](apps/index.php) using null coalescing operators and update unit test assertions.
   - Add error and network failure handlers (`onload`, `onerror`) to AJAX theme change request in [`apps/js/wilayah.js`](apps/js/wilayah.js) and [`apps/js/wilayah.min.js`](apps/js/wilayah.min.js).
   - Remove dead commented-out CSS code in [`apps/css/wilayah.php`](apps/css/wilayah.php).
