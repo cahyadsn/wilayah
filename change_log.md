@@ -1,6 +1,10 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Simplify theme fallback logic in apps/index.php using null coalescing operators and update unit test assertions (tests/apps/index_php_test.php) 2026-09-01
+- Add error and network failure handlers to AJAX theme change request in apps/js/wilayah.js and apps/js/wilayah.min.js 2026-09-01
+- Remove dead commented-out CSS code in apps/css/wilayah.php 2026-09-01
+- Safely handle non-array and invalid coordinate items in pointInRing within apps/inc/reverse_lookup.php and add unit test coverage (tests/apps/inc/ReverseLookupTest.php, tests/inc/ReverseLookupTest.php) 2026-08-31
 - Optimize cache key generation in reverse lookup loop by replacing md5() with crc32() (apps/inc/reverse_lookup.php) 2026-08-28
 - Fix missing type validation on $_GET['id'] in Geo Ajax endpoint (apps/inc/geo_ajax.php) and add unit tests (tests/apps/inc/GeoAjaxTest.php) 2026-08-27
 - Fix TypeError in change.color.php due to missing validation (apps/inc/change.color.php) and add unit tests (tests/inc/ChangeColorTest.php) 2026-08-27

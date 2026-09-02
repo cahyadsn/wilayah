@@ -181,7 +181,13 @@ node tools/check_sql_wilayah_pulau.js
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-08-28] 🆕
+- [2026-09-01] 🆕
+  - Simplify theme fallback logic in [`apps/index.php`](apps/index.php) using null coalescing operators and update unit test assertions.
+  - Add error and network failure handlers (`onload`, `onerror`) to AJAX theme change request in [`apps/js/wilayah.js`](apps/js/wilayah.js) and [`apps/js/wilayah.min.js`](apps/js/wilayah.min.js).
+  - Remove dead commented-out CSS code in [`apps/css/wilayah.php`](apps/css/wilayah.php).
+- [2026-08-31]
+  - Safely handle non-array and invalid coordinate items in `pointInRing` within [`apps/inc/reverse_lookup.php`](apps/inc/reverse_lookup.php) and add unit test coverage in [`tests/apps/inc/ReverseLookupTest.php`](tests/apps/inc/ReverseLookupTest.php) and [`tests/inc/ReverseLookupTest.php`](tests/inc/ReverseLookupTest.php).
+- [2026-08-28]
   - Optimize cache key generation in reverse lookup loop by replacing `md5()` with `crc32()` ([`apps/inc/reverse_lookup.php`](apps/inc/reverse_lookup.php)).
 - [2026-08-27]
   - Fix missing type validation on `$_GET['id']` in Geo Ajax endpoint ([`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php)) and add unit tests ([`tests/apps/inc/GeoAjaxTest.php`](tests/apps/inc/GeoAjaxTest.php)).
