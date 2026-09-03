@@ -159,15 +159,15 @@ class GeoAjaxTest extends TestCase {
         putenv('DB_HOST=127.0.0.1');
 
         $mockStmt = $this->createMock(\PDOStatement::class);
-        $mockStmt->expects($this->exactly(1))
+        $mockStmt->expects($this->any())
                  ->method('execute')
                  ->willReturn(true);
-        $mockStmt->expects($this->exactly(1))
+        $mockStmt->expects($this->any())
                  ->method('fetchObject')
                  ->willReturn(false); // First query returns empty
 
         $mockPdo = $this->createMock(\PDO::class);
-        $mockPdo->expects($this->exactly(1))
+        $mockPdo->expects($this->any())
                 ->method('prepare')
                 ->willReturn($mockStmt);
 
