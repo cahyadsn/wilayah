@@ -179,7 +179,7 @@ function reverseLookupFromMapClick(latlng) {
 }
 
 // --- Map ---
-var cachedBasemapOptions, polyLatLngs, polyLayer, map, marker, baseLayers, labelOverlay, currentBaseLayer, baseMapMenuControl;
+var polyLatLngs, polyLayer, map, marker, baseLayers, labelOverlay, currentBaseLayer, baseMapMenuControl, cachedBasemapOptions;
 var myPoint = [-6.17501, 106.820497];
 
 function isLightThemeActive() {
@@ -234,8 +234,8 @@ function setBaseLayer(name) {
         localStorage.setItem('wilayahBaseLayer', currentBaseLayer);
     }
 
-    var optionsToUpdate = cachedBasemapOptions || document.querySelectorAll('[data-basemap-option]');
-    optionsToUpdate.forEach(function(option) {
+    cachedBasemapOptions = cachedBasemapOptions || document.querySelectorAll('[data-basemap-option]');
+    cachedBasemapOptions.forEach(function(option) {
         var isActive = option.getAttribute('data-layer-name') === currentBaseLayer;
         option.classList.toggle('is-active', isActive);
         option.setAttribute('aria-pressed', isActive ? 'true' : 'false');
@@ -366,9 +366,7 @@ function initBaseMapMenu() {
         });
     }
 
-    // Always re-query in init in case DOM was rebuilt, and update cache
-    cachedBasemapOptions = document.querySelectorAll('[data-basemap-option]');
-
+    cachedBasemapOptions = cachedBasemapOptions || document.querySelectorAll('[data-basemap-option]');
     cachedBasemapOptions.forEach(function(option) {
         option.addEventListener('click', function() {
             var name = this.getAttribute('data-layer-name');
