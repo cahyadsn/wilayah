@@ -1,6 +1,9 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Cache full JSON response in apps/inc/geo_ajax.php to avoid redundant database queries and geometry processing 2026-09-03
+- Refactor pointInPath in apps/inc/reverse_lookup.php to receive pre-decoded coordinates directly, removing redundant JSON decoding in lookup loop 2026-09-03
+- Cache basemap options DOM query in apps/inc/geo_js.php to avoid redundant layout recalculations on layer changes 2026-09-03
 - Optimize CSS selector duplication, redundant rules, and conflicting overrides in apps/css/styles.css and apps/css/styles.min.css 2026-09-02
 - Fix duplicate heading selector (h1) and consolidate hidden element rules in apps/css/wilayah.php and src/css/wilayah.php 2026-09-02
 - Update file header last edit timestamps on modified files to match modification history 2026-09-02

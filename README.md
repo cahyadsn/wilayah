@@ -181,7 +181,11 @@ node tools/check_sql_wilayah_pulau.js
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-09-02] 🆕
+- [2026-09-03] 🆕
+  - Cache full JSON responses in [`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php) using file cache with a 1-day TTL to avoid redundant database queries and boundary computations.
+  - Refactor `pointInPath` in [`apps/inc/reverse_lookup.php`](apps/inc/reverse_lookup.php) to accept pre-decoded `$coords` arrays, eliminating redundant `json_decode` overhead within the spatial lookup loop.
+  - Cache basemap options DOM query (`document.querySelectorAll('[data-basemap-option]')`) in [`apps/inc/geo_js.php`](apps/inc/geo_js.php) to prevent redundant DOM lookups and layout recalculations on layer changes.
+- [2026-09-02]
   - Optimize CSS selector duplication, redundant rules, and conflicting overrides in [`apps/css/styles.css`](apps/css/styles.css) and [`apps/css/styles.min.css`](apps/css/styles.min.css).
   - Fix duplicate heading selector (`h1`) and consolidate hidden element rules in [`apps/css/wilayah.php`](apps/css/wilayah.php) and [`src/css/wilayah.php`](src/css/wilayah.php).
   - Update file header `last edit` timestamps on modified files to match modification history.
