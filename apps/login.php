@@ -16,21 +16,29 @@ if (isset($_GET['logout'])) {
 }
 
 $error = '';
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-
-    // Ensure environment variables are set to allow login
-    $expectedUser = getenv('ADMIN_USER');
-    $expectedPass = getenv('ADMIN_PASS');
-
-    if ($expectedUser && $expectedPass && $username === $expectedUser && is_string($password) && password_verify($password, $expectedPass)) {
-        session_regenerate_id(true);
-        $_SESSION['author'] = 'cahyadsn'; // Value expected by geo_update.php
-        header("Location: index.php");
-        exit;
+    if (empty($_POST['csrf_token']) || empty($_SESSION['csrf_token']) || !is_string($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+        $error = 'Invalid CSRF token';
     } else {
-        $error = 'Invalid credentials';
+        $username = $_POST['username'] ?? '';
+        $password = $_POST['password'] ?? '';
+
+        // Ensure environment variables are set to allow login
+        $expectedUser = getenv('ADMIN_USER');
+        $expectedPass = getenv('ADMIN_PASS');
+
+        if ($expectedUser && $expectedPass && $username === $expectedUser && is_string($password) && password_verify($password, $expectedPass)) {
+            session_regenerate_id(true);
+            $_SESSION['author'] = 'cahyadsn'; // Value expected by geo_update.php
+            header("Location: index.php");
+            exit;
+        } else {
+            $error = 'Invalid credentials';
+        }
     }
 }
 ?>
@@ -59,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="error"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
         <form method="POST" action="">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>

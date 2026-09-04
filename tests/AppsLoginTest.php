@@ -8,6 +8,14 @@ class AppsLoginTest extends TestCase
 {
     private $loginFile = __DIR__ . '/../apps/login.php';
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+
     /**
      * Helper to run login.php and return output
      */
@@ -16,7 +24,7 @@ class AppsLoginTest extends TestCase
         ob_start();
         $code = file_get_contents($this->loginFile);
         $code = str_replace('header(', '@header(', $code);
-        $code = str_replace("require_once __DIR__ . '/inc/session.php';", 'session_start();', $code);
+        $code = str_replace("require_once __DIR__ . '/inc/session.php';", 'if (session_status() === PHP_SESSION_NONE) { session_start(); }', $code);
         $code = str_replace('exit;', 'echo "EXIT_CALLED"; return;', $code);
         eval('?>' . $code);
         return ob_get_clean();
@@ -46,6 +54,8 @@ class AppsLoginTest extends TestCase
     public function testLoginSuccessSetsSessionAndRedirects()
     {
         $_SERVER['REQUEST_METHOD'] = 'POST';
+        $_SESSION['csrf_token'] = 'test_csrf_token';
+        $_POST['csrf_token'] = 'test_csrf_token';
         $_POST['username'] = 'admin';
         $_POST['password'] = 'secret';
 
@@ -68,6 +78,8 @@ class AppsLoginTest extends TestCase
     public function testLoginFailureWithWrongCredentials()
     {
         $_SERVER['REQUEST_METHOD'] = 'POST';
+        $_SESSION['csrf_token'] = 'test_csrf_token';
+        $_POST['csrf_token'] = 'test_csrf_token';
         $_POST['username'] = 'admin';
         $_POST['password'] = 'wrong_secret';
 
@@ -91,6 +103,8 @@ class AppsLoginTest extends TestCase
     public function testLoginFailureWithMissingEnvVars()
     {
         $_SERVER['REQUEST_METHOD'] = 'POST';
+        $_SESSION['csrf_token'] = 'test_csrf_token';
+        $_POST['csrf_token'] = 'test_csrf_token';
         $_POST['username'] = 'admin';
         $_POST['password'] = 'secret';
 
@@ -103,6 +117,31 @@ class AppsLoginTest extends TestCase
         $this->assertArrayNotHasKey('author', $_SESSION ?? []);
         $this->assertStringNotContainsString('EXIT_CALLED', $output);
         $this->assertStringContainsString('Invalid credentials', $output);
+    }
+
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testLoginFailureWithInvalidCsrfToken()
+    {
+        $_SERVER['REQUEST_METHOD'] = 'POST';
+        $_SESSION['csrf_token'] = 'test_csrf_token';
+        $_POST['csrf_token'] = 'invalid_csrf_token';
+        $_POST['username'] = 'admin';
+        $_POST['password'] = 'secret';
+
+        putenv('ADMIN_USER=admin');
+        putenv('ADMIN_PASS=' . password_hash('secret', PASSWORD_DEFAULT));
+
+        $output = $this->runLoginScript();
+
+        // Session should not have author
+        $this->assertArrayNotHasKey('author', $_SESSION ?? []);
+        // Should not exit
+        $this->assertStringNotContainsString('EXIT_CALLED', $output);
+        // Should show CSRF error message
+        $this->assertStringContainsString('Invalid CSRF token', $output);
     }
 
     /**
