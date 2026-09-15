@@ -1,6 +1,7 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Optimize bounding box calculation using native PHP array functions in apps/inc/geo_ajax.php 2026-09-15
 - Extract shared province HTML dropdown generation into getProvinceOptionsHTML() in apps/inc/geo_helpers.php and reuse across apps/index.php and index.php 2026-09-11
 - Return raw array from fallbackBox() in apps/inc/geo_helpers.php to avoid redundant json_decode cycles in reverse lookup 2026-09-11
 - Optimize bounding box array presence checks with isset() in apps/inc/geo_ajax.php 2026-09-11
