@@ -102,13 +102,15 @@ if (!empty($_GET['id']) && is_string($_GET['id'])){
         $r['opt']=$opt;
         $r['n']=$n;
       }
-      $out = json_encode($r, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);
-      file_put_contents($cache_file_json, $out, LOCK_EX);
+      $should_cache = true;
   }
 }
 
 if ($out === null) {
   $out = json_encode($r, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);
+  if (!empty($should_cache) && isset($cache_file_json)) {
+      file_put_contents($cache_file_json, $out, LOCK_EX);
+  }
 }
 
 header('Content-Type: application/json; charset=utf-8');
