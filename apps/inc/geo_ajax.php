@@ -29,7 +29,7 @@ function isPathReasonable($path, $lat, $lng, $kode) {
   $coords = json_decode($path, true);
   if (!is_array($coords) || empty($coords)) return false;
 
-  $points = (isset($coords[0][0]) && is_numeric($coords[0][0])) ? $coords : (is_array($coords[0]) ? $coords[0] : array());
+  $points = is_array($coords[0][0] ?? null) ? $coords[0] : (is_array($coords[0] ?? null) ? $coords : []);
   if (empty($points)) return false;
 
   $lats = array_column($points, 0);
