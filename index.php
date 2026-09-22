@@ -51,10 +51,7 @@ if (isset($_GET['id']) && is_string($_GET['id']) && !empty($_GET['id'])){
 <html>
 	<head>
 		<title>Data Daerah</title>
-		<style>
-			td,select {width:240px;}
-			#kab_box,#kec_box,#kel_box{display:none;}
-		 </style>
+		<link rel="stylesheet" href="css/style.css">
 		<script>
 		const wil = ['kab', 'kec', 'kel'];
 		
