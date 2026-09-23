@@ -1,6 +1,11 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Extract inline CSS from index.php into css/style.css 2026-09-23
+- Remove redundant json_encode in apps/inc/geo_ajax.php 2026-09-23
+- Refactor coordinate array checks using null coalescing in apps/inc/geo_ajax.php and apps/inc/geo_utils.php 2026-09-23
+- Remove unused apps/css/wilayah.php 2026-09-23
+- Update file header last edit timestamps on modified files to match modification history 2026-09-23
 - Optimize bounding box calculation using native PHP array functions in apps/inc/geo_ajax.php 2026-09-15
 - Extract shared province HTML dropdown generation into getProvinceOptionsHTML() in apps/inc/geo_helpers.php and reuse across apps/index.php and index.php 2026-09-11
 - Return raw array from fallbackBox() in apps/inc/geo_helpers.php to avoid redundant json_decode cycles in reverse lookup 2026-09-11

@@ -4,6 +4,8 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 ================================================================================
 filename : geo_utils.php
 purpose  : shared geo utility functions
+create   : 2026-07-26
+last edit: 2026-09-23 08:38:09
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the

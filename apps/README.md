@@ -81,6 +81,12 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/apps/) (data sesua
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## New Update
+- coordinate check refactoring, redundant json_encode removal, and inline style extraction 2026-09-23
+    - removed redundant `json_encode` execution in `geo_ajax.php` to streamline response serialization
+    - simplified coordinate parsing point extraction with null coalescing in `geo_ajax.php` and `geo_utils.php`
+    - extracted inline styles from `index.php` into dedicated stylesheet `css/style.css`
+    - removed unused legacy stylesheet `apps/css/wilayah.php`
+    - synchronized file header `last edit` timestamps on modified files
 - province helper refactoring, fallback array optimization, and bounding box checks 2026-09-11
     - extracted shared `getProvinceOptionsHTML()` helper in `apps/inc/geo_helpers.php` for `apps/index.php` and `index.php`
     - optimized `fallbackBox()` to return raw arrays to eliminate redundant `json_decode` cycles in reverse lookups

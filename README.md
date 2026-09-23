@@ -181,7 +181,13 @@ node tools/check_sql_wilayah_pulau.js
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-09-15] 🆕
+- [2026-09-23] 🆕
+  - Extract inline styles from [`index.php`](index.php) into a dedicated stylesheet [`css/style.css`](css/style.css).
+  - Remove redundant `json_encode` in [`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php) to streamline response serialization and caching logic.
+  - Refactor coordinate parsing point extraction using null coalescing operators in [`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php) and [`apps/inc/geo_utils.php`](apps/inc/geo_utils.php).
+  - Remove unused legacy stylesheet [`apps/css/wilayah.php`](apps/css/wilayah.php).
+  - Update file header `last edit` timestamps on modified files.
+- [2026-09-15]
   - Optimize bounding box calculation using native PHP array functions (`array_column()`, `min()`, `max()`) in `isPathReasonable()` within [`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php).
 - [2026-09-11]
   - Extract shared province HTML dropdown generation into `getProvinceOptionsHTML()` in [`apps/inc/geo_helpers.php`](apps/inc/geo_helpers.php) and reuse across [`apps/index.php`](apps/index.php) and [`index.php`](index.php).
@@ -195,10 +201,6 @@ node tools/check_sql_wilayah_pulau.js
 - [2026-09-08]
   - Mitigate Login CSRF vulnerability in [`apps/login.php`](apps/login.php) with CSRF session token initialization, form injection, and constant-time `hash_equals()` validation on POST requests; update [`tests/AppsLoginTest.php`](tests/AppsLoginTest.php) with invalid token test coverage.
   - Add Jest unit test suite for `do_ajax()` in [`tests/apps/js/ajax.test.js`](tests/apps/js/ajax.test.js) and add `jest` devDependency to `package.json`.
-- [2026-09-03]
-  - Cache full JSON responses in [`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php) using file cache with a 1-day TTL to avoid redundant database queries and boundary computations.
-  - Refactor `pointInPath` in [`apps/inc/reverse_lookup.php`](apps/inc/reverse_lookup.php) to accept pre-decoded `$coords` arrays, eliminating redundant `json_decode` overhead within the spatial lookup loop.
-  - Cache basemap options DOM query (`document.querySelectorAll('[data-basemap-option]')`) in [`apps/inc/geo_js.php`](apps/inc/geo_js.php) to prevent redundant DOM lookups and layout recalculations on layer changes.
 
 > Riwayat perubahan selengkapnya dapat dilihat pada [change_log.md](change_log.md).
 
