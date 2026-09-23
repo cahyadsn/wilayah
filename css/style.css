@@ -1,0 +1,6 @@
+td, select {
+  width: 240px;
+}
+#kab_box, #kec_box, #kel_box {
+  display: none;
+}
