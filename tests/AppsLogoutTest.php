@@ -43,6 +43,7 @@ class AppsLogoutTest extends TestCase
         // Mock exit
         $code = str_replace('exit;', 'echo "EXIT_CALLED"; return;', $code);
 
+        // phpcs:ignore Squiz.PHP.Eval.Discouraged
         eval('?>' . $code);
         return ob_get_clean();
     }

@@ -26,6 +26,7 @@ class AppsLoginTest extends TestCase
         $code = str_replace('header(', '@header(', $code);
         $code = str_replace("require_once __DIR__ . '/inc/session.php';", 'if (session_status() === PHP_SESSION_NONE) { session_start(); }', $code);
         $code = str_replace('exit;', 'echo "EXIT_CALLED"; return;', $code);
+        // phpcs:ignore Squiz.PHP.Eval.Discouraged
         eval('?>' . $code);
         return ob_get_clean();
     }
