@@ -21,11 +21,9 @@ function pointInRing($lat, $lng, $ring) {
     $count = count($ring);
     if ($count < 3) return false;
 
+    if (!is_array($ring[0]) || !isset($ring[0][0], $ring[0][1])) return false;
+
     for ($i = 0, $j = $count - 1; $i < $count; $j = $i++) {
-        if (!is_array($ring[$i]) || !isset($ring[$i][0], $ring[$i][1]) ||
-            !is_array($ring[$j]) || !isset($ring[$j][0], $ring[$j][1])) {
-            return false;
-        }
         $yi = (float) $ring[$i][0];
         $xi = (float) $ring[$i][1];
         $yj = (float) $ring[$j][0];
