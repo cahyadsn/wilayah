@@ -181,7 +181,12 @@ node tools/check_sql_wilayah_pulau.js
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-09-23] 🆕
+- [2026-09-25] 🆕
+  - Add PHPUnit unit test suite for `apps/logout.php` in [`tests/AppsLogoutTest.php`](tests/AppsLogoutTest.php) to verify session destruction, cookie clearance, and redirect flows.
+  - Optimize `pointInRing` in [`apps/inc/reverse_lookup.php`](apps/inc/reverse_lookup.php) by moving coordinate array structure validation outside the ray-casting loop.
+  - Verify and validate unit test coverage for `apps/js/ajax.js` in [`tests/apps/js/ajax.test.js`](tests/apps/js/ajax.test.js).
+  - Update file header `last edit` timestamps on modified files.
+- [2026-09-23]
   - Extract inline styles from [`index.php`](index.php) into a dedicated stylesheet [`css/style.css`](css/style.css).
   - Remove redundant `json_encode` in [`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php) to streamline response serialization and caching logic.
   - Refactor coordinate parsing point extraction using null coalescing operators in [`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php) and [`apps/inc/geo_utils.php`](apps/inc/geo_utils.php).

@@ -81,6 +81,11 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/apps/) (data sesua
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## New Update
+- logout unit tests, reverse lookup point-in-ring optimization, and ajax testing 2026-09-25
+    - added comprehensive PHPUnit test suite for `apps/logout.php` (`tests/AppsLogoutTest.php`)
+    - optimized `pointInRing` in `reverse_lookup.php` by moving coordinate array structure checks outside the loop
+    - verified unit test coverage for `apps/js/ajax.js` in `tests/apps/js/ajax.test.js`
+    - synchronized file header `last edit` timestamps on modified files
 - coordinate check refactoring, redundant json_encode removal, and inline style extraction 2026-09-23
     - removed redundant `json_encode` execution in `geo_ajax.php` to streamline response serialization
     - simplified coordinate parsing point extraction with null coalescing in `geo_ajax.php` and `geo_utils.php`
