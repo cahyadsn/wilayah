@@ -31,3 +31,9 @@ if (session_status() === PHP_SESSION_NONE) {
     ]);
     session_start();
 }
+
+if (!function_exists('get_csrf_token_html')) {
+    function get_csrf_token_html() {
+        return htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES, 'UTF-8');
+    }
+}
