@@ -36,13 +36,26 @@ $wil=array(
 if (isset($_GET['id']) && is_string($_GET['id']) && !empty($_GET['id'])){
 	$n=strlen($_GET['id']);
 	if (isset($wil[$n])) {
-		$query = $db->prepare("SELECT kode, nama FROM wilayah WHERE kode LIKE :id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
-		$query->execute(array(':id'=>addcslashes($_GET['id'], '%_\\').'%',':m'=>$wil[$n][0]));
-		echo"<option value=''>Pilih {$wil[$n][1]}</option>";
-		while($d = $query->fetchObject()) {
-			$kode = htmlspecialchars($d->kode, ENT_QUOTES, 'UTF-8');
-			$nama = htmlspecialchars($d->nama, ENT_QUOTES, 'UTF-8');
-			echo "<option value='{$kode}'>{$nama}</option>";
+		$cache_dir = __DIR__ . '/cache';
+		if (!is_dir($cache_dir)) {
+			mkdir($cache_dir, 0755, true);
+		}
+		$cache_file = $cache_dir . '/index_opt_cache_' . md5($_GET['id']) . '.html';
+		$cache_ttl = 86400; // 1 day
+		if (file_exists($cache_file) && (time() - filemtime($cache_file) < $cache_ttl)) {
+			echo file_get_contents($cache_file);
+		} else {
+			$query = $db->prepare("SELECT kode, nama FROM wilayah WHERE kode LIKE :id AND CHAR_LENGTH(kode)=:m ORDER BY nama");
+			$query->execute(array(':id'=>addcslashes($_GET['id'], '%_\\').'%',':m'=>$wil[$n][0]));
+			$opt_arr = ["<option value=''>Pilih {$wil[$n][1]}</option>"];
+			while($d = $query->fetchObject()) {
+				$kode = htmlspecialchars($d->kode, ENT_QUOTES, 'UTF-8');
+				$nama = htmlspecialchars($d->nama, ENT_QUOTES, 'UTF-8');
+				$opt_arr[] = "<option value='{$kode}'>{$nama}</option>";
+			}
+			$opt = implode('', $opt_arr);
+			file_put_contents($cache_file, $opt, LOCK_EX);
+			echo $opt;
 		}
 	}
 }else{
