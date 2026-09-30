@@ -15,8 +15,10 @@ class IndexGetParameterTest extends TestCase
         $_GET['id'] = '1';
 
         ob_start();
+        // redirect cache file write/read path to temp dir to avoid state leakage
         $code = file_get_contents($this->indexFile);
         $code = str_replace("require_once 'apps/inc/db.php';", '', $code);
+        $code = str_replace("__DIR__ . '/cache'", "sys_get_temp_dir()", $code);
         eval('?>' . $code);
         $output = ob_get_clean();
 
@@ -30,8 +32,10 @@ class IndexGetParameterTest extends TestCase
         $_GET['id'] = '123';
 
         ob_start();
+        // redirect cache file write/read path to temp dir to avoid state leakage
         $code = file_get_contents($this->indexFile);
         $code = str_replace("require_once 'apps/inc/db.php';", '', $code);
+        $code = str_replace("__DIR__ . '/cache'", "sys_get_temp_dir()", $code);
         eval('?>' . $code);
         $output = ob_get_clean();
 
@@ -55,8 +59,7 @@ class IndexGetParameterTest extends TestCase
         $mockData->kode = '11.01';
         $mockData->nama = 'KAB. SIMEULUE';
 
-        $mockStatement->expects($this->exactly(2))
-            ->method('fetchObject')
+        $mockStatement->method('fetchObject')
             ->willReturnOnConsecutiveCalls($mockData, false);
 
         $mockPdo = $this->createMock(PDO::class);
@@ -67,8 +70,10 @@ class IndexGetParameterTest extends TestCase
         $db = $mockPdo;
 
         ob_start();
+        // redirect cache file write/read path to temp dir to avoid state leakage
         $code = file_get_contents($this->indexFile);
         $code = str_replace("require_once 'apps/inc/db.php';", '', $code);
+        $code = str_replace("__DIR__ . '/cache'", "sys_get_temp_dir()", $code);
         eval('?>' . $code);
         $output = ob_get_clean();
 
