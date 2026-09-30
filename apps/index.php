@@ -36,7 +36,7 @@ header('Pragma: cache');
   <meta name="author" content="Cahya DSN" />
   <meta name="keywords" content="php, mysql, data, administrasi, wilayah, indonesia, kepmendagri,300.2.2-2430,2025, cahyadsn" />
 
-  <meta name="csrf-token" content="<?php echo $_SESSION['csrf_token']; ?>">
+  <meta name="csrf-token" content="<?php echo get_csrf_token_html(); ?>">
 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
