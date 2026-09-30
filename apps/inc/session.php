@@ -5,6 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : session.php
 purpose  : secure and centralized session configuration
 create   : 2026-08-19
+last edit: 2026-09-30 07:23:49
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the

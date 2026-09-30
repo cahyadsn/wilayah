@@ -81,6 +81,12 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/apps/) (data sesua
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## New Update
+- CSRF token helper extraction and index.php HTML query caching 2026-09-30
+    - extracted `get_csrf_token_html()` helper in `apps/inc/session.php` to encapsulate retrieval and escaping of CSRF token
+    - secured CSRF meta tag output in `apps/index.php` and simplified form token rendering in `apps/login.php`
+    - implemented file-based HTML option caching with 24h TTL for region queries in root `index.php`
+    - updated test suites (`tests/AppsLoginTest.php` and `tests/IndexGetParameterTest.php`)
+    - synchronized file header `last edit` timestamps on modified files
 - logout unit tests, reverse lookup point-in-ring optimization, and ajax testing 2026-09-25
     - added comprehensive PHPUnit test suite for `apps/logout.php` (`tests/AppsLogoutTest.php`)
     - optimized `pointInRing` in `reverse_lookup.php` by moving coordinate array structure checks outside the loop

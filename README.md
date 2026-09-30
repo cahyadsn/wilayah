@@ -181,7 +181,12 @@ node tools/check_sql_wilayah_pulau.js
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-09-25] 🆕
+- [2026-09-30] 🆕
+  - Implement file-based HTML caching for region options (`cache/opt_cache_*` with 24-hour TTL) in [`index.php`](index.php) to eliminate recurring database `LIKE` queries for frequently queried regions, and update [`tests/IndexGetParameterTest.php`](tests/IndexGetParameterTest.php).
+  - Extract `get_csrf_token_html()` helper in [`apps/inc/session.php`](apps/inc/session.php) to encapsulate CSRF token retrieval and HTML escaping, reuse across [`apps/login.php`](apps/login.php) and [`apps/index.php`](apps/index.php), and update [`tests/AppsLoginTest.php`](tests/AppsLoginTest.php).
+  - Bump `undici` dependency from 7.29.0 to 7.30.0 in [`package-lock.json`](package-lock.json).
+  - Update file header `last edit` timestamps on modified files.
+- [2026-09-25]
   - Add PHPUnit unit test suite for `apps/logout.php` in [`tests/AppsLogoutTest.php`](tests/AppsLogoutTest.php) to verify session destruction, cookie clearance, and redirect flows.
   - Optimize `pointInRing` in [`apps/inc/reverse_lookup.php`](apps/inc/reverse_lookup.php) by moving coordinate array structure validation outside the ray-casting loop.
   - Verify and validate unit test coverage for `apps/js/ajax.js` in [`tests/apps/js/ajax.test.js`](tests/apps/js/ajax.test.js).

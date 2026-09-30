@@ -1,6 +1,10 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Implement file-based HTML caching for region options in index.php and update tests/IndexGetParameterTest.php 2026-09-30
+- Extract get_csrf_token_html() helper in apps/inc/session.php and secure CSRF token output in apps/index.php and apps/login.php 2026-09-30
+- Bump undici dependency from 7.29.0 to 7.30.0 in package-lock.json 2026-09-30
+- Update file header last edit timestamps on modified files to match modification history 2026-09-30
 - Add PHPUnit unit test suite for apps/logout.php in tests/AppsLogoutTest.php 2026-09-25
 - Optimize pointInRing array structure checks in apps/inc/reverse_lookup.php 2026-09-25
 - Verify and validate unit test coverage for apps/js/ajax.js in tests/apps/js/ajax.test.js 2026-09-25
