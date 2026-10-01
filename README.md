@@ -10,10 +10,10 @@ Kode dan Data Wilayah Administrasi Pemerintahan dan Kode Pulau Indonesia sesuai 
 [![Donate](https://img.shields.io/badge/$-support-ff69b4.svg?style=flat)](https://paypal.me/cahyadwiana)
 
 ## DEMO
-tautan demo web [apps versi 3.0.1](https://wilayah.cahyadsn.com/apps)
+tautan demo web [apps versi 3.1.0](https://wilayah.cahyadsn.com/apps)
 
 ## SCREENSHOT
-[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2026_06_03_14_03_28.png?raw=true 'wilayah apps web demo v3.0.1')](https://wilayah.cahyadsn.com/apps)
+[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2026_06_03_14_03_28.png?raw=true 'wilayah apps web demo v3.1.0')](https://wilayah.cahyadsn.com/apps)
 
 Kode dan Data Wilayah Pemerintahan Indonesia dalam database :
 - **db/wilayah.sql** sesuai dengan Kepmendagri No. 300.2.2-2430 Tahun 2025 
@@ -181,7 +181,12 @@ node tools/check_sql_wilayah_pulau.js
 - penambahan data kode pulau di web demo
 
 ## CHANGE LOG
-- [2026-09-30] 🆕
+- [2026-10-01] 🆕
+  - Add `.env` file support in `apps/` for database credentials and application version (`APP_VER`).
+  - Remove hardcoded default database credentials in `apps/inc/db.php` and load them from `.env` or environment variables.
+  - Dynamically display application version in `apps/index.php` sourced from `APP_VER` (`3.1.0`).
+  - Update file header `last edit` timestamps on modified files.
+- [2026-09-30]
   - Implement file-based HTML caching for region options (`cache/opt_cache_*` with 24-hour TTL) in [`index.php`](index.php) to eliminate recurring database `LIKE` queries for frequently queried regions, and update [`tests/IndexGetParameterTest.php`](tests/IndexGetParameterTest.php).
   - Extract `get_csrf_token_html()` helper in [`apps/inc/session.php`](apps/inc/session.php) to encapsulate CSRF token retrieval and HTML escaping, reuse across [`apps/login.php`](apps/login.php) and [`apps/index.php`](apps/index.php), and update [`tests/AppsLoginTest.php`](tests/AppsLoginTest.php).
   - Bump `undici` dependency from 7.29.0 to 7.30.0 in [`package-lock.json`](package-lock.json).

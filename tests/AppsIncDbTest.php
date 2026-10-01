@@ -26,17 +26,61 @@ class AppsIncDbTest extends TestCase
         $tmpLog = tempnam(sys_get_temp_dir(), 'err_log_');
         ini_set('error_log', $tmpLog);
 
+        $envFile = __DIR__ . '/../apps/.env';
+        $bakFile = __DIR__ . '/../apps/.env.test_bak';
+        $renamed = false;
+        if (file_exists($envFile)) {
+            rename($envFile, $bakFile);
+            $renamed = true;
+        }
+
+        try {
+            ob_start();
+            require __DIR__ . '/../apps/inc/db.php';
+            ob_get_clean();
+
+            $this->assertEquals('localhost', $dbhost);
+            $this->assertEquals('', $dbuser);
+            $this->assertEquals('', $dbpass);
+            $this->assertEquals('wilayah', $dbname);
+            $this->assertEquals("mysql:dbname=wilayah;host=localhost", $db_dsn);
+        } finally {
+            if ($renamed && file_exists($bakFile)) {
+                rename($bakFile, $envFile);
+            }
+            if (file_exists($tmpLog)) {
+                unlink($tmpLog);
+            }
+        }
+    }
+
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testEnvFileVariables()
+    {
+        putenv('DB_HOST');
+        putenv('DB_USER');
+        putenv('DB_PASS');
+        putenv('DB_NAME');
+
+        $tmpLog = tempnam(sys_get_temp_dir(), 'err_log_');
+        ini_set('error_log', $tmpLog);
+
         ob_start();
         require __DIR__ . '/../apps/inc/db.php';
         ob_get_clean();
 
         $this->assertEquals('localhost', $dbhost);
-        $this->assertEquals('', $dbuser);
+        $this->assertEquals('root', $dbuser);
         $this->assertEquals('', $dbpass);
         $this->assertEquals('wilayah', $dbname);
         $this->assertEquals("mysql:dbname=wilayah;host=localhost", $db_dsn);
 
-        unlink($tmpLog);
+        if (file_exists($tmpLog)) {
+            unlink($tmpLog);
+        }
     }
 
     /**

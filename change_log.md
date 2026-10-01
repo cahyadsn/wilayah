@@ -1,6 +1,10 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Add .env file support in apps/ for database credentials and application version (APP_VER=3.1.0) 2026-10-01
+- Remove hardcoded default database credentials in apps/inc/db.php and load from .env or environment variables 2026-10-01
+- Dynamically display application version in apps/index.php sourced from APP_VER 2026-10-01
+- Update file header last edit timestamps on modified files to match modification history 2026-10-01
 - Implement file-based HTML caching for region options in index.php and update tests/IndexGetParameterTest.php 2026-09-30
 - Extract get_csrf_token_html() helper in apps/inc/session.php and secure CSRF token output in apps/index.php and apps/login.php 2026-09-30
 - Bump undici dependency from 7.29.0 to 7.30.0 in package-lock.json 2026-09-30
