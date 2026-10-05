@@ -81,6 +81,20 @@ link demo bisa dilihat [di sini](https://wilayah.cahyadsn.com/apps/) (data sesua
 - Kode dan Data Wilayah Administrasi Pemerintahan (Permendagri No.56-2015) www.kemendagri.go.id/pages/data-wilayah (Berita Negara Republik Indonesia Tahun 2015 Nomor 1045, Ditetapkan pada tanggal 29 Juni 2015)
 
 ## New Update
+- Interactive Island Panel (Daftar Pulau) on Right Sidebar 2026-10-05
+    - added interactive right sidebar panel (`#islandPanel`) displaying island codes and names for the active province or city/regency
+    - added island counter badge (`#islandCount`), active location title (`#islandLocationName`), real-time search input (`#islandSearch`), and scrollable island list (`#islandList`)
+    - integrated map interaction: clicking an island item centers map (`map.flyTo`), creates marker with popup details (name, code, status, area), and updates coordinates strip
+    - added panel toggle button (`#islandToggle`) with collapsible state persistence in `localStorage`
+    - configured `$tbl_pulau = "wilayah_pulau";` in `apps/inc/db.php`
+    - added `getIslandsForCode($db, $tbl_pulau, $kode)` in `apps/inc/geo_helpers.php` and integrated island data in `apps/inc/geo_ajax.php`
+    - added island styling in `apps/css/styles.css` and `apps/css/styles.min.css` for light/dark themes and mobile views
+    - added PHPUnit test coverage in `tests/inc/GeoHelpersTest.php` and `tests/apps/index_php_test.php`
+    - synchronized file header `last edit` timestamps on modified files
+- Environment variable configuration (.env) and dynamic versioning 2026-10-01
+    - added `.env` support for database credentials and application version (`APP_VER`)
+    - replaced hardcoded database credentials in `apps/inc/db.php` with dynamic environment variable loader
+    - dynamically rendered application version from `APP_VER` (`3.1.0`)
 - CSRF token helper extraction and index.php HTML query caching 2026-09-30
     - extracted `get_csrf_token_html()` helper in `apps/inc/session.php` to encapsulate retrieval and escaping of CSRF token
     - secured CSRF meta tag output in `apps/index.php` and simplified form token rendering in `apps/login.php`

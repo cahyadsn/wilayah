@@ -1,8 +1,9 @@
 /*
 MIT License
-copyright (c) 2017-2024 by cahya dsn; cahyadsn@gmail.com
+copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================
-wilayah.js - theme switcher and utility interactions
+filename  : wilayah.js - theme switcher and utility interactions
+last edit : 2026-10-05 14:34:45
 ================================================================================*/
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -87,6 +88,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
         sidebarToggle.addEventListener('click', function() {
             applySidebarState(!layoutGrid.classList.contains('is-sidebar-collapsed'));
+        });
+    }
+
+    var islandPanel = document.getElementById('islandPanel');
+    var islandToggle = document.getElementById('islandToggle');
+    var islandStorageKey = 'wilayahIslandPanelCollapsed';
+
+    function applyIslandPanelState(collapsed) {
+        if (!islandPanel || !islandToggle) return;
+
+        islandPanel.classList.toggle('is-collapsed', collapsed);
+        var label = collapsed ? 'Buka panel pulau' : 'Tutup panel pulau';
+        islandToggle.setAttribute('aria-label', label);
+        islandToggle.setAttribute('title', label);
+        islandToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+
+        try {
+            localStorage.setItem(islandStorageKey, collapsed ? '1' : '0');
+        } catch (e) {}
+
+        syncMapSize();
+    }
+
+    if (islandToggle && islandPanel) {
+        var savedIslandCollapsed = false;
+        try {
+            savedIslandCollapsed = localStorage.getItem(islandStorageKey) === '1';
+        } catch (e) {}
+
+        applyIslandPanelState(savedIslandCollapsed);
+
+        islandToggle.addEventListener('click', function() {
+            applyIslandPanelState(!islandPanel.classList.contains('is-collapsed'));
         });
     }
 

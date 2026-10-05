@@ -178,10 +178,29 @@ node tools/check_sql_wilayah_pulau.js
 ```
 
 ## TODO
-- penambahan data kode pulau di web demo
+- [x] penambahan data kode pulau di web demo (ditambahkan panel daftar pulau di `apps/index.php`)
 
 ## CHANGE LOG
-- [2026-10-01] 🆕
+- [2026-10-05] 🆕
+  - **Daftar Pulau di Panel Kanan Web Apps (`apps/index.php`)**:
+    - Menambahkan panel samping kanan interaktif (`#islandPanel`) yang menampilkan daftar data kode dan nama pulau sesuai lokasi aktif provinsi (level 1) atau kabupaten/kota (level 2).
+    - Menambahkan badge jumlah pulau (`#islandCount`), badge nama lokasi aktif (`#islandLocationName`), kotak pencarian instan (*real-time filter* by name & code), dan daftar pulau scrollable yang responsif.
+    - Integrasi peta: Mengklik salah satu pulau di daftar akan memusatkan peta (*flyTo*) ke titik koordinat pulau, memunculkan penanda (*marker*) beserta popup informasi nama, kode, status, dan luas pulau, serta memperbarui info strip koordinat.
+    - Menambahkan tombol ciutkan/bentangkan panel pulau (`#islandToggle`) dengan persistensi status di `localStorage` (`wilayahIslandPanelCollapsed`).
+  - **Backend & Database**:
+    - Menambahkan konfigurasi `$tbl_pulau = "wilayah_pulau";` pada [`apps/inc/db.php`](apps/inc/db.php).
+    - Menambahkan fungsi pembantu `getIslandsForCode($db, $tbl_pulau, $kode)` pada [`apps/inc/geo_helpers.php`](apps/inc/geo_helpers.php) untuk query data pulau berdasarkan prefix kode wilayah (2 digit provinsi atau 5 karakter kabupaten/kota).
+    - Mengintegrasikan data pulau ke dalam respons JSON pada endpoint AJAX [`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php).
+  - **Frontend Script & Styling**:
+    - Menambahkan fungsi penanganan data pulau (`updateIslandPanel`, `renderIslandItems`, `filterIslands`, `onSelectIsland`, `resetIslandPanel`) pada [`apps/inc/geo_js.php`](apps/inc/geo_js.php).
+    - Menambahkan logika interaksi dan toggle panel pulau pada [`apps/js/wilayah.js`](apps/js/wilayah.js) dan [`apps/js/wilayah.min.js`](apps/js/wilayah.min.js).
+    - Menambahkan stylesheet komponen panel pulau dengan dukungan penuh tema *dark* dan *light* serta layout responsif ponsel pada [`apps/css/styles.css`](apps/css/styles.css) dan [`apps/css/styles.min.css`](apps/css/styles.min.css).
+  - **Pengujian Unit**:
+    - Menambahkan test suite `getIslandsForCode` pada [`tests/inc/GeoHelpersTest.php`](tests/inc/GeoHelpersTest.php).
+    - Menambahkan asersi elemen DOM panel pulau dan konfigurasi `$tbl_pulau` pada [`tests/apps/index_php_test.php`](tests/apps/index_php_test.php).
+  - **Metadata Berkas**:
+    - Memperbarui timestamp `last edit` pada seluruh berkas yang dimodifikasi.
+- [2026-10-01]
   - Add `.env` file support in `apps/` for database credentials and application version (`APP_VER`).
   - Remove hardcoded default database credentials in `apps/inc/db.php` and load them from `.env` or environment variables.
   - Dynamically display application version in `apps/index.php` sourced from `APP_VER` (`3.1.0`).

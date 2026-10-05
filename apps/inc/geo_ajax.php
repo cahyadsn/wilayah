@@ -4,7 +4,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_ajax.php
 purpose  :
 create   : 170912
-last edit: 2026-09-23 08:38:33
+last edit: 2026-10-05 14:34:45
 author   : cahya dsn
 This program is free software; you can redistribute it and/or modify it under the
 terms of the MIT License.
@@ -101,6 +101,11 @@ if (!empty($_GET['id']) && is_string($_GET['id'])){
 
         $r['opt']=$opt;
         $r['n']=$n;
+
+        if ($n == 2 || $n == 5) {
+            $tbl_pulau_name = isset($tbl_pulau) ? $tbl_pulau : 'wilayah_pulau';
+            $r['pulau'] = getIslandsForCode($db, $tbl_pulau_name, $_GET['id']);
+        }
       }
       $should_cache = true;
   }

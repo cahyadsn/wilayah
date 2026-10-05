@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit   : 2026-10-01 14:31:37
+last edit   : 2026-10-05 14:34:45
 author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps
@@ -173,6 +173,44 @@ header('Pragma: cache');
             <div class="map-overlay-item"><span class="map-overlay-label">Kode</span><span class="map-overlay-value" id="n_kode">—</span></div>
             <div class="map-overlay-item"><span class="map-overlay-label">Lat</span><span class="map-overlay-value" id="n_lat">—</span></div>
             <div class="map-overlay-item"><span class="map-overlay-label">Lng</span><span class="map-overlay-value" id="n_lng">—</span></div>
+          </div>
+        </div>
+
+        <div class="island-panel" id="islandPanel">
+          <div class="card">
+            <div class="card-header">
+              <div class="island-header-row">
+                <div>
+                  <div class="card-title">
+                    Daftar Pulau
+                    <small id="islandCount">0 pulau</small>
+                  </div>
+                </div>
+                <button type="button" class="island-toggle" id="islandToggle" aria-label="Tutup panel pulau" title="Tutup panel pulau" aria-expanded="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9.5 6.5L15 12l-5.5 5.5"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="island-location-badge" id="islandLocationBadge">
+                <span class="island-loc-icon" aria-hidden="true">🏝️</span>
+                <span class="island-loc-text" id="islandLocationName">Pilih Provinsi / Kab / Kota</span>
+              </div>
+
+              <div class="island-search-wrapper" id="islandSearchWrapper" style="display:none;">
+                <input type="text" id="islandSearch" class="island-search-input" placeholder="Cari nama atau kode pulau..." aria-label="Cari pulau" oninput="filterIslands(this.value)" />
+              </div>
+
+              <div class="island-list-wrapper">
+                <div class="island-empty-state" id="islandEmptyState">
+                  Pilih provinsi atau kabupaten/kota untuk melihat daftar pulau
+                </div>
+                <div class="island-list" id="islandList" style="display:none;" role="list"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

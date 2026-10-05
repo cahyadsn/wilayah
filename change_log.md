@@ -1,6 +1,14 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Add interactive right sidebar island panel (Daftar Pulau) displaying island codes and names for active province/city with map centering and marker popups in apps/index.php 2026-10-05
+- Add real-time client-side island search and filter by island name and code in apps/inc/geo_js.php 2026-10-05
+- Implement collapsible right sidebar island panel with localStorage persistence (wilayahIslandPanelCollapsed) in apps/js/wilayah.js and apps/js/wilayah.min.js 2026-10-05
+- Configure $tbl_pulau = "wilayah_pulau" in apps/inc/db.php and implement getIslandsForCode() helper in apps/inc/geo_helpers.php 2026-10-05
+- Integrate island data retrieval in apps/inc/geo_ajax.php returning pulau data on province (level 1) and city/regency (level 2) queries 2026-10-05
+- Add island panel CSS styles with light/dark theme support and responsive mobile layout in apps/css/styles.css and apps/css/styles.min.css 2026-10-05
+- Add unit tests for getIslandsForCode in tests/inc/GeoHelpersTest.php and island panel DOM elements in tests/apps/index_php_test.php 2026-10-05
+- Update file header last edit timestamps on modified files to match modification history 2026-10-05
 - Add .env file support in apps/ for database credentials and application version (APP_VER=3.1.0) 2026-10-01
 - Remove hardcoded default database credentials in apps/inc/db.php and load from .env or environment variables 2026-10-01
 - Dynamically display application version in apps/index.php sourced from APP_VER 2026-10-01

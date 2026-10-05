@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : db.php
 purpose  : configuration of database connection
 create   : 170912
-last edit: 2026-10-01 14:31:37
+last edit: 2026-10-05 14:34:45
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -53,6 +53,7 @@ $dbpass = getenv('DB_PASS') !== false ? getenv('DB_PASS') : '';
 $dbname = getenv('DB_NAME') !== false ? getenv('DB_NAME') : 'wilayah';
 $db_dsn = "mysql:dbname=$dbname;host=$dbhost";
 $tbl_wilayah="wilayah_level_1_2";
+$tbl_pulau="wilayah_pulau";
 try {
   $db = new PDO($db_dsn, $dbuser, $dbpass);
 } catch (PDOException $e) {

@@ -947,6 +947,262 @@ body.theme-light .basemap-option.is-active {
 
 /* ============================================================
    RESPONSIVE
+/* ============================================================
+   ISLAND PANEL (RIGHT SIDEBAR)
+   ============================================================ */
+.island-panel {
+  min-width: 0;
+  position: absolute;
+  top: 56px;
+  right: 12px;
+  z-index: 500;
+  width: min(340px, calc(100vw - 48px));
+  max-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.2s ease, transform 0.24s ease, width 0.24s ease;
+}
+
+.island-panel .card {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 120px);
+  overflow: hidden;
+}
+
+.island-panel .card-header {
+  padding: 16px 18px 12px;
+  flex-shrink: 0;
+}
+
+.island-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.island-toggle {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0;
+  line-height: 0;
+  transition: all 0.2s ease;
+}
+
+.island-toggle:hover {
+  border-color: var(--border-strong);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  transform: translateY(-1px);
+}
+
+.island-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.island-toggle svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: translateX(-0.5px);
+  transition: transform 0.2s ease;
+}
+
+.island-panel.is-collapsed {
+  width: 56px;
+}
+
+.island-panel.is-collapsed .card {
+  overflow: visible;
+}
+
+.island-panel.is-collapsed .card-header {
+  padding: 10px;
+  justify-content: center;
+  border-bottom: 0;
+}
+
+.island-panel.is-collapsed .card-body,
+.island-panel.is-collapsed .card-title {
+  display: none;
+}
+
+.island-panel.is-collapsed .island-toggle svg {
+  transform: rotate(180deg) translateX(-0.5px);
+}
+
+.island-panel .card-body {
+  padding: 14px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.island-location-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  flex-shrink: 0;
+  word-break: break-word;
+}
+
+.island-loc-icon {
+  font-size: 14px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.island-loc-text {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.island-search-wrapper {
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.island-search-input {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 12px;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.island-search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.island-list-wrapper {
+  flex: 1;
+  min-height: 60px;
+  max-height: calc(100vh - 320px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-right: 2px;
+}
+
+.island-empty-state {
+  padding: 24px 12px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface-soft) 40%, transparent);
+}
+
+.island-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.island-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  transition: all 0.18s ease;
+  cursor: pointer;
+  text-align: left;
+}
+
+.island-item:hover {
+  background: var(--surface-strong);
+  border-color: var(--primary);
+  transform: translateX(-2px);
+}
+
+.island-item.is-active {
+  background: color-mix(in srgb, var(--primary) 15%, var(--surface-strong));
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+.island-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.island-code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.02em;
+}
+
+.island-status-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--primary) 14%, transparent);
+  color: var(--text-secondary);
+  border: 1px solid color-mix(in srgb, var(--primary) 24%, transparent);
+}
+
+.island-name {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.island-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ============================================================
+   RESPONSIVE / MEDIA QUERIES
    ============================================================ */
 @media (max-width: 768px) {
   .app-main { padding: 0; }
@@ -971,6 +1227,25 @@ body.theme-light .basemap-option.is-active {
   .card-body { padding: 12px 16px 16px; }
   .card-header { padding: 16px; }
   .form-group { min-width: 100%; }
+  .island-panel {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+    margin-top: 10px;
+    max-height: none;
+  }
+  .island-panel.is-collapsed {
+    width: 100%;
+  }
+  .island-panel.is-collapsed .card-title,
+  .island-panel.is-collapsed .card-title small,
+  .island-panel.is-collapsed .card-body {
+    display: block;
+  }
+  .island-panel .card-header { padding: 14px 16px 10px; }
+  .island-panel .card-body { padding: 12px 16px 16px; }
+  .island-list-wrapper { max-height: 280px; }
   #map-canvas { height: calc(100vh - 52px); min-height: calc(100vh - 52px); }
   .navbar { padding: 0 12px; }
   .navbar-meta { gap: 6px; }
@@ -1023,3 +1298,4 @@ body.theme-light .basemap-option.is-active {
     transition-duration: 0.01ms !important;
   }
 }
+

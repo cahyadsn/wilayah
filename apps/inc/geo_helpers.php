@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_helpers.php
 purpose  : Shared geometric helper functions
 create   : 2026-06-17
-last edit: 2026-09-11 09:59:31
+last edit: 2026-10-05 14:34:45
 author   : cahya dsn
 ================================================================================
 MIT License
@@ -45,3 +45,32 @@ function getProvinceOptionsHTML($db, $tbl_wilayah, $cache_file) {
     file_put_contents($cache_file, $html, LOCK_EX);
     return $html;
 }
+
+function getIslandsForCode($db, $tbl_pulau, $kode) {
+    if (empty($kode) || !is_string($kode)) {
+        return [];
+    }
+    $n = strlen($kode);
+    if ($n !== 2 && $n !== 5) {
+        return [];
+    }
+    try {
+        $query = $db->prepare("SELECT kode, nama, lat, lng, status, luas FROM {$tbl_pulau} WHERE kode LIKE CONCAT(:id, '.%') ORDER BY nama ASC");
+        $query->execute([':id' => addcslashes($kode, '%_\\')]);
+        $islands = [];
+        while ($p = $query->fetchObject()) {
+            $islands[] = [
+                'kode' => (string)$p->kode,
+                'nama' => (string)$p->nama,
+                'lat' => ($p->lat !== null && $p->lat !== '') ? (float)$p->lat : null,
+                'lng' => ($p->lng !== null && $p->lng !== '') ? (float)$p->lng : null,
+                'status' => $p->status !== null ? (string)$p->status : '',
+                'luas' => ($p->luas !== null && $p->luas !== '') ? (float)$p->luas : null
+            ];
+        }
+        return $islands;
+    } catch (\Exception $e) {
+        return [];
+    }
+}
+

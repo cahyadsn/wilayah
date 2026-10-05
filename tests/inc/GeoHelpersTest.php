@@ -1,4 +1,11 @@
 <?php
+/*
+BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
+================================================================================
+filename  : GeoHelpersTest.php
+purpose   : PHPUnit tests for apps/inc/geo_helpers.php
+last edit : 2026-10-05 14:34:45
+================================================================================*/
 
 use PHPUnit\Framework\TestCase;
 
@@ -92,5 +99,47 @@ class GeoHelpersTest extends TestCase {
         $delta = 0.01;
         $expected = fallbackBox($lat, $lng, $delta);
         $this->assertEquals($expected, fallbackPathForCode($lat, $lng, $kode));
+    }
+
+    public function testGetIslandsForCodeInvalidInputs() {
+        $mockDb = $this->createMock(\PDO::class);
+        $this->assertEquals([], getIslandsForCode($mockDb, 'wilayah_pulau', ''));
+        $this->assertEquals([], getIslandsForCode($mockDb, 'wilayah_pulau', '11.01.01')); // 8 chars - only 2 and 5 allowed
+    }
+
+    public function testGetIslandsForCodeValidProvince() {
+        $mockStmt = $this->createMock(\PDOStatement::class);
+        $mockStmt->expects($this->once())
+                 ->method('execute')
+                 ->with([':id' => '11'])
+                 ->willReturn(true);
+        $mockStmt->expects($this->exactly(2))
+                 ->method('fetchObject')
+                 ->willReturnOnConsecutiveCalls(
+                     (object)[
+                         'kode' => '11.01.40001',
+                         'nama' => 'Pulau Batukapal',
+                         'lat' => '-3.3176',
+                         'lng' => '97.1283',
+                         'status' => 'TBP',
+                         'luas' => 0.0006
+                     ],
+                     false
+                 );
+
+        $mockDb = $this->createMock(\PDO::class);
+        $mockDb->expects($this->once())
+               ->method('prepare')
+               ->with("SELECT kode, nama, lat, lng, status, luas FROM wilayah_pulau WHERE kode LIKE CONCAT(:id, '.%') ORDER BY nama ASC")
+               ->willReturn($mockStmt);
+
+        $result = getIslandsForCode($mockDb, 'wilayah_pulau', '11');
+        $this->assertCount(1, $result);
+        $this->assertEquals('11.01.40001', $result[0]['kode']);
+        $this->assertEquals('Pulau Batukapal', $result[0]['nama']);
+        $this->assertEquals(-3.3176, $result[0]['lat']);
+        $this->assertEquals(97.1283, $result[0]['lng']);
+        $this->assertEquals('TBP', $result[0]['status']);
+        $this->assertEquals(0.0006, $result[0]['luas']);
     }
 }

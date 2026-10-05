@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_js.php
 purpose  : JavaScript for AJAX cascade, map, and counters
 create   : 170912
-last edit: 2026-09-03 08:27:45
+last edit: 2026-10-05 14:34:45
 author   : cahya dsn
 ================================================================================
 MIT License
@@ -25,6 +25,196 @@ header('Pragma: cache');
 
 var ids;
 var wil = new Array('prov', 'kota', 'kec', 'kel');
+var activeIslands = [];
+var islandMarker = null;
+
+function resetIslandPanel() {
+    activeIslands = [];
+    var countEl = document.getElementById('islandCount');
+    var locNameEl = document.getElementById('islandLocationName');
+    var searchWrap = document.getElementById('islandSearchWrapper');
+    var emptyEl = document.getElementById('islandEmptyState');
+    var listEl = document.getElementById('islandList');
+    var searchInput = document.getElementById('islandSearch');
+
+    if (countEl) countEl.textContent = '0 pulau';
+    if (locNameEl) locNameEl.textContent = 'Pilih Provinsi / Kab / Kota';
+    if (searchWrap) searchWrap.style.display = 'none';
+    if (searchInput) searchInput.value = '';
+    if (listEl) {
+        listEl.innerHTML = '';
+        listEl.style.display = 'none';
+    }
+    if (emptyEl) {
+        emptyEl.textContent = 'Pilih provinsi atau kabupaten/kota untuk melihat daftar pulau';
+        emptyEl.style.display = 'block';
+    }
+    if (islandMarker && map) {
+        map.removeLayer(islandMarker);
+        islandMarker = null;
+    }
+}
+
+function updateIslandPanel(pulauList, locationName) {
+    activeIslands = Array.isArray(pulauList) ? pulauList : [];
+    var countEl = document.getElementById('islandCount');
+    var locNameEl = document.getElementById('islandLocationName');
+    var searchWrap = document.getElementById('islandSearchWrapper');
+    var emptyEl = document.getElementById('islandEmptyState');
+    var listEl = document.getElementById('islandList');
+    var searchInput = document.getElementById('islandSearch');
+
+    var count = activeIslands.length;
+    if (countEl) countEl.textContent = count + ' pulau';
+    if (locNameEl) locNameEl.textContent = locationName || (count > 0 ? 'Wilayah Aktif' : 'Pilih Provinsi / Kab / Kota');
+    if (searchInput) searchInput.value = '';
+
+    if (islandMarker && map) {
+        map.removeLayer(islandMarker);
+        islandMarker = null;
+    }
+
+    if (count === 0) {
+        if (searchWrap) searchWrap.style.display = 'none';
+        if (listEl) {
+            listEl.innerHTML = '';
+            listEl.style.display = 'none';
+        }
+        if (emptyEl) {
+            emptyEl.textContent = 'Tidak ada data pulau untuk wilayah ini';
+            emptyEl.style.display = 'block';
+        }
+        return;
+    }
+
+    if (searchWrap) searchWrap.style.display = 'block';
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (listEl) {
+        listEl.style.display = 'flex';
+        renderIslandItems(activeIslands);
+    }
+}
+
+function renderIslandItems(items) {
+    var listEl = document.getElementById('islandList');
+    var emptyEl = document.getElementById('islandEmptyState');
+    if (!listEl) return;
+
+    listEl.innerHTML = '';
+
+    if (!items || items.length === 0) {
+        if (emptyEl) {
+            emptyEl.textContent = 'Tidak ada pulau yang cocok dengan pencarian';
+            emptyEl.style.display = 'block';
+        }
+        listEl.style.display = 'none';
+        return;
+    }
+
+    if (emptyEl) emptyEl.style.display = 'none';
+    listEl.style.display = 'flex';
+
+    var fragment = document.createDocumentFragment();
+    items.forEach(function(item) {
+        var div = document.createElement('div');
+        div.className = 'island-item';
+        div.setAttribute('role', 'button');
+        div.setAttribute('tabindex', '0');
+
+        var header = document.createElement('div');
+        header.className = 'island-item-header';
+
+        var codeSpan = document.createElement('span');
+        codeSpan.className = 'island-code';
+        codeSpan.textContent = item.kode || '';
+        header.appendChild(codeSpan);
+
+        if (item.status) {
+            var statusSpan = document.createElement('span');
+            statusSpan.className = 'island-status-tag';
+            statusSpan.textContent = item.status;
+            header.appendChild(statusSpan);
+        }
+
+        var nameDiv = document.createElement('div');
+        nameDiv.className = 'island-name';
+        nameDiv.textContent = item.nama || '';
+
+        div.appendChild(header);
+        div.appendChild(nameDiv);
+
+        if (item.luas !== null && item.luas !== undefined) {
+            var metaDiv = document.createElement('div');
+            metaDiv.className = 'island-meta';
+            metaDiv.textContent = 'Luas: ' + item.luas + ' km²';
+            div.appendChild(metaDiv);
+        }
+
+        div.addEventListener('click', function() {
+            onSelectIsland(item, div);
+        });
+
+        div.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onSelectIsland(item, div);
+            }
+        });
+
+        fragment.appendChild(div);
+    });
+
+    listEl.appendChild(fragment);
+}
+
+function onSelectIsland(item, element) {
+    var activeItems = document.querySelectorAll('.island-item.is-active');
+    activeItems.forEach(function(el) { el.classList.remove('is-active'); });
+    if (element) element.classList.add('is-active');
+
+    if (item.kode) {
+        var nKode = document.getElementById('n_kode');
+        if (nKode) nKode.textContent = item.kode;
+    }
+
+    if (item.lat !== null && item.lat !== undefined && item.lng !== null && item.lng !== undefined) {
+        var lat = parseFloat(item.lat);
+        var lng = parseFloat(item.lng);
+        if (!isNaN(lat) && !isNaN(lng)) {
+            var nLat = document.getElementById('n_lat');
+            var nLng = document.getElementById('n_lng');
+            if (nLat) nLat.textContent = lat.toFixed(5);
+            if (nLng) nLng.textContent = lng.toFixed(5);
+
+            if (map) {
+                if (islandMarker) {
+                    map.removeLayer(islandMarker);
+                }
+                var popupHtml = '<b>' + (item.nama || '') + '</b><br>' +
+                    'Kode: <b>' + (item.kode || '') + '</b>' +
+                    (item.status ? '<br>Status: <b>' + item.status + '</b>' : '') +
+                    (item.luas !== null && item.luas !== undefined ? '<br>Luas: <b>' + item.luas + '</b> km<sup>2</sup>' : '');
+
+                islandMarker = L.marker([lat, lng]).bindPopup(popupHtml).addTo(map);
+                islandMarker.openPopup();
+                map.flyTo([lat, lng], 13);
+            }
+        }
+    }
+}
+
+function filterIslands(query) {
+    if (!query) {
+        renderIslandItems(activeIslands);
+        return;
+    }
+    var q = query.toLowerCase().trim();
+    var filtered = activeIslands.filter(function(item) {
+        return (item.nama && item.nama.toLowerCase().indexOf(q) !== -1) ||
+               (item.kode && item.kode.toLowerCase().indexOf(q) !== -1);
+    });
+    renderIslandItems(filtered);
+}
 
 function setSafeSelectOptions(selectElement, optionsHtml) {
     selectElement.innerHTML = '';
@@ -49,6 +239,23 @@ function setSafeSelectOptions(selectElement, optionsHtml) {
 var my_ajax = do_ajax();
 
 function ajax(id) {
+    if (!id) {
+        document.getElementById("kab_box").style.display = 'none';
+        document.getElementById("kec_box").style.display = 'none';
+        document.getElementById("kel_box").style.display = 'none';
+        document.getElementById("kota").innerHTML = "<option value=''>Pilih Kota</option>";
+        document.getElementById("kec").innerHTML = "<option value=''>Pilih Kecamatan</option>";
+        document.getElementById("kel").innerHTML = "<option value=''>Pilih Desa</option>";
+        document.getElementById('n_kode').textContent = '—';
+        document.getElementById('n_lat').textContent = '—';
+        document.getElementById('n_lng').textContent = '—';
+        if (polyLayer && map) {
+            map.removeLayer(polyLayer);
+            polyLayer = null;
+        }
+        resetIslandPanel();
+        return;
+    }
     document.getElementById('preload').classList.add('is-visible');
     ids = id;
     var url = "inc/geo_ajax.php?id=" + id + "&sid=" + Math.random();
@@ -104,6 +311,9 @@ function loadChildren(parentKode, targetSelectId, targetBoxId) {
             var box = document.getElementById(targetBoxId);
             if (select && result.opt) setSafeSelectOptions(select, result.opt);
             if (box) box.style.display = 'block';
+            if (result.pulau !== undefined) {
+                updateIslandPanel(result.pulau, result.data ? result.data.nama : '');
+            }
             return result;
         });
 }
@@ -486,6 +696,11 @@ function stateChanged() {
             updateMap(d.data);
         }
 
+        // Update island panel
+        if (d.pulau !== undefined) {
+            updateIslandPanel(d.pulau, d.data ? d.data.nama : '');
+        }
+
         document.getElementById('preload').classList.remove('is-visible');
     }
 }
@@ -554,4 +769,7 @@ function updateMap(data) {
 document.addEventListener('DOMContentLoaded', function() {
     initMap();
     window.refreshMapThemeAwareness = refreshMapThemeAwareness;
+    window.filterIslands = filterIslands;
+    window.updateIslandPanel = updateIslandPanel;
+    window.resetIslandPanel = resetIslandPanel;
 });

@@ -5,6 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename  : index_php_test.php
 purpose   : PHPUnit tests for apps/index.php
 created   : 2026-05-26
+last edit : 2026-10-05 14:34:45
 author    : Claude
 ================================================================================*/
 
@@ -365,5 +366,40 @@ class IndexPhpTest extends TestCase
 
         $this->assertStringContainsString('fonts.googleapis.com', $content,
             'Google Fonts should be included');
+    }
+
+    /**
+     * Test that island table name is defined
+     */
+    public function testUsesCorrectPulauTableName(): void
+    {
+        $dbConfig = $this->extractDbConfig();
+
+        $this->assertArrayHasKey('tbl_pulau', $dbConfig, 'Pulau table name must be defined');
+        $this->assertEquals('wilayah_pulau', $dbConfig['tbl_pulau'],
+            'Application should use wilayah_pulau table for island data');
+    }
+
+    /**
+     * Test that island panel HTML elements exist
+     */
+    public function testIslandPanelElements(): void
+    {
+        $content = file_get_contents(__DIR__ . '/../../apps/index.php');
+
+        $requiredElements = [
+            'id="islandPanel"' => 'Island panel container',
+            'id="islandCount"' => 'Island count indicator',
+            'id="islandToggle"' => 'Island toggle button',
+            'id="islandLocationName"' => 'Island location name',
+            'id="islandSearch"' => 'Island search input',
+            'id="islandList"' => 'Island list container',
+            'id="islandEmptyState"' => 'Island empty state'
+        ];
+
+        foreach ($requiredElements as $needle => $description) {
+            $this->assertStringContainsString($needle, $content,
+                "HTML must include {$description}");
+        }
     }
 }
