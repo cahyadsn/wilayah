@@ -23,4 +23,5 @@ composer.lock
 !/cache/.gitkeep
 /apps/cache/*
 !/apps/cache/.gitkeep
+/tests/apps/cache/*
 node_modules/

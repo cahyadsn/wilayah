@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit   : 2026-10-05 14:34:45
+last edit   : 2026-10-05 15:32:00
 author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps
@@ -21,7 +21,7 @@ $theme = $_SESSION['theme'] ?? $_GET['theme'] ?? 'light';
 define("_AUTHOR","cahyadsn");
 require_once 'inc/db.php';
 require_once 'inc/geo_helpers.php';
-$version=getenv('APP_VER') !== false ? getenv('APP_VER') : '3.1.0';
+$version=getenv('APP_VER') !== false ? getenv('APP_VER') : '3.2.0';
 header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + 86400));
 header('Cache-Control: public, max-age=86400');
 header('Pragma: cache');
