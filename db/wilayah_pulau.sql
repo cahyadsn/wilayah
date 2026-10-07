@@ -5,7 +5,7 @@ filename : db/wilayah_pulau.sql
 purpose  :
 note     : Data Kode Wilayah sesuai Kepmendagri No 300.2.2-2430 Tahun 2025
 create   : 2025-05-25 14:47:20
-last edit: 2026-08-13 07:44:55
+last edit: 2026-10-07 16:16:43
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -4712,15 +4712,15 @@ VALUES
 ('51.05.40019','Pulau Batutemeling','8.7728','115.4933','TBP',NULL,''),
 ('51.05.40020','Pulau Nusapenida','8.7369','115.5378','BP',195.3051,'(PPKT)'),
 ('51.05.40021','Pulau Sebihah','8.8158','115.5944','',0.0035,''),
-('51.07.40001','Pulau Biaha','8.5319','115.585','TBP'),
-('51.07.40002','Pulau Kuan','8.5092','115.6142','TBP'),
-('51.07.40003','Pulau Maimpang Selatan','8.5261','115.5756','TBP'),
-('51.07.40004','Pulau Maimpang Tengah','8.5253','115.5767','TBP'),
-('51.07.40005','Pulau Maimpang Utara','8.5253','115.5772','TBP'),
-('51.07.40006','Pulau Selang','8.4003','115.7117','TBP'),
-('51.08.40001','Gili Putih','8.1219','114.6089',''),
-('51.08.40002','Pulau Menjangan','8.0956','114.5153','TBP'),
-('51.71.40001','Pulau Serangan','8.7239','115.2322','BP');
+('51.07.40001','Pulau Biaha','8.5319','115.585','TBP',NULL,''),
+('51.07.40002','Pulau Kuan','8.5092','115.6142','TBP',NULL,''),
+('51.07.40003','Pulau Maimpang Selatan','8.5261','115.5756','TBP',NULL,''),
+('51.07.40004','Pulau Maimpang Tengah','8.5253','115.5767','TBP',NULL,''),
+('51.07.40005','Pulau Maimpang Utara','8.5253','115.5772','TBP',NULL,''),
+('51.07.40006','Pulau Selang','8.4003','115.7117','TBP',NULL,''),
+('51.08.40001','Gili Putih','8.1219','114.6089','',NULL,''),
+('51.08.40002','Pulau Menjangan','8.0956','114.5153','TBP',NULL,''),
+('51.71.40001','Pulau Serangan','8.7239','115.2322','BP',NULL,'');
 
 -- Provinsi NUSA_TENGGARA_BARAT
 INSERT INTO wilayah_pulau(kode,nama,lat,lng,status,luas,notes)
@@ -6947,7 +6947,7 @@ VALUES
 ('71.05.40001','Pulau Benteng','-1.3131','124.5128','TBP',0.0077,'Alokasi pulau semula berada di Kabupaten Minahasa Tenggara'),
 ('71.05.40002','Pulau Burung','-1.3089','124.5120','TBP',NULL,'Alokasi pulau semula berada di Kabupaten Minahasa Tenggara'),
 ('71.05.40003','Pulau Cepatu','-1.3144','124.5126','TBP',0.0022,'Alokasi pulau semula berada di Kabupaten Minahasa Tenggara'),
-('71.05.40004','Pulau Tatapaan','-1.3003','124.5075','',Alokasi pulau semula berada di Kabupaten Minahasa Tenggara Perubahan nama semula Pulau Tatapan,''),
+('71.05.40004','Pulau Tatapaan','-1.3003','124.5075','',NULL,'Alokasi pulau semula berada di Kabupaten Minahasa Tenggara Perubahan nama semula Pulau Tatapan'),
 ('71.06.40001','Pulau Arengkambing','-1.7687','125.1759','TBP',0.0010,''),
 ('71.06.40002','Pulau Bangka','-1.7930','125.1504','BP',43.1389,''),
 ('71.06.40003','Pulau Batubesar','-1.8049','125.0504','TBP',NULL,''),

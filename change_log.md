@@ -1,6 +1,7 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Verify and validate SQL syntax integrity and unique island codes in db/wilayah_pulau.sql compliant with Kepmendagri No. 300.2.2-2430 Tahun 2025 and update README documentation 2026-10-07
 - Add interactive right sidebar island panel (Daftar Pulau) displaying island codes and names for active province/city with map centering and marker popups in apps/index.php 2026-10-05
 - Add real-time client-side island search and filter by island name and code in apps/inc/geo_js.php 2026-10-05
 - Implement collapsible right sidebar island panel with localStorage persistence (wilayahIslandPanelCollapsed) in apps/js/wilayah.js and apps/js/wilayah.min.js 2026-10-05

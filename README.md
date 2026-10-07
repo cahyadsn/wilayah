@@ -27,7 +27,7 @@ Kode dan Data Wilayah Pemerintahan Indonesia dalam database :
 - **db/archive/wilayah_level_1_2_postgresql.sql** sesuai Kepmendagri No. 100.1.1-6117 Tahun 2022 untuk data provinsi dan kab/kota dengan koordinat,elevation,timezone,luas, jumlah penduduk dan boundaries (postgresql)
 
 Kode dan Data Pulau Indonesia dalam database :
-- **db/wilayah_pulau.sql** sesuai Kepmendagri No 300.2.2-2430 Tahun 2025
+- **db/wilayah_pulau.sql** sesuai Kepmendagri No. 300.2.2-2430 Tahun 2025 untuk data pulau Indonesia dilengkapi dengan koordinat (lat, lng), status pulau (BP/TBP), luas, dan catatan
 - **db/archive/pulau_2025.sql** sesuai Kepmendagri No 300.2.2-2138 Tahun 2025
 - **db/archive/pulau_2023.sql** sesuai Kepmendagri No 100.1.1-6117 Tahun 2022
 - **db/archive/pulau_2022.sql** sesuai Permendagri No 58 Tahun 2021 (revised by Kepmendagri No. 050-145 Tahun 2022)
@@ -181,7 +181,11 @@ node tools/check_sql_wilayah_pulau.js
 - [x] penambahan data kode pulau di web demo (ditambahkan panel daftar pulau di `apps/index.php`)
 
 ## CHANGE LOG
-- [2026-10-05] 🆕
+- [2026-10-07] 🆕
+  - **Revisi & Verifikasi Data Pulau (`db/wilayah_pulau.sql`)**:
+    - Memverifikasi dan memvalidasi integritas sintaks SQL serta keunikan kode data pulau (17.374 baris pulau) sesuai Kepmendagri No. 300.2.2-2430 Tahun 2025 menggunakan skrip pemeriksa [`tools/check_sql_wilayah_pulau.js`](tools/check_sql_wilayah_pulau.js).
+    - Memperbarui dokumentasi struktur tabel `wilayah_pulau` (`kode`, `nama`, `lat`, `lng`, `status`, `luas`, `notes`) pada `README.md`.
+- [2026-10-05]
   - **Daftar Pulau di Panel Kanan Web Apps (`apps/index.php`)**:
     - Menambahkan panel samping kanan interaktif (`#islandPanel`) yang menampilkan daftar data kode dan nama pulau sesuai lokasi aktif provinsi (level 1) atau kabupaten/kota (level 2).
     - Menambahkan badge jumlah pulau (`#islandCount`), badge nama lokasi aktif (`#islandLocationName`), kotak pencarian instan (*real-time filter* by name & code), dan daftar pulau scrollable yang responsif.
