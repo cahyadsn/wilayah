@@ -13,7 +13,7 @@ Kode dan Data Wilayah Administrasi Pemerintahan dan Kode Pulau Indonesia sesuai 
 tautan demo web [apps versi 3.2.0](https://wilayah.cahyadsn.com/apps)
 
 ## SCREENSHOT
-[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2026_06_03_14_03_28.png?raw=true 'wilayah apps web demo v3.2.0')](https://wilayah.cahyadsn.com/apps)
+[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/apps_3.2.0_261008.png?raw=true 'wilayah apps web demo v3.2.0')](https://wilayah.cahyadsn.com/apps)
 
 Kode dan Data Wilayah Pemerintahan Indonesia dalam database :
 - **db/wilayah.sql** sesuai dengan Kepmendagri No. 300.2.2-2430 Tahun 2025 
@@ -101,7 +101,7 @@ Database Data dan Kode Wilayah Administrasi Pemerintahan sesuai Kepmendagri No 3
 - Sumber data pulau Gazeter Republik Indonesia (GRI) Tahun 2024 yang diterbitkan oleh Badan Informasi Geospasial (BIG)
 
 > link demo bisa dilihat di sini : https://wilayah.cahyadsn.com/
-[![screenshot](https://github.com/cahyadsn/wilayah_web/blob/main/img/260724092313.png?raw=true 'wilayah web demo v6.10')](https://wilayah.cahyadsn.com/)
+[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/wilayah_6.2.1_261008.png?raw=true 'wilayah web demo v6.2.1')](https://wilayah.cahyadsn.com/)
 
 ## KODEFIKASI DATA WILAYAH
 Kode Wilayah Administrasi Pemerintahan adalah serangkaian angka dan titik yang menunjukkan Kode dan Data Wilayah Administrasi Pemerintahan Indonesia pada setiap daerah/wilayah mulai dari tingkat desa/kelurahan, kecamatan, kota/kabupaten, hingga provinsi yang digunakan untuk mempermudah dan mempercepat pengelolaan wilayah administrasi pemerintahan Republik Indonesia.
@@ -187,10 +187,10 @@ node tools/check_sql_wilayah_pulau.js
     - Memutakhirkan versi aplikasi web menjadi `v3.2.0` pada konfigurasi [`apps/.env`](apps/.env), [`apps/.env.example`](apps/.env.example), dan [`apps/index.php`](apps/index.php).
     - Mengabaikan direktori cache pengujian otomatis (`/tests/apps/cache/*`) pada [`.gitignore`](.gitignore).
   - **Revisi & Sinkronisasi Data Pulau (`db/wilayah_pulau.sql`)**:
-    - Memverifikasi dan memvalidasi integritas sintaks SQL serta format data pulau sesuai Kepmendagri No. 300.2.2-2430 Tahun 2025 dengan pengujian [`tools/check_sql_wilayah_pulau.js`](tools/check_sql_wilayah_pulau.js).
+    - Memverifikasi dan memvalidasi integritas sintaks SQL serta format data pulau sesuai Kepmendagri No. 300.2.2-2430 Tahun 2025 dengan pengujian [`tools/check_sql_wilayah_pulau.js`](tools/check_sql_wilayah_pulau.js) _unpublished_.
 - [2026-10-07]
   - **Revisi & Verifikasi Data Pulau (`db/wilayah_pulau.sql`)**:
-    - Memverifikasi dan memvalidasi integritas sintaks SQL serta keunikan kode data pulau (17.374 baris pulau) sesuai Kepmendagri No. 300.2.2-2430 Tahun 2025 menggunakan skrip pemeriksa [`tools/check_sql_wilayah_pulau.js`](tools/check_sql_wilayah_pulau.js).
+    - Memverifikasi dan memvalidasi integritas sintaks SQL serta keunikan kode data pulau (17.374 baris pulau) sesuai Kepmendagri No. 300.2.2-2430 Tahun 2025 menggunakan skrip pemeriksa [`tools/check_sql_wilayah_pulau.js`](tools/check_sql_wilayah_pulau.js) _unpublished_.
     - Memperbarui dokumentasi struktur tabel `wilayah_pulau` (`kode`, `nama`, `lat`, `lng`, `status`, `luas`, `notes`) pada `README.md`.
 - [2026-10-05]
   - **Daftar Pulau di Panel Kanan Web Apps (`apps/index.php`)**:

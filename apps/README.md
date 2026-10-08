@@ -12,7 +12,7 @@ Aplikasi web visualisasi dan pencarian Kode serta Data Wilayah Administrasi Peme
 Tautan demo web [apps versi 3.2.0](https://wilayah.cahyadsn.com/apps)
 
 ## SCREENSHOT
-[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/2026_06_03_14_03_28.png?raw=true 'wilayah apps web demo v3.2.0')](https://wilayah.cahyadsn.com/apps)
+[![screenshot](https://github.com/cahyadsn/wilayah/blob/master/apps/img/apps_3.2.0_261008.png?raw=true 'wilayah apps web demo v3.2.0')](https://wilayah.cahyadsn.com/apps)
 
 ---
 
