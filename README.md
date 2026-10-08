@@ -181,7 +181,14 @@ node tools/check_sql_wilayah_pulau.js
 - [x] penambahan data kode pulau di web demo (ditambahkan panel daftar pulau di `apps/index.php`)
 
 ## CHANGE LOG
-- [2026-10-07] 🆕
+- [2026-10-08] 🆕
+  - **Panduan Instalasi & Pemutakhiran Web Apps (`apps/` v3.2.0)**:
+    - Menambahkan panduan instalasi komprehensif pada [`apps/README.md`](apps/README.md) yang mencakup prasyarat sistem, langkah pembuatan & impor basis data SQL, konfigurasi variabel lingkungan (`.env`), izin folder cache, serta panduan menjalankan aplikasi via PHP built-in server maupun web server stack (Laragon / XAMPP).
+    - Memutakhirkan versi aplikasi web menjadi `v3.2.0` pada konfigurasi [`apps/.env`](apps/.env), [`apps/.env.example`](apps/.env.example), dan [`apps/index.php`](apps/index.php).
+    - Mengabaikan direktori cache pengujian otomatis (`/tests/apps/cache/*`) pada [`.gitignore`](.gitignore).
+  - **Revisi & Sinkronisasi Data Pulau (`db/wilayah_pulau.sql`)**:
+    - Memverifikasi dan memvalidasi integritas sintaks SQL serta format data pulau sesuai Kepmendagri No. 300.2.2-2430 Tahun 2025 dengan pengujian [`tools/check_sql_wilayah_pulau.js`](tools/check_sql_wilayah_pulau.js).
+- [2026-10-07]
   - **Revisi & Verifikasi Data Pulau (`db/wilayah_pulau.sql`)**:
     - Memverifikasi dan memvalidasi integritas sintaks SQL serta keunikan kode data pulau (17.374 baris pulau) sesuai Kepmendagri No. 300.2.2-2430 Tahun 2025 menggunakan skrip pemeriksa [`tools/check_sql_wilayah_pulau.js`](tools/check_sql_wilayah_pulau.js).
     - Memperbarui dokumentasi struktur tabel `wilayah_pulau` (`kode`, `nama`, `lat`, `lng`, `status`, `luas`, `notes`) pada `README.md`.
