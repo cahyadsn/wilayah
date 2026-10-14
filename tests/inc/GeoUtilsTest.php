@@ -32,6 +32,19 @@ class GeoUtilsTest extends TestCase {
         $this->assertFalse(isPathNearCentroid('[[]]', 10.0, 20.0, '12'));
     }
 
+    public function testPathAsArrayAndJsonString() {
+        $pathArray = [[0, 0], [0, 10], [10, 10], [10, 0]];
+        $pathString = json_encode($pathArray);
+
+        // Both array and JSON string should be processed identically
+        $this->assertTrue(isPathNearCentroid($pathArray, 5.0, 5.0, '12'));
+        $this->assertTrue(isPathNearCentroid($pathString, 5.0, 5.0, '12'));
+
+        // Check failure cases for both
+        $this->assertFalse(isPathNearCentroid($pathArray, 10.0, 10.0, '12'));
+        $this->assertFalse(isPathNearCentroid($pathString, 10.0, 10.0, '12'));
+    }
+
     public function testNearCentroidWithThresholds() {
         // Path with bounding box
         // latMin = 0, latMax = 10 -> centerLat = 5
