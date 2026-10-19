@@ -21,7 +21,7 @@ class GeoAjaxTest extends TestCase {
         // Include the procedural script and capture output to prevent "headers already sent"
         ob_start();
         // Since geo_ajax.php now outputs headers, we can't just require it if we want to run multiple tests
-        // But we need the function isPathReasonable. Since we need to test isPathReasonable,
+        // But we need the function isPathNearCentroid. Since we need to test isPathNearCentroid,
         // let's suppress header errors during tests or just skip including if we are going to run tests that don't need it.
         // Or we can mock the header function.
         @require_once __DIR__ . '/../../../apps/inc/geo_ajax.php';
@@ -78,26 +78,26 @@ class GeoAjaxTest extends TestCase {
         $this->assertEquals($expected, fallbackBox($lat, $lng, $delta));
     }
 
-    // --- Tests for isPathReasonable ---
+    // --- Tests for isPathNearCentroid ---
 
     public function testIsPathReasonableEmptyOrNullInputs() {
         // empty path
-        $this->assertFalse(isPathReasonable("", 0, 0, "12"));
+        $this->assertFalse(isPathNearCentroid("", 0, 0, "12"));
         // null lat
-        $this->assertFalse(isPathReasonable("[[0,0]]", null, 0, "12"));
+        $this->assertFalse(isPathNearCentroid("[[0,0]]", null, 0, "12"));
         // null lng
-        $this->assertFalse(isPathReasonable("[[0,0]]", 0, null, "12"));
+        $this->assertFalse(isPathNearCentroid("[[0,0]]", 0, null, "12"));
     }
 
     public function testIsPathReasonableInvalidJson() {
-        $this->assertFalse(isPathReasonable("invalid_json", 0, 0, "12"));
+        $this->assertFalse(isPathNearCentroid("invalid_json", 0, 0, "12"));
     }
 
     public function testIsPathReasonableEmptyOrInvalidArray() {
-        $this->assertFalse(isPathReasonable("[]", 0, 0, "12"));
-        $this->assertFalse(isPathReasonable("[[]]", 0, 0, "12"));
+        $this->assertFalse(isPathNearCentroid("[]", 0, 0, "12"));
+        $this->assertFalse(isPathNearCentroid("[[]]", 0, 0, "12"));
         // Invalid array structure (not numbers)
-        $this->assertFalse(isPathReasonable('["a","b"]', 0, 0, "12"));
+        $this->assertFalse(isPathNearCentroid('["a","b"]', 0, 0, "12"));
     }
 
     public function testIsPathReasonableValidPathKodeLen13() {
@@ -107,15 +107,15 @@ class GeoAjaxTest extends TestCase {
         $kode = "1234567890123";
         // Path center is exactly at lat, lng
         $path = '[[-6.21, 106.79], [-6.19, 106.81]]';
-        $this->assertTrue(isPathReasonable($path, $lat, $lng, $kode));
+        $this->assertTrue(isPathNearCentroid($path, $lat, $lng, $kode));
 
         // Center shifted by slightly less than 0.03 to avoid floating point issues, should be true
         $pathShifted = '[[-6.18, 106.82], [-6.17, 106.83]]'; // Center: -6.175, 106.825, diff lat: 0.025, diff lng: 0.025
-        $this->assertTrue(isPathReasonable($pathShifted, $lat, $lng, $kode));
+        $this->assertTrue(isPathNearCentroid($pathShifted, $lat, $lng, $kode));
 
         // Center shifted by > 0.03, should be false
         $pathFar = '[[-6.15, 106.85], [-6.13, 106.87]]'; // Center: -6.14, 106.86, diff: >0.03
-        $this->assertFalse(isPathReasonable($pathFar, $lat, $lng, $kode));
+        $this->assertFalse(isPathNearCentroid($pathFar, $lat, $lng, $kode));
     }
 
     public function testIsPathReasonableValidPathKodeLen8() {
@@ -125,11 +125,11 @@ class GeoAjaxTest extends TestCase {
         $kode = "12345678";
         // Path center shifted by slightly less than 0.08
         $path = '[[-6.14, 106.86], [-6.12, 106.88]]'; // Center: -6.13, 106.87, diff: 0.07
-        $this->assertTrue(isPathReasonable($path, $lat, $lng, $kode));
+        $this->assertTrue(isPathNearCentroid($path, $lat, $lng, $kode));
 
         // Path center shifted by > 0.08
         $pathFar = '[[-6.11, 106.89], [-6.09, 106.91]]'; // Center: -6.10, 106.90, diff: 0.10
-        $this->assertFalse(isPathReasonable($pathFar, $lat, $lng, $kode));
+        $this->assertFalse(isPathNearCentroid($pathFar, $lat, $lng, $kode));
     }
 
     public function testIsPathReasonableValidPathKodeLen2() {
@@ -139,11 +139,11 @@ class GeoAjaxTest extends TestCase {
         $kode = "12";
         // Path center shifted by slightly less than 2.5
         $path = '[[-4.0, 109.0], [-3.8, 109.2]]'; // Center: -3.9, 109.1, diff lat: 2.3, lng: 2.3
-        $this->assertTrue(isPathReasonable($path, $lat, $lng, $kode));
+        $this->assertTrue(isPathNearCentroid($path, $lat, $lng, $kode));
 
         // Path center shifted by > 2.5
         $pathFar = '[[-3.0, 110.0], [-2.8, 110.2]]'; // Center: -2.9, 110.1, diff: >2.5
-        $this->assertFalse(isPathReasonable($pathFar, $lat, $lng, $kode));
+        $this->assertFalse(isPathNearCentroid($pathFar, $lat, $lng, $kode));
     }
 
     /**
@@ -156,7 +156,7 @@ class GeoAjaxTest extends TestCase {
         // Wait, if setUp() does require_once, it's done. But geo_ajax.php has functions.
         // We will read geo_ajax.php, replace function declarations and require_once, and eval it,
         // or we just let it run if it's a completely fresh process.
-        // Let's use file_get_contents and remove the function isPathReasonable to avoid redeclaration,
+        // Let's use file_get_contents and remove the function isPathNearCentroid to avoid redeclaration,
         // because setUp() includes it! No, wait, setUp() is run for EVERY test, including this one in the new process.
 
         // Setup env so db.php doesn't actually connect to real DB but we can intercept it
@@ -190,16 +190,16 @@ class GeoAjaxTest extends TestCase {
         $_GET = ['id' => '12', 'geo' => '1'];
 
         // Execute the procedural script capturing its output
-        // We need to strip out function isPathReasonable because setUp() already included geo_ajax.php once
+        // We need to strip out function isPathNearCentroid because setUp() already included geo_ajax.php once
         // and PHP does not allow redeclaring functions.
         $script = file_get_contents(__DIR__ . "/../../../apps/inc/geo_ajax.php");
 
         // Strip require_once and the function declaration block
         $script = preg_replace('/require_once\s+[^;]+;/', '', $script);
-        // Using a regex to remove function isPathReasonable(...) { ... }
+        // Using a regex to remove function isPathNearCentroid(...) { ... }
         // Since it's a bit complex to regex a function with nested braces, we can just
         // replace the function keyword to create a dummy name, or better, since we know its exact structure:
-        $script = str_replace('function isPathReasonable(', 'function dummy_isPathReasonable_test_avoid_redeclare(', $script);
+        $script = str_replace('function isPathNearCentroid(', 'function dummy_isPathNearCentroid_test_avoid_redeclare(', $script);
 
         ob_start();
         eval('?>' . $script);
@@ -237,7 +237,7 @@ class GeoAjaxTest extends TestCase {
 
         $script = file_get_contents(__DIR__ . "/../../../apps/inc/geo_ajax.php");
         $script = preg_replace('/require_once\s+[^;]+;/', '', $script);
-        $script = str_replace('function isPathReasonable(', 'function dummy_isPathReasonable_test_avoid_redeclare_array(', $script);
+        $script = str_replace('function isPathNearCentroid(', 'function dummy_isPathNearCentroid_test_avoid_redeclare_array(', $script);
 
         ob_start();
         eval('?>' . $script);
