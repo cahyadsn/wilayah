@@ -23,32 +23,7 @@ copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 */
 require_once "db.php";
 require_once "geo_helpers.php";
-
-function isPathReasonable($path, $lat, $lng, $kode) {
-  if (empty($path) || $lat === null || $lng === null) return false;
-  $coords = json_decode($path, true);
-  if (!is_array($coords) || empty($coords)) return false;
-
-  $points = is_array($coords[0][0] ?? null) ? $coords[0] : (is_array($coords[0] ?? null) ? $coords : []);
-  if (empty($points)) return false;
-
-  $lats = array_column($points, 0);
-  $lngs = array_column($points, 1);
-
-  if (empty($lats) || empty($lngs)) return false;
-
-  $latMin = min($lats);
-  $latMax = max($lats);
-  $lngMin = min($lngs);
-  $lngMax = max($lngs);
-
-  $centerLat = ($latMin + $latMax) / 2;
-  $centerLng = ($lngMin + $lngMax) / 2;
-  $codeLen = strlen($kode);
-  $threshold = ($codeLen >= 13 ? 0.03 : ($codeLen >= 8 ? 0.08 : 2.5));
-
-  return abs($centerLat - (float)$lat) <= $threshold && abs($centerLng - (float)$lng) <= $threshold;
-}
+require_once "geo_utils.php";
 
 $r=array('status'=>false,'error'=>'an error occured');
 $out = null;
@@ -71,7 +46,7 @@ if (!empty($_GET['id']) && is_string($_GET['id'])){
       $d = $query->fetchObject();
       if(!empty($d) && !empty($d->kode)){
         $path=$d->path;
-        if(empty($path) || !isPathReasonable($path, $d->lat, $d->lng, $d->kode)){
+        if(empty($path) || !isPathNearCentroid($path, $d->lat, $d->lng, $d->kode)){
           $path = json_encode(fallbackPathForCode($d->lat, $d->lng, $d->kode));
         }
         $data=array('kode'=>$d->kode,'nama'=>$d->nama,'lat'=>$d->lat,'lng'=>$d->lng,'path'=>$path,'luas'=>$d->luas,'penduduk'=>$d->penduduk);

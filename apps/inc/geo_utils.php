@@ -20,8 +20,10 @@ function isPathNearCentroid($path, $lat, $lng, $kode) {
     $points = is_array($coords[0][0] ?? null) ? $coords[0] : (is_array($coords[0] ?? null) ? $coords : []);
     if (empty($points)) return false;
 
-    $latMin = $latMax = (float)($points[0][0] ?? 0);
-    $lngMin = $lngMax = (float)($points[0][1] ?? 0);
+    if (!isset($points[0][0], $points[0][1])) return false;
+
+    $latMin = $latMax = (float)$points[0][0];
+    $lngMin = $lngMax = (float)$points[0][1];
     foreach ($points as $pt) {
         if (!is_array($pt) || count($pt) < 2) continue;
         $plat = (float)$pt[0];
