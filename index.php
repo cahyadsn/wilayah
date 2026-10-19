@@ -40,7 +40,7 @@ if (isset($_GET['id']) && is_string($_GET['id']) && !empty($_GET['id'])){
 		if (!is_dir($cache_dir)) {
 			mkdir($cache_dir, 0755, true);
 		}
-		$cache_file = $cache_dir . '/index_opt_cache_' . md5($_GET['id']) . '.html';
+		$cache_file = $cache_dir . '/index_opt_cache_' . hash('sha256', $_GET['id']) . '.html';
 		$cache_ttl = 86400; // 1 day
 		if (file_exists($cache_file) && (time() - filemtime($cache_file) < $cache_ttl)) {
 			echo file_get_contents($cache_file);
