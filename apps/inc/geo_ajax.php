@@ -32,15 +32,22 @@ function isPathReasonable($path, $lat, $lng, $kode) {
   $points = is_array($coords[0][0] ?? null) ? $coords[0] : (is_array($coords[0] ?? null) ? $coords : []);
   if (empty($points)) return false;
 
-  $lats = array_column($points, 0);
-  $lngs = array_column($points, 1);
+  if (!isset($points[0][0], $points[0][1])) return false;
 
-  if (empty($lats) || empty($lngs)) return false;
+  $latMin = $latMax = (float)$points[0][0];
+  $lngMin = $lngMax = (float)$points[0][1];
 
-  $latMin = min($lats);
-  $latMax = max($lats);
-  $lngMin = min($lngs);
-  $lngMax = max($lngs);
+  foreach ($points as $pt) {
+      if (!isset($pt[0], $pt[1])) continue;
+      $plat = (float)$pt[0];
+      $plng = (float)$pt[1];
+
+      if ($plat < $latMin) $latMin = $plat;
+      elseif ($plat > $latMax) $latMax = $plat;
+
+      if ($plng < $lngMin) $lngMin = $plng;
+      elseif ($plng > $lngMax) $lngMax = $plng;
+  }
 
   $centerLat = ($latMin + $latMax) / 2;
   $centerLng = ($lngMin + $lngMax) / 2;
