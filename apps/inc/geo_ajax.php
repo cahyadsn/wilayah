@@ -59,7 +59,7 @@ if (!empty($_GET['id']) && is_string($_GET['id'])){
       mkdir($cache_dir, 0755, true);
   }
   $geo_param = empty($_GET['geo']) ? '0' : '1';
-  $cache_file_json = $cache_dir . '/geo_ajax_json_cache_' . md5($_GET['id'] . '_' . $geo_param) . '.json';
+  $cache_file_json = $cache_dir . '/geo_ajax_json_cache_' . hash('sha256', $_GET['id'] . '_' . $geo_param) . '.json';
   $cache_ttl = 86400; // 1 day
 
   if (file_exists($cache_file_json) && (time() - filemtime($cache_file_json) < $cache_ttl)) {
@@ -82,7 +82,7 @@ if (!empty($_GET['id']) && is_string($_GET['id'])){
         $m=($n==2?5:($n==5?8:13));
         $wil=($n==2?'Kota/Kab':($n==5?'Kecamatan':'Desa/Kelurahan'));
 
-        $cache_file = $cache_dir . '/geo_opt_cache_' . md5($_GET['id']) . '.html';
+        $cache_file = $cache_dir . '/geo_opt_cache_' . hash('sha256', $_GET['id']) . '.html';
 
         if (file_exists($cache_file) && (time() - filemtime($cache_file) < $cache_ttl)) {
             $opt = file_get_contents($cache_file);
