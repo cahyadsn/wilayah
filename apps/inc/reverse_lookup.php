@@ -133,7 +133,7 @@ try {
             $candidate['path'] = $decodedPaths[$pathKey];
         }
         $candidatePath = effectiveCandidatePath($candidate);
-        $coords = is_string($candidatePath) ? json_decode($candidatePath, true) : $candidatePath;
+        $coords = $candidatePath;
         if (!empty($coords) && pointInPath($lat, $lng, $coords)) {
             $matched = $candidate;
             break;
