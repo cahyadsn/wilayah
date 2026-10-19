@@ -28,7 +28,7 @@ class AppsIndexTest extends TestCase
 
         // Suppress headers to prevent "headers already sent" errors in PHPUnit
         $code = str_replace('header(', '@header(', $code);
-        $code = str_replace("require_once __DIR__ . '/inc/session.php';", 'session_start();', $code);
+        $code = str_replace("require_once __DIR__ . '/inc/session.php';", 'require_once __DIR__ . "/../apps/inc/session.php"; if (session_status() === PHP_SESSION_NONE) { session_start(); }', $code);
 
         // Change working directory to ensure relative requires like 'inc/db.php' resolve correctly
         $oldCwd = getcwd();
@@ -55,7 +55,7 @@ class AppsIndexTest extends TestCase
         // Modify cache_file path so it writes to the system temp dir during tests
         $code = str_replace(
             "__DIR__ . '/cache/provinsi_cache.html'",
-            "sys_get_temp_dir() . '/provinsi_cache_' . md5(uniqid()) . '.html'",
+            "sys_get_temp_dir() . '/provinsi_cache_' . hash('sha256', uniqid()) . '.html'",
             $code
         );
 
