@@ -181,7 +181,22 @@ node tools/check_sql_wilayah_pulau.js
 - [x] penambahan data kode pulau di web demo (ditambahkan panel daftar pulau di `apps/index.php`)
 
 ## CHANGE LOG
-- [2026-10-08] 🆕
+- [2026-10-20] 🆕
+  - **Peningkatan Keamanan Cache Key Generation (SHA-256)**:
+    - Mengganti fungsi `md5()` menjadi `hash('sha256', ...)` dalam pembuatan nama berkas cache pada [`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php) (`geo_ajax_json_cache_*` dan `geo_opt_cache_*`), [`index.php`](index.php) (`index_opt_cache_*`), dan pengujian unit [`tests/AppsIndexTest.php`](tests/AppsIndexTest.php) untuk memitigasi kerentanan collision attacks dan cache poisoning.
+  - **Refactoring & Optimasi Traversal Koordinat (`geo_ajax.php` & `geo_utils.php`)**:
+    - Menghapus duplikasi fungsi `isPathReasonable()` pada [`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php) dan beralih ke fungsi bersama `isPathNearCentroid()` dari [`apps/inc/geo_utils.php`](apps/inc/geo_utils.php) guna mereduksi kompleksitas kode (mengatasi isu kompleksitas CodeFactor).
+    - Mengoptimalkan traversal array koordinat poligon batas (*bounding box*) pada `isPathNearCentroid()` dengan single-pass iteration dan penambahan validasi struktur elemen awal `isset($points[0][0], $points[0][1])`.
+    - Memperbarui pengujian unit [`tests/apps/inc/GeoAjaxTest.php`](tests/apps/inc/GeoAjaxTest.php) agar selaras dengan `isPathNearCentroid()`.
+  - **Optimasi Reverse Geocoding (`reverse_lookup.php`)**:
+    - Mengurangi overhead iterasi pada [`apps/inc/reverse_lookup.php`](apps/inc/reverse_lookup.php) dengan mengeliminasi redundansi pengecekan tipe data `is_string` dan `json_decode` pada kandidat koordinat batas yang telah didekode sebelumnya.
+  - **Peningkatan Pengujian Unit (`tests/inc/GeoUtilsTest.php`)**:
+    - Menambahkan pengujian `testPathAsArrayAndJsonString` pada [`tests/inc/GeoUtilsTest.php`](tests/inc/GeoUtilsTest.php) untuk memverifikasi konsistensi perilaku `isPathNearCentroid()` baik dengan format string JSON maupun array terevaluasi.
+  - **Pembaruan Dependensi**:
+    - Memperbarui package `source-map-js` dari versi `1.2.1` ke `1.2.2` pada [`package-lock.json`](package-lock.json).
+  - **Metadata Berkas**:
+    - Memperbarui timestamp `last edit` pada berkas-berkas yang dimodifikasi.
+- [2026-10-08]
   - **Panduan Instalasi & Pemutakhiran Web Apps (`apps/` v3.2.0)**:
     - Menambahkan panduan instalasi komprehensif pada [`apps/README.md`](apps/README.md) yang mencakup prasyarat sistem, langkah pembuatan & impor basis data SQL, konfigurasi variabel lingkungan (`.env`), izin folder cache, serta panduan menjalankan aplikasi via PHP built-in server maupun web server stack (Laragon / XAMPP).
     - Memutakhirkan versi aplikasi web menjadi `v3.2.0` pada konfigurasi [`apps/.env`](apps/.env), [`apps/.env.example`](apps/.env.example), dan [`apps/index.php`](apps/index.php).

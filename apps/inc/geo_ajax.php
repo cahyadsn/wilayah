@@ -4,7 +4,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_ajax.php
 purpose  :
 create   : 170912
-last edit: 2026-10-05 14:34:45
+last edit: 2026-10-20 07:15:00
 author   : cahya dsn
 This program is free software; you can redistribute it and/or modify it under the
 terms of the MIT License.

@@ -238,6 +238,10 @@ apps/
 ## Catatan Rilis (Changelog)
 
 ### v3.2.0 (2026-10-05)
+- **Peningkatan Keamanan & Kinerja (2026-10-20)**:
+  - Migrasi algoritma pembuatan nama berkas cache dari `md5()` ke `hash('sha256', ...)` pada `apps/inc/geo_ajax.php` untuk mencegah potensi risiko collision dan cache key vulnerability.
+  - Refactoring validasi poligon batas wilayah dengan menggunakan fungsi bersama `isPathNearCentroid()` dari `apps/inc/geo_utils.php` guna mereduksi kompleksitas kode.
+  - Optimasi iterasi traversal koordinat bounding box dan eliminasi duplikasi JSON decode pada reverse geocoding (`apps/inc/reverse_lookup.php`).
 - **Interactive Island Panel (Daftar Pulau) pada Right Sidebar**:
   - Menambahkan sidebar panel interaktif kanan (`#islandPanel`) yang menampilkan daftar kode dan nama pulau sesuai lokasi aktif provinsi atau kabupaten/kota.
   - Menambahkan badge jumlah pulau (`#islandCount`), judul lokasi aktif (`#islandLocationName`), form pencarian instan (`#islandSearch`), dan daftar pulau (`#islandList`).

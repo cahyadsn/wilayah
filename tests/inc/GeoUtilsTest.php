@@ -1,4 +1,11 @@
 <?php
+/*
+BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
+================================================================================
+filename  : GeoUtilsTest.php
+purpose   : PHPUnit tests for apps/inc/geo_utils.php
+last edit : 2026-10-20 07:15:00
+================================================================================*/
 
 use PHPUnit\Framework\TestCase;
 
