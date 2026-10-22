@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : change.color.php
 purpose  : change theme and/or color
 create   : 170912
-last edit: 2026-08-27 09:48:56
+last edit: 2026-10-22 09:20:00
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -37,7 +37,8 @@ if(isset($_POST) && !empty($_POST)){
         $_SESSION['theme']=$_POST['theme']==='light'?'light':'dark';
     }
     //-- set web color theme
-    if(isset($_POST['color']) && is_string($_POST['color'])){
-        $_SESSION['c']=htmlspecialchars($_POST['color'], ENT_QUOTES, 'UTF-8');
+    $allowed_colors = array("black","brown","pink","orange","amber","lime","green","teal","purple","indigo","blue","cyan");
+    if(isset($_POST['color']) && is_string($_POST['color']) && in_array($_POST['color'], $allowed_colors, true)){
+        $_SESSION['c']=$_POST['color'];
     }
 }

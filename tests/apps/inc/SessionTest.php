@@ -6,6 +6,7 @@ class SessionTest extends TestCase
 {
     /**
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testSessionStartsAndConfiguresHttp()
     {
@@ -23,6 +24,7 @@ class SessionTest extends TestCase
 
     /**
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testSessionStartsAndConfiguresHttps()
     {
@@ -40,6 +42,7 @@ class SessionTest extends TestCase
 
     /**
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testSessionDoesNotRestartIfAlreadyActive()
     {

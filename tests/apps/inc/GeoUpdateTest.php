@@ -284,5 +284,7 @@ PHP;
         $decoded = json_decode($output, true);
         $this->assertTrue($decoded['status']);
         $this->assertStringContainsString('data saved', $decoded['msg']);
+        unset($GLOBALS['db']);
+        unset($GLOBALS['tbl_wilayah']);
     }
 }

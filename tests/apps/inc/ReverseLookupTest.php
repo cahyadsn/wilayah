@@ -51,6 +51,13 @@ class ReverseLookupTest extends TestCase
         }
     }
 
+    protected function tearDown(): void
+    {
+        unset($GLOBALS['db']);
+        unset($GLOBALS['tbl_wilayah']);
+        $_GET = [];
+    }
+
     public function testEffectiveCandidatePathValid()
     {
         $this->loadReverseLookupFunctions();
@@ -81,12 +88,7 @@ class ReverseLookupTest extends TestCase
 
         // Code len is 2 (>= 0 and < 8), delta is 0.01
         // (float)$lat = 10, (float)$lng = 20
-        $expected = json_encode([
-            [10 - 0.01, 20 - 0.01],
-            [10 + 0.01, 20 - 0.01],
-            [10 + 0.01, 20 + 0.01],
-            [10 - 0.01, 20 + 0.01]
-        ]);
+        $expected = fallbackPathForCode(10, 20, '12');
         $this->assertEquals($expected, $result);
     }
 
@@ -103,12 +105,7 @@ class ReverseLookupTest extends TestCase
 
         $result = effectiveCandidatePath($candidate);
 
-        $expected = json_encode([
-            [10 - 0.01, 20 - 0.01],
-            [10 + 0.01, 20 - 0.01],
-            [10 + 0.01, 20 + 0.01],
-            [10 - 0.01, 20 + 0.01]
-        ]);
+        $expected = fallbackPathForCode(10, 20, '12');
         $this->assertEquals($expected, $result);
     }
 

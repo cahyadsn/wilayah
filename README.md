@@ -181,7 +181,34 @@ node tools/check_sql_wilayah_pulau.js
 - [x] penambahan data kode pulau di web demo (ditambahkan panel daftar pulau di `apps/index.php`)
 
 ## CHANGE LOG
-- [2026-10-20] 🆕
+- [2026-10-22] 🆕
+  - **Audit Keamanan & Perbaikan Kerentanan (Security Hardening)**:
+    - **Mitigasi Modifikasi Basis Data Tanpa Autentikasi (`src/inc/geo_update.php` & `apps/inc/geo_update.php`)**:
+      - Menambahkan autentikasi sesi admin (`$_SESSION['author'] === 'cahyadsn'`) dan validasi token CSRF (`hash_equals()`) pada [`src/inc/geo_update.php`](src/inc/geo_update.php) untuk mencegah pembaruan data koordinat/poligon tanpa hak akses.
+      - Menerapkan validasi regex ketat pada parameter kode wilayah `id` (`/^[0-9]+(\.[0-9]+)*$/`, panjang maksimal 13 karakter) serta verifikasi tipe numerik berhingga pada `lat`, `lng`, dan format valid JSON pada `path`.
+      - Menghapus pembocoran query SQL internal dan parameter pada respons pesan status pembaruan.
+      - Menambahkan invalidasi otomatis berkas cache terkait (`geo_ajax_json_cache_*` dan `geo_opt_cache_*`) pada [`apps/inc/geo_update.php`](apps/inc/geo_update.php) ketika data batas/koordinat wilayah diperbarui.
+    - **Mitigasi Cross-Site Scripting (XSS) & Attribute Injection**:
+      - Menerapkan whitelist nilai warna tema yang diizinkan (`black`, `brown`, `pink`, `orange`, `amber`, `lime`, `green`, `teal`, `purple`, `indigo`, `blue`, `cyan`) pada [`src/index.php`](src/index.php), [`src/inc/change.color.php`](src/inc/change.color.php), dan [`apps/inc/change.color.php`](apps/inc/change.color.php) serta meloloskan karakter HTML (`htmlspecialchars`) untuk mencegah CSS/attribute injection.
+      - Menghapus penetapan otomatis hak akses admin `$_SESSION['author'] = 'cahyadsn'` bagi pengunjung anonim pada [`src/index.php`](src/index.php).
+      - Menambahkan fungsi sanitasi `escapeHtml()` sebelum menyisipkan data nama wilayah dan pulau ke dalam popup peta Leaflet (`bindPopup`) pada [`apps/inc/geo_js.php`](apps/inc/geo_js.php) dan [`src/inc/geo_js.php`](src/inc/geo_js.php) guna mencegah kerentanan DOM-based XSS.
+      - Memastikan pelolosan entitas HTML (`htmlspecialchars`) pada pembuatan elemen opsi dropdown wilayah di [`src/inc/geo_ajax.php`](src/inc/geo_ajax.php).
+    - **Perbaikan Kebocoran Token CSRF via Shared Proxy Caching (`apps/index.php`)**:
+      - Mengganti header caching pada [`apps/index.php`](apps/index.php) menjadi `Cache-Control: private, no-cache, no-store, must-revalidate` dan `Pragma: no-cache` agar halaman yang memuat token CSRF per-sesi tidak di-cache oleh proxy/CDN bersama (seperti Cloudflare atau reverse proxy).
+      - Menambahkan HTTP Security Headers pertahanan berlapis: `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, dan `Referrer-Policy: strict-origin-when-cross-origin`.
+    - **Validasi Input Geospasial & Pencegahan Galat SQL / DoS (`reverse_lookup.php` & `geo_ajax.php`)**:
+      - Memvalidasi parameter koordinat `lat` dan `lng` pada [`apps/inc/reverse_lookup.php`](apps/inc/reverse_lookup.php) agar bernilai numerik, berhingga (`is_finite`), serta berada dalam rentang valid koordinat geografis (`[-90, 90]` dan `[-180, 180]`), mencegah kegagalan kalkulasi trigonometri pada query basis data.
+      - Menambahkan pengaman pengecekan `!empty($codes)` sebelum eksekusi query hierarki nama wilayah untuk mencegah galat sintaks SQL `IN ()`.
+      - Memvalidasi format string `$_GET['id']` pada [`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php) dan [`index.php`](index.php) untuk mencegah disk exhaustion / cache flood dari input parameter acak.
+    - **Penguatan Konfigurasi Sesi & Masking Informasi Sensitif Basis Data**:
+      - Mengaktifkan `session.use_strict_mode = 1` pada [`apps/inc/session.php`](apps/inc/session.php) dan [`src/inc/session.php`](src/inc/session.php) untuk memitigasi serangan session fixation.
+      - Mengaburkan rincian pesan kesalahan koneksi PDO pada [`src/inc/db.php`](src/inc/db.php) dan mencatatnya ke log server (`error_log()`).
+    - **Peningkatan Pengujian Unit & Otomasi CI**:
+      - Menambahkan script `"test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"` pada [`package.json`](package.json) dan mengonfigurasi pemuatan modul ESM dinamis (`await import('jsdom')`) pada [`tests/apps/inc/geo_js.test.js`](tests/apps/inc/geo_js.test.js).
+      - Menambahkan isolasi pembersihan global state (`tearDown()` untuk pembersihan `$GLOBALS['db']`), penonaktifan backup globals pada [`phpunit.xml`](phpunit.xml), serta perbaikan asersi pada [`tests/apps/inc/ReverseLookupTest.php`](tests/apps/inc/ReverseLookupTest.php) dan [`tests/apps/inc/GeoUpdateTest.php`](tests/apps/inc/GeoUpdateTest.php), memastikan seluruh 105 pengujian PHPUnit dan seluruh pengujian Jest lulus 100%.
+    - **Metadata Berkas**:
+      - Memperbarui timestamp `last edit` pada seluruh berkas yang dimodifikasi.
+- [2026-10-20]
   - **Peningkatan Keamanan Cache Key Generation (SHA-256)**:
     - Mengganti fungsi `md5()` menjadi `hash('sha256', ...)` dalam pembuatan nama berkas cache pada [`apps/inc/geo_ajax.php`](apps/inc/geo_ajax.php) (`geo_ajax_json_cache_*` dan `geo_opt_cache_*`), [`index.php`](index.php) (`index_opt_cache_*`), dan pengujian unit [`tests/AppsIndexTest.php`](tests/AppsIndexTest.php) untuk memitigasi kerentanan collision attacks dan cache poisoning.
   - **Refactoring & Optimasi Traversal Koordinat (`geo_ajax.php` & `geo_utils.php`)**:

@@ -4,7 +4,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_ajax.php
 purpose  :
 create   : 170912
-last edit: 2026-10-20 07:15:00
+last edit: 2026-10-22 09:20:00
 author   : cahya dsn
 This program is free software; you can redistribute it and/or modify it under the
 terms of the MIT License.
@@ -28,7 +28,7 @@ require_once "geo_utils.php";
 $r=array('status'=>false,'error'=>'an error occured');
 $out = null;
 
-if (!empty($_GET['id']) && is_string($_GET['id'])){
+if (!empty($_GET['id']) && is_string($_GET['id']) && preg_match('/^[0-9]+(\.[0-9]+)*$/', $_GET['id']) && strlen($_GET['id']) <= 13){
   $cache_dir = dirname(__DIR__) . '/cache';
   if (!is_dir($cache_dir)) {
       mkdir($cache_dir, 0755, true);
@@ -93,5 +93,8 @@ if ($out === null) {
   }
 }
 
-header('Content-Type: application/json; charset=utf-8');
+if (!headers_sent()) {
+    header('Content-Type: application/json; charset=utf-8');
+    header('X-Content-Type-Options: nosniff');
+}
 echo $out;

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { JSDOM } = require('jsdom');
+// JSDOM dynamically loaded in beforeAll
 
 describe('setSafeSelectOptions', () => {
     let window;
@@ -8,7 +8,8 @@ describe('setSafeSelectOptions', () => {
     let DOMParser;
     let setSafeSelectOptions;
 
-    beforeAll(() => {
+    beforeAll(async () => {
+        const { JSDOM } = await import('jsdom');
         const dom = new JSDOM('<!DOCTYPE html><html><body><div id="map-canvas"></div></body></html>', {
             url: "http://localhost",
             runScripts: "dangerously"

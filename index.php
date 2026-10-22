@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename 	: index.php
 purpose  	: main application page
 create   	: 20170117
-last edit	: 2026-10-20 07:15:00
+last edit: 2026-10-22 09:20:00
 author   	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/v2
 soure code 	: https://github.com/cahyadsn/wilayah
@@ -28,6 +28,11 @@ copyright (c) 2017-2022 by cahya dsn; cahyadsn@gmail.com
 //--- Database configuration
 require_once 'apps/inc/db.php';
 require_once 'apps/inc/geo_helpers.php';
+if (!headers_sent()) {
+	header('X-Content-Type-Options: nosniff');
+	header('X-Frame-Options: SAMEORIGIN');
+	header('Referrer-Policy: strict-origin-when-cross-origin');
+}
 $wil=array(
 	2=>array(5,'Kota/Kabupaten','kab'),
 	5=>array(8,'Kecamatan','kec'),
@@ -35,7 +40,7 @@ $wil=array(
 );
 if (isset($_GET['id']) && is_string($_GET['id']) && !empty($_GET['id'])){
 	$n=strlen($_GET['id']);
-	if (isset($wil[$n])) {
+	if (isset($wil[$n]) && preg_match('/^[0-9]+(\.[0-9]+)*$/', $_GET['id'])) {
 		$cache_dir = __DIR__ . '/cache';
 		if (!is_dir($cache_dir)) {
 			mkdir($cache_dir, 0755, true);

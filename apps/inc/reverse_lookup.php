@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : reverse_lookup.php
 purpose  : Reverse lookup wilayah by clicked map coordinate.
 create   : 2026-06-08
-last edit: 2026-10-20 07:15:00
+last edit: 2026-10-22 09:20:00
 author   : cahya dsn
 ================================================================================
 MIT License
@@ -13,7 +13,11 @@ copyright (c) 2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 require_once "db.php";
 require_once "geo_helpers.php";
-header('Content-Type: application/json');
+if (!headers_sent()) {
+    header('Content-Type: application/json; charset=utf-8');
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: SAMEORIGIN');
+}
 
 function pointInRing($lat, $lng, $ring) {
     $inside = false;
@@ -81,11 +85,11 @@ function buildChain($kode, $names) {
 }
 
 $response = array('status' => false, 'error' => 'invalid request');
-$lat = isset($_GET['lat']) ? (float) $_GET['lat'] : null;
-$lng = isset($_GET['lng']) ? (float) $_GET['lng'] : null;
+$lat = (isset($_GET['lat']) && is_numeric($_GET['lat'])) ? (float) $_GET['lat'] : null;
+$lng = (isset($_GET['lng']) && is_numeric($_GET['lng'])) ? (float) $_GET['lng'] : null;
 
-if ($lat === null || $lng === null) {
-    echo json_encode($response);
+if ($lat === null || $lng === null || !is_finite($lat) || !is_finite($lng) || $lat < -90 || $lat > 90 || $lng < -180 || $lng > 180) {
+    echo json_encode($response, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);
     exit;
 }
 
@@ -148,12 +152,14 @@ try {
     $kel = strlen($kode) >= 13 ? substr($kode, 0, 13) : null;
 
     $codes = array_filter(array($prov, $kab, $kec, $kel));
-    $placeholders = implode(',', array_fill(0, count($codes), '?'));
-    $nameQuery = $db->prepare("SELECT kode, nama FROM {$tbl_wilayah} WHERE kode IN ($placeholders)");
-    $nameQuery->execute(array_values($codes));
     $names = array();
-    while ($row = $nameQuery->fetch(PDO::FETCH_ASSOC)) {
-        $names[$row['kode']] = $row['nama'];
+    if (!empty($codes)) {
+        $placeholders = implode(',', array_fill(0, count($codes), '?'));
+        $nameQuery = $db->prepare("SELECT kode, nama FROM {$tbl_wilayah} WHERE kode IN ($placeholders)");
+        $nameQuery->execute(array_values($codes));
+        while ($row = $nameQuery->fetch(PDO::FETCH_ASSOC)) {
+            $names[$row['kode']] = $row['nama'];
+        }
     }
 
     $response = array(

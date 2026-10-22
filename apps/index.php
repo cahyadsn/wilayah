@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit   : 2026-10-05 15:32:00
+last edit: 2026-10-22 09:20:00
 author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps
@@ -22,16 +22,20 @@ define("_AUTHOR","cahyadsn");
 require_once 'inc/db.php';
 require_once 'inc/geo_helpers.php';
 $version=getenv('APP_VER') !== false ? getenv('APP_VER') : '3.2.0';
-header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + 86400));
-header('Cache-Control: public, max-age=86400');
-header('Pragma: cache');
+$safe_version = htmlspecialchars($version, ENT_QUOTES, 'UTF-8');
+header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() - 3600));
+header('Cache-Control: private, no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: SAMEORIGIN');
+header('Referrer-Policy: strict-origin-when-cross-origin');
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-  <title>Data Wilayah v<?php echo $version;?></title>
+  <title>Data Wilayah v<?php echo $safe_version;?></title>
   <meta name="description" content="Data wilayah administrasi Indonesia sesuai Kepmendagri No 300.2.2-2430 Tahun 2025" />
   <meta name="author" content="Cahya DSN" />
   <meta name="keywords" content="php, mysql, data, administrasi, wilayah, indonesia, kepmendagri,300.2.2-2430,2025, cahyadsn" />
@@ -51,7 +55,7 @@ header('Pragma: cache');
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.css" />
 
-  <link rel="stylesheet" href="css/styles.min.css?v=<?php echo $version;?>" />
+  <link rel="stylesheet" href="css/styles.min.css?v=<?php echo $safe_version;?>" />
 </head>
 <body class="theme-<?php echo $theme==='light'?'light':'dark'; ?>">
 
@@ -59,7 +63,7 @@ header('Pragma: cache');
   <nav class="navbar">
     <div class="navbar-brand">Wilayah</div>
     <div class="navbar-meta">
-      <span class="navbar-version">v<?php echo $version;?></span>
+      <span class="navbar-version">v<?php echo $safe_version;?></span>
       <span class="navbar-separator">|</span>
       <span class="navbar-copyright">
         copyright &copy; 2017<?php echo (date('Y')>2017?date('-Y'):'');?>
@@ -217,7 +221,7 @@ header('Pragma: cache');
 
       <!-- Footer -->
       <div class="app-footer">
-        Wilayah v<?php echo $version;?> copyright &copy; 2017<?php echo (date('Y')>2017?date('-Y'):'');?>
+        Wilayah v<?php echo $safe_version;?> copyright &copy; 2017<?php echo (date('Y')>2017?date('-Y'):'');?>
         by <a href="mailto:cahyadsn@gmail.com">cahya dsn</a> &mdash;
         source: <a href="https://github.com/cahyadsn/wilayah">github.com/cahyadsn/wilayah</a>
       </div>
@@ -230,8 +234,8 @@ header('Pragma: cache');
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.js" defer></script>
   <script src="js/ajax.js" defer></script>
-  <script src="inc/geo_js.php?v=<?php echo $version;?>" defer></script>
-  <script src="js/wilayah.min.js?v=<?php echo $version;?>" defer></script>
+  <script src="inc/geo_js.php?v=<?php echo $safe_version;?>" defer></script>
+  <script src="js/wilayah.min.js?v=<?php echo $safe_version;?>" defer></script>
 
 </body>
 </html>

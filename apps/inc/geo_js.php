@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_js.php
 purpose  : JavaScript for AJAX cascade, map, and counters
 create   : 170912
-last edit: 2026-10-05 14:34:45
+last edit: 2026-10-22 09:20:00
 author   : cahya dsn
 ================================================================================
 MIT License
@@ -17,6 +17,16 @@ header('Cache-Control: public, max-age=31536000');
 header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000));
 header('Pragma: cache');
 ?>
+
+function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
 
 /* ============================================================
    GEOSCRIPT — Data Wilayah v2.8
@@ -190,10 +200,10 @@ function onSelectIsland(item, element) {
                 if (islandMarker) {
                     map.removeLayer(islandMarker);
                 }
-                var popupHtml = '<b>' + (item.nama || '') + '</b><br>' +
-                    'Kode: <b>' + (item.kode || '') + '</b>' +
-                    (item.status ? '<br>Status: <b>' + item.status + '</b>' : '') +
-                    (item.luas !== null && item.luas !== undefined ? '<br>Luas: <b>' + item.luas + '</b> km<sup>2</sup>' : '');
+                var popupHtml = '<b>' + escapeHtml(item.nama) + '</b><br>' +
+                    'Kode: <b>' + escapeHtml(item.kode) + '</b>' +
+                    (item.status ? '<br>Status: <b>' + escapeHtml(item.status) + '</b>' : '') +
+                    (item.luas !== null && item.luas !== undefined ? '<br>Luas: <b>' + escapeHtml(item.luas) + '</b> km<sup>2</sup>' : '');
 
                 islandMarker = L.marker([lat, lng]).bindPopup(popupHtml).addTo(map);
                 islandMarker.openPopup();
@@ -723,10 +733,10 @@ function updateMap(data) {
 
     // Add marker
     marker = L.marker(point).bindPopup(
-        '<b>' + (data.nama || '') + '</b><br>' +
-        'Kode <b>' + (data.kode || '') + '</b><br>' +
-        'Luas: <b>' + (data.luas || 0) + '</b> km<sup>2</sup><br>' +
-        'Penduduk: <b>' + (data.penduduk || 0) + '</b>'
+        '<b>' + escapeHtml(data.nama) + '</b><br>' +
+        'Kode <b>' + escapeHtml(data.kode) + '</b><br>' +
+        'Luas: <b>' + escapeHtml(data.luas || 0) + '</b> km<sup>2</sup><br>' +
+        'Penduduk: <b>' + escapeHtml(data.penduduk || 0) + '</b>'
     ).addTo(map);
 
     // Add polygon if path exists

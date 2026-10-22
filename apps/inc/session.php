@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : session.php
 purpose  : secure and centralized session configuration
 create   : 2026-08-19
-last edit: 2026-09-30 07:23:49
+last edit: 2026-10-22 09:20:00
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -24,6 +24,7 @@ See the MIT License for more details
 copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 if (session_status() === PHP_SESSION_NONE) {
+    ini_set('session.use_strict_mode', '1');
     $secure = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
     session_set_cookie_params([
         'secure' => $secure,
