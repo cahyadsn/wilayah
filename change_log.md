@@ -1,6 +1,7 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Harden against PHP2Shell vulnerabilities (CVE-2026-109618 & CVE-2026-109619): enforce session.upload_progress.enabled = Off and file_uploads = Off via .user.ini and .htaccess, implement runtime is_php2shell_request() guard rejecting upload progress probes and multipart payloads, expand SessionTest to 9 test cases, and update security advisories 2026-10-23
 - Security audit and vulnerability fixes: prevent unauthenticated DB updates in src/inc/geo_update.php, patch XSS in src/index.php, change.color.php, geo_ajax.php, and geo_js.php Leaflet popups, fix CSRF token cache leakage in apps/index.php, add geographic bounds checks in reverse_lookup.php, enforce session strict mode, and ensure 100% test suite pass 2026-10-22
 - Verify and validate SQL syntax integrity and unique island codes in db/wilayah_pulau.sql compliant with Kepmendagri No. 300.2.2-2430 Tahun 2025 and update README documentation 2026-10-07
 - Add interactive right sidebar island panel (Daftar Pulau) displaying island codes and names for active province/city with map centering and marker popups in apps/index.php 2026-10-05

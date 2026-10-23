@@ -1,0 +1,44 @@
+# ==============================================================================
+# Security Hardening: PHP2Shell (CVE-2026-109618 & CVE-2026-109619)
+# ==============================================================================
+
+# Disable session upload progress and multipart file uploads in PHP
+<IfModule mod_php.c>
+    php_flag session.upload_progress.enabled Off
+    php_flag file_uploads Off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag session.upload_progress.enabled Off
+    php_flag file_uploads Off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag session.upload_progress.enabled Off
+    php_flag file_uploads Off
+</IfModule>
+
+# Block PHP2Shell exploit requests at web server level before PHP executes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Block query strings or request lines targeting PHP_SESSION_UPLOAD_PROGRESS
+    RewriteCond %{QUERY_STRING} (?:PHP_SESSION_UPLOAD_PROGRESS|upload_progress_) [NC,OR]
+    RewriteCond %{THE_REQUEST} (?:PHP_SESSION_UPLOAD_PROGRESS) [NC,OR]
+    RewriteCond %{HTTP:Cookie} (?:PHP_SESSION_UPLOAD_PROGRESS) [NC]
+    RewriteRule .* - [F,L]
+
+    # Block multipart/form-data POST requests as this app does not accept file uploads
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteCond %{HTTP:Content-Type} ^multipart/form-data [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# Prevent direct access to sensitive configuration and environment files
+<FilesMatch "^\.(env|user\.ini|htaccess)">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

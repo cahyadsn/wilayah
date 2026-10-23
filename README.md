@@ -181,7 +181,20 @@ node tools/check_sql_wilayah_pulau.js
 - [x] penambahan data kode pulau di web demo (ditambahkan panel daftar pulau di `apps/index.php`)
 
 ## CHANGE LOG
-- [2026-10-22] 🆕
+- [2026-10-23] 🆕
+  - **Mitigasi Kerentanan PHP2Shell (CVE-2026-109618 & CVE-2026-109619)**:
+    - **Pencegahan Tingkat Konfigurasi Server & SAPI (`.htaccess` & `.user.ini`)**:
+      - Menerapkan direktif penonaktifan upload progress (`session.upload_progress.enabled = Off`) dan upload berkas (`file_uploads = Off`) pada berkas [`.user.ini`](.user.ini), [`apps/.user.ini`](apps/.user.ini), dan [`src/.user.ini`](src/.user.ini) untuk memitigasi serangan heap memory corruption (UAF) dan worker memory persistence pada lingkungan SAPI persisten (PHP-FPM, Apache mod_php, FastCGI).
+      - Menambahkan aturan penulisan ulang Apache (`mod_rewrite`) pada [`.htaccess`](.htaccess), [`apps/.htaccess`](apps/.htaccess), dan [`src/.htaccess`](src/.htaccess) untuk menolak langsung permintaan yang menargetkan parameter `PHP_SESSION_UPLOAD_PROGRESS`, prefix `upload_progress_`, serta memblokir payload `multipart/form-data` karena aplikasi ini murni berbasis query parametrik dan tidak memerlukan fitur upload berkas.
+      - Memproteksi berkas-berkas sensitif (`.env`, `.user.ini`, `.htaccess`) dari akses publik langsung via konfigurasi `FilesMatch`.
+    - **Pengamanan Runtime PHP Pertahanan Berlapis (Defense-in-Depth)**:
+      - Menginisialisasi `@ini_set('session.upload_progress.enabled', '0')` dan `@ini_set('file_uploads', '0')` saat runtime pada [`apps/inc/session.php`](apps/inc/session.php), [`apps/inc/db.php`](apps/inc/db.php), [`src/inc/session.php`](src/inc/session.php), dan [`src/inc/db.php`](src/inc/db.php).
+      - Menerapkan fungsi deteksi payload mencurigakan `is_php2shell_request()` yang secara langsung memutus dan menolak permintaan (`400 Bad Request`) jika terdeteksi parameter upload progress (`PHP_SESSION_UPLOAD_PROGRESS` atau `upload_progress`) pada `$_POST`, `$_GET`, `$_COOKIE`, `$_REQUEST`, header `Content-Type: multipart/form-data`, atau keberadaan array `$_FILES`.
+    - **Peningkatan Pengujian Unit (`tests/apps/inc/SessionTest.php`)**:
+      - Memperluas cakupan pengujian unit PHPUnit menjadi 111 pengujian (316 asersi) dengan menambahkan 6 skenario pengujian pertahanan PHP2Shell (deteksi permintaan normal, injeksi upload progress via POST, GET, COOKIE, header multipart, dan deteksi array berkas).
+    - **Pembaruan Panduan Administrator & Dokumentasi**:
+      - Menambahkan advisori keamanan dan rekomendasi pembaruan runtime PHP ke versi ter-patch (`>= 8.3.36`, `>= 8.4.27`, `>= 8.5.12`) serta konfigurasi mitigasi web server Nginx pada [`README.md`](README.md) dan [`apps/README.md`](apps/README.md).
+- [2026-10-22]
   - **Audit Keamanan & Perbaikan Kerentanan (Security Hardening)**:
     - **Mitigasi Modifikasi Basis Data Tanpa Autentikasi (`src/inc/geo_update.php` & `apps/inc/geo_update.php`)**:
       - Menambahkan autentikasi sesi admin (`$_SESSION['author'] === 'cahyadsn'`) dan validasi token CSRF (`hash_equals()`) pada [`src/inc/geo_update.php`](src/inc/geo_update.php) untuk mencegah pembaruan data koordinat/poligon tanpa hak akses.

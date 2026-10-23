@@ -169,6 +169,29 @@ vendor/bin/phpunit
 
 ---
 
+### 5. Pengerasan Keamanan Web Server (PHP2Shell Hardening)
+Aplikasi ini telah dilengkapi dengan pertahanan berlapis terhadap kerentanan **PHP2Shell** (**CVE-2026-109618 & CVE-2026-109619**):
+
+- **Apache / LiteSpeed**: Aturan pada berkas `.htaccess` akan secara otomatis menolak permintaan upload progress dan menonaktifkan fitur upload di tingkat interpreter.
+- **PHP-FPM / FastCGI**: Berkas `.user.ini` secara otomatis menonaktifkan `session.upload_progress.enabled = Off` dan `file_uploads = Off`.
+- **Nginx (Reverse Proxy / PHP-FPM)**:
+  Tambahkan blokade berikut pada konfigurasi blok `server` atau `location` Nginx:
+  ```nginx
+  # Blokir vektor PHP2Shell (CVE-2026-109618 & CVE-2026-109619)
+  if ($http_content_type ~* "multipart/form-data") {
+      return 403;
+  }
+  if ($args ~* "(?:PHP_SESSION_UPLOAD_PROGRESS|upload_progress_)") {
+      return 403;
+  }
+  ```
+- **Rekomendasi Patch Runtime**: Administrator disarankan untuk selalu memperbarui runtime PHP ke versi rilis perbaikan resmi:
+  - PHP 8.3: Versi `>= 8.3.36`
+  - PHP 8.4: Versi `>= 8.4.27`
+  - PHP 8.5: Versi `>= 8.5.12`
+
+---
+
 ## Fitur Utama (Key Features)
 
 1. **Peta Interaktif (Leaflet.js)**:
@@ -186,6 +209,7 @@ vendor/bin/phpunit
 5. **Dukungan Tema (Light & Dark Mode)**:
    - Tampilan antarmuka modern yang mendukung pergantian tema terang dan gelap.
 6. **Keamanan & Optimasi**:
+   - Mitigasi kerentanan PHP2Shell (CVE-2026-109618 & CVE-2026-109619) dengan penonaktifan upload progress & file uploads di `.user.ini`, filtering request di `.htaccess`, dan fungsi guard runtime `is_php2shell_request()`.
    - Proteksi CSRF Token pada request AJAX dan form login/logout.
    - Sanitasi input dan prepared statement PDO untuk mencegah SQL Injection & XSS.
    - Caching file tingkat server untuk respon query wilayah dan kompresi aset CSS/JS.
@@ -238,6 +262,11 @@ apps/
 ## Catatan Rilis (Changelog)
 
 ### v3.2.0 (2026-10-05)
+- **Mitigasi Kerentanan PHP2Shell (2026-10-23)**:
+  - Perlindungan terhadap CVE-2026-109618 (heap use-after-free/OOM corruption) dan CVE-2026-109619 (worker memory persistence) melalui penonaktifan upload progress (`session.upload_progress.enabled = Off`) dan upload berkas (`file_uploads = Off`) pada `apps/.user.ini` dan `apps/.htaccess`.
+  - Penambahan filter `mod_rewrite` pada `apps/.htaccess` untuk memblokir permintaan mengandung `PHP_SESSION_UPLOAD_PROGRESS`, prefix `upload_progress_`, dan payload `multipart/form-data`.
+  - Implementasi fungsi guard runtime `is_php2shell_request()` pada `apps/inc/session.php` dan `apps/inc/db.php` yang secara otomatis menolak anomali payload upload progress dan multipart dengan status HTTP 400 Bad Request.
+  - Penambahan skenario pengujian unit PHPUnit pada `tests/apps/inc/SessionTest.php` untuk memvalidasi pencegahan vektor serangan PHP2Shell.
 - **Peningkatan Keamanan & Kinerja (2026-10-20)**:
   - Migrasi algoritma pembuatan nama berkas cache dari `md5()` ke `hash('sha256', ...)` pada `apps/inc/geo_ajax.php` untuk mencegah potensi risiko collision dan cache key vulnerability.
   - Refactoring validasi poligon batas wilayah dengan menggunakan fungsi bersama `isPathNearCentroid()` dari `apps/inc/geo_utils.php` guna mereduksi kompleksitas kode.
