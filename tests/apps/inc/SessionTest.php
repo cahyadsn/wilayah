@@ -151,4 +151,28 @@ class SessionTest extends TestCase
         ];
         $this->assertTrue(is_php2shell_request());
     }
+
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testIsPhp2shellRequestDetectsBrotliContentEncoding()
+    {
+        require __DIR__ . '/../../../apps/inc/session.php';
+
+        $_SERVER['HTTP_CONTENT_ENCODING'] = 'br';
+        $this->assertTrue(is_php2shell_request());
+    }
+
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testIsPhp2shellRequestDetectsBrotliLongContentEncoding()
+    {
+        require __DIR__ . '/../../../apps/inc/session.php';
+
+        $_SERVER['HTTP_CONTENT_ENCODING'] = 'brotli';
+        $this->assertTrue(is_php2shell_request());
+    }
 }

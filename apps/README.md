@@ -169,10 +169,10 @@ vendor/bin/phpunit
 
 ---
 
-### 5. Pengerasan Keamanan Web Server (PHP2Shell Hardening)
-Aplikasi ini telah dilengkapi dengan pertahanan berlapis terhadap kerentanan **PHP2Shell** (**CVE-2026-109618 & CVE-2026-109619**):
+### 5. Pengerasan Keamanan Web Server (PHP2Shell & CVE-2026-111497 Hardening)
+Aplikasi ini telah dilengkapi dengan pertahanan berlapis terhadap kerentanan **PHP2Shell** (**CVE-2026-109618 & CVE-2026-109619**) dan **Brotli Decoder Buffer Overflow / Node2Shell** (**CVE-2026-111497**):
 
-- **Apache / LiteSpeed**: Aturan pada berkas `.htaccess` akan secara otomatis menolak permintaan upload progress dan menonaktifkan fitur upload di tingkat interpreter.
+- **Apache / LiteSpeed**: Aturan pada berkas `.htaccess` akan secara otomatis menolak permintaan upload progress, memblokir payload `multipart/form-data`, memblokir request body terkompresi `Content-Encoding: br` / `brotli`, dan menonaktifkan fitur upload di tingkat interpreter.
 - **PHP-FPM / FastCGI**: Berkas `.user.ini` secara otomatis menonaktifkan `session.upload_progress.enabled = Off` dan `file_uploads = Off`.
 - **Nginx (Reverse Proxy / PHP-FPM)**:
   Tambahkan blokade berikut pada konfigurasi blok `server` atau `location` Nginx:
@@ -184,11 +184,16 @@ Aplikasi ini telah dilengkapi dengan pertahanan berlapis terhadap kerentanan **P
   if ($args ~* "(?:PHP_SESSION_UPLOAD_PROGRESS|upload_progress_)") {
       return 403;
   }
+
+  # Blokir vektor Brotli Decoder Buffer Overflow / Node2Shell (CVE-2026-111497)
+  if ($http_content_encoding ~* "(?:br|brotli)") {
+      return 415;
+  }
   ```
-- **Rekomendasi Patch Runtime**: Administrator disarankan untuk selalu memperbarui runtime PHP ke versi rilis perbaikan resmi:
-  - PHP 8.3: Versi `>= 8.3.36`
-  - PHP 8.4: Versi `>= 8.4.27`
-  - PHP 8.5: Versi `>= 8.5.12`
+- **Rekomendasi Patch Runtime**: Administrator disarankan untuk selalu memperbarui runtime ke versi rilis perbaikan resmi:
+  - PHP 8.3: Versi `>= 8.3.36` (PHP 8.4 `>= 8.4.27`, PHP 8.5 `>= 8.5.12`)
+  - Node.js: Versi `>= 22.23.4`, `>= 24.22.1`, `>= 26.12.1`
+  - Google Brotli Library: Versi `>= 1.2.1` (atau `>= 1.0.10`, `>= 1.1.1`)
 
 ---
 
@@ -262,6 +267,10 @@ apps/
 ## Catatan Rilis (Changelog)
 
 ### v3.2.0 (2026-10-05)
+- **Mitigasi Kerentanan Brotli Decoder Buffer Overflow / Node2Shell (2026-10-27)**:
+  - Perlindungan terhadap CVE-2026-111497 (Google Brotli decoder heap out-of-bounds write / buffer overflow) melalui pemblokiran request body dengan `Content-Encoding: br` atau `brotli` pada `apps/.htaccess` dan filter runtime PHP `is_php2shell_request()`.
+  - Pembaruan dependensi `undici` ke versi `7.30.1` pada `package-lock.json` untuk mengatasi risiko denial of service pada content-encoding decompression.
+  - Penambahan skenario pengujian unit PHPUnit pada `tests/apps/inc/SessionTest.php` untuk validasi pemblokiran header encoding Brotli.
 - **Mitigasi Kerentanan PHP2Shell (2026-10-23)**:
   - Perlindungan terhadap CVE-2026-109618 (heap use-after-free/OOM corruption) dan CVE-2026-109619 (worker memory persistence) melalui penonaktifan upload progress (`session.upload_progress.enabled = Off`) dan upload berkas (`file_uploads = Off`) pada `apps/.user.ini` dan `apps/.htaccess`.
   - Penambahan filter `mod_rewrite` pada `apps/.htaccess` untuk memblokir permintaan mengandung `PHP_SESSION_UPLOAD_PROGRESS`, prefix `upload_progress_`, dan payload `multipart/form-data`.

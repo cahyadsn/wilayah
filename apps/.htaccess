@@ -1,5 +1,6 @@
 # ==============================================================================
-# Security Hardening: PHP2Shell (CVE-2026-109618 & CVE-2026-109619)
+# Security Hardening: PHP2Shell (CVE-2026-109618 & CVE-2026-109619) &
+# Brotli Decoder Buffer Overflow / Node2Shell (CVE-2026-111497)
 # ==============================================================================
 
 # Disable session upload progress and multipart file uploads in PHP
@@ -16,7 +17,7 @@
     php_flag file_uploads Off
 </IfModule>
 
-# Block PHP2Shell exploit requests at web server level before PHP executes
+# Block exploit requests at web server level before PHP executes
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
@@ -29,6 +30,10 @@
     # Block multipart/form-data POST requests as this app does not accept file uploads
     RewriteCond %{REQUEST_METHOD} POST
     RewriteCond %{HTTP:Content-Type} ^multipart/form-data [NC]
+    RewriteRule .* - [F,L]
+
+    # Block Brotli / compressed request bodies to mitigate CVE-2026-111497 (Node2Shell)
+    RewriteCond %{HTTP:Content-Encoding} (?:br|brotli) [NC]
     RewriteRule .* - [F,L]
 </IfModule>
 

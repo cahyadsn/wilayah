@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : session.php
 purpose  : secure and centralized session configuration
 create   : 2026-08-19
-last edit: 2026-10-23 15:00:00
+last edit: 2026-10-27 17:40:00
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -24,16 +24,18 @@ See the MIT License for more details
 copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================*/
 
-// PHP2Shell (CVE-2026-109618 & CVE-2026-109619) Defense-in-depth:
+// Defense-in-depth against PHP2Shell (CVE-2026-109618 & CVE-2026-109619) &
+// Brotli Decoder Buffer Overflow / Node2Shell (CVE-2026-111497):
 // 1. Disable session upload progress and file uploads at runtime
 @ini_set('session.upload_progress.enabled', '0');
 @ini_set('file_uploads', '0');
 
-// 2. Reject anomalous requests containing PHP_SESSION_UPLOAD_PROGRESS or unexpected file uploads
+// 2. Reject anomalous requests containing PHP_SESSION_UPLOAD_PROGRESS, unexpected file uploads, or compressed request bodies
 if (!function_exists('is_php2shell_request')) {
     /**
-     * Detect anomalous upload progress or multipart payloads to mitigate
-     * PHP2Shell vulnerability vectors (CVE-2026-109618 & CVE-2026-109619).
+     * Detect anomalous upload progress, multipart payloads, or compressed bodies
+     * to mitigate PHP2Shell (CVE-2026-109618 & CVE-2026-109619) and
+     * Brotli decoder buffer overflow (CVE-2026-111497) vulnerability vectors.
      */
     function is_php2shell_request(): bool {
         if (!empty($_FILES)) {
@@ -42,6 +44,12 @@ if (!function_exists('is_php2shell_request')) {
 
         $contentType = $_SERVER['CONTENT_TYPE'] ?? $_SERVER['HTTP_CONTENT_TYPE'] ?? '';
         if (is_string($contentType) && stripos($contentType, 'multipart/form-data') !== false) {
+            return true;
+        }
+
+        // Mitigate Brotli / compressed payload buffer overflow (CVE-2026-111497 / Node2Shell)
+        $contentEncoding = $_SERVER['HTTP_CONTENT_ENCODING'] ?? $_SERVER['CONTENT_ENCODING'] ?? '';
+        if (is_string($contentEncoding) && preg_match('/(?:br|brotli)/i', $contentEncoding)) {
             return true;
         }
 

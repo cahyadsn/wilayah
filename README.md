@@ -181,7 +181,19 @@ node tools/check_sql_wilayah_pulau.js
 - [x] penambahan data kode pulau di web demo (ditambahkan panel daftar pulau di `apps/index.php`)
 
 ## CHANGE LOG
-- [2026-10-23] 🆕
+- [2026-10-27] 🆕
+  - **Mitigasi Kerentanan Brotli Decoder Buffer Overflow / Node2Shell (CVE-2026-111497)**:
+    - **Pencegahan Tingkat Web Server & Filter HTTP (`.htaccess`)**:
+      - Menambahkan aturan pemblokiran `mod_rewrite` pada [`.htaccess`](.htaccess), [`apps/.htaccess`](apps/.htaccess), dan [`src/.htaccess`](src/.htaccess) untuk menolak langsung permintaan dengan header `Content-Encoding: br` atau `Content-Encoding: brotli`, mencegah decoding payload terkompresi Brotli yang dapat memicu out-of-bounds write (CWE-787) pada server atau reverse proxy rentan.
+    - **Pengamanan Runtime PHP (`apps/inc/session.php` & `apps/inc/db.php`)**:
+      - Memperluas fungsi deteksi anomali `is_php2shell_request()` untuk memvalidasi `HTTP_CONTENT_ENCODING` dan menolak seketika (`400 Bad Request`) permintaan dengan encoding Brotli/kompresi sebelum payload diproses.
+    - **Pembaruan Dependensi Ekosistem Node.js**:
+      - Memperbarui package `undici` dari versi `7.30.0` ke `7.30.1` pada [`package-lock.json`](package-lock.json) guna mengatasi kerentanan Denial of Service terkait penanganan content-encoding (`GHSA-xjj6-f33q-929c`).
+    - **Peningkatan Pengujian Unit (`tests/apps/inc/SessionTest.php`)**:
+      - Menambahkan pengujian `testIsPhp2shellRequestDetectsBrotliContentEncoding` dan `testIsPhp2shellRequestDetectsBrotliLongContentEncoding` pada [`tests/apps/inc/SessionTest.php`](tests/apps/inc/SessionTest.php), menjadikan total 113 pengujian PHPUnit dan 6 pengujian Jest lulus 100%.
+    - **Metadata Berkas**:
+      - Memperbarui timestamp `last edit` pada seluruh berkas yang dimodifikasi.
+- [2026-10-23]
   - **Mitigasi Kerentanan PHP2Shell (CVE-2026-109618 & CVE-2026-109619)**:
     - **Pencegahan Tingkat Konfigurasi Server & SAPI (`.htaccess` & `.user.ini`)**:
       - Menerapkan direktif penonaktifan upload progress (`session.upload_progress.enabled = Off`) dan upload berkas (`file_uploads = Off`) pada berkas [`.user.ini`](.user.ini), [`apps/.user.ini`](apps/.user.ini), dan [`src/.user.ini`](src/.user.ini) untuk memitigasi serangan heap memory corruption (UAF) dan worker memory persistence pada lingkungan SAPI persisten (PHP-FPM, Apache mod_php, FastCGI).
