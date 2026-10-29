@@ -177,9 +177,6 @@ node tools/check_sql_wilayah_penduduk.js
 node tools/check_sql_wilayah_pulau.js
 ```
 
-## TODO
-- [x] penambahan data kode pulau di web demo (ditambahkan panel daftar pulau di `apps/index.php`)
-
 ## CHANGE LOG
 - [2026-10-27] 🆕
   - **Mitigasi Kerentanan Brotli Decoder Buffer Overflow / Node2Shell (CVE-2026-111497)**:
