@@ -57,7 +57,7 @@ if (!function_exists('is_php2shell_request')) {
             if (isset($bag['PHP_SESSION_UPLOAD_PROGRESS'])) {
                 return true;
             }
-            foreach (array_keys($bag) as $key) {
+            foreach ($bag as $key => $value) {
                 if (is_string($key) && stripos($key, 'upload_progress') !== false) {
                     return true;
                 }
