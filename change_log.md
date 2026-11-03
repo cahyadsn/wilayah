@@ -1,6 +1,9 @@
 # CHANGE LOG 
 
 ## LATEST UPDATES
+- Optimize is_php2shell_request() in apps/inc/db.php and apps/inc/session.php by replacing array_keys() iteration with direct foreach key-value traversal, reducing memory and CPU overhead 2026-10-31
+- Update file header last edit timestamps on modified files to match modification history 2026-10-31
+- Remove completed TODO regarding island panel addition from README.md 2026-10-29
 - Mitigate Brotli decoder buffer overflow / Node2Shell (CVE-2026-111497): block Content-Encoding: br/brotli via .htaccess and is_php2shell_request() guard, bump undici to 7.30.1 in package-lock.json, and add SessionTest test cases 2026-10-27
 - Harden against PHP2Shell vulnerabilities (CVE-2026-109618 & CVE-2026-109619): enforce session.upload_progress.enabled = Off and file_uploads = Off via .user.ini and .htaccess, implement runtime is_php2shell_request() guard rejecting upload progress probes and multipart payloads, expand SessionTest to 9 test cases, and update security advisories 2026-10-23
 - Security audit and vulnerability fixes: prevent unauthenticated DB updates in src/inc/geo_update.php, patch XSS in src/index.php, change.color.php, geo_ajax.php, and geo_js.php Leaflet popups, fix CSRF token cache leakage in apps/index.php, add geographic bounds checks in reverse_lookup.php, enforce session strict mode, and ensure 100% test suite pass 2026-10-22

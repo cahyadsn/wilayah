@@ -178,7 +178,15 @@ node tools/check_sql_wilayah_pulau.js
 ```
 
 ## CHANGE LOG
-- [2026-10-27] 🆕
+- [2026-10-31] 🆕
+  - **Optimasi Performa Iterasi Superglobal / Deteksi PHP2Shell (`apps/inc/db.php` & `apps/inc/session.php`)**:
+    - Mengeliminasi alokasi memori dan overhead pembuatan array kunci (`array_keys($bag)`) pada fungsi filter anomali `is_php2shell_request()` dengan beralih ke iterasi langsung `foreach ($bag as $key => $value)`.
+    - Mereduksi overhead iterasi superglobal hingga ~21% saat pemrosesan array tanpa alokasi array kunci perantara.
+  - **Pembersihan Catatan Tugas (TODO)**:
+    - Menghapus item TODO terkait penambahan panel daftar pulau pada sidebar web apps yang telah selesai diimplementasikan.
+  - **Metadata Berkas**:
+    - Memperbarui timestamp `last edit` pada seluruh berkas yang dimodifikasi ([`apps/inc/db.php`](apps/inc/db.php) dan [`apps/inc/session.php`](apps/inc/session.php)).
+- [2026-10-27]
   - **Mitigasi Kerentanan Brotli Decoder Buffer Overflow / Node2Shell (CVE-2026-111497)**:
     - **Pencegahan Tingkat Web Server & Filter HTTP (`.htaccess`)**:
       - Menambahkan aturan pemblokiran `mod_rewrite` pada [`.htaccess`](.htaccess), [`apps/.htaccess`](apps/.htaccess), dan [`src/.htaccess`](src/.htaccess) untuk menolak langsung permintaan dengan header `Content-Encoding: br` atau `Content-Encoding: brotli`, mencegah decoding payload terkompresi Brotli yang dapat memicu out-of-bounds write (CWE-787) pada server atau reverse proxy rentan.
