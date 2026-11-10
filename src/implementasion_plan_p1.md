@@ -2,7 +2,7 @@
 filename : implementasion_plan_p1.md
 purpose  : Implementation Plan for Feature P1 - Global Search Autocomplete
 created  : 2026-11-10
-last edit: 2026-11-10 07:35:00
+last edit: 2026-11-10 09:15:00
 author   : cahya dsn & AI Assistant
 ================================================================================
 MIT License
@@ -88,30 +88,30 @@ Fitur **Global Search Autocomplete** memungkinkan pengguna untuk mencari wilayah
 ## 5. Rencana Tahapan Eksekusi (Phase Roadmap)
 
 ### Fase 1: Backend & Optimasi Basis Data
-- [ ] Buat file `apps/inc/geo_search.php`.
-- [ ] Tambahkan sanitasi input ketat (mencegah karakter wildcard berlebihan `%%` dan serangan injection).
-- [ ] Optimalkan indexing MySQL jika diperlukan (`INDEX idx_nama (nama)` pada tabel `wilayah` dan `wilayah_pulau`).
-- [ ] Format data kembalian menjadi struktur hierarki yang informatif (mengetahui parent provinsi & kabupaten).
+- [x] Buat file `apps/inc/geo_search.php`.
+- [x] Tambahkan sanitasi input ketat (mencegah karakter wildcard berlebihan `%%` dan serangan injection).
+- [x] Optimalkan indexing MySQL jika diperlukan (`INDEX idx_nama (nama)` pada tabel `wilayah` dan `wilayah_pulau`).
+- [x] Format data kembalian menjadi struktur hierarki yang informatif (mengetahui parent provinsi & kabupaten).
 
 ### Fase 2: Antarmuka Pengguna (UI/UX)
-- [ ] Letakkan kolom pencarian pada header/navbar aplikasi atau di atas sidebar kiri.
-- [ ] Tambahkan ikon pencarian, tombol *clear* (silang), dan indikator *loading spinner*.
-- [ ] Buat container dropdown daftar hasil (*flyout card*) yang mengapung di bawah kotak input.
-- [ ] Terapkan styling responsif yang menyesuaikan tema (`theme-light` dan `theme-dark`).
+- [x] Letakkan kolom pencarian pada header/navbar aplikasi atau di atas sidebar kiri.
+- [x] Tambahkan ikon pencarian, tombol *clear* (silang), dan indikator *loading spinner*.
+- [x] Buat container dropdown daftar hasil (*flyout card*) yang mengapung di bawah kotak input.
+- [x] Terapkan styling responsif yang menyesuaikan tema (`theme-light` dan `theme-dark`).
 
 ### Fase 3: Integrasi Interaksi Peta & Dropdown Cascade
-- [ ] Saat hasil diklik:
+- [x] Saat hasil diklik:
   - Ekstrak kode wilayah.
   - Panggil fungsi `applyReverseSelection` atau trigger sinkronisasi cascade dropdown (Provinsi &rarr; Kota &rarr; Kec &rarr; Kel).
   - Arahkan kamera peta Leaflet (`map.flyTo([lat, lng], zoomLevel)`).
   - Tampilkan marker pin dan popup ringkasan informasi wilayah/pulau tersebut.
-- [ ] Dukungan aksesibilitas keyboard (`Tab`, Panah Atas/Bawah, `Enter` untuk memilih, `Escape` untuk menutup).
+- [x] Dukungan aksesibilitas keyboard (`Tab`, Panah Atas/Bawah, `Enter` untuk memilih, `Escape` untuk menutup).
 
 ### Fase 4: Pengujian & Validasi
-- [ ] Uji query dengan karakter khusus (`"Kota Cimahi"`, `"D.I. Yogyakarta"`, `"31.7"`, nama dengan tanda petik/strip).
-- [ ] Uji performa latency response: pastikan rata-rata response time < 80ms pada MySQL lokal.
-- [ ] Uji keamanan terhadap XSS pada tampilan hasil pencarian (`escapeHtml`).
-- [ ] Uji pada perangkat mobile (tampilan tidak menutupi seluruh peta secara permanen).
+- [x] Uji query dengan karakter khusus (`"Kota Cimahi"`, `"D.I. Yogyakarta"`, `"31.7"`, nama dengan tanda petik/strip).
+- [x] Uji performa latency response: pastikan rata-rata response time < 80ms pada MySQL lokal.
+- [x] Uji keamanan terhadap XSS pada tampilan hasil pencarian (`escapeHtml`).
+- [x] Uji pada perangkat mobile (tampilan tidak menutupi seluruh peta secara permanen).
 
 ---
 

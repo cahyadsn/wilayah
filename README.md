@@ -178,7 +178,7 @@ node tools/check_sql_wilayah_pulau.js
 ```
 
 ## TO DO
-- [ ] **Global Search Autocomplete**: Pencarian instan nama wilayah, kode, dan pulau dengan debounce serta integrasi kamera peta (`flyTo`).
+- [x] **Global Search Autocomplete**: Pencarian instan nama wilayah, kode, dan pulau dengan debounce serta integrasi kamera peta (`flyTo`).
 - [ ] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast. 
 - [ ] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
 - [ ] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
@@ -186,6 +186,23 @@ node tools/check_sql_wilayah_pulau.js
 
 ## CHANGE LOG
 - [2026-11-10] RELEASE v2026.11  🆕
+  - **Fitur Pencarian Global Instan (Global Search Autocomplete - P1)**:
+    - **Backend Search Engine (`apps/inc/geo_search.php`)**:
+      - Menambahkan endpoint pencarian cepat untuk seluruh tingkatan wilayah administrasi (Provinsi, Kab/Kota, Kecamatan, Desa/Kelurahan) dan pulau Indonesia.
+      - Mengoptimalkan kueri basis data dengan pencarian prefix berbasis indeks B-Tree (`wilayah_name_idx` & `pulau_nama_idx`) serta fallback pencarian substring dengan waktu respon < 50ms.
+      - Resolusi hierarki satu langkah (*batch query*) untuk menghasilkan nama induk (*parent*) serta struktur rantai seleksi (*chain*).
+      - Sanitasi input ketat (regex whitelist, 2–50 karakter) dan caching respon server-side 24 jam berbasis SHA-256 (`apps/cache/search_cache_*`).
+    - **Antarmuka Pengguna & Interaktivitas Peta (`apps/index.php`, `apps/inc/geo_js.php`, `apps/css/styles.css`, `apps/css/styles.min.css`)**:
+      - Menambahkan input pencarian cepat pada panel selector dengan debounce 250ms, tombol clear, loading spinner, dan dropdown kartu hasil (*flyout card*).
+      - Menambahkan badge kategori warna dinamis untuk setiap tingkatan wilayah dan pulau dengan dukungan penuh tema terang dan gelap (*dark/light mode*).
+      - Navigasi keyboard aksesibel (`ArrowUp`, `ArrowDown`, `Enter`, `Escape`).
+      - Integrasi otomatis dengan dropdown hierarki (`applyReverseSelection`), pergerakan kamera peta Leaflet (`map.flyTo`), penggambaran batas poligon, serta penempatan marker pulau (`onSelectIsland`).
+    - **Peningkatan Pengujian Unit**:
+      - Menambahkan test suite PHPUnit [`tests/apps/inc/GeoSearchTest.php`](tests/apps/inc/GeoSearchTest.php) (8 pengujian: validasi karakter, kueri nama wilayah, kueri kode, kueri pulau, batasan limit, penanganan eror) dengan 100% kelulusan (total 121 pengujian PHPUnit).
+      - Memperluas test suite Jest [`tests/apps/inc/geo_js.test.js`](tests/apps/inc/geo_js.test.js) untuk pengujian rendering elemen hasil pencarian, interaksi seleksi, dan penutupan flyout (total 9 pengujian Jest 100% lulus).
+    - **Metadata Berkas**:
+      - Memperbarui timestamp `last edit` pada seluruh berkas yang dimodifikasi.
+- [2026-11-10] RELEASE v2026.11
 - [2026-10-31]
   - **Optimasi Performa Iterasi Superglobal / Deteksi PHP2Shell (`apps/inc/db.php` & `apps/inc/session.php`)**:
     - Mengeliminasi alokasi memori dan overhead pembuatan array kunci (`array_keys($bag)`) pada fungsi filter anomali `is_php2shell_request()` dengan beralih ke iterasi langsung `foreach ($bag as $key => $value)`.

@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_js.php
 purpose  : JavaScript for AJAX cascade, map, and counters
 create   : 170912
-last edit: 2026-10-22 09:20:00
+last edit: 2026-11-10 08:25:00
 author   : cahya dsn
 ================================================================================
 MIT License
@@ -266,7 +266,8 @@ function ajax(id) {
         resetIslandPanel();
         return;
     }
-    document.getElementById('preload').classList.add('is-visible');
+    var preloadEl = document.getElementById('preload');
+    if (preloadEl) preloadEl.classList.add('is-visible');
     ids = id;
     var url = "inc/geo_ajax.php?id=" + id + "&sid=" + Math.random();
     my_ajax.onreadystatechange = stateChanged;
@@ -275,7 +276,8 @@ function ajax(id) {
 }
 
 function geo(id) {
-    document.getElementById('preload').classList.add('is-visible');
+    var preloadEl = document.getElementById('preload');
+    if (preloadEl) preloadEl.classList.add('is-visible');
     ids = id;
     var geo_url = "inc/geo_ajax.php?id=" + id + "&geo=1&sid=" + Math.random();
     var req = do_ajax();
@@ -775,11 +777,239 @@ function updateMap(data) {
     map.flyTo(point, data.path ? 9 : 5);
 }
 
+// ============================================================
+// GLOBAL SEARCH AUTOCOMPLETE (P1)
+// ============================================================
+var searchDebounceTimer = null;
+var activeSearchResultIndex = -1;
+var currentSearchResults = [];
+
+function initGlobalSearch() {
+    var searchInput = document.getElementById('globalSearchInput');
+    var searchClear = document.getElementById('globalSearchClear');
+    var searchSpinner = document.getElementById('globalSearchSpinner');
+    var searchResults = document.getElementById('globalSearchResults');
+
+    if (!searchInput || !searchResults) return;
+
+    searchInput.addEventListener('input', function() {
+        var val = this.value.trim();
+        if (searchClear) {
+            searchClear.style.display = val.length > 0 ? 'block' : 'none';
+        }
+        if (searchDebounceTimer) {
+            clearTimeout(searchDebounceTimer);
+        }
+
+        if (val.length < 2) {
+            closeSearchResults();
+            if (searchSpinner) searchSpinner.style.display = 'none';
+            return;
+        }
+
+        if (searchSpinner) searchSpinner.style.display = 'block';
+
+        searchDebounceTimer = setTimeout(function() {
+            executeGlobalSearch(val);
+        }, 250);
+    });
+
+    searchInput.addEventListener('keydown', function(e) {
+        if (!searchResults || searchResults.style.display === 'none') {
+            if (e.key === 'ArrowDown' && this.value.trim().length >= 2) {
+                executeGlobalSearch(this.value.trim());
+            }
+            return;
+        }
+
+        var items = searchResults.querySelectorAll('.global-search-item');
+        if (items.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            activeSearchResultIndex = (activeSearchResultIndex + 1) % items.length;
+            updateActiveSearchItem(items);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            activeSearchResultIndex = (activeSearchResultIndex - 1 + items.length) % items.length;
+            updateActiveSearchItem(items);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (activeSearchResultIndex >= 0 && activeSearchResultIndex < currentSearchResults.length) {
+                selectSearchResult(currentSearchResults[activeSearchResultIndex]);
+            }
+        } else if (e.key === 'Escape') {
+            closeSearchResults();
+        }
+    });
+
+    if (searchClear) {
+        searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            searchClear.style.display = 'none';
+            closeSearchResults();
+            searchInput.focus();
+        });
+    }
+
+    document.addEventListener('click', function(e) {
+        var wrapper = document.getElementById('globalSearchWrapper');
+        if (wrapper && !wrapper.contains(e.target)) {
+            closeSearchResults();
+        }
+    });
+}
+
+function updateActiveSearchItem(items) {
+    items.forEach(function(el, idx) {
+        if (idx === activeSearchResultIndex) {
+            el.classList.add('is-active');
+            el.scrollIntoView({ block: 'nearest' });
+        } else {
+            el.classList.remove('is-active');
+        }
+    });
+}
+
+function closeSearchResults() {
+    var searchResults = document.getElementById('globalSearchResults');
+    var searchInput = document.getElementById('globalSearchInput');
+    if (searchResults) {
+        searchResults.style.display = 'none';
+        searchResults.innerHTML = '';
+    }
+    if (searchInput) {
+        searchInput.setAttribute('aria-expanded', 'false');
+    }
+    activeSearchResultIndex = -1;
+    currentSearchResults = [];
+}
+
+function executeGlobalSearch(query) {
+    var searchSpinner = document.getElementById('globalSearchSpinner');
+    var searchInput = document.getElementById('globalSearchInput');
+    var url = 'inc/geo_search.php?q=' + encodeURIComponent(query) + '&limit=8&sid=' + Math.random();
+
+    fetchWilayah(url)
+        .then(function(res) {
+            if (searchSpinner) searchSpinner.style.display = 'none';
+            if (!res || !res.status) {
+                renderSearchEmpty('Terjadi kesalahan pencarian');
+                return;
+            }
+            renderSearchResults(res.results || [], query);
+        })
+        .catch(function() {
+            if (searchSpinner) searchSpinner.style.display = 'none';
+            renderSearchEmpty('Gagal memuat hasil pencarian');
+        });
+}
+
+function renderSearchEmpty(message) {
+    var searchResults = document.getElementById('globalSearchResults');
+    var searchInput = document.getElementById('globalSearchInput');
+    if (!searchResults) return;
+
+    searchResults.innerHTML = '<div class="global-search-empty">' + escapeHtml(message) + '</div>';
+    searchResults.style.display = 'block';
+    if (searchInput) searchInput.setAttribute('aria-expanded', 'true');
+    currentSearchResults = [];
+    activeSearchResultIndex = -1;
+}
+
+function renderSearchResults(results, query) {
+    var searchResults = document.getElementById('globalSearchResults');
+    var searchInput = document.getElementById('globalSearchInput');
+    if (!searchResults) return;
+
+    searchResults.innerHTML = '';
+    currentSearchResults = results;
+    activeSearchResultIndex = -1;
+
+    if (!results || results.length === 0) {
+        renderSearchEmpty('Tidak ada wilayah atau pulau yang cocok');
+        return;
+    }
+
+    var fragment = document.createDocumentFragment();
+    results.forEach(function(item, idx) {
+        var el = document.createElement('div');
+        el.className = 'global-search-item';
+        el.setAttribute('role', 'option');
+        el.setAttribute('data-index', idx);
+
+        var header = document.createElement('div');
+        header.className = 'search-item-header';
+
+        var badgeClass = 'badge-' + (item.category === 'pulau' ? 'pulau' : (item.tipe || '').toLowerCase().replace(/[^a-z]/g, ''));
+        var badge = document.createElement('span');
+        badge.className = 'search-item-badge ' + badgeClass;
+        badge.textContent = item.tipe || 'Wilayah';
+
+        var code = document.createElement('span');
+        code.className = 'search-item-code';
+        code.textContent = item.kode || '';
+
+        header.appendChild(badge);
+        header.appendChild(code);
+
+        var nameDiv = document.createElement('div');
+        nameDiv.className = 'search-item-name';
+        nameDiv.textContent = item.nama || '';
+
+        var parentDiv = document.createElement('div');
+        parentDiv.className = 'search-item-parent';
+        parentDiv.textContent = item.parent || '';
+
+        el.appendChild(header);
+        el.appendChild(nameDiv);
+        if (item.parent) {
+            el.appendChild(parentDiv);
+        }
+
+        el.addEventListener('click', function() {
+            selectSearchResult(item);
+        });
+
+        fragment.appendChild(el);
+    });
+
+    searchResults.appendChild(fragment);
+    searchResults.style.display = 'block';
+    if (searchInput) searchInput.setAttribute('aria-expanded', 'true');
+}
+
+function selectSearchResult(item) {
+    var searchInput = document.getElementById('globalSearchInput');
+    if (searchInput) {
+        searchInput.value = item.nama + ' (' + item.kode + ')';
+    }
+    closeSearchResults();
+
+    if (item.category === 'pulau') {
+        if (item.chain) {
+            applyReverseSelection(item.chain)
+                .then(function() {
+                    onSelectIsland(item);
+                });
+        } else {
+            onSelectIsland(item);
+        }
+    } else {
+        applyReverseSelection(item.chain, { kode: item.kode, nama: item.nama });
+    }
+}
+
 // --- Init on load ---
 document.addEventListener('DOMContentLoaded', function() {
     initMap();
+    initGlobalSearch();
     window.refreshMapThemeAwareness = refreshMapThemeAwareness;
     window.filterIslands = filterIslands;
     window.updateIslandPanel = updateIslandPanel;
     window.resetIslandPanel = resetIslandPanel;
+    window.initGlobalSearch = initGlobalSearch;
+    window.renderSearchResults = renderSearchResults;
+    window.selectSearchResult = selectSearchResult;
+    window.closeSearchResults = closeSearchResults;
 });

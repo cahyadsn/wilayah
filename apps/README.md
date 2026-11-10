@@ -265,7 +265,7 @@ apps/
 ---
 
 ## TO DO
-- [ ] **Global Search Autocomplete**: Pencarian instan nama wilayah, kode, dan pulau dengan debounce serta integrasi kamera peta (`flyTo`).
+- [x] **Global Search Autocomplete**: Pencarian instan nama wilayah, kode, dan pulau dengan debounce serta integrasi kamera peta (`flyTo`).
 - [ ] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast.
 - [ ] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
 - [ ] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
@@ -274,6 +274,12 @@ apps/
 ## Catatan Rilis (Changelog)
 
 ### v3.2.0 (2026-10-05)
+- **Fitur Pencarian Global Instan (Global Search Autocomplete - P1) (2026-11-10)**:
+  - Menambahkan endpoint pencarian cepat `apps/inc/geo_search.php` untuk seluruh tingkatan wilayah administrasi (Provinsi, Kab/Kota, Kecamatan, Desa/Kelurahan) dan pulau Indonesia.
+  - Kueri teroptimasi B-Tree index (`wilayah_name_idx` & `pulau_nama_idx`), batch parent resolution, dan file caching SHA-256.
+  - Menambahkan antarmuka pencarian instan pada `apps/index.php` dengan badge warna per level, navigasi keyboard (panah/enter/esc), dan kartu dropdown rekomendasi.
+  - Integrasi dua arah dengan hierarki dropdown (`applyReverseSelection`) dan kamera peta Leaflet (`map.flyTo` & batas poligon/marker pulau).
+  - Menambahkan pengujian unit lengkap pada `tests/apps/inc/GeoSearchTest.php` (PHPUnit) dan `tests/apps/inc/geo_js.test.js` (Jest).
 - **Optimasi Kinerja Iterasi Superglobal Guard PHP2Shell (2026-10-31)**:
   - Mengoptimalkan fungsi deteksi payload mencurigakan `is_php2shell_request()` pada `apps/inc/db.php` dan `apps/inc/session.php` dengan mengganti iterasi `array_keys()` menjadi `foreach ($bag as $key => $value)`.
   - Mengurangi alokasi memori berlebih dan memangkas waktu eksekusi traversal superglobal hingga ~21%.

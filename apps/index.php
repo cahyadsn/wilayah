@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit: 2026-10-22 09:20:00
+last edit: 2026-11-10 08:25:00
 author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps
@@ -127,6 +127,36 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
                 <div class="spinner"></div>
                 <span>Loading...</span>
               </div>
+
+              <!-- Global Search Autocomplete (P1) -->
+              <div class="global-search-wrapper" id="globalSearchWrapper">
+                <label for="globalSearchInput" class="global-search-label">Pencarian Cepat</label>
+                <div class="global-search-input-group">
+                  <span class="global-search-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </span>
+                  <input
+                    type="text"
+                    id="globalSearchInput"
+                    class="global-search-input"
+                    placeholder="Cari wilayah, kode, atau pulau..."
+                    autocomplete="off"
+                    spellcheck="false"
+                    aria-label="Cari wilayah atau pulau"
+                    aria-autocomplete="list"
+                    aria-controls="globalSearchResults"
+                    aria-expanded="false"
+                  />
+                  <button type="button" id="globalSearchClear" class="global-search-clear" aria-label="Hapus pencarian" title="Hapus pencarian" style="display:none;">&times;</button>
+                  <span id="globalSearchSpinner" class="global-search-spinner" style="display:none;" aria-hidden="true"></span>
+                </div>
+                <div id="globalSearchResults" class="global-search-results" style="display:none;" role="listbox"></div>
+              </div>
+
+              <div class="global-search-divider"><span>atau pilih hierarki</span></div>
 
               <!-- Province -->
               <div class="form-row">
