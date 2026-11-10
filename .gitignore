@@ -1,7 +1,7 @@
 /backup
 dump-*
 /inc/db.php
-/src
+/src/*
 /CLAUDE.md
 /.claude
 /.claudevendor
@@ -16,6 +16,7 @@ composer.lock
 /skills
 /.windsurf
 /.Jules
+/conductor/
 /MEMORY.md
 /GEMINI.md
 # Local application cache files

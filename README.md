@@ -177,6 +177,13 @@ node tools/check_sql_wilayah_penduduk.js
 node tools/check_sql_wilayah_pulau.js
 ```
 
+## TO DO
+- [ ] **Global Search Autocomplete**: Pencarian instan nama wilayah, kode, dan pulau dengan debounce serta integrasi kamera peta (`flyTo`).
+- [ ] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast. 
+- [ ] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
+- [ ] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
+- [ ] **Cluster Marker Seluruh Pulau**: Visualisasi sebaran ribuan pulau sekaligus menggunakan `Leaflet.markercluster` dengan performa tinggi (*chunked loading*).
+
 ## CHANGE LOG
 - [2026-11-10] RELEASE v2026.11  🆕
 - [2026-10-31]
