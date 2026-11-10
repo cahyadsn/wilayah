@@ -178,7 +178,8 @@ node tools/check_sql_wilayah_pulau.js
 ```
 
 ## CHANGE LOG
-- [2026-10-31] 🆕
+- [2026-11-10] RELEASE v2026.11  🆕
+- [2026-10-31]
   - **Optimasi Performa Iterasi Superglobal / Deteksi PHP2Shell (`apps/inc/db.php` & `apps/inc/session.php`)**:
     - Mengeliminasi alokasi memori dan overhead pembuatan array kunci (`array_keys($bag)`) pada fungsi filter anomali `is_php2shell_request()` dengan beralih ke iterasi langsung `foreach ($bag as $key => $value)`.
     - Mereduksi overhead iterasi superglobal hingga ~21% saat pemrosesan array tanpa alokasi array kunci perantara.
