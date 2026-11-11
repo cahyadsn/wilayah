@@ -2,7 +2,7 @@
 filename : implementasion_plan_p2.md
 purpose  : Implementation Plan for Feature P2 - Shareable URL & Deep Linking
 created  : 2026-11-10
-last edit: 2026-11-10 07:35:10
+last edit: 2026-11-11 08:45:00
 author   : cahya dsn & AI Assistant
 ================================================================================
 MIT License
@@ -63,7 +63,7 @@ https://wilayah.cahyadsn.com/apps/?lat=-6.9147&lng=107.6098&zoom=12
 ## 5. Rencana Tahapan Eksekusi (Phase Roadmap)
 
 ### Fase 1: Parsing Parameter URL & Initial Hydration
-- [ ] Buat fungsi JavaScript `getUrlParams()`:
+- [x] Buat fungsi JavaScript `getUrlParams()`:
   ```javascript
   function getUrlParams() {
       var searchParams = new URLSearchParams(window.location.search);
@@ -75,12 +75,12 @@ https://wilayah.cahyadsn.com/apps/?lat=-6.9147&lng=107.6098&zoom=12
       };
   }
   ```
-- [ ] Tambahkan sanitasi regex ketat pada parameter `kode` dan `pulau` sebelum diproses.
-- [ ] Jika terdapat parameter `kode`, panggil rantai `applyReverseSelection()` atau cascade selector untuk memuat data provinsi hingga level yang ditentukan, gambar poligon, dan sesuaikan peta.
-- [ ] Jika terdapat parameter `pulau`, muat parent kabupaten/provinsi pulau tersebut, aktifkan panel pulau, sorot item pulau, dan tempatkan marker pulau.
+- [x] Tambahkan sanitasi regex ketat pada parameter `kode` dan `pulau` sebelum diproses.
+- [x] Jika terdapat parameter `kode`, panggil rantai `applyReverseSelection()` atau cascade selector untuk memuat data provinsi hingga level yang ditentukan, gambar poligon, dan sesuaikan peta.
+- [x] Jika terdapat parameter `pulau`, muat parent kabupaten/provinsi pulau tersebut, aktifkan panel pulau, sorot item pulau, dan tempatkan marker pulau.
 
 ### Fase 2: Sinkronisasi Status ke URL (URL Sync on User Action)
-- [ ] Pasang listener pada event perubahan pilihan wilayah:
+- [x] Pasang listener pada event perubahan pilihan wilayah:
   - Saat `prop`, `kota`, `kec`, atau `kel` berubah, panggil:
     ```javascript
     function updateUrlState(kode, pulauId) {
@@ -92,19 +92,19 @@ https://wilayah.cahyadsn.com/apps/?lat=-6.9147&lng=107.6098&zoom=12
         window.history.replaceState({}, '', url);
     }
     ```
-- [ ] Pasang listener saat pulau di klik pada panel pulau: tambahkan parameter `pulau=KODE_PULAU`.
-- [ ] Pasang listener pada tombol toggle theme: perbarui parameter `theme`.
+- [x] Pasang listener saat pulau di klik pada panel pulau: tambahkan parameter `pulau=KODE_PULAU`.
+- [x] Pasang listener pada tombol toggle theme: perbarui parameter `theme`.
 
 ### Fase 3: Tombol "Bagikan / Salin Tautan" & Toast Notification
-- [ ] Tambahkan tombol ikon share (`<button id="btnShareLink">`) di bagian header atau overlay bar peta.
-- [ ] Gunakan Web Share API (`navigator.share`) jika tersedia pada browser mobile modern, atau fallback ke Clipboard API (`navigator.clipboard.writeText(window.location.href)`).
-- [ ] Buat komponen Toast notifikasi ringan tanpa dependensi eksternal (muncul selama 2.5 detik).
+- [x] Tambahkan tombol ikon share (`<button id="btnShareLink">`) di bagian header atau overlay bar peta.
+- [x] Gunakan Web Share API (`navigator.share`) jika tersedia pada browser mobile modern, atau fallback ke Clipboard API (`navigator.clipboard.writeText(window.location.href)`).
+- [x] Buat komponen Toast notifikasi ringan tanpa dependensi eksternal (muncul selama 2.5 detik).
 
 ### Fase 4: Pengujian & Validasi
-- [ ] Uji *Cold Start*: buka URL dengan kode level 1 (provinsi `11`), level 2 (kabupaten `32.73`), level 3 (kecamatan), dan level 4 (kelurahan/desa).
-- [ ] Uji kode pulau terluar atau pulau kecil (memastikan panel pulau terbuka dan marker tersemat).
-- [ ] Uji keamanan: masukkan karakter berbahaya pada URL (e.g. `?kode=<script>alert(1)</script>`) dan pastikan diblokir atau diabaikan tanpa eror.
-- [ ] Uji tombol browser *Back* / *Forward* (`popstate` event handler).
+- [x] Uji *Cold Start*: buka URL dengan kode level 1 (provinsi `11`), level 2 (kabupaten `32.73`), level 3 (kecamatan), dan level 4 (kelurahan/desa).
+- [x] Uji kode pulau terluar atau pulau kecil (memastikan panel pulau terbuka dan marker tersemat).
+- [x] Uji keamanan: masukkan karakter berbahaya pada URL (e.g. `?kode=<script>alert(1)</script>`) dan pastikan diblokir atau diabaikan tanpa eror.
+- [x] Uji tombol browser *Back* / *Forward* (`popstate` event handler).
 
 ---
 

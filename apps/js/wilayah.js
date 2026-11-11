@@ -3,7 +3,7 @@ MIT License
 copyright (c) 2017-2026 by cahya dsn; cahyadsn@gmail.com
 ================================================================================
 filename  : wilayah.js - theme switcher and utility interactions
-last edit : 2026-10-05 14:34:45
+last edit : 2026-11-11 08:35:00
 ================================================================================*/
 
 document.addEventListener('DOMContentLoaded', function() {

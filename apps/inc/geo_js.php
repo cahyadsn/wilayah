@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_js.php
 purpose  : JavaScript for AJAX cascade, map, and counters
 create   : 170912
-last edit: 2026-11-10 08:25:00
+last edit: 2026-11-11 08:35:00
 author   : cahya dsn
 ================================================================================
 MIT License
@@ -37,6 +37,8 @@ var ids;
 var wil = new Array('prov', 'kota', 'kec', 'kel');
 var activeIslands = [];
 var islandMarker = null;
+var isHydrating = false;
+var toastTimer = null;
 
 function resetIslandPanel() {
     activeIslands = [];
@@ -1000,10 +1002,271 @@ function selectSearchResult(item) {
     }
 }
 
+
+// ============================================================
+// SHAREABLE URL & DEEP LINKING (P2)
+// ============================================================
+
+function getUrlParams(search) {
+    var query = (typeof search === 'string') ? search : (window.location ? window.location.search : '');
+    var searchParams = new URLSearchParams(query);
+    var kode = searchParams.get('kode');
+    var pulau = searchParams.get('pulau');
+    var theme = searchParams.get('theme');
+    var zoom = searchParams.get('zoom') || searchParams.get('z');
+    var lat = searchParams.get('lat');
+    var lng = searchParams.get('lng');
+
+    var validKode = (kode && /^[0-9]+(\.[0-9]+)*$/.test(kode) && kode.length <= 13) ? kode : null;
+    var validPulau = (pulau && /^[0-9]{2}\.[0-9]{2}\.[0-9]{5}$/.test(pulau)) ? pulau : null;
+    var validTheme = (theme === 'light' || theme === 'dark') ? theme : null;
+
+    var validZoom = (zoom && /^[0-9]{1,2}$/.test(zoom)) ? parseInt(zoom, 10) : null;
+    if (validZoom !== null && (validZoom < 1 || validZoom > 20)) validZoom = null;
+
+    var validLat = (lat && /^-?[0-9]+(\.[0-9]+)?$/.test(lat)) ? parseFloat(lat) : null;
+    if (validLat !== null && (validLat < -90 || validLat > 90)) validLat = null;
+
+    var validLng = (lng && /^-?[0-9]+(\.[0-9]+)?$/.test(lng)) ? parseFloat(lng) : null;
+    if (validLng !== null && (validLng < -180 || validLng > 180)) validLng = null;
+
+    return {
+        kode: validKode,
+        pulau: validPulau,
+        theme: validTheme,
+        zoom: validZoom,
+        lat: validLat,
+        lng: validLng
+    };
+}
+
+function updateUrlState(params, push) {
+    if (!window.location || !window.history || isHydrating) return;
+    try {
+        var url = new URL(window.location.href);
+        if (params) {
+            if (params.kode !== undefined) {
+                if (params.kode && /^[0-9]+(\.[0-9]+)*$/.test(params.kode) && params.kode.length <= 13) {
+                    url.searchParams.set('kode', params.kode);
+                } else {
+                    url.searchParams.delete('kode');
+                }
+            }
+            if (params.pulau !== undefined) {
+                if (params.pulau && /^[0-9]{2}\.[0-9]{2}\.[0-9]{5}$/.test(params.pulau)) {
+                    url.searchParams.set('pulau', params.pulau);
+                } else {
+                    url.searchParams.delete('pulau');
+                }
+            }
+            if (params.theme !== undefined) {
+                if (params.theme === 'light' || params.theme === 'dark') {
+                    url.searchParams.set('theme', params.theme);
+                } else {
+                    url.searchParams.delete('theme');
+                }
+            }
+            if (params.zoom !== undefined) {
+                if (params.zoom !== null && !isNaN(params.zoom)) {
+                    url.searchParams.set('zoom', String(params.zoom));
+                } else {
+                    url.searchParams.delete('zoom');
+                }
+            }
+            if (params.lat !== undefined) {
+                if (params.lat !== null && !isNaN(params.lat)) {
+                    url.searchParams.set('lat', parseFloat(params.lat).toFixed(5));
+                } else {
+                    url.searchParams.delete('lat');
+                }
+            }
+            if (params.lng !== undefined) {
+                if (params.lng !== null && !isNaN(params.lng)) {
+                    url.searchParams.set('lng', parseFloat(params.lng).toFixed(5));
+                } else {
+                    url.searchParams.delete('lng');
+                }
+            }
+        }
+        var searchStr = url.searchParams.toString();
+        var newUrl = url.pathname + (searchStr ? '?' + searchStr : '') + url.hash;
+        if (push) {
+            window.history.pushState({}, '', newUrl);
+        } else {
+            window.history.replaceState({}, '', newUrl);
+        }
+    } catch (e) {
+        // Safe fallback in non-browser or test environments
+    }
+}
+
+function buildChainFromKode(kode) {
+    if (!kode || typeof kode !== 'string' || !/^[0-9]+(\.[0-9]+)*$/.test(kode)) return null;
+    var parts = kode.split('.');
+    var chain = {};
+    if (parts.length >= 1 && parts[0].length === 2) {
+        chain.prov = { kode: parts[0] };
+    }
+    if (parts.length >= 2) {
+        chain.kab = { kode: parts[0] + '.' + parts[1] };
+    }
+    if (parts.length >= 3) {
+        chain.kec = { kode: parts[0] + '.' + parts[1] + '.' + parts[2] };
+    }
+    if (parts.length >= 4) {
+        chain.kel = { kode: kode };
+    }
+    return chain;
+}
+
+function showToast(message, duration) {
+    var toast = document.getElementById('toastNotification');
+    var toastMsg = document.getElementById('toastMessage');
+    if (!toast) return;
+    if (toastMsg) {
+        toastMsg.textContent = message || 'Tautan berhasil disalin ke clipboard!';
+    }
+    toast.classList.add('is-visible');
+    if (toastTimer) {
+        clearTimeout(toastTimer);
+    }
+    toastTimer = setTimeout(function() {
+        toast.classList.remove('is-visible');
+    }, duration || 2500);
+}
+
+function copyOrShareUrl() {
+    var shareUrl = window.location ? window.location.href : '';
+    if (!shareUrl) return;
+
+    if (navigator.share && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent || '')) {
+        navigator.share({
+            title: document.title || 'Data Wilayah Indonesia',
+            text: 'Data Wilayah & Pulau Indonesia: ' + shareUrl,
+            url: shareUrl
+        }).catch(function(err) {
+            if (err && err.name !== 'AbortError') {
+                copyUrlToClipboard(shareUrl);
+            }
+        });
+    } else {
+        copyUrlToClipboard(shareUrl);
+    }
+}
+
+function copyUrlToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function() {
+            showToast('Tautan berhasil disalin ke clipboard!');
+        }).catch(function() {
+            fallbackCopyUrl(text);
+        });
+    } else {
+        fallbackCopyUrl(text);
+    }
+}
+
+function fallbackCopyUrl(text) {
+    try {
+        var textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.top = '-9999px';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        var success = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        if (success) {
+            showToast('Tautan berhasil disalin ke clipboard!');
+        } else {
+            showToast('Gagal menyalin tautan');
+        }
+    } catch (e) {
+        showToast('Gagal menyalin tautan');
+    }
+}
+
+function initShareButtons() {
+    var btnShare = document.getElementById('btnShareLink');
+    if (btnShare) {
+        btnShare.addEventListener('click', function(e) {
+            e.preventDefault();
+            copyOrShareUrl();
+        });
+    }
+
+    var btnCopy = document.getElementById('btnCopyLocation');
+    if (btnCopy) {
+        btnCopy.addEventListener('click', function(e) {
+            e.preventDefault();
+            copyOrShareUrl();
+        });
+    }
+}
+
+function hydrateFromUrl() {
+    var params = getUrlParams();
+    if (!params) return Promise.resolve();
+
+    if (params.theme && typeof window.applyTheme === 'function') {
+        window.applyTheme(params.theme);
+    }
+
+    if (params.pulau) {
+        isHydrating = true;
+        return fetchWilayah('inc/geo_search.php?q=' + encodeURIComponent(params.pulau) + '&limit=1&sid=' + Math.random())
+            .then(function(res) {
+                if (res && res.status && res.results && res.results.length > 0) {
+                    var item = res.results[0];
+                    if (item.category === 'pulau' && item.kode === params.pulau) {
+                        if (item.chain) {
+                            return applyReverseSelection(item.chain).then(function() {
+                                onSelectIsland(item);
+                            });
+                        } else {
+                            onSelectIsland(item);
+                            return null;
+                        }
+                    }
+                }
+                return null;
+            })
+            .catch(function(err) {
+                console.error('Failed to hydrate island:', err);
+            })
+            .finally(function() {
+                isHydrating = false;
+            });
+    }
+
+    if (params.kode) {
+        isHydrating = true;
+        var chain = buildChainFromKode(params.kode);
+        return applyReverseSelection(chain, { kode: params.kode })
+            .catch(function(err) {
+                console.error('Failed to hydrate region:', err);
+            })
+            .finally(function() {
+                isHydrating = false;
+            });
+    }
+
+    if (params.lat !== null && params.lng !== null && map) {
+        map.setView([params.lat, params.lng], params.zoom || 13);
+    }
+
+    return Promise.resolve();
+}
+
 // --- Init on load ---
 document.addEventListener('DOMContentLoaded', function() {
     initMap();
     initGlobalSearch();
+    initShareButtons();
+    hydrateFromUrl();
+
     window.refreshMapThemeAwareness = refreshMapThemeAwareness;
     window.filterIslands = filterIslands;
     window.updateIslandPanel = updateIslandPanel;
@@ -1012,4 +1275,17 @@ document.addEventListener('DOMContentLoaded', function() {
     window.renderSearchResults = renderSearchResults;
     window.selectSearchResult = selectSearchResult;
     window.closeSearchResults = closeSearchResults;
+
+    // P2 exports
+    window.getUrlParams = getUrlParams;
+    window.updateUrlState = updateUrlState;
+    window.hydrateFromUrl = hydrateFromUrl;
+    window.showToast = showToast;
+    window.copyOrShareUrl = copyOrShareUrl;
+    window.buildChainFromKode = buildChainFromKode;
+    window.initShareButtons = initShareButtons;
+});
+
+window.addEventListener('popstate', function() {
+    hydrateFromUrl();
 });

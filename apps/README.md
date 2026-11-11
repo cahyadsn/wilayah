@@ -266,7 +266,7 @@ apps/
 
 ## TO DO
 - [x] **Global Search Autocomplete**: Pencarian instan nama wilayah, kode, dan pulau dengan debounce serta integrasi kamera peta (`flyTo`).
-- [ ] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast.
+- [x] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast.
 - [ ] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
 - [ ] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
 - [ ] **Cluster Marker Seluruh Pulau**: Visualisasi sebaran ribuan pulau sekaligus menggunakan `Leaflet.markercluster` dengan performa tinggi (*chunked loading*).
@@ -274,6 +274,12 @@ apps/
 ## Catatan Rilis (Changelog)
 
 ### v3.2.0 (2026-10-05)
+- **Fitur Tautan Berbagi & Deep Linking (Shareable URL & Deep Linking - P2) (2026-11-11)**:
+  - Sinkronisasi status aplikasi (wilayah, pulau, koordinat, preferensi tema) ke URL query parameter (`kode`, `pulau`, `theme`) secara real-time via `history.replaceState`.
+  - Cold-start hydration otomatis: memuat hierarki wilayah berantai (`applyReverseSelection`), poligon batas peta, dan pemusatan pulau terpilih saat tautan dibuka langsung.
+  - Tombol berbagi pada navbar (`#btnShareLink`) dan overlay bar (`#btnCopyLocation`) dengan integrasi Web Share API dan Clipboard API.
+  - Komponen toast notifikasi ringan (`#toastNotification`) dan sanitasi ketat input URL anti-XSS di PHP & JS.
+  - Penambahan unit test pada `tests/apps/IndexDeepLinkTest.php` (PHPUnit) dan perluasan `tests/apps/inc/geo_js.test.js` (Jest).
 - **Fitur Pencarian Global Instan (Global Search Autocomplete - P1) (2026-11-10)**:
   - Menambahkan endpoint pencarian cepat `apps/inc/geo_search.php` untuk seluruh tingkatan wilayah administrasi (Provinsi, Kab/Kota, Kecamatan, Desa/Kelurahan) dan pulau Indonesia.
   - Kueri teroptimasi B-Tree index (`wilayah_name_idx` & `pulau_nama_idx`), batch parent resolution, dan file caching SHA-256.

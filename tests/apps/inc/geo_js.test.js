@@ -9,6 +9,10 @@ describe('geo_js unit tests', () => {
     let renderSearchResults;
     let closeSearchResults;
     let selectSearchResult;
+    let getUrlParams;
+    let updateUrlState;
+    let buildChainFromKode;
+    let showToast;
 
     beforeAll(async () => {
         const { JSDOM } = await import('jsdom');
@@ -30,6 +34,9 @@ describe('geo_js unit tests', () => {
   <div id="kab_box" style="display:none;"><select id="kota"></select></div>
   <div id="kec_box" style="display:none;"><select id="kec"></select></div>
   <div id="kel_box" style="display:none;"><select id="kel"></select></div>
+  <button id="btnShareLink"></button>
+  <button id="btnCopyLocation"></button>
+  <div id="toastNotification" class="toast-notification"><span id="toastMessage"></span></div>
 </body>
 </html>`, {
             url: "http://localhost",
@@ -101,6 +108,10 @@ describe('geo_js unit tests', () => {
         renderSearchResults = window.renderSearchResults;
         closeSearchResults = window.closeSearchResults;
         selectSearchResult = window.selectSearchResult;
+        getUrlParams = window.getUrlParams;
+        updateUrlState = window.updateUrlState;
+        buildChainFromKode = window.buildChainFromKode;
+        showToast = window.showToast;
     });
 
     describe('setSafeSelectOptions', () => {
@@ -223,4 +234,127 @@ describe('geo_js unit tests', () => {
             expect(resultsContainer.style.display).toBe('none');
         });
     });
+
+    describe('Shareable URL & Deep Linking (P2)', () => {
+        describe('getUrlParams', () => {
+            test('should correctly parse valid parameters', () => {
+                const search = '?kode=32.73&pulau=11.01.40001&theme=dark&zoom=14&lat=-6.9147&lng=107.6098';
+                const params = getUrlParams(search);
+
+                expect(params.kode).toBe('32.73');
+                expect(params.pulau).toBe('11.01.40001');
+                expect(params.theme).toBe('dark');
+                expect(params.zoom).toBe(14);
+                expect(params.lat).toBeCloseTo(-6.9147);
+                expect(params.lng).toBeCloseTo(107.6098);
+            });
+
+            test('should sanitize and reject illegal or malicious code parameters', () => {
+                const maliciousSearches = [
+                    '?kode=<script>alert(1)</script>',
+                    '?kode=32%27%20OR%201=1',
+                    '?kode=invalid-code',
+                    '?kode=12.34.56.78.90.12.34.56' // too long
+                ];
+
+                maliciousSearches.forEach(search => {
+                    const params = getUrlParams(search);
+                    expect(params.kode).toBeNull();
+                });
+            });
+
+            test('should sanitize and reject invalid island codes', () => {
+                const invalidSearches = [
+                    '?pulau=11.01',
+                    '?pulau=11.01.abcde',
+                    '?pulau=<script>',
+                    '?pulau=11.01.400001' // too many digits
+                ];
+
+                invalidSearches.forEach(search => {
+                    const params = getUrlParams(search);
+                    expect(params.pulau).toBeNull();
+                });
+            });
+
+            test('should validate theme strictly to light or dark', () => {
+                expect(getUrlParams('?theme=light').theme).toBe('light');
+                expect(getUrlParams('?theme=dark').theme).toBe('dark');
+                expect(getUrlParams('?theme=blue').theme).toBeNull();
+                expect(getUrlParams('?theme=<script>').theme).toBeNull();
+            });
+        });
+
+        describe('buildChainFromKode', () => {
+            test('should build correct chain for Province (Level 1)', () => {
+                const chain = buildChainFromKode('11');
+                expect(chain).toEqual({
+                    prov: { kode: '11' }
+                });
+            });
+
+            test('should build correct chain for Regency/City (Level 2)', () => {
+                const chain = buildChainFromKode('32.73');
+                expect(chain).toEqual({
+                    prov: { kode: '32' },
+                    kab: { kode: '32.73' }
+                });
+            });
+
+            test('should build correct chain for District (Level 3)', () => {
+                const chain = buildChainFromKode('32.73.01');
+                expect(chain).toEqual({
+                    prov: { kode: '32' },
+                    kab: { kode: '32.73' },
+                    kec: { kode: '32.73.01' }
+                });
+            });
+
+            test('should build correct chain for Village (Level 4)', () => {
+                const chain = buildChainFromKode('32.73.01.1001');
+                expect(chain).toEqual({
+                    prov: { kode: '32' },
+                    kab: { kode: '32.73' },
+                    kec: { kode: '32.73.01' },
+                    kel: { kode: '32.73.01.1001' }
+                });
+            });
+
+            test('should return null for invalid code strings', () => {
+                expect(buildChainFromKode('')).toBeNull();
+                expect(buildChainFromKode(null)).toBeNull();
+                expect(buildChainFromKode('abc')).toBeNull();
+                expect(buildChainFromKode('32.abc')).toBeNull();
+            });
+        });
+
+        describe('Toast notification & UI', () => {
+            test('showToast should display message and set is-visible class', () => {
+                const toast = document.getElementById('toastNotification');
+                const toastMsg = document.getElementById('toastMessage');
+
+                showToast('Halo dunia!', 50);
+
+                expect(toast.classList.contains('is-visible')).toBe(true);
+                expect(toastMsg.textContent).toBe('Halo dunia!');
+
+                if (window.toastTimer) {
+                    clearTimeout(window.toastTimer);
+                }
+            });
+        });
+
+        describe('updateUrlState', () => {
+            test('should update search params without throwing errors', () => {
+                expect(() => {
+                    updateUrlState({ kode: '32.73', theme: 'dark' });
+                }).not.toThrow();
+
+                expect(() => {
+                    updateUrlState({ kode: null, pulau: '11.01.40001' });
+                }).not.toThrow();
+            });
+        });
+    });
+
 });

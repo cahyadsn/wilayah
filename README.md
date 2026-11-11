@@ -179,12 +179,29 @@ node tools/check_sql_wilayah_pulau.js
 
 ## TO DO
 - [x] **Global Search Autocomplete**: Pencarian instan nama wilayah, kode, dan pulau dengan debounce serta integrasi kamera peta (`flyTo`).
-- [ ] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast. 
+- [x] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast.
 - [ ] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
 - [ ] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
 - [ ] **Cluster Marker Seluruh Pulau**: Visualisasi sebaran ribuan pulau sekaligus menggunakan `Leaflet.markercluster` dengan performa tinggi (*chunked loading*).
 
 ## CHANGE LOG
+- [2026-11-11] RELEASE v2026.11  🆕
+  - **Fitur Tautan Berbagi & Deep Linking (Shareable URL & Deep Linking - P2)**:
+    - **Sinkronisasi Status URL Dua Arah (`apps/inc/geo_js.php`, `apps/js/wilayah.js`)**:
+      - Sinkronisasi instan parameter URL peramban (`kode`, `pulau`, `theme`, `zoom`, `lat`, `lng`) menggunakan `history.replaceState` dan `history.pushState` tanpa me-reload halaman.
+      - Integrasi otomatis saat pengguna memilih wilayah hierarki, memilih pulau dari panel samping, mencari via autocomplete, menggeser tema (dark/light), atau menavigasi klik peta.
+    - **Cold-Start Hydration & Riwayat Navigasi Browser**:
+      - Modul `hydrateFromUrl()` secara otomatis merekonstruksi rantai hierarki wilayah (`buildChainFromKode` & `applyReverseSelection`), membuka dropdown terkait, menggambar batas poligon wilayah, menempatkan marker, dan memfokuskan kamera peta.
+      - Dukungan penuh tombol *Back* & *Forward* peramban pengguna melalui event listener `popstate`.
+    - **Antarmuka Pengguna Berbagi & Notifikasi Toast (`apps/index.php`, `apps/css/styles.css`, `apps/css/styles.min.css`)**:
+      - Menambahkan tombol "Bagikan" (`#btnShareLink`) pada navigasi utama dan tombol salin koordinat (`#btnCopyLocation`) pada overlay info geospasial peta.
+      - Integrasi Web Share API (`navigator.share`) untuk perangkat seluler modern dengan fallback otomatis ke Clipboard API (`navigator.clipboard.writeText`) dan textarea fallback.
+      - Komponen toast notifikasi ringan (`#toastNotification`) dengan animasi halus tanpa dependensi pustaka luar.
+    - **Keamanan & Validasi Parameter (XSS Prevention)**:
+      - Sanitasi regex ketat pada level server PHP (`apps/index.php`) dan klien JavaScript (`getUrlParams`) untuk mencegah injeksi skrip atau parameter ilegal.
+    - **Pengujian Unit & Kualitas Kode**:
+      - Menambahkan test suite PHPUnit [`tests/apps/IndexDeepLinkTest.php`](tests/apps/IndexDeepLinkTest.php) (3 pengujian, 15 asersi) dengan 100% kelulusan (total 124 pengujian PHPUnit lulus).
+      - Memperluas test suite Jest [`tests/apps/inc/geo_js.test.js`](tests/apps/inc/geo_js.test.js) (total 20 pengujian Jest lulus 100%) untuk validasi sanitasi query parameter, rekonstruksi rantai kode wilayah, dan notifikasi toast.
 - [2026-11-10] RELEASE v2026.11  🆕
   - **Fitur Pencarian Global Instan (Global Search Autocomplete - P1)**:
     - **Backend Search Engine (`apps/inc/geo_search.php`)**:

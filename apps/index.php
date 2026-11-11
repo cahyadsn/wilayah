@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit: 2026-11-10 08:25:00
+last edit: 2026-11-11 08:35:00
 author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps
@@ -17,7 +17,16 @@ require_once __DIR__ . '/inc/session.php';
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
-$theme = $_SESSION['theme'] ?? $_GET['theme'] ?? 'light';
+$raw_theme = $_SESSION['theme'] ?? $_GET['theme'] ?? 'light';
+$theme = ($raw_theme === 'dark' || $raw_theme === 'light') ? $raw_theme : 'light';
+$initial_kode = null;
+if (!empty($_GET['kode']) && is_string($_GET['kode']) && preg_match('/^[0-9]+(\.[0-9]+)*$/', $_GET['kode']) && strlen($_GET['kode']) <= 13) {
+    $initial_kode = $_GET['kode'];
+}
+$initial_pulau = null;
+if (!empty($_GET['pulau']) && is_string($_GET['pulau']) && preg_match('/^[0-9]{2}\.[0-9]{2}\.[0-9]{5}$/', $_GET['pulau'])) {
+    $initial_pulau = $_GET['pulau'];
+}
 define("_AUTHOR","cahyadsn");
 require_once 'inc/db.php';
 require_once 'inc/geo_helpers.php';
@@ -40,7 +49,9 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
   <meta name="author" content="Cahya DSN" />
   <meta name="keywords" content="php, mysql, data, administrasi, wilayah, indonesia, kepmendagri,300.2.2-2430,2025, cahyadsn" />
 
-  <meta name="csrf-token" content="<?php echo get_csrf_token_html(); ?>">
+  <meta name="csrf-token" content="<?php echo get_csrf_token_html(); ?>"><?php if ($initial_kode): ?>
+  <meta name="geo-kode" content="<?php echo htmlspecialchars($initial_kode, ENT_QUOTES, 'UTF-8'); ?>"><?php endif; ?><?php if ($initial_pulau): ?>
+  <meta name="geo-pulau" content="<?php echo htmlspecialchars($initial_pulau, ENT_QUOTES, 'UTF-8'); ?>"><?php endif; ?>
 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,6 +84,22 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
       </span>
     </div>
     <div class="navbar-actions" id="themeBar">
+      <button
+        class="share-btn"
+        id="btnShareLink"
+        type="button"
+        aria-label="Bagikan tautan wilayah"
+        title="Bagikan tautan wilayah"
+      >
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="18" cy="5" r="3"></circle>
+          <circle cx="6" cy="12" r="3"></circle>
+          <circle cx="18" cy="19" r="3"></circle>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+        </svg>
+        <span class="share-btn-text">Bagikan</span>
+      </button>
       <button
         class="theme-toggle"
         id="themeToggle"
@@ -207,6 +234,12 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
             <div class="map-overlay-item"><span class="map-overlay-label">Kode</span><span class="map-overlay-value" id="n_kode">—</span></div>
             <div class="map-overlay-item"><span class="map-overlay-label">Lat</span><span class="map-overlay-value" id="n_lat">—</span></div>
             <div class="map-overlay-item"><span class="map-overlay-label">Lng</span><span class="map-overlay-value" id="n_lng">—</span></div>
+            <button type="button" class="map-overlay-copy" id="btnCopyLocation" aria-label="Salin tautan wilayah ini" title="Salin tautan wilayah">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+            </button>
           </div>
         </div>
 
@@ -266,6 +299,12 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
   <script src="js/ajax.js" defer></script>
   <script src="inc/geo_js.php?v=<?php echo $safe_version;?>" defer></script>
   <script src="js/wilayah.min.js?v=<?php echo $safe_version;?>" defer></script>
+
+  <!-- Toast Notification (P2) -->
+  <div id="toastNotification" class="toast-notification" role="status" aria-live="polite">
+    <span class="toast-icon">✓</span>
+    <span id="toastMessage" class="toast-message">Tautan berhasil disalin ke clipboard!</span>
+  </div>
 
 </body>
 </html>
