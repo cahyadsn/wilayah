@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_js.php
 purpose  : JavaScript for AJAX cascade, map, and counters
 create   : 170912
-last edit: 2026-11-11 08:35:00
+last edit: 2026-11-12 09:00:00
 author   : cahya dsn
 ================================================================================
 MIT License
@@ -39,6 +39,12 @@ var activeIslands = [];
 var islandMarker = null;
 var isHydrating = false;
 var toastTimer = null;
+var thematicMode = 'none';
+var thematicGeoJsonLayer = null;
+var thematicLegendControl = null;
+var thematicMenuControl = null;
+var currentThematicProv = '0';
+var thematicData = null;
 
 function resetIslandPanel() {
     activeIslands = [];
@@ -1020,6 +1026,8 @@ function getUrlParams(search) {
     var validKode = (kode && /^[0-9]+(\.[0-9]+)*$/.test(kode) && kode.length <= 13) ? kode : null;
     var validPulau = (pulau && /^[0-9]{2}\.[0-9]{2}\.[0-9]{5}$/.test(pulau)) ? pulau : null;
     var validTheme = (theme === 'light' || theme === 'dark') ? theme : null;
+    var thematic = searchParams.get('thematic');
+    var validThematic = (thematic === 'density' || thematic === 'sex_ratio') ? thematic : null;
 
     var validZoom = (zoom && /^[0-9]{1,2}$/.test(zoom)) ? parseInt(zoom, 10) : null;
     if (validZoom !== null && (validZoom < 1 || validZoom > 20)) validZoom = null;
@@ -1036,7 +1044,8 @@ function getUrlParams(search) {
         theme: validTheme,
         zoom: validZoom,
         lat: validLat,
-        lng: validLng
+        lng: validLng,
+        thematic: validThematic
     };
 }
 
@@ -1064,6 +1073,13 @@ function updateUrlState(params, push) {
                     url.searchParams.set('theme', params.theme);
                 } else {
                     url.searchParams.delete('theme');
+                }
+            }
+            if (params.thematic !== undefined) {
+                if (params.thematic === 'density' || params.thematic === 'sex_ratio') {
+                    url.searchParams.set('thematic', params.thematic);
+                } else {
+                    url.searchParams.delete('thematic');
                 }
             }
             if (params.zoom !== undefined) {
@@ -1213,6 +1229,9 @@ function hydrateFromUrl() {
     if (params.theme && typeof window.applyTheme === 'function') {
         window.applyTheme(params.theme);
     }
+    if (params.thematic) {
+        setThematicMode(params.thematic);
+    }
 
     if (params.pulau) {
         isHydrating = true;
@@ -1260,6 +1279,327 @@ function hydrateFromUrl() {
     return Promise.resolve();
 }
 
+
+// ============================================================
+// CHOROPLETH MAP & DEMOGRAPHICS (P3)
+// ============================================================
+
+function getThematicColorDensity(d) {
+    return d > 5000 ? '#bd0026' :
+           d > 1500 ? '#f03b20' :
+           d > 750  ? '#fd8d3c' :
+           d > 250  ? '#fecc5c' :
+                      '#ffffb2';
+}
+
+function getThematicColorSexRatio(r) {
+    return r > 105 ? '#d73027' :
+           r > 102 ? '#fc8d59' :
+           r > 98  ? '#fee08b' :
+           r > 95  ? '#91bfdb' :
+                     '#4575b4';
+}
+
+function getThematicColor(val, metric) {
+    if (metric === 'sex_ratio') {
+        return getThematicColorSexRatio(val);
+    }
+    return getThematicColorDensity(val);
+}
+
+function formatThematicNumber(num) {
+    if (num === null || num === undefined || isNaN(num)) return '0';
+    var parts = String(num).split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return parts.join(',');
+}
+
+function thematicFeatureStyle(feature) {
+    var val = feature && feature.properties ? feature.properties.value : 0;
+    var color = getThematicColor(val, thematicMode);
+    return {
+        fillColor: color,
+        weight: 1.5,
+        opacity: 1,
+        color: '#ffffff',
+        dashArray: '',
+        fillOpacity: 0.72
+    };
+}
+
+function onEachThematicFeature(feature, layer) {
+    var p = feature.properties || {};
+    var isSexRatio = (thematicMode === 'sex_ratio');
+    var unit = isSexRatio ? '' : ' jiwa/km²';
+    var metricLabel = isSexRatio ? 'Sex Ratio' : 'Kepadatan';
+    var metricVal = isSexRatio ? (p.sex_ratio !== null ? p.sex_ratio : '—') : formatThematicNumber(p.kepadatan);
+
+    var tooltipContent = 
+        '<div class="thematic-tooltip">' +
+          '<div class="thematic-tooltip-header">' +
+            '<span class="thematic-tooltip-code">' + escapeHtml(p.kode) + '</span>' +
+            '<strong class="thematic-tooltip-title">' + escapeHtml(p.nama) + '</strong>' +
+          '</div>' +
+          '<div class="thematic-tooltip-body">' +
+            '<div class="thematic-tooltip-row"><span>' + metricLabel + ':</span> <strong>' + metricVal + unit + '</strong></div>' +
+            '<div class="thematic-tooltip-row"><span>Penduduk:</span> <span>' + formatThematicNumber(p.penduduk) + ' jiwa</span></div>' +
+            '<div class="thematic-tooltip-row"><span>Luas Wilayah:</span> <span>' + formatThematicNumber(p.luas) + ' km²</span></div>' +
+            (p.pria !== null && p.wanita !== null ? 
+              '<div class="thematic-tooltip-sub">L: ' + formatThematicNumber(p.pria) + ' | P: ' + formatThematicNumber(p.wanita) + '</div>' : '') +
+          '</div>' +
+          '<div class="thematic-tooltip-footer">Klik untuk pilih wilayah ini</div>' +
+        '</div>';
+
+    layer.bindTooltip(tooltipContent, {
+        sticky: true,
+        direction: 'auto',
+        className: 'thematic-custom-tooltip'
+    });
+
+    layer.on({
+        mouseover: function(e) {
+            var target = e.target;
+            target.setStyle({
+                weight: 3.5,
+                color: '#38bdf8',
+                fillOpacity: 0.88
+            });
+            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                target.bringToFront();
+            }
+        },
+        mouseout: function(e) {
+            if (thematicGeoJsonLayer) {
+                thematicGeoJsonLayer.resetStyle(e.target);
+            }
+        },
+        click: function(e) {
+            if (e && e.originalEvent) {
+                L.DomEvent.stopPropagation(e.originalEvent);
+            }
+            if (p.kode) {
+                if (p.kode.length === 2) {
+                    setSelectValue('prop', p.kode);
+                    ajax(p.kode);
+                } else if (p.kode.length === 5) {
+                    var provCode = p.kode.substring(0, 2);
+                    setSelectValue('prop', provCode);
+                    loadChildren(provCode, 'kota', 'kab_box').then(function() {
+                        setSelectValue('kota', p.kode);
+                        loadChildren(p.kode, 'kec', 'kec_box');
+                        geo(p.kode);
+                    });
+                }
+            }
+        }
+    });
+}
+
+function loadThematicData(provCode, metric) {
+    if (!map) return Promise.resolve(null);
+    currentThematicProv = provCode || '0';
+    var preloadEl = document.getElementById('preload');
+    if (preloadEl) preloadEl.classList.add('is-visible');
+
+    var url = 'inc/geo_thematic.php?prov=' + encodeURIComponent(currentThematicProv) + '&metric=' + encodeURIComponent(metric) + '&sid=' + Math.random();
+    return fetchWilayah(url)
+        .then(function(data) {
+            if (!data || !data.features) return null;
+            thematicData = data;
+
+            if (thematicGeoJsonLayer && map.hasLayer(thematicGeoJsonLayer)) {
+                map.removeLayer(thematicGeoJsonLayer);
+            }
+
+            if (thematicMode !== 'none') {
+                thematicGeoJsonLayer = L.geoJSON(data, {
+                    style: thematicFeatureStyle,
+                    onEachFeature: onEachThematicFeature
+                }).addTo(map);
+
+                if (polyLayer && map.hasLayer(polyLayer)) {
+                    map.removeLayer(polyLayer);
+                }
+
+                updateThematicLegend(data);
+            }
+            return data;
+        })
+        .catch(function(err) {
+            console.error('Failed to load thematic data:', err);
+            return null;
+        })
+        .finally(function() {
+            if (preloadEl) preloadEl.classList.remove('is-visible');
+        });
+}
+
+function setThematicMode(mode) {
+    thematicMode = (mode === 'density' || mode === 'sex_ratio') ? mode : 'none';
+
+    var labelEl = document.getElementById('thematicCurrentLabel');
+    if (labelEl) {
+        var labels = {
+            'none': 'Tematik: Standar',
+            'density': 'Kepadatan Penduduk',
+            'sex_ratio': 'Rasio Gender'
+        };
+        labelEl.textContent = labels[thematicMode] || 'Tematik: Standar';
+    }
+
+    var options = document.querySelectorAll('[data-thematic-option]');
+    options.forEach(function(opt) {
+        var active = opt.getAttribute('data-thematic-name') === thematicMode;
+        opt.classList.toggle('is-active', active);
+        opt.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
+    if (thematicMode === 'none') {
+        if (thematicGeoJsonLayer && map && map.hasLayer(thematicGeoJsonLayer)) {
+            map.removeLayer(thematicGeoJsonLayer);
+            thematicGeoJsonLayer = null;
+        }
+        if (thematicLegendControl && thematicLegendControl._container) {
+            thematicLegendControl._container.style.display = 'none';
+        }
+        if (polyLayer && map && !map.hasLayer(polyLayer)) {
+            map.addLayer(polyLayer);
+        }
+        if (!isHydrating) {
+            updateUrlState({ thematic: null });
+        }
+        return;
+    }
+
+    var propEl = document.getElementById('prop');
+    var targetProv = (propEl && propEl.value) ? propEl.value : '0';
+    loadThematicData(targetProv, thematicMode);
+
+    if (!isHydrating) {
+        updateUrlState({ thematic: thematicMode });
+    }
+}
+
+function initThematicLegend() {
+    if (!map || thematicLegendControl) return;
+    thematicLegendControl = L.control({ position: 'bottomleft' });
+    thematicLegendControl.onAdd = function() {
+        var div = L.DomUtil.create('div', 'thematic-legend');
+        div.style.display = 'none';
+        L.DomEvent.disableClickPropagation(div);
+        L.DomEvent.disableScrollPropagation(div);
+        return div;
+    };
+    thematicLegendControl.addTo(map);
+}
+
+function updateThematicLegend(data) {
+    if (!thematicLegendControl) {
+        initThematicLegend();
+    }
+    var container = thematicLegendControl ? thematicLegendControl._container : null;
+    if (!container) return;
+
+    if (thematicMode === 'none') {
+        container.style.display = 'none';
+        return;
+    }
+
+    var provName = (data && data.properties) ? data.properties.prov_nama : 'Wilayah';
+    var html = '';
+    if (thematicMode === 'density') {
+        html = [
+            '<div class="thematic-legend-title">Kepadatan Penduduk</div>',
+            '<div class="thematic-legend-subtitle">' + escapeHtml(provName) + ' (jiwa/km²)</div>',
+            '<div class="thematic-legend-item"><span class="thematic-legend-swatch" style="background:#bd0026"></span><span class="thematic-legend-label">&gt; 5.000</span></div>',
+            '<div class="thematic-legend-item"><span class="thematic-legend-swatch" style="background:#f03b20"></span><span class="thematic-legend-label">1.500 – 5.000</span></div>',
+            '<div class="thematic-legend-item"><span class="thematic-legend-swatch" style="background:#fd8d3c"></span><span class="thematic-legend-label">750 – 1.500</span></div>',
+            '<div class="thematic-legend-item"><span class="thematic-legend-swatch" style="background:#fecc5c"></span><span class="thematic-legend-label">250 – 750</span></div>',
+            '<div class="thematic-legend-item"><span class="thematic-legend-swatch" style="background:#ffffb2"></span><span class="thematic-legend-label">&lt; 250</span></div>'
+        ].join('');
+    } else if (thematicMode === 'sex_ratio') {
+        html = [
+            '<div class="thematic-legend-title">Rasio Jenis Kelamin</div>',
+            '<div class="thematic-legend-subtitle">' + escapeHtml(provName) + ' (pria/100 wanita)</div>',
+            '<div class="thematic-legend-item"><span class="thematic-legend-swatch" style="background:#d73027"></span><span class="thematic-legend-label">&gt; 105 (Pria &gt;&gt;)</span></div>',
+            '<div class="thematic-legend-item"><span class="thematic-legend-swatch" style="background:#fc8d59"></span><span class="thematic-legend-label">102 – 105 (Pria &gt;)</span></div>',
+            '<div class="thematic-legend-item"><span class="thematic-legend-swatch" style="background:#fee08b"></span><span class="thematic-legend-label">98 – 102 (Seimbang)</span></div>',
+            '<div class="thematic-legend-item"><span class="thematic-legend-swatch" style="background:#91bfdb"></span><span class="thematic-legend-label">95 – 98 (Wanita &gt;)</span></div>',
+            '<div class="thematic-legend-item"><span class="thematic-legend-swatch" style="background:#4575b4"></span><span class="thematic-legend-label">&lt; 95 (Wanita &gt;&gt;)</span></div>'
+        ].join('');
+    }
+
+    container.innerHTML = html;
+    container.style.display = 'block';
+}
+
+function initThematicMenu() {
+    if (!map) return;
+    thematicMenuControl = L.control({ position: 'topright' });
+    thematicMenuControl.onAdd = function() {
+        var container = L.DomUtil.create('div', 'leaflet-bar thematic-menu');
+        container.innerHTML = [
+            '<button type="button" class="thematic-menu-toggle" id="thematicMenuToggle" aria-label="Buka pilihan peta tematik" title="Peta Tematik" aria-expanded="false">',
+            '  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>',
+            '  <span id="thematicCurrentLabel">Tematik: Standar</span>',
+            '</button>',
+            '<div class="thematic-menu-panel" id="thematicMenuPanel">',
+            '  <button type="button" class="thematic-option is-active" data-thematic-option="1" data-thematic-name="none">',
+            '    <span class="thematic-option-icon thematic-icon-none">⛶</span>',
+            '    <span class="thematic-option-text"><strong>Standar</strong><small>Batas wilayah reguler</small></span>',
+            '    <span class="thematic-check" aria-hidden="true">✓</span>',
+            '  </button>',
+            '  <button type="button" class="thematic-option" data-thematic-option="1" data-thematic-name="density">',
+            '    <span class="thematic-option-icon thematic-icon-density">📊</span>',
+            '    <span class="thematic-option-text"><strong>Kepadatan Penduduk</strong><small>Sebaran jiwa per km²</small></span>',
+            '    <span class="thematic-check" aria-hidden="true">✓</span>',
+            '  </button>',
+            '  <button type="button" class="thematic-option" data-thematic-option="1" data-thematic-name="sex_ratio">',
+            '    <span class="thematic-option-icon thematic-icon-gender">⚖</span>',
+            '    <span class="thematic-option-text"><strong>Rasio Gender</strong><small>Perbandingan pria / wanita</small></span>',
+            '    <span class="thematic-check" aria-hidden="true">✓</span>',
+            '  </button>',
+            '</div>'
+        ].join('');
+
+        L.DomEvent.disableClickPropagation(container);
+        L.DomEvent.disableScrollPropagation(container);
+        return container;
+    };
+    thematicMenuControl.addTo(map);
+
+    var container = document.querySelector('.thematic-menu');
+    var toggle = document.getElementById('thematicMenuToggle');
+
+    if (toggle && container) {
+        toggle.addEventListener('click', function() {
+            var isOpen = container.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+    }
+
+    var options = document.querySelectorAll('[data-thematic-option]');
+    options.forEach(function(opt) {
+        opt.addEventListener('click', function() {
+            var name = this.getAttribute('data-thematic-name');
+            setThematicMode(name);
+            if (container) {
+                container.classList.remove('is-open');
+                if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+
+    map.on('click', function() {
+        if (container) {
+            container.classList.remove('is-open');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    initThematicLegend();
+}
+
 // --- Init on load ---
 document.addEventListener('DOMContentLoaded', function() {
     initMap();
@@ -1284,6 +1624,15 @@ document.addEventListener('DOMContentLoaded', function() {
     window.copyOrShareUrl = copyOrShareUrl;
     window.buildChainFromKode = buildChainFromKode;
     window.initShareButtons = initShareButtons;
+
+    // P3 exports
+    window.getThematicColorDensity = getThematicColorDensity;
+    window.getThematicColorSexRatio = getThematicColorSexRatio;
+    window.getThematicColor = getThematicColor;
+    window.setThematicMode = setThematicMode;
+    window.loadThematicData = loadThematicData;
+    window.initThematicMenu = initThematicMenu;
+    window.thematicFeatureStyle = thematicFeatureStyle;
 });
 
 window.addEventListener('popstate', function() {

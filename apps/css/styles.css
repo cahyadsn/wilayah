@@ -1,6 +1,7 @@
 /* ============================================================
    DESIGN SYSTEM — Data Wilayah v3.0
    Tokens from: High-Performance Infrastructure Stats DESIGN.md
+   last edit: 2026-11-12 09:00:00
    ============================================================ */
 :root {
   --primary: #5BC0FF;
@@ -1610,6 +1611,261 @@ body.theme-light .basemap-option.is-active {
   color: #4ade80;
   font-weight: bold;
   font-size: 11px;
+}
+
+
+/* ============================================================
+   THEMATIC CHOROPLETH MAP (P3)
+   ============================================================ */
+.thematic-menu {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel-bg);
+  box-shadow: var(--shadow-card);
+  overflow: visible;
+  margin-top: 8px !important;
+}
+
+.thematic-menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.thematic-menu-toggle svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  flex-shrink: 0;
+}
+
+.thematic-menu-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 230px;
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel-solid);
+  box-shadow: var(--shadow-card);
+  z-index: 1000;
+}
+
+.thematic-menu.is-open .thematic-menu-panel {
+  display: flex;
+}
+
+.thematic-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.thematic-option:hover {
+  background: var(--surface-soft);
+  border-color: var(--border);
+}
+
+.thematic-option.is-active {
+  background: var(--surface-soft);
+  border-color: var(--primary);
+}
+
+.thematic-option-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+}
+
+.thematic-icon-none {
+  background: rgba(148, 163, 184, 0.2);
+  color: var(--text-secondary);
+}
+
+.thematic-icon-density {
+  background: linear-gradient(135deg, #ffffb2, #f03b20);
+}
+
+.thematic-icon-gender {
+  background: linear-gradient(135deg, #4575b4, #d73027);
+}
+
+.thematic-option-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.thematic-option-text strong {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.thematic-option-text small {
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+.thematic-check {
+  font-size: 12px;
+  color: var(--primary);
+  opacity: 0;
+  font-weight: bold;
+}
+
+.thematic-option.is-active .thematic-check {
+  opacity: 1;
+}
+
+/* Legend Control */
+.thematic-legend {
+  padding: 10px 14px;
+  background: var(--panel-solid);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-card);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 11px;
+  line-height: 1.4;
+  min-width: 175px;
+  pointer-events: auto;
+  margin-bottom: 30px !important;
+}
+
+.thematic-legend-title {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.thematic-legend-subtitle {
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.thematic-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.thematic-legend-swatch {
+  width: 18px;
+  height: 13px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.thematic-legend-label {
+  font-size: 11px;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+/* Custom Tooltip */
+.thematic-custom-tooltip {
+  background: var(--panel-solid) !important;
+  border: 1px solid var(--border-strong) !important;
+  color: var(--text-primary) !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35) !important;
+  font-family: var(--font-display) !important;
+}
+
+.thematic-custom-tooltip::before {
+  border-top-color: var(--border-strong) !important;
+}
+
+.thematic-tooltip-header {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.thematic-tooltip-code {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--primary);
+  background: rgba(91, 192, 255, 0.1);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.thematic-tooltip-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.thematic-tooltip-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+}
+
+.thematic-tooltip-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text-secondary);
+}
+
+.thematic-tooltip-row strong {
+  color: var(--text-primary);
+}
+
+.thematic-tooltip-sub {
+  font-size: 10px;
+  color: var(--text-secondary);
+  border-top: 1px dashed var(--border);
+  padding-top: 3px;
+  margin-top: 2px;
+}
+
+.thematic-tooltip-footer {
+  font-size: 9px;
+  color: var(--primary);
+  margin-top: 6px;
+  font-style: italic;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -267,13 +267,20 @@ apps/
 ## TO DO
 - [x] **Global Search Autocomplete**: Pencarian instan nama wilayah, kode, dan pulau dengan debounce serta integrasi kamera peta (`flyTo`).
 - [x] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast.
-- [ ] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
+- [x] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
 - [ ] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
 - [ ] **Cluster Marker Seluruh Pulau**: Visualisasi sebaran ribuan pulau sekaligus menggunakan `Leaflet.markercluster` dengan performa tinggi (*chunked loading*).
 
 ## Catatan Rilis (Changelog)
 
 ### v3.2.0 (2026-10-05)
+- **Fitur Choropleth Map & Peta Tematik Demografi (Choropleth Map - P3) (2026-11-12)**:
+  - Endpoint agregasi spasial `apps/inc/geo_thematic.php` untuk poligon level provinsi & kabupaten/kota dengan metrik kepadatan penduduk dan sex ratio.
+  - GeoJSON standard RFC 7946 converter (`[lng, lat]`) dan caching server-side 7 hari berbasis file.
+  - Kontrol Leaflet interaktif untuk pemilihan mode peta tematik (*Standar | Kepadatan Penduduk | Rasio Gender*).
+  - Skala warna ColorBrewer adaptif tema (dark/light) dan legenda dinamis di pojok peta.
+  - Interaksi hover sorot poligon, tooltip statistik detail, klik sinkronisasi dropdown, dan deep link URL `&thematic=density|sex_ratio`.
+  - Penambahan unit test PHPUnit `tests/apps/inc/GeoThematicTest.php` dan Jest `tests/apps/inc/geo_js.test.js`.
 - **Fitur Tautan Berbagi & Deep Linking (Shareable URL & Deep Linking - P2) (2026-11-11)**:
   - Sinkronisasi status aplikasi (wilayah, pulau, koordinat, preferensi tema) ke URL query parameter (`kode`, `pulau`, `theme`) secara real-time via `history.replaceState`.
   - Cold-start hydration otomatis: memuat hierarki wilayah berantai (`applyReverseSelection`), poligon batas peta, dan pemusatan pulau terpilih saat tautan dibuka langsung.

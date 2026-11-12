@@ -180,11 +180,28 @@ node tools/check_sql_wilayah_pulau.js
 ## TO DO
 - [x] **Global Search Autocomplete**: Pencarian instan nama wilayah, kode, dan pulau dengan debounce serta integrasi kamera peta (`flyTo`).
 - [x] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast.
-- [ ] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
+- [x] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
 - [ ] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
 - [ ] **Cluster Marker Seluruh Pulau**: Visualisasi sebaran ribuan pulau sekaligus menggunakan `Leaflet.markercluster` dengan performa tinggi (*chunked loading*).
 
 ## CHANGE LOG
+- [2026-11-12] RELEASE v2026.11  🆕
+  - **Fitur Choropleth Map & Peta Tematik Demografi (Choropleth Map - P3)**:
+    - **Backend Agregasi Data Geospasial & Demografi (`apps/inc/geo_thematic.php`)**:
+      - Menambahkan endpoint GeoJSON FeatureCollection untuk agregasi data poligon batas wilayah tingkat nasional (seluruh 38 provinsi) maupun tingkat provinsi (seluruh kabupaten/kota di bawahnya).
+      - Menghitung metrik turunan secara dinamis: Kepadatan Penduduk (`kepadatan` = jiwa/km²) dan Rasio Jenis Kelamin (`sex_ratio` = pria / 100 wanita) dengan proteksi pembagian nol (`luas <= 0`).
+      - Konverter koordinat standar RFC 7946 (`[lat, lng]` basis data ke `[lng, lat]` GeoJSON) untuk tipe geometry `Polygon` dan `MultiPolygon`.
+      - Sistem *server-side caching* berbasis JSON di `apps/cache/thematic_{prov}_{metric}.json` dengan masa berlaku (TTL) 7 hari dan HTTP Cache Headers.
+    - **Visualisasi Peta Tematik & Kontrol Interaktif (`apps/inc/geo_js.php`, `apps/css/styles.css`, `apps/css/styles.min.css`)**:
+      - Menambahkan kontrol pemilih mode tematik Leaflet di pojok kanan atas peta (*Standar | Kepadatan Penduduk | Rasio Gender*).
+      - Menerapkan palet warna ColorBrewer 5-kelas untuk kepadatan penduduk (skala kuning ke merah pekat) dan rasio gender (diverging biru-kuning-merah) yang adaptif terhadap tema terang/gelap (*dark/light mode*).
+      - Menambahkan kartu legenda dinamis di pojok kiri bawah peta (`L.control({ position: 'bottomleft' })`) dengan indikator warna dan rentang nilai yang diperbarui otomatis.
+      - Interaksi hover interaktif: penyorotan batas poligon wilayah (`weight: 3.5`, `color: '#38bdf8'`), pengembalian gaya saat mouseout, dan kartu tooltip mengambang dengan informasi detail statistik wilayah.
+      - Interaksi klik poligon tematik yang tersinkronisasi langsung dengan dropdown hierarki wilayah dan panel pulau.
+      - Sinkronisasi parameter URL peramban (`&thematic=density` atau `&thematic=sex_ratio`).
+    - **Pengujian Unit & Kualitas Kode**:
+      - Menambahkan test suite PHPUnit [`tests/apps/inc/GeoThematicTest.php`](tests/apps/inc/GeoThematicTest.php) (5 pengujian, 279 asersi) dengan kelulusan 100% (total 129 pengujian PHPUnit lulus).
+      - Memperluas test suite Jest [`tests/apps/inc/geo_js.test.js`](tests/apps/inc/geo_js.test.js) (total 28 pengujian Jest lulus 100%) untuk pengujian gradasi warna tematik, styling fitur GeoJSON, dan parsing parameter URL tematik.
 - [2026-11-11] RELEASE v2026.11  🆕
   - **Fitur Tautan Berbagi & Deep Linking (Shareable URL & Deep Linking - P2)**:
     - **Sinkronisasi Status URL Dua Arah (`apps/inc/geo_js.php`, `apps/js/wilayah.js`)**:

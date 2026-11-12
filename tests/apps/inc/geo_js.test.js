@@ -1,3 +1,11 @@
+/**
+ * BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
+ * ================================================================================
+ * filename : geo_js.test.js
+ * purpose  : Jest tests for apps/inc/geo_js.php frontend logic (P1, P2, P3)
+ * last edit: 2026-11-12 09:00:00
+ * ================================================================================
+ */
 const fs = require('fs');
 const path = require('path');
 // JSDOM dynamically loaded in beforeAll
@@ -13,6 +21,11 @@ describe('geo_js unit tests', () => {
     let updateUrlState;
     let buildChainFromKode;
     let showToast;
+    let getThematicColorDensity;
+    let getThematicColorSexRatio;
+    let getThematicColor;
+    let thematicFeatureStyle;
+    let setThematicMode;
 
     beforeAll(async () => {
         const { JSDOM } = await import('jsdom');
@@ -112,6 +125,11 @@ describe('geo_js unit tests', () => {
         updateUrlState = window.updateUrlState;
         buildChainFromKode = window.buildChainFromKode;
         showToast = window.showToast;
+        getThematicColorDensity = window.getThematicColorDensity;
+        getThematicColorSexRatio = window.getThematicColorSexRatio;
+        getThematicColor = window.getThematicColor;
+        thematicFeatureStyle = window.thematicFeatureStyle;
+        setThematicMode = window.setThematicMode;
     });
 
     describe('setSafeSelectOptions', () => {
@@ -353,6 +371,71 @@ describe('geo_js unit tests', () => {
                 expect(() => {
                     updateUrlState({ kode: null, pulau: '11.01.40001' });
                 }).not.toThrow();
+            });
+        });
+
+        describe('Choropleth Thematic Map (P3)', () => {
+            describe('getThematicColorDensity', () => {
+                test('should return correct color for different density tiers', () => {
+                    expect(getThematicColorDensity(10000)).toBe('#bd0026');
+                    expect(getThematicColorDensity(5001)).toBe('#bd0026');
+                    expect(getThematicColorDensity(2500)).toBe('#f03b20');
+                    expect(getThematicColorDensity(1000)).toBe('#fd8d3c');
+                    expect(getThematicColorDensity(500)).toBe('#fecc5c');
+                    expect(getThematicColorDensity(100)).toBe('#ffffb2');
+                    expect(getThematicColorDensity(0)).toBe('#ffffb2');
+                });
+            });
+
+            describe('getThematicColorSexRatio', () => {
+                test('should return correct color for sex ratio tiers', () => {
+                    expect(getThematicColorSexRatio(106)).toBe('#d73027');
+                    expect(getThematicColorSexRatio(104)).toBe('#fc8d59');
+                    expect(getThematicColorSexRatio(100)).toBe('#fee08b');
+                    expect(getThematicColorSexRatio(96)).toBe('#91bfdb');
+                    expect(getThematicColorSexRatio(90)).toBe('#4575b4');
+                });
+            });
+
+            describe('getThematicColor', () => {
+                test('should delegate to density by default', () => {
+                    expect(getThematicColor(6000, 'density')).toBe('#bd0026');
+                    expect(getThematicColor(50, 'unknown')).toBe('#ffffb2');
+                });
+
+                test('should delegate to sex ratio when metric is sex_ratio', () => {
+                    expect(getThematicColor(106, 'sex_ratio')).toBe('#d73027');
+                    expect(getThematicColor(90, 'sex_ratio')).toBe('#4575b4');
+                });
+            });
+
+            describe('thematicFeatureStyle', () => {
+                test('should return style object with expected properties', () => {
+                    const style = thematicFeatureStyle({ properties: { value: 6000 } });
+                    expect(style).toBeDefined();
+                    expect(style.fillColor).toBe('#bd0026');
+                    expect(style.weight).toBe(1.5);
+                    expect(style.color).toBe('#ffffff');
+                    expect(style.fillOpacity).toBe(0.72);
+                });
+            });
+
+            describe('getUrlParams with thematic', () => {
+                test('should parse thematic parameter from query string', () => {
+                    const params = getUrlParams('?thematic=density&kode=32');
+                    expect(params.thematic).toBe('density');
+                    expect(params.kode).toBe('32');
+                });
+
+                test('should parse sex_ratio thematic parameter', () => {
+                    const params = getUrlParams('?thematic=sex_ratio');
+                    expect(params.thematic).toBe('sex_ratio');
+                });
+
+                test('should ignore invalid thematic parameters', () => {
+                    const params = getUrlParams('?thematic=hack<script>');
+                    expect(params.thematic).toBeNull();
+                });
             });
         });
     });

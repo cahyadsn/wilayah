@@ -2,7 +2,7 @@
 filename : implementasion_plan_p3.md
 purpose  : Implementation Plan for Feature P3 - Choropleth Map (Kepadatan Penduduk)
 created  : 2026-11-10
-last edit: 2026-11-10 07:35:20
+last edit: 2026-11-12 09:00:00
 author   : cahya dsn & AI Assistant
 ================================================================================
 MIT License
@@ -94,30 +94,30 @@ $$\text{Sex Ratio} = \left(\frac{\text{Jumlah Penduduk Pria}}{\text{Jumlah Pendu
 ## 5. Rencana Tahapan Eksekusi (Phase Roadmap)
 
 ### Fase 1: Backend Endpoint & Cache Data Tematik
-- [ ] Buat file `apps/inc/geo_thematic.php`.
-- [ ] Siapkan query SQL berkinerja tinggi yang menggabungkan geometri poligon dengan data kependudukan dan luas wilayah.
-- [ ] Terapkan file caching JSON di `apps/cache/thematic_{prov}_{metric}.json` dengan masa berlaku (TTL) 7 hari.
+- [x] Buat file `apps/inc/geo_thematic.php`.
+- [x] Siapkan query SQL berkinerja tinggi yang menggabungkan geometri poligon dengan data kependudukan dan luas wilayah.
+- [x] Terapkan file caching JSON di `apps/cache/thematic_{prov}_{metric}.json` dengan masa berlaku (TTL) 7 hari.
 
 ### Fase 2: Kontrol Layer & Legenda Peta (Leaflet Integration)
-- [ ] Buat kontrol toggle di pojok kanan atas peta: *"Mode Tampilan: Standar | Kepadatan Penduduk | Rasio Gender"*.
-- [ ] Buat fungsi JavaScript `getColor(density)` dan `style(feature)`.
-- [ ] Tambahkan kontrol legenda dinamis Leaflet (`L.control({position: 'bottomright'})`) yang menampilkan rentang nilai dan warna gradasi terkait.
+- [x] Buat kontrol toggle di pojok kanan atas peta: *"Mode Tampilan: Standar | Kepadatan Penduduk | Rasio Gender"*.
+- [x] Buat fungsi JavaScript `getColor(density)` dan `style(feature)`.
+- [x] Tambahkan kontrol legenda dinamis Leaflet (`L.control({position: 'bottomleft'})`) yang menampilkan rentang nilai dan warna gradasi terkait.
 
 ### Fase 3: Interaksi Hover & Tooltip Informatif
-- [ ] Implementasikan event `mouseover`:
-  - Sorot batas poligon dengan garis tepi lebih tebal (`weight: 3`, `color: '#ffffff'`).
+- [x] Implementasikan event `mouseover`:
+  - Sorot batas poligon dengan garis tepi lebih tebal (`weight: 3.5`, `color: '#38bdf8'`).
   - Munculkan floating info tooltip/box dengan rincian:
-    - Nama Kab/Kota
+    - Nama Kab/Kota & Kode
     - Kepadatan: `X jiwa/km²`
     - Total Populasi: `Y jiwa` (Pria: `...`, Wanita: `...`)
     - Total Luas: `Z km²`
-- [ ] Implementasikan event `mouseout`: Mengembalikan styling poligon ke bentuk semula.
-- [ ] Implementasikan event `click`: Langsung memilih kabupaten tersebut ke dalam dropdown cascade dan membuka daftar pulau kabupaten terkait.
+- [x] Implementasikan event `mouseout`: Mengembalikan styling poligon ke bentuk semula.
+- [x] Implementasikan event `click`: Langsung memilih kabupaten tersebut ke dalam dropdown cascade dan membuka daftar pulau kabupaten terkait.
 
 ### Fase 4: Pengujian & Validasi
-- [ ] Uji terhadap provinsi dengan kontras wilayah ekstrem (misal DKI Jakarta vs Kalimantan Tengah).
-- [ ] Uji jika ada wilayah yang memiliki luas = 0 atau `null` (mencegah *Division by Zero*).
-- [ ] Uji performa render GeoJSON banyak poligon (harus responsif di bawah 60 FPS saat hover).
+- [x] Uji terhadap provinsi dengan kontras wilayah ekstrem (misal DKI Jakarta vs Kalimantan Tengah).
+- [x] Uji jika ada wilayah yang memiliki luas = 0 atau `null` (mencegah *Division by Zero*).
+- [x] Uji performa render GeoJSON banyak poligon (harus responsif di bawah 60 FPS saat hover).
 
 ---
 
