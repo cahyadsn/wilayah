@@ -202,7 +202,7 @@ node tools/check_sql_wilayah_pulau.js
     - **Pengujian Unit & Kualitas Kode**:
       - Menambahkan test suite PHPUnit [`tests/apps/inc/GeoThematicTest.php`](tests/apps/inc/GeoThematicTest.php) (5 pengujian, 279 asersi) dengan kelulusan 100% (total 129 pengujian PHPUnit lulus).
       - Memperluas test suite Jest [`tests/apps/inc/geo_js.test.js`](tests/apps/inc/geo_js.test.js) (total 28 pengujian Jest lulus 100%) untuk pengujian gradasi warna tematik, styling fitur GeoJSON, dan parsing parameter URL tematik.
-- [2026-11-11] RELEASE v2026.11  🆕
+- [2026-11-11] 
   - **Fitur Tautan Berbagi & Deep Linking (Shareable URL & Deep Linking - P2)**:
     - **Sinkronisasi Status URL Dua Arah (`apps/inc/geo_js.php`, `apps/js/wilayah.js`)**:
       - Sinkronisasi instan parameter URL peramban (`kode`, `pulau`, `theme`, `zoom`, `lat`, `lng`) menggunakan `history.replaceState` dan `history.pushState` tanpa me-reload halaman.
@@ -219,7 +219,7 @@ node tools/check_sql_wilayah_pulau.js
     - **Pengujian Unit & Kualitas Kode**:
       - Menambahkan test suite PHPUnit [`tests/apps/IndexDeepLinkTest.php`](tests/apps/IndexDeepLinkTest.php) (3 pengujian, 15 asersi) dengan 100% kelulusan (total 124 pengujian PHPUnit lulus).
       - Memperluas test suite Jest [`tests/apps/inc/geo_js.test.js`](tests/apps/inc/geo_js.test.js) (total 20 pengujian Jest lulus 100%) untuk validasi sanitasi query parameter, rekonstruksi rantai kode wilayah, dan notifikasi toast.
-- [2026-11-10] RELEASE v2026.11  🆕
+- [2026-11-10] 
   - **Fitur Pencarian Global Instan (Global Search Autocomplete - P1)**:
     - **Backend Search Engine (`apps/inc/geo_search.php`)**:
       - Menambahkan endpoint pencarian cepat untuk seluruh tingkatan wilayah administrasi (Provinsi, Kab/Kota, Kecamatan, Desa/Kelurahan) dan pulau Indonesia.
