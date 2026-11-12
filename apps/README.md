@@ -1,4 +1,4 @@
-# wilayah v3.2.0
+# wilayah v3.3.2
 Aplikasi web visualisasi dan pencarian Kode serta Data Wilayah Administrasi Pemerintahan Indonesia dan Pulau sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 dengan PHP + MySQL + AJaX + Leaflet.js.
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -273,27 +273,33 @@ apps/
 
 ## Catatan Rilis (Changelog)
 
-### v3.2.0 (2026-10-05)
-- **Fitur Choropleth Map & Peta Tematik Demografi (Choropleth Map - P3) (2026-11-12)**:
+### v3.3.2 (2026-11-12)
+- **Fitur Choropleth Map & Peta Tematik Demografi (Choropleth Map)**:
   - Endpoint agregasi spasial `apps/inc/geo_thematic.php` untuk poligon level provinsi & kabupaten/kota dengan metrik kepadatan penduduk dan sex ratio.
   - GeoJSON standard RFC 7946 converter (`[lng, lat]`) dan caching server-side 7 hari berbasis file.
   - Kontrol Leaflet interaktif untuk pemilihan mode peta tematik (*Standar | Kepadatan Penduduk | Rasio Gender*).
   - Skala warna ColorBrewer adaptif tema (dark/light) dan legenda dinamis di pojok peta.
   - Interaksi hover sorot poligon, tooltip statistik detail, klik sinkronisasi dropdown, dan deep link URL `&thematic=density|sex_ratio`.
   - Penambahan unit test PHPUnit `tests/apps/inc/GeoThematicTest.php` dan Jest `tests/apps/inc/geo_js.test.js`.
-- **Fitur Tautan Berbagi & Deep Linking (Shareable URL & Deep Linking - P2) (2026-11-11)**:
+
+### v3.3.1 (2026-11-11)
+- **Fitur Tautan Berbagi & Deep Linking (Shareable URL & Deep Linking)**:
   - Sinkronisasi status aplikasi (wilayah, pulau, koordinat, preferensi tema) ke URL query parameter (`kode`, `pulau`, `theme`) secara real-time via `history.replaceState`.
   - Cold-start hydration otomatis: memuat hierarki wilayah berantai (`applyReverseSelection`), poligon batas peta, dan pemusatan pulau terpilih saat tautan dibuka langsung.
   - Tombol berbagi pada navbar (`#btnShareLink`) dan overlay bar (`#btnCopyLocation`) dengan integrasi Web Share API dan Clipboard API.
   - Komponen toast notifikasi ringan (`#toastNotification`) dan sanitasi ketat input URL anti-XSS di PHP & JS.
   - Penambahan unit test pada `tests/apps/IndexDeepLinkTest.php` (PHPUnit) dan perluasan `tests/apps/inc/geo_js.test.js` (Jest).
-- **Fitur Pencarian Global Instan (Global Search Autocomplete - P1) (2026-11-10)**:
+
+### v3.3.0 (2026-11-10)
+- **Fitur Pencarian Global Instan (Global Search Autocomplete )**:
   - Menambahkan endpoint pencarian cepat `apps/inc/geo_search.php` untuk seluruh tingkatan wilayah administrasi (Provinsi, Kab/Kota, Kecamatan, Desa/Kelurahan) dan pulau Indonesia.
   - Kueri teroptimasi B-Tree index (`wilayah_name_idx` & `pulau_nama_idx`), batch parent resolution, dan file caching SHA-256.
   - Menambahkan antarmuka pencarian instan pada `apps/index.php` dengan badge warna per level, navigasi keyboard (panah/enter/esc), dan kartu dropdown rekomendasi.
   - Integrasi dua arah dengan hierarki dropdown (`applyReverseSelection`) dan kamera peta Leaflet (`map.flyTo` & batas poligon/marker pulau).
   - Menambahkan pengujian unit lengkap pada `tests/apps/inc/GeoSearchTest.php` (PHPUnit) dan `tests/apps/inc/geo_js.test.js` (Jest).
-- **Optimasi Kinerja Iterasi Superglobal Guard PHP2Shell (2026-10-31)**:
+
+### v3.2.3 (2026-10-31)
+- **Optimasi Kinerja Iterasi Superglobal Guard PHP2Shell**:
   - Mengoptimalkan fungsi deteksi payload mencurigakan `is_php2shell_request()` pada `apps/inc/db.php` dan `apps/inc/session.php` dengan mengganti iterasi `array_keys()` menjadi `foreach ($bag as $key => $value)`.
   - Mengurangi alokasi memori berlebih dan memangkas waktu eksekusi traversal superglobal hingga ~21%.
   - Memperbarui header info `last edit` pada berkas `apps/inc/db.php` dan `apps/inc/session.php`.
@@ -301,15 +307,21 @@ apps/
   - Perlindungan terhadap CVE-2026-111497 (Google Brotli decoder heap out-of-bounds write / buffer overflow) melalui pemblokiran request body dengan `Content-Encoding: br` atau `brotli` pada `apps/.htaccess` dan filter runtime PHP `is_php2shell_request()`.
   - Pembaruan dependensi `undici` ke versi `7.30.1` pada `package-lock.json` untuk mengatasi risiko denial of service pada content-encoding decompression.
   - Penambahan skenario pengujian unit PHPUnit pada `tests/apps/inc/SessionTest.php` untuk validasi pemblokiran header encoding Brotli.
-- **Mitigasi Kerentanan PHP2Shell (2026-10-23)**:
+
+### v3.2.2 (2026-10-23)
+- **Mitigasi Kerentanan PHP2Shell**:
   - Perlindungan terhadap CVE-2026-109618 (heap use-after-free/OOM corruption) dan CVE-2026-109619 (worker memory persistence) melalui penonaktifan upload progress (`session.upload_progress.enabled = Off`) dan upload berkas (`file_uploads = Off`) pada `apps/.user.ini` dan `apps/.htaccess`.
   - Penambahan filter `mod_rewrite` pada `apps/.htaccess` untuk memblokir permintaan mengandung `PHP_SESSION_UPLOAD_PROGRESS`, prefix `upload_progress_`, dan payload `multipart/form-data`.
   - Implementasi fungsi guard runtime `is_php2shell_request()` pada `apps/inc/session.php` dan `apps/inc/db.php` yang secara otomatis menolak anomali payload upload progress dan multipart dengan status HTTP 400 Bad Request.
   - Penambahan skenario pengujian unit PHPUnit pada `tests/apps/inc/SessionTest.php` untuk memvalidasi pencegahan vektor serangan PHP2Shell.
-- **Peningkatan Keamanan & Kinerja (2026-10-20)**:
+
+### v3.2.1 (2026-10-20)
+- **Peningkatan Keamanan & Kinerja**:
   - Migrasi algoritma pembuatan nama berkas cache dari `md5()` ke `hash('sha256', ...)` pada `apps/inc/geo_ajax.php` untuk mencegah potensi risiko collision dan cache key vulnerability.
   - Refactoring validasi poligon batas wilayah dengan menggunakan fungsi bersama `isPathNearCentroid()` dari `apps/inc/geo_utils.php` guna mereduksi kompleksitas kode.
   - Optimasi iterasi traversal koordinat bounding box dan eliminasi duplikasi JSON decode pada reverse geocoding (`apps/inc/reverse_lookup.php`).
+
+### v3.2.0 (2026-10-11)
 - **Interactive Island Panel (Daftar Pulau) pada Right Sidebar**:
   - Menambahkan sidebar panel interaktif kanan (`#islandPanel`) yang menampilkan daftar kode dan nama pulau sesuai lokasi aktif provinsi atau kabupaten/kota.
   - Menambahkan badge jumlah pulau (`#islandCount`), judul lokasi aktif (`#islandLocationName`), form pencarian instan (`#islandSearch`), dan daftar pulau (`#islandList`).
