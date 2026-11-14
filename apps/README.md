@@ -1,4 +1,4 @@
-# wilayah v3.3.2
+# wilayah v3.3.3
 Aplikasi web visualisasi dan pencarian Kode serta Data Wilayah Administrasi Pemerintahan Indonesia dan Pulau sesuai Kepmendagri No 300.2.2-2430 Tahun 2025 dengan PHP + MySQL + AJaX + Leaflet.js.
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -268,10 +268,18 @@ apps/
 - [x] **Global Search Autocomplete**: Pencarian instan nama wilayah, kode, dan pulau dengan debounce serta integrasi kamera peta (`flyTo`).
 - [x] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast.
 - [x] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
-- [ ] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
+- [x] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
 - [ ] **Cluster Marker Seluruh Pulau**: Visualisasi sebaran ribuan pulau sekaligus menggunakan `Leaflet.markercluster` dengan performa tinggi (*chunked loading*).
 
 ## Catatan Rilis (Changelog)
+
+### v3.3.3 (2026-11-13)
+- **Fitur Unduh Poligon & Data Spasial (Spatial Data Export - P4)**:
+  - Generator ekspor geospasial `apps/inc/geo_export.php` untuk batas wilayah (GeoJSON RFC 7946, KML 2.2 Placemark), daftar pulau (CSV/GeoJSON), dan profil statistik demografi (CSV).
+  - Penataan koordinat standar GeoJSON `[lng, lat]` otomatis dengan penutupan linear ring dan dukungan poligon multi-ring / MultiPolygon.
+  - Streaming file efisien berbasis memori (`php://output` dan `fputcsv` dengan UTF-8 BOM) serta sanitasi ketat nama file unduhan dan parameter request.
+  - Kontrol antarmuka ekspor: dropdown menu pada info strip peta (`#exportDropdownWrapper`) dan tombol unduh CSV pulau (`#btnExportIslands`) pada panel daftar pulau.
+  - Penambahan test suite PHPUnit `tests/apps/inc/GeoExportTest.php` dan perluasan Jest unit tests `tests/apps/inc/geo_js.test.js`.
 
 ### v3.3.2 (2026-11-12)
 - **Fitur Choropleth Map & Peta Tematik Demografi (Choropleth Map)**:

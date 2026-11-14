@@ -2,8 +2,8 @@
  * BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
  * ================================================================================
  * filename : geo_js.test.js
- * purpose  : Jest tests for apps/inc/geo_js.php frontend logic (P1, P2, P3)
- * last edit: 2026-11-12 09:00:00
+ * purpose  : Jest tests for apps/inc/geo_js.php frontend logic (P1, P2, P3, P4)
+ * last edit: 2026-11-14 20:05:00
  * ================================================================================
  */
 const fs = require('fs');
@@ -26,6 +26,10 @@ describe('geo_js unit tests', () => {
     let getThematicColor;
     let thematicFeatureStyle;
     let setThematicMode;
+    let getActiveRegionCode;
+    let getExportUrl;
+    let triggerExportDownload;
+    let initExportControls;
 
     beforeAll(async () => {
         const { JSDOM } = await import('jsdom');
@@ -49,6 +53,15 @@ describe('geo_js unit tests', () => {
   <div id="kel_box" style="display:none;"><select id="kel"></select></div>
   <button id="btnShareLink"></button>
   <button id="btnCopyLocation"></button>
+  <div class="map-overlay-export" id="exportDropdownWrapper">
+    <button type="button" class="map-overlay-export-btn" id="btnExportMenu"></button>
+    <div class="export-dropdown-menu" id="exportDropdownMenu" style="display:none;">
+      <button type="button" id="exportGeoJsonBtn"></button>
+      <button type="button" id="exportKmlBtn"></button>
+      <button type="button" id="exportCsvStatsBtn"></button>
+    </div>
+  </div>
+  <button type="button" id="btnExportIslands"></button>
   <div id="toastNotification" class="toast-notification"><span id="toastMessage"></span></div>
 </body>
 </html>`, {
@@ -130,6 +143,10 @@ describe('geo_js unit tests', () => {
         getThematicColor = window.getThematicColor;
         thematicFeatureStyle = window.thematicFeatureStyle;
         setThematicMode = window.setThematicMode;
+        getActiveRegionCode = window.getActiveRegionCode;
+        getExportUrl = window.getExportUrl;
+        triggerExportDownload = window.triggerExportDownload;
+        initExportControls = window.initExportControls;
     });
 
     describe('setSafeSelectOptions', () => {
@@ -435,6 +452,74 @@ describe('geo_js unit tests', () => {
                 test('should ignore invalid thematic parameters', () => {
                     const params = getUrlParams('?thematic=hack<script>');
                     expect(params.thematic).toBeNull();
+                });
+            });
+        });
+
+        describe('Spatial Data Exporter (P4)', () => {
+            describe('getExportUrl', () => {
+                test('should generate valid GeoJSON boundary export URL', () => {
+                    const url = getExportUrl('32.73', 'geojson', 'boundary');
+                    expect(url).toBe('inc/geo_export.php?kode=32.73&format=geojson&target=boundary');
+                });
+
+                test('should generate valid KML boundary export URL', () => {
+                    const url = getExportUrl('11', 'kml', 'boundary');
+                    expect(url).toBe('inc/geo_export.php?kode=11&format=kml&target=boundary');
+                });
+
+                test('should generate valid CSV stats export URL', () => {
+                    const url = getExportUrl('32', 'csv', 'stats');
+                    expect(url).toBe('inc/geo_export.php?kode=32&format=csv&target=stats');
+                });
+
+                test('should generate valid CSV islands export URL', () => {
+                    const url = getExportUrl('11.01', 'csv', 'islands');
+                    expect(url).toBe('inc/geo_export.php?kode=11.01&format=csv&target=islands');
+                });
+
+                test('should use fallback defaults for invalid format and target', () => {
+                    const url = getExportUrl('32.73', 'invalid_format', 'invalid_target');
+                    expect(url).toBe('inc/geo_export.php?kode=32.73&format=geojson&target=boundary');
+                });
+
+                test('should use all when code is empty or dash', () => {
+                    expect(getExportUrl('', 'csv', 'stats')).toBe('inc/geo_export.php?kode=all&format=csv&target=stats');
+                    expect(getExportUrl('—', 'csv', 'stats')).toBe('inc/geo_export.php?kode=all&format=csv&target=stats');
+                });
+            });
+
+            describe('getActiveRegionCode', () => {
+                test('should return code from n_kode when set', () => {
+                    const nKode = document.getElementById('n_kode');
+                    nKode.textContent = '32.73';
+                    expect(getActiveRegionCode()).toBe('32.73');
+                });
+
+                test('should fallback to active select value when n_kode is dash', () => {
+                    const nKode = document.getElementById('n_kode');
+                    nKode.textContent = '—';
+                    document.getElementById('kab_box').style.display = 'none';
+                    document.getElementById('kec_box').style.display = 'none';
+                    document.getElementById('kel_box').style.display = 'none';
+                    const prop = document.getElementById('prop');
+                    prop.innerHTML = '<option value="32" selected>Jawa Barat</option>';
+                    prop.value = '32';
+                    expect(getActiveRegionCode()).toBe('32');
+                });
+            });
+
+            describe('initExportControls', () => {
+                test('should toggle dropdown menu visibility on menu button click', () => {
+                    initExportControls();
+                    const menuBtn = document.getElementById('btnExportMenu');
+                    const menu = document.getElementById('exportDropdownMenu');
+
+                    expect(menu.style.display).toBe('none');
+                    menuBtn.click();
+                    expect(menu.style.display).toBe('flex');
+                    menuBtn.click();
+                    expect(menu.style.display).toBe('none');
                 });
             });
         });

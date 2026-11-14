@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit: 2026-11-11 08:35:00
+last edit: 2026-11-14 20:05:00
 author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps
@@ -240,6 +240,30 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
                 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
               </svg>
             </button>
+            <div class="map-overlay-export" id="exportDropdownWrapper">
+              <button type="button" class="map-overlay-export-btn" id="btnExportMenu" aria-label="Unduh data wilayah" title="Unduh data spasial & profil" aria-haspopup="true" aria-expanded="false">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span class="export-btn-text">Unduh</span>
+              </button>
+              <div class="export-dropdown-menu" id="exportDropdownMenu" role="menu" style="display:none;">
+                <button type="button" class="export-dropdown-item" id="exportGeoJsonBtn" role="menuitem" data-format="geojson" data-target="boundary">
+                  <span class="export-badge badge-geojson">GeoJSON</span>
+                  <span class="export-item-title">Batas Poligon (.geojson)</span>
+                </button>
+                <button type="button" class="export-dropdown-item" id="exportKmlBtn" role="menuitem" data-format="kml" data-target="boundary">
+                  <span class="export-badge badge-kml">KML</span>
+                  <span class="export-item-title">Batas Wilayah (.kml)</span>
+                </button>
+                <button type="button" class="export-dropdown-item" id="exportCsvStatsBtn" role="menuitem" data-format="csv" data-target="stats">
+                  <span class="export-badge badge-csv">CSV</span>
+                  <span class="export-item-title">Profil Wilayah (.csv)</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -253,6 +277,14 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
                     <small id="islandCount">0 pulau</small>
                   </div>
                 </div>
+                                <button type="button" class="island-export-btn" id="btnExportIslands" aria-label="Unduh daftar pulau CSV" title="Unduh daftar pulau CSV">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>CSV Pulau</span>
+                </button>
                 <button type="button" class="island-toggle" id="islandToggle" aria-label="Tutup panel pulau" title="Tutup panel pulau" aria-expanded="true">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M9.5 6.5L15 12l-5.5 5.5"></path>

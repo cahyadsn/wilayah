@@ -181,10 +181,27 @@ node tools/check_sql_wilayah_pulau.js
 - [x] **Global Search Autocomplete**: Pencarian instan nama wilayah, kode, dan pulau dengan debounce serta integrasi kamera peta (`flyTo`).
 - [x] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast.
 - [x] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
-- [ ] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
+- [x] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
 - [ ] **Cluster Marker Seluruh Pulau**: Visualisasi sebaran ribuan pulau sekaligus menggunakan `Leaflet.markercluster` dengan performa tinggi (*chunked loading*).
 
 ## CHANGE LOG
+- [2026-11-13] RELEASE v2026.11  🆕
+  - **Fitur Unduh Poligon & Data Spasial (Spatial Data Export - P4)**:
+    - **Backend Generator & Export Engine (`apps/inc/geo_export.php`)**:
+      - Endpoint ekspor geospasial dan tabular on-the-fly yang mendukung format **GeoJSON** (RFC 7946), **KML 2.2** (Google Earth / GIS), dan **CSV** (Comma-Separated Values dengan UTF-8 BOM).
+      - Target ekspor fleksibel: batas wilayah (`target=boundary`), daftar pulau (`target=islands`), dan statistik demografi wilayah (`target=stats`).
+      - Validasi parameter ketat (`kode`, `format`, `target`) dengan proteksi sanitasi regex dan penanganan kode nasional `all`/`0`.
+      - Konversi koordinat standar RFC 7946 (`[lat, lng]` database ke `[lng, lat]` GeoJSON) dengan penutupan otomatis linear ring dan dukungan `Polygon` maupun `MultiPolygon`.
+      - Streaming output memori efisien menggunakan `php://output` dan `fputcsv()`.
+      - Keamanan header unduhan: sanitasi nama berkas anti-CRLF/path-traversal via `preg_replace('/[^a-zA-Z0-9_\-]/', '_', ...)`, `Content-Disposition`, dan `X-Content-Type-Options: nosniff`.
+    - **Antarmuka Pengguna & Integrasi Peta (`apps/index.php`, `apps/inc/geo_js.php`, `apps/css/styles.css`, `apps/css/styles.min.css`)**:
+      - Menambahkan tombol menu dropdown ekspor (*Unduh Data*) pada overlay info peta (`#infoStrip`): GeoJSON batas wilayah, KML Google Earth, dan CSV statistik demografi.
+      - Menambahkan tombol unduh CSV pulau (`#btnExportIslands`) pada bagian atas panel daftar pulau (`#islandPanel`).
+      - Integrasi status wilayah aktif (`getActiveRegionCode` & `#n_kode`) dan integrasi notifikasi toast saat proses unduhan dimulai.
+      - Desain responsif dengan tema adaptif (dark & light mode) dan event listener dropdown ramah aksesibilitas (*click outside & escape key*).
+    - **Pengujian Unit & Kualitas Kode**:
+      - Menambahkan test suite PHPUnit [`tests/apps/inc/GeoExportTest.php`](tests/apps/inc/GeoExportTest.php) (8 pengujian, 84 asersi) mencakup validasi input, GeoJSON RFC 7946, KML Placemarks, MultiPolygon, ekspor nasional, pulau CSV, dan stats CSV dengan kelulusan 100% (total 137 pengujian PHPUnit lulus).
+      - Memperluas test suite Jest [`tests/apps/inc/geo_js.test.js`](tests/apps/inc/geo_js.test.js) (total 37 pengujian Jest lulus 100%) untuk fungsi `getExportUrl`, resolusi kode aktif, dan inisialisasi kontrol ekspor.
 - [2026-11-12] RELEASE v2026.11  🆕
   - **Fitur Choropleth Map & Peta Tematik Demografi (Choropleth Map - P3)**:
     - **Backend Agregasi Data Geospasial & Demografi (`apps/inc/geo_thematic.php`)**:

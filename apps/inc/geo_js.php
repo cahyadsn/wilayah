@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_js.php
 purpose  : JavaScript for AJAX cascade, map, and counters
 create   : 170912
-last edit: 2026-11-12 09:00:00
+last edit: 2026-11-14 20:05:00
 author   : cahya dsn
 ================================================================================
 MIT License
@@ -1600,12 +1600,137 @@ function initThematicMenu() {
     initThematicLegend();
 }
 
+
+// ============================================================
+// SPATIAL DATA EXPORTER (P4)
+// ============================================================
+
+function getActiveRegionCode() {
+    var codeEl = document.getElementById('n_kode');
+    if (codeEl && codeEl.textContent && codeEl.textContent !== '—') {
+        var raw = codeEl.textContent.trim();
+        if (/^[0-9]{2}(\.[0-9]{2}){0,3}$/.test(raw) || /^[0-9]{2}\.[0-9]{2}\.[0-9]{5}$/.test(raw)) {
+            return raw;
+        }
+    }
+    // Check visible cascading dropdowns from most specific to province
+    var kelBox = document.getElementById('kel_box');
+    var kel = document.getElementById('kel');
+    if (kelBox && kelBox.style.display !== 'none' && kel && kel.value) return kel.value;
+
+    var kecBox = document.getElementById('kec_box');
+    var kec = document.getElementById('kec');
+    if (kecBox && kecBox.style.display !== 'none' && kec && kec.value) return kec.value;
+
+    var kabBox = document.getElementById('kab_box');
+    var kota = document.getElementById('kota');
+    if (kabBox && kabBox.style.display !== 'none' && kota && kota.value) return kota.value;
+
+    var prop = document.getElementById('prop');
+    if (prop && prop.value) return prop.value;
+    return 'all';
+}
+
+function getExportUrl(kode, format, target) {
+    var validFormats = ['geojson', 'kml', 'csv'];
+    var validTargets = ['boundary', 'islands', 'stats'];
+
+    var f = validFormats.indexOf(format) !== -1 ? format : 'geojson';
+    var t = validTargets.indexOf(target) !== -1 ? target : 'boundary';
+    var k = (kode && kode !== '—') ? kode : 'all';
+
+    return 'inc/geo_export.php?kode=' + encodeURIComponent(k) + '&format=' + encodeURIComponent(f) + '&target=' + encodeURIComponent(t);
+}
+
+function triggerExportDownload(format, target, optionalKode) {
+    var kode = optionalKode || getActiveRegionCode();
+    var url = getExportUrl(kode, format, target);
+
+    var targetName = (target === 'islands') ? 'data pulau' : ((target === 'stats') ? 'profil wilayah' : 'batas wilayah');
+    showToast('Mengunduh ' + targetName + ' (' + format.toUpperCase() + ')...', 2500);
+
+    var link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', '');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+function initExportControls() {
+    var menuBtn = document.getElementById('btnExportMenu');
+    var menu = document.getElementById('exportDropdownMenu');
+    var wrapper = document.getElementById('exportDropdownWrapper');
+
+    if (menuBtn && menu) {
+        if (menuBtn.getAttribute('data-export-bound')) return;
+        menuBtn.setAttribute('data-export-bound', 'true');
+
+        menuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var isOpen = (menu.style.display === 'flex' || menu.style.display === 'block');
+            menu.style.display = isOpen ? 'none' : 'flex';
+            menuBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (wrapper && !wrapper.contains(e.target)) {
+                menu.style.display = 'none';
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menu.style.display !== 'none') {
+                menu.style.display = 'none';
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    var btnGeoJson = document.getElementById('exportGeoJsonBtn');
+    if (btnGeoJson) {
+        btnGeoJson.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (menu) menu.style.display = 'none';
+            triggerExportDownload('geojson', 'boundary');
+        });
+    }
+
+    var btnKml = document.getElementById('exportKmlBtn');
+    if (btnKml) {
+        btnKml.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (menu) menu.style.display = 'none';
+            triggerExportDownload('kml', 'boundary');
+        });
+    }
+
+    var btnCsv = document.getElementById('exportCsvStatsBtn');
+    if (btnCsv) {
+        btnCsv.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (menu) menu.style.display = 'none';
+            triggerExportDownload('csv', 'stats');
+        });
+    }
+
+    var btnIslands = document.getElementById('btnExportIslands');
+    if (btnIslands) {
+        btnIslands.addEventListener('click', function(e) {
+            e.preventDefault();
+            triggerExportDownload('csv', 'islands');
+        });
+    }
+}
+
 // --- Init on load ---
 document.addEventListener('DOMContentLoaded', function() {
     initMap();
     initGlobalSearch();
     initShareButtons();
     hydrateFromUrl();
+    initExportControls();
 
     window.refreshMapThemeAwareness = refreshMapThemeAwareness;
     window.filterIslands = filterIslands;
@@ -1633,6 +1758,12 @@ document.addEventListener('DOMContentLoaded', function() {
     window.loadThematicData = loadThematicData;
     window.initThematicMenu = initThematicMenu;
     window.thematicFeatureStyle = thematicFeatureStyle;
+
+    // P4 exports
+    window.getActiveRegionCode = getActiveRegionCode;
+    window.getExportUrl = getExportUrl;
+    window.triggerExportDownload = triggerExportDownload;
+    window.initExportControls = initExportControls;
 });
 
 window.addEventListener('popstate', function() {

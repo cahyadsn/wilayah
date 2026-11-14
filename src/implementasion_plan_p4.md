@@ -2,7 +2,7 @@
 filename : implementasion_plan_p4.md
 purpose  : Implementation Plan for Feature P4 - Spatial Data Export (GeoJSON / KML / CSV)
 created  : 2026-11-10
-last edit: 2026-11-10 07:35:30
+last edit: 2026-11-14 20:05:00
 author   : cahya dsn & AI Assistant
 ================================================================================
 MIT License
@@ -100,11 +100,11 @@ Fitur ini menjawab kebutuhan mendesak para pengembang GIS, surveyor pemetaan, ak
 ## 5. Rencana Tahapan Eksekusi (Phase Roadmap)
 
 ### Fase 1: Generator Backend
-- [ ] Buat file `apps/inc/geo_export.php`.
-- [ ] Implementasikan fungsi konversi koordinat format poligon database (`[[lat, lng], ...]`) ke format GeoJSON standard (`[[lng, lat], ...]`).
-- [ ] Implementasikan fungsi konversi poligon ke format KML `<LinearRing><coordinates>`.
-- [ ] Buat stream generator CSV menggunakan `fputcsv()` untuk efisiensi alokasi memori server.
-- [ ] Terapkan header unduhan yang aman:
+- [x] Buat file `apps/inc/geo_export.php`.
+- [x] Implementasikan fungsi konversi koordinat format poligon database (`[[lat, lng], ...]`) ke format GeoJSON standard (`[[lng, lat], ...]`).
+- [x] Implementasikan fungsi konversi poligon ke format KML `<LinearRing><coordinates>`.
+- [x] Buat stream generator CSV menggunakan `fputcsv()` untuk efisiensi alokasi memori server.
+- [x] Terapkan header unduhan yang aman:
   ```php
   header('Content-Type: ' . $mime_type);
   header('Content-Disposition: attachment; filename="' . $safe_filename . '"');
@@ -112,20 +112,20 @@ Fitur ini menjawab kebutuhan mendesak para pengembang GIS, surveyor pemetaan, ak
   ```
 
 ### Fase 2: Komponen Antarmuka Pengguna
-- [ ] Tambahkan tombol dropdown *"Unduh Data"* pada panel informasi wilayah:
+- [x] Tambahkan tombol dropdown *"Unduh Data"* pada panel informasi wilayah:
   - 📥 *Unduh Batas Poligon (.geojson)*
   - 🌍 *Unduh Batas Wilayah (.kml)*
   - 📊 *Unduh Profil Statistik (.csv)*
-- [ ] Tambahkan tombol *"Unduh CSV Pulau"* pada bagian atas panel daftar pulau (`#islandPanel`).
+- [x] Tambahkan tombol *"Unduh CSV Pulau"* pada bagian atas panel daftar pulau (`#islandPanel`).
 
 ### Fase 3: Integrasi & Validasi Data
-- [ ] Pastikan koordinat poligon berurutan secara benar (Longitude lebih dulu untuk GeoJSON: `[lng, lat]`, berbeda dengan Leaflet: `[lat, lng]`).
-- [ ] Tangani penanganan poligon bertipe MultiPolygon (wilayah kepulauan yang memiliki banyak pulau pecahan batas).
+- [x] Pastikan koordinat poligon berurutan secara benar (Longitude lebih dulu untuk GeoJSON: `[lng, lat]`, berbeda dengan Leaflet: `[lat, lng]`).
+- [x] Tangani penanganan poligon bertipe MultiPolygon (wilayah kepulauan yang memiliki banyak pulau pecahan batas).
 
 ### Fase 4: Pengujian & Validasi
-- [ ] Buka file `.geojson` yang diunduh pada [geojson.io](https://geojson.io) atau QGIS untuk memastikan topologi tidak rusak.
-- [ ] Buka file `.kml` pada Google Earth Pro / Google Maps My Maps untuk menguji keselarasan proyeksi bumi (WGS84).
-- [ ] Uji unduhan CSV di Microsoft Excel memastikan format UTF-8 (BOM UTF-8) terbaca dengan rapi tanpa masalah karakter aneh.
+- [x] Buka file `.geojson` yang diunduh pada [geojson.io](https://geojson.io) atau QGIS untuk memastikan topologi tidak rusak.
+- [x] Buka file `.kml` pada Google Earth Pro / Google Maps My Maps untuk menguji keselarasan proyeksi bumi (WGS84).
+- [x] Uji unduhan CSV di Microsoft Excel memastikan format UTF-8 (BOM UTF-8) terbaca dengan rapi tanpa masalah karakter aneh.
 
 ---
 
