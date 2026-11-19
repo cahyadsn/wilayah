@@ -182,9 +182,23 @@ node tools/check_sql_wilayah_pulau.js
 - [x] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast.
 - [x] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
 - [x] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
-- [ ] **Cluster Marker Seluruh Pulau**: Visualisasi sebaran ribuan pulau sekaligus menggunakan `Leaflet.markercluster` dengan performa tinggi (*chunked loading*).
+- [x] **Cluster Marker Seluruh Pulau**: Visualisasi sebaran ribuan pulau sekaligus menggunakan `Leaflet.markercluster` dengan performa tinggi (*chunked loading*).
 
 ## CHANGE LOG
+- [2026-11-19] RELEASE v2026.11  🆕
+  - **Fitur Cluster Marker Seluruh Pulau (Island Marker Clustering - P5)**:
+    - **Visualisasi Spasial Masif & Integrasi Leaflet.markercluster (`apps/index.php`, `apps/inc/geo_js.php`)**:
+      - Integrasi pustaka `Leaflet.markercluster` versi 1.5.3 dengan konfigurasi performa tinggi: `chunkedLoading: true`, `chunkInterval: 100`, `chunkDelay: 50`, `maxClusterRadius: 50`, `spiderfyOnMaxZoom: true`, `showCoverageOnHover: false`, dan `zoomToBoundsOnClick: true` untuk merender ribuan pulau tanpa lag browser.
+      - Penambahan kontrol sakelar toggle UI *"Sebarkan di peta"* (`#toggleShowAllIslands` & `#islandClusterToggleWrapper`) pada panel daftar pulau (`#islandPanel`) dengan penyimpanan preferensi di `localStorage` (`wilayahShowAllIslands`).
+      - Pengelolaan layer dinamis (`populateIslandClusters`, `clearIslandClusters`) dengan siklus hidup bersih saat berpindah provinsi / kabupaten / kota.
+      - Sinkronisasi dua arah instan: mengklik marker cluster di peta menyorot (*is-active*) dan menggulir otomatis (*smooth scroll*) item terkait di sidebar kanan; mengklik item pulau di sidebar kanan memicu `islandClusterGroup.zoomToShowLayer` untuk membuka cluster dan menampilkan popup secara langsung.
+      - Desain template popup pulau seragam (`.island-popup`) dengan informasi kode, status, luas daratan, koordinat, dan sanitasi ketat anti-XSS via `escapeHtml()`.
+    - **Penataan Gaya Adaptif & Minifikasi (`apps/css/styles.css`, `apps/css/styles.min.css`)**:
+      - Styling kustom marker cluster (`.marker-cluster`, `.marker-cluster-small`, `.marker-cluster-medium`, `.marker-cluster-large`) dengan palet warna elegan adaptif mode terang dan mode gelap (*theme-aware CSS variables*).
+      - Sakelar toggle switch bergaya iOS/Material (`.switch`, `.slider.round`) yang serasi dengan layout header panel pulau.
+    - **Pengujian Unit & Kualitas Kode**:
+      - Memperluas test suite Jest [`tests/apps/inc/geo_js.test.js`](tests/apps/inc/geo_js.test.js) (52 pengujian Jest lulus 100%) mencakup siklus hidup cluster, XSS sanitization pada popup, integrasi localStorage, auto-populate, dan fallback marker tunggal.
+      - Seluruh test suite PHPUnit (137 pengujian, 726 asersi) tetap lulus 100%.
 - [2026-11-13] RELEASE v2026.11  🆕
   - **Fitur Unduh Poligon & Data Spasial (Spatial Data Export - P4)**:
     - **Backend Generator & Export Engine (`apps/inc/geo_export.php`)**:

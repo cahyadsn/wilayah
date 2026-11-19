@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit: 2026-11-14 20:05:00
+last edit: 2026-11-19 20:55:00
 author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps
@@ -65,6 +65,10 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.css" />
+
+  <!-- Leaflet MarkerCluster (P5) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
 
   <link rel="stylesheet" href="css/styles.min.css?v=<?php echo $safe_version;?>" />
 </head>
@@ -299,6 +303,15 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
                 <span class="island-loc-text" id="islandLocationName">Pilih Provinsi / Kab / Kota</span>
               </div>
 
+              <!-- Cluster Toggle (P5) -->
+              <div class="island-cluster-toggle" id="islandClusterToggleWrapper" style="display:none;">
+                <label class="switch" for="toggleShowAllIslands">
+                  <input type="checkbox" id="toggleShowAllIslands" aria-label="Sebarkan seluruh pulau di peta" />
+                  <span class="slider round"></span>
+                </label>
+                <span class="toggle-label" id="islandClusterToggleLabel">Sebarkan di peta</span>
+              </div>
+
               <div class="island-search-wrapper" id="islandSearchWrapper" style="display:none;">
                 <input type="text" id="islandSearch" class="island-search-input" placeholder="Cari nama atau kode pulau..." aria-label="Cari pulau" oninput="filterIslands(this.value)" />
               </div>
@@ -328,6 +341,8 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.js" defer></script>
+  <!-- Leaflet MarkerCluster (P5) -->
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" defer></script>
   <script src="js/ajax.js" defer></script>
   <script src="inc/geo_js.php?v=<?php echo $safe_version;?>" defer></script>
   <script src="js/wilayah.min.js?v=<?php echo $safe_version;?>" defer></script>

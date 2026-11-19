@@ -269,9 +269,19 @@ apps/
 - [x] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast.
 - [x] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
 - [x] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
-- [ ] **Cluster Marker Seluruh Pulau**: Visualisasi sebaran ribuan pulau sekaligus menggunakan `Leaflet.markercluster` dengan performa tinggi (*chunked loading*).
+- [x] **Cluster Marker Seluruh Pulau**: Visualisasi sebaran ribuan pulau sekaligus menggunakan `Leaflet.markercluster` dengan performa tinggi (*chunked loading*).
 
 ## Catatan Rilis (Changelog)
+
+### v3.3.4 (2026-11-19)
+- **Fitur Cluster Marker Seluruh Pulau (Island Marker Clustering - P5)**:
+  - Integrasi pustaka `Leaflet.markercluster` 1.5.3 dengan konfigurasi pemrosesan terpecah (*chunked loading*) untuk menangani ribuan pulau tanpa lag.
+  - Komponen antarmuka sakelar *"Sebarkan di peta"* (`#toggleShowAllIslands`) pada panel pulau dengan persistensi preferensi di `localStorage` (`wilayahShowAllIslands`).
+  - Manajemen layer clustering dinamis (`populateIslandClusters`, `clearIslandClusters`) yang terikat dengan perubahan provinsi / kabupaten / kota.
+  - Interaksi sinkronisasi dua arah: klik marker cluster menyorot dan auto-scroll item sidebar terkait; klik item sidebar memicu `zoomToShowLayer` untuk membuka cluster dan popup marker terkait.
+  - Template popup pulau seragam (`.island-popup`) dengan informasi kode, status, luas, koordinat, dan sanitasi ketat anti-XSS via `escapeHtml()`.
+  - Penataan gaya tema adaptif (terang & gelap) untuk marker cluster bubble dan sakelar slider pada `apps/css/styles.css` dan `apps/css/styles.min.css`.
+  - Penambahan unit test komprehensif pada Jest test suite `tests/apps/inc/geo_js.test.js`.
 
 ### v3.3.3 (2026-11-13)
 - **Fitur Unduh Poligon & Data Spasial (Spatial Data Export - P4)**:

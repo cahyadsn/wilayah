@@ -2,8 +2,8 @@
  * BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
  * ================================================================================
  * filename : geo_js.test.js
- * purpose  : Jest tests for apps/inc/geo_js.php frontend logic (P1, P2, P3, P4)
- * last edit: 2026-11-14 20:05:00
+ * purpose  : Jest tests for apps/inc/geo_js.php frontend logic (P1, P2, P3, P4, P5)
+ * last edit: 2026-11-19 21:20:00
  * ================================================================================
  */
 const fs = require('fs');
@@ -30,6 +30,16 @@ describe('geo_js unit tests', () => {
     let getExportUrl;
     let triggerExportDownload;
     let initExportControls;
+    let getIslandClusterGroup;
+    let populateIslandClusters;
+    let clearIslandClusters;
+    let highlightIslandInSidebar;
+    let initIslandClusterControls;
+    let formatIslandPopupHtml;
+    let updateIslandPanel;
+    let resetIslandPanel;
+    let renderIslandItems;
+    let onSelectIsland;
 
     beforeAll(async () => {
         const { JSDOM } = await import('jsdom');
@@ -63,6 +73,22 @@ describe('geo_js unit tests', () => {
   </div>
   <button type="button" id="btnExportIslands"></button>
   <div id="toastNotification" class="toast-notification"><span id="toastMessage"></span></div>
+  <div class="island-panel" id="islandPanel">
+    <div class="island-cluster-toggle" id="islandClusterToggleWrapper" style="display:none;">
+      <label class="switch" for="toggleShowAllIslands">
+        <input type="checkbox" id="toggleShowAllIslands" aria-label="Sebarkan seluruh pulau di peta" />
+        <span class="slider round"></span>
+      </label>
+      <span class="toggle-label" id="islandClusterToggleLabel">Sebarkan di peta</span>
+    </div>
+    <span id="islandCount"></span>
+    <span id="islandLocationName"></span>
+    <div id="islandSearchWrapper" style="display:none;">
+      <input type="text" id="islandSearch" />
+    </div>
+    <div id="islandList" style="display:none;"></div>
+    <div id="islandEmptyState"></div>
+  </div>
 </body>
 </html>`, {
             url: "http://localhost",
@@ -86,13 +112,17 @@ describe('geo_js unit tests', () => {
             ok: true,
             json: () => Promise.resolve({ status: true, opt: '<option value="1">Item</option>' })
         });
+        const activeMapLayers = [];
         window.L = {
             map: () => ({
                 setView: () => {},
                 on: () => {},
-                hasLayer: () => false,
-                addLayer: () => {},
-                removeLayer: () => {},
+                hasLayer: (l) => activeMapLayers.includes(l),
+                addLayer: (l) => { if (!activeMapLayers.includes(l)) activeMapLayers.push(l); },
+                removeLayer: (l) => {
+                    const idx = activeMapLayers.indexOf(l);
+                    if (idx !== -1) activeMapLayers.splice(idx, 1);
+                },
                 flyTo: () => {}
             }),
             control: Object.assign(() => ({ addTo: () => {} }), {
@@ -100,7 +130,47 @@ describe('geo_js unit tests', () => {
                 layers: () => ({ addTo: () => {} })
             }),
             tileLayer: () => ({ addTo: () => {} }),
-            marker: () => ({ bindPopup: () => ({ addTo: () => {} }) }),
+            marker: (coords) => {
+                let popupContent = '';
+                const listeners = {};
+                return {
+                    coords,
+                    bindPopup: function(content) {
+                        popupContent = content;
+                        return this;
+                    },
+                    addTo: function(targetMap) {
+                        if (targetMap && typeof targetMap.addLayer === 'function') {
+                            targetMap.addLayer(this);
+                        }
+                        return this;
+                    },
+                    openPopup: function() { return this; },
+                    getPopup: function() { return { getContent: () => popupContent }; },
+                    on: function(event, handler) {
+                        listeners[event] = handler;
+                        return this;
+                    },
+                    fire: function(event) {
+                        if (listeners[event]) listeners[event]();
+                    }
+                };
+            },
+            markerClusterGroup: (options) => {
+                const layers = [];
+                return {
+                    options: options || {},
+                    addLayer: function(l) { layers.push(l); },
+                    addLayers: function(arr) { if (Array.isArray(arr)) arr.forEach(l => layers.push(l)); },
+                    removeLayer: function(l) {
+                        const idx = layers.indexOf(l);
+                        if (idx !== -1) layers.splice(idx, 1);
+                    },
+                    clearLayers: function() { layers.length = 0; },
+                    getLayers: function() { return layers; },
+                    zoomToShowLayer: function(l, cb) { if (cb) cb(); }
+                };
+            },
             polygon: () => ({ addTo: () => {} }),
             layerGroup: () => ({ addTo: () => {} }),
             DomEvent: {
@@ -147,6 +217,16 @@ describe('geo_js unit tests', () => {
         getExportUrl = window.getExportUrl;
         triggerExportDownload = window.triggerExportDownload;
         initExportControls = window.initExportControls;
+        getIslandClusterGroup = window.getIslandClusterGroup;
+        populateIslandClusters = window.populateIslandClusters;
+        clearIslandClusters = window.clearIslandClusters;
+        highlightIslandInSidebar = window.highlightIslandInSidebar;
+        initIslandClusterControls = window.initIslandClusterControls;
+        formatIslandPopupHtml = window.formatIslandPopupHtml;
+        updateIslandPanel = window.updateIslandPanel;
+        resetIslandPanel = window.resetIslandPanel;
+        renderIslandItems = window.renderIslandItems;
+        onSelectIsland = window.onSelectIsland;
     });
 
     describe('setSafeSelectOptions', () => {
@@ -520,6 +600,199 @@ describe('geo_js unit tests', () => {
                     expect(menu.style.display).toBe('flex');
                     menuBtn.click();
                     expect(menu.style.display).toBe('none');
+                });
+            });
+        });
+
+        describe('Feature P5: Island Marker Clustering (Leaflet.markercluster)', () => {
+            const sampleIslands = [
+                { kode: '11.01.40001', nama: 'Pulau Rondo', lat: '6.07472', lng: '95.11306', status: 'Tidak Berpenduduk', luas: '0.82' },
+                { kode: '11.01.40002', nama: 'Pulau Weh', lat: '5.82139', lng: '95.31139', status: 'Berpenduduk', luas: '121.00' },
+                { kode: '11.01.40003', nama: 'Pulau Breueh', lat: '5.70000', lng: '95.05000', status: null, luas: null },
+                { kode: '11.01.40004', nama: 'Pulau Invalid', lat: null, lng: null }
+            ];
+
+            beforeEach(() => {
+                clearIslandClusters();
+                resetIslandPanel();
+                if (window.localStorage) window.localStorage.clear();
+            });
+
+            describe('getIslandClusterGroup', () => {
+                test('should create cluster group with performance options', () => {
+                    const group = getIslandClusterGroup();
+                    expect(group).toBeDefined();
+                    expect(group.options.chunkedLoading).toBe(true);
+                    expect(group.options.maxClusterRadius).toBe(50);
+                    expect(group.options.spiderfyOnMaxZoom).toBe(true);
+                    expect(group.options.showCoverageOnHover).toBe(false);
+                });
+
+                test('should return singleton instance', () => {
+                    const group1 = getIslandClusterGroup();
+                    const group2 = getIslandClusterGroup();
+                    expect(group1).toBe(group2);
+                });
+            });
+
+            describe('formatIslandPopupHtml', () => {
+                test('should format popup template with title, kode, status, and luas', () => {
+                    const html = formatIslandPopupHtml(sampleIslands[0], 6.07472, 95.11306);
+                    expect(html).toContain('island-popup');
+                    expect(html).toContain('Pulau Rondo');
+                    expect(html).toContain('11.01.40001');
+                    expect(html).toContain('Tidak Berpenduduk');
+                    expect(html).toContain('0.82 km²');
+                    expect(html).toContain('6.07472°');
+                });
+
+                test('should escape special characters to prevent XSS injection', () => {
+                    const maliciousItem = {
+                        kode: '<script>alert(1)</script>',
+                        nama: '"><img src=x onerror=alert(2)>',
+                        status: '<b>Bold</b>',
+                        luas: '5" onmouseover="alert(3)'
+                    };
+                    const html = formatIslandPopupHtml(maliciousItem, 1.23456, 104.56789);
+                    expect(html).not.toContain('<script>');
+                    expect(html).toContain('&lt;script&gt;');
+                    expect(html).not.toContain('<img src=x');
+                    expect(html).toContain('&quot;&gt;&lt;img src=x');
+                    expect(html).toContain('&lt;b&gt;Bold&lt;/b&gt;');
+                });
+            });
+
+            describe('populateIslandClusters and clearIslandClusters', () => {
+                test('should populate markers into cluster group and add group to map', () => {
+                    populateIslandClusters(sampleIslands);
+                    const group = getIslandClusterGroup();
+                    const layers = group.getLayers();
+                    // 3 valid islands out of 4 (4th has null coords)
+                    expect(layers.length).toBe(3);
+                    expect(window.map.hasLayer(group)).toBe(true);
+                });
+
+                test('should clear layers and remove group from map on clearIslandClusters', () => {
+                    populateIslandClusters(sampleIslands);
+                    const group = getIslandClusterGroup();
+                    expect(group.getLayers().length).toBe(3);
+
+                    clearIslandClusters();
+                    expect(group.getLayers().length).toBe(0);
+                    expect(window.map.hasLayer(group)).toBe(false);
+                });
+
+                test('should handle empty or null islands gracefully', () => {
+                    expect(() => populateIslandClusters([])).not.toThrow();
+                    expect(() => populateIslandClusters(null)).not.toThrow();
+                });
+            });
+
+            describe('highlightIslandInSidebar', () => {
+                test('should set active class on corresponding sidebar element and update infobox', () => {
+                    updateIslandPanel(sampleIslands, 'Kab. Aceh Besar');
+                    const listEl = document.getElementById('islandList');
+                    expect(listEl.querySelectorAll('.island-item').length).toBe(4);
+
+                    highlightIslandInSidebar('11.01.40002');
+
+                    const target = listEl.querySelector('.island-item[data-kode="11.01.40002"]');
+                    expect(target.classList.contains('is-active')).toBe(true);
+
+                    expect(document.getElementById('n_kode').textContent).toBe('11.01.40002');
+                    expect(document.getElementById('n_lat').textContent).toBe('5.82139');
+                    expect(document.getElementById('n_lng').textContent).toBe('95.31139');
+                });
+            });
+
+            describe('initIslandClusterControls', () => {
+                test('should respect stored preference in localStorage', () => {
+                    window.localStorage.setItem('wilayahShowAllIslands', '1');
+                    initIslandClusterControls();
+                    const toggle = document.getElementById('toggleShowAllIslands');
+                    expect(toggle.checked).toBe(true);
+                });
+
+                test('should toggle cluster visibility and save preference on change event', () => {
+                    window.localStorage.setItem('wilayahShowAllIslands', '0');
+                    initIslandClusterControls();
+                    const toggle = document.getElementById('toggleShowAllIslands');
+                    expect(toggle.checked).toBe(false);
+
+                    // Simulate user checking the toggle
+                    updateIslandPanel(sampleIslands, 'Kab. Aceh Besar');
+                    toggle.checked = true;
+                    toggle.dispatchEvent(new window.Event('change'));
+
+                    expect(window.localStorage.getItem('wilayahShowAllIslands')).toBe('1');
+                    const group = getIslandClusterGroup();
+                    expect(group.getLayers().length).toBe(3);
+
+                    // Uncheck toggle
+                    toggle.checked = false;
+                    toggle.dispatchEvent(new window.Event('change'));
+                    expect(window.localStorage.getItem('wilayahShowAllIslands')).toBe('0');
+                    expect(group.getLayers().length).toBe(0);
+                });
+            });
+
+            describe('updateIslandPanel and resetIslandPanel with clustering', () => {
+                test('should display toggle wrapper when islands exist and hide when 0', () => {
+                    const toggleWrap = document.getElementById('islandClusterToggleWrapper');
+                    updateIslandPanel(sampleIslands, 'Kepulauan Riau');
+                    expect(toggleWrap.style.display).toBe('flex');
+
+                    updateIslandPanel([], 'Kota Tanpa Pulau');
+                    expect(toggleWrap.style.display).toBe('none');
+                });
+
+                test('should auto-populate clusters if toggle switch is already checked', () => {
+                    const toggle = document.getElementById('toggleShowAllIslands');
+                    toggle.checked = true;
+
+                    updateIslandPanel(sampleIslands, 'Kepulauan Riau');
+                    const group = getIslandClusterGroup();
+                    expect(group.getLayers().length).toBe(3);
+                });
+
+                test('resetIslandPanel should clear clusters and hide toggle wrapper', () => {
+                    updateIslandPanel(sampleIslands, 'Kepulauan Riau');
+                    const toggleWrap = document.getElementById('islandClusterToggleWrapper');
+                    expect(toggleWrap.style.display).toBe('flex');
+
+                    resetIslandPanel();
+                    expect(toggleWrap.style.display).toBe('none');
+                    const group = getIslandClusterGroup();
+                    expect(group.getLayers().length).toBe(0);
+                });
+            });
+
+            describe('onSelectIsland', () => {
+                test('should use cluster zoomToShowLayer when clustering is active', () => {
+                    const toggle = document.getElementById('toggleShowAllIslands');
+                    toggle.checked = true;
+                    updateIslandPanel(sampleIslands, 'Aceh');
+
+                    const group = getIslandClusterGroup();
+                    let zoomed = false;
+                    group.zoomToShowLayer = (m, cb) => {
+                        zoomed = true;
+                        if (cb) cb();
+                    };
+
+                    onSelectIsland(sampleIslands[0]);
+                    expect(zoomed).toBe(true);
+                    expect(document.getElementById('n_kode').textContent).toBe('11.01.40001');
+                });
+
+                test('should fallback to single marker when clustering is inactive', () => {
+                    const toggle = document.getElementById('toggleShowAllIslands');
+                    toggle.checked = false;
+                    updateIslandPanel(sampleIslands, 'Aceh');
+
+                    onSelectIsland(sampleIslands[1]);
+                    expect(document.getElementById('n_kode').textContent).toBe('11.01.40002');
+                    expect(document.getElementById('n_lat').textContent).toBe('5.82139');
                 });
             });
         });

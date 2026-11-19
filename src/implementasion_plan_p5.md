@@ -2,7 +2,7 @@
 filename : implementasion_plan_p5.md
 purpose  : Implementation Plan for Feature P5 - Island Marker Clustering
 created  : 2026-11-10
-last edit: 2026-11-10 07:35:40
+last edit: 2026-11-19 21:28:00
 author   : cahya dsn & AI Assistant
 ================================================================================
 MIT License
@@ -84,17 +84,17 @@ var islandClusterGroup = L.markerClusterGroup({
 ## 5. Rencana Tahapan Eksekusi (Phase Roadmap)
 
 ### Fase 1: Integrasi Asset Leaflet.markercluster
-- [ ] Daftarkan stylesheet dan skrip `leaflet.markercluster` ke dalam header dan footer `apps/index.php`.
-- [ ] Buat fallback lokal atau pastikan CDN memiliki atribut `integrity` dan `crossorigin`.
+- [x] Daftarkan stylesheet dan skrip `leaflet.markercluster` ke dalam header dan footer `apps/index.php`.
+- [x] Buat fallback lokal atau pastikan CDN memiliki atribut `integrity` dan `crossorigin`.
 
 ### Fase 2: Pengendalian Layer Cluster di JavaScript
-- [ ] Tambahkan variabel global `islandClusterGroup` di `apps/inc/geo_js.php`.
-- [ ] Modifikasi fungsi `updateIslandPanel(pulauList, locationName)`:
+- [x] Tambahkan variabel global `islandClusterGroup` di `apps/inc/geo_js.php`.
+- [x] Modifikasi fungsi `updateIslandPanel(pulauList, locationName)`:
   - Jika sakelar *"Tampilkan Semua Pulau"* aktif, jalankan `populateIslandClusters(pulauList)`.
   - Hapus dan bersihkan marker lama (`islandClusterGroup.clearLayers()`) saat berganti wilayah.
 
 ### Fase 3: Komponen Antarmuka Sakelar (UI Toggle Switch)
-- [ ] Pasang sakelar toggle di bawah badge jumlah pulau pada `#islandPanel`:
+- [x] Pasang sakelar toggle di bawah badge jumlah pulau pada `#islandPanel`:
   ```html
   <div class="island-cluster-toggle">
     <label class="switch">
@@ -104,16 +104,16 @@ var islandClusterGroup = L.markerClusterGroup({
     <span class="toggle-label">Sebarkan di peta</span>
   </div>
   ```
-- [ ] Simpan status preferensi sakelar di `localStorage` (`wilayahShowAllIslands`).
+- [x] Simpan status preferensi sakelar di `localStorage` (`wilayahShowAllIslands`).
 
 ### Fase 4: Penataan Gaya & Sinkronisasi Dua Arah
-- [ ] Modifikasi warna default icon cluster (hijau/kuning/oranye) menggunakan CSS variabel sistem agar elegan dalam mode gelap (*dark mode*).
-- [ ] Sinkronisasi saat marker di dalam cluster diklik: sorot otomatis (*auto-scroll* dan *add class active*) elemen pulau yang bersangkutan pada list sidebar kanan.
+- [x] Modifikasi warna default icon cluster (hijau/kuning/oranye) menggunakan CSS variabel sistem agar elegan dalam mode gelap (*dark mode*).
+- [x] Sinkronisasi saat marker di dalam cluster diklik: sorot otomatis (*auto-scroll* dan *add class active*) elemen pulau yang bersangkutan pada list sidebar kanan.
 
 ### Fase 5: Pengujian & Validasi
-- [ ] Uji stres (*Stress Test*) pada provinsi dengan pulau terbanyak (Kepulauan Riau: ~2.408 pulau; Maluku: ~1.422 pulau).
-- [ ] Pastikan tidak ada kebocoran memori (*memory leak*) ketika pengguna berganti-ganti provinsi secara cepat.
-- [ ] Uji responsivitas pada perangkat ponsel pintar (FPS tetap stabil saat *pinch-to-zoom* peta).
+- [x] Uji stres (*Stress Test*) pada provinsi dengan pulau terbanyak (Kepulauan Riau: ~2.408 pulau; Maluku: ~1.422 pulau).
+- [x] Pastikan tidak ada kebocoran memori (*memory leak*) ketika pengguna berganti-ganti provinsi secara cepat.
+- [x] Uji responsivitas pada perangkat ponsel pintar (FPS tetap stabil saat *pinch-to-zoom* peta).
 
 ---
 
