@@ -265,11 +265,11 @@ apps/
 ---
 
 ## TO DO
-- [x] **Global Search Autocomplete**: Pencarian instan nama wilayah, kode, dan pulau dengan debounce serta integrasi kamera peta (`flyTo`).
-- [x] **Shareable URL & Deep Linking**: Sinkronisasi state dropdown, pulau, dan peta ke parameter URL (`?kode=...&pulau=...`) dengan tombol salin tautan + notifikasi toast.
-- [x] **Choropleth Map (Kepadatan Penduduk)**: Visualisasi tematik gradasi warna poligon berdasarkan kepadatan penduduk (jiwa/km²) dan rasio gender dari data kependudukan & luas wilayah.
-- [x] **Unduh Poligon & Data Spasial**: Generator ekspor data batas wilayah dan pulau ke format GeoJSON (RFC 7946), KML (Google Earth), dan CSV.
-- [x] **Cluster Marker Seluruh Pulau**: Visualisasi sebaran ribuan pulau sekaligus menggunakan `Leaflet.markercluster` dengan performa tinggi (*chunked loading*).
+- [ ] **Perbandingan Wilayah Multidimensi**: Fitur komparasi *head-to-head* dua wilayah (provinsi atau kab/kota) mencakup matriks statistik demografi, rasio visual perbandingan, dan batas poligon ganda pada peta.
+- [ ] **Linimasa Histori Pemekaran Wilayah**: Visualisasi kronologis evolusi administratif Indonesia (*time-travel* 2016–2025) berbasis arsip data resmi untuk menelusuri dinamika pembentukan daerah otonomi baru (DOB) dan status pulau.
+- [ ] **Analisis Radius & Pengukuran Spasial Maritim**: Alat ukur geodesik jarak antar-titik/pulau (km dan Nautical Miles) serta analisis lingkaran radius (*buffer zone*) untuk mendeteksi pulau-pulau dalam jangkauan.
+- [ ] **Deteksi GPS "Wilayah di Sekitar Saya"**: Integrasi HTML5 Geolocation dan algoritma *Ray-Casting* untuk mengidentifikasi hierarki wilayah administrasi resmi (Provinsi hingga Desa/Kelurahan) serta pulau terdekat dari posisi pengguna secara instan.
+- [ ] **Developer Playground & Generator Widget Dropdown**: Konsol interaktif pengujian API wilayah, generator cuplikan kode integrasi multi-bahasa (JS, PHP, Python, Dart, cURL), dan *scaffolder* formulir dropdown bertingkat mandiri (*zero-dependency*).
 
 ## Catatan Rilis (Changelog)
 

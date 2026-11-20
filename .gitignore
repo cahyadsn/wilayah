@@ -2,6 +2,8 @@
 dump-*
 /inc/db.php
 /src/*
+!/src/implementation_plan_p*.md
+!/src/implementasion_plan_p*.md
 /CLAUDE.md
 /.claude
 /.claudevendor
