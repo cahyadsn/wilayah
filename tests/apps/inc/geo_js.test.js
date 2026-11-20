@@ -2,8 +2,8 @@
  * BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
  * ================================================================================
  * filename : geo_js.test.js
- * purpose  : Jest tests for apps/inc/geo_js.php frontend logic (P1, P2, P3, P4, P5)
- * last edit: 2026-11-19 21:20:00
+ * purpose  : Jest tests for apps/inc/geo_js.php frontend logic (P1, P2, P3, P4, P5, P6)
+ * last edit: 2026-11-20 21:22:00
  * ================================================================================
  */
 const fs = require('fs');
@@ -40,6 +40,18 @@ describe('geo_js unit tests', () => {
     let resetIslandPanel;
     let renderIslandItems;
     let onSelectIsland;
+    let openCompareModal;
+    let closeCompareModal;
+    let switchCompareLevel;
+    let loadCompareOptions;
+    let fetchComparisonData;
+    let renderComparisonView;
+    let renderDualPolygons;
+    let generateCompareCsv;
+    let downloadCompareCsv;
+    let calcRatioPairClient;
+    let formatNumberId;
+    let initCompareControls;
 
     beforeAll(async () => {
         const { JSDOM } = await import('jsdom');
@@ -63,6 +75,21 @@ describe('geo_js unit tests', () => {
   <div id="kel_box" style="display:none;"><select id="kel"></select></div>
   <button id="btnShareLink"></button>
   <button id="btnCopyLocation"></button>
+  <button id="btnOpenCompare" type="button"></button>
+  <div id="compareModal" class="compare-modal" style="display:none;" aria-hidden="true">
+    <div class="compare-dialog">
+      <button id="btnCompareClose" type="button"></button>
+      <button id="tabCompareProv" class="compare-tab-btn active" type="button"></button>
+      <button id="tabCompareKab" class="compare-tab-btn" type="button"></button>
+      <select id="compareSelect1"><option value="">-- Pilih Wilayah 1 --</option></select>
+      <select id="compareSelect2"><option value="">-- Pilih Wilayah 2 --</option></select>
+      <button id="btnRunCompare" type="button" disabled></button>
+      <div id="compareEmptyState" style="display:block;"></div>
+      <div id="compareLoading" style="display:none;"></div>
+      <div id="compareError" style="display:none;"><span id="compareErrorMessage"></span></div>
+      <div id="compareResults" style="display:none;"></div>
+    </div>
+  </div>
   <div class="map-overlay-export" id="exportDropdownWrapper">
     <button type="button" class="map-overlay-export-btn" id="btnExportMenu"></button>
     <div class="export-dropdown-menu" id="exportDropdownMenu" style="display:none;">
@@ -227,6 +254,18 @@ describe('geo_js unit tests', () => {
         resetIslandPanel = window.resetIslandPanel;
         renderIslandItems = window.renderIslandItems;
         onSelectIsland = window.onSelectIsland;
+        openCompareModal = window.openCompareModal;
+        closeCompareModal = window.closeCompareModal;
+        switchCompareLevel = window.switchCompareLevel;
+        loadCompareOptions = window.loadCompareOptions;
+        fetchComparisonData = window.fetchComparisonData;
+        renderComparisonView = window.renderComparisonView;
+        renderDualPolygons = window.renderDualPolygons;
+        generateCompareCsv = window.generateCompareCsv;
+        downloadCompareCsv = window.downloadCompareCsv;
+        calcRatioPairClient = window.calcRatioPairClient;
+        formatNumberId = window.formatNumberId;
+        initCompareControls = window.initCompareControls;
     });
 
     describe('setSafeSelectOptions', () => {
@@ -793,6 +832,201 @@ describe('geo_js unit tests', () => {
                     onSelectIsland(sampleIslands[1]);
                     expect(document.getElementById('n_kode').textContent).toBe('11.01.40002');
                     expect(document.getElementById('n_lat').textContent).toBe('5.82139');
+                });
+            });
+        });
+
+        describe('Side-by-Side Region Comparison Tool (P6)', () => {
+            const sampleCompareData = {
+                status: 'success',
+                level: 'provinsi',
+                entities: {
+                    entity1: {
+                        kode: '31',
+                        nama: 'DKI JAKARTA',
+                        ibukota: 'JAKARTA PUSAT',
+                        lat: -6.1754,
+                        lng: 106.8272,
+                        elv: 8,
+                        timezone: 'WIB',
+                        luas_km2: 661.52,
+                        penduduk: 10609681,
+                        kepadatan: 16038.34,
+                        penduduk_pria: 5334147,
+                        penduduk_wanita: 5275534,
+                        sex_ratio: 101.11,
+                        total_kab: 1,
+                        total_kota: 5,
+                        total_kec: 44,
+                        total_kel: 267,
+                        total_desa: 0,
+                        total_pulau: 2,
+                        path: '[[[-6.1,106.7],[-6.1,106.9],[-6.3,106.9],[-6.3,106.7],[-6.1,106.7]]]'
+                    },
+                    entity2: {
+                        kode: '32',
+                        nama: 'JAWA BARAT',
+                        ibukota: 'KOTA BANDUNG',
+                        lat: -6.9147,
+                        lng: 107.6098,
+                        elv: 768,
+                        timezone: 'WIB',
+                        luas_km2: 35377.76,
+                        penduduk: 49405552,
+                        kepadatan: 1396.51,
+                        penduduk_pria: 25112000,
+                        penduduk_wanita: 24293552,
+                        sex_ratio: 103.37,
+                        total_kab: 18,
+                        total_kota: 9,
+                        total_kec: 627,
+                        total_kel: 645,
+                        total_desa: 5312,
+                        total_pulau: 1,
+                        path: '[[[-6.5,107.0],[-6.5,108.5],[-7.8,108.5],[-7.8,107.0],[-6.5,107.0]]]'
+                    }
+                },
+                comparison: {
+                    luas_delta_percent: -98.13,
+                    penduduk_delta_percent: -78.53,
+                    kepadatan_delta_percent: 1048.46,
+                    pulau_delta_percent: 100,
+                    kec_delta_percent: -92.98,
+                    desa_delta_percent: -100,
+                    kel_delta_percent: -58.6,
+                    kab_delta_percent: -94.44,
+                    kota_delta_percent: -44.44,
+                    ratios: {
+                        luas: [1.8, 98.2],
+                        penduduk: [17.7, 82.3],
+                        kepadatan: [92.0, 8.0],
+                        pulau: [66.7, 33.3],
+                        kec: [6.6, 93.4],
+                        desa: [0.0, 100.0],
+                        kel: [29.3, 70.7],
+                        kab: [5.3, 94.7],
+                        kota: [35.7, 64.3]
+                    }
+                }
+            };
+
+            describe('calcRatioPairClient', () => {
+                test('should calculate 50/50 for equal positive values', () => {
+                    const res = calcRatioPairClient(100, 100);
+                    expect(res).toEqual([50.0, 50.0]);
+                });
+
+                test('should calculate correct percentages for unequal values', () => {
+                    const res = calcRatioPairClient(25, 75);
+                    expect(res).toEqual([25.0, 75.0]);
+                });
+
+                test('should return 50/50 when both values are 0 or negative', () => {
+                    expect(calcRatioPairClient(0, 0)).toEqual([50.0, 50.0]);
+                    expect(calcRatioPairClient(-10, -20)).toEqual([50.0, 50.0]);
+                });
+
+                test('should clamp negative values to 0 in ratio calculation', () => {
+                    const res = calcRatioPairClient(-5, 50);
+                    expect(res).toEqual([0.0, 100.0]);
+                });
+            });
+
+            describe('formatNumberId', () => {
+                test('should format numbers with Indonesian separator conventions', () => {
+                    expect(formatNumberId(1000)).toBe('1.000');
+                    expect(formatNumberId(1234567)).toBe('1.234.567');
+                    expect(formatNumberId(1234.56)).toBe('1.234,56');
+                    expect(formatNumberId(0)).toBe('0');
+                    expect(formatNumberId(null)).toBe('—');
+                });
+            });
+
+            describe('Modal lifecycle: openCompareModal and closeCompareModal', () => {
+                test('openCompareModal should display modal and set aria attributes', () => {
+                    const modal = document.getElementById('compareModal');
+                    openCompareModal('provinsi');
+                    expect(modal.style.display).toBe('flex');
+                    expect(modal.getAttribute('aria-hidden')).toBe('false');
+                });
+
+                test('closeCompareModal should hide modal and set aria-hidden to true', () => {
+                    const modal = document.getElementById('compareModal');
+                    openCompareModal('provinsi');
+                    closeCompareModal();
+                    expect(modal.style.display).toBe('none');
+                    expect(modal.getAttribute('aria-hidden')).toBe('true');
+                });
+
+                test('Escape key should close modal', () => {
+                    const modal = document.getElementById('compareModal');
+                    openCompareModal('provinsi');
+                    expect(modal.style.display).toBe('flex');
+
+                    const escEvent = new window.KeyboardEvent('keydown', { key: 'Escape' });
+                    document.dispatchEvent(escEvent);
+                    expect(modal.style.display).toBe('none');
+                });
+            });
+
+            describe('switchCompareLevel', () => {
+                test('switching level should toggle active class on tabs', () => {
+                    const tabProv = document.getElementById('tabCompareProv');
+                    const tabKab = document.getElementById('tabCompareKab');
+
+                    switchCompareLevel('kabkota');
+                    expect(tabKab.classList.contains('active')).toBe(true);
+                    expect(tabProv.classList.contains('active')).toBe(false);
+
+                    switchCompareLevel('provinsi');
+                    expect(tabProv.classList.contains('active')).toBe(true);
+                    expect(tabKab.classList.contains('active')).toBe(false);
+                });
+            });
+
+            describe('generateCompareCsv', () => {
+                test('should generate properly structured CSV with BOM and correct headers', () => {
+                    const csv = generateCompareCsv(sampleCompareData);
+                    expect(csv.startsWith('\uFEFF')).toBe(true);
+                    expect(csv).toContain('Indikator');
+                    expect(csv).toContain('DKI JAKARTA');
+                    expect(csv).toContain('JAWA BARAT');
+                    expect(csv).toContain('Luas Wilayah (km2)');
+                    expect(csv).toContain('Jumlah Penduduk');
+                    expect(csv).toContain('Kepadatan Penduduk (jiwa/km2)');
+                    expect(csv).toContain('Jumlah Pulau');
+                });
+            });
+
+            describe('renderComparisonView', () => {
+                test('should render entity cards, metric bars, and action toolbar', () => {
+                    const container = document.getElementById('compareResults');
+                    renderComparisonView(sampleCompareData);
+
+                    expect(container.style.display).toBe('flex');
+                    expect(container.innerHTML).toContain('DKI JAKARTA');
+                    expect(container.innerHTML).toContain('JAWA BARAT');
+                    expect(container.innerHTML).toContain('btnCompareShowMap');
+                    expect(container.innerHTML).toContain('btnCompareCopyLink');
+                    expect(container.innerHTML).toContain('btnCompareExportCsv');
+                    expect(container.innerHTML).toContain('compare-bar-fill');
+                });
+            });
+
+            describe('URL parameter integration (P6 deep link)', () => {
+                test('getUrlParams should parse compare parameter', () => {
+                    const params = getUrlParams('?compare=31,32');
+                    expect(params.compare).toBe('31,32');
+                });
+
+                test('updateUrlState should retain or clear compare parameter', () => {
+                    // When compare parameter is supplied
+                    updateUrlState({ compare: '31,32' });
+                    expect(window.location.search).toContain('compare=31%2C32');
+
+                    // When compare is null, should remove it
+                    updateUrlState({ compare: null });
+                    expect(window.location.search).not.toContain('compare=');
                 });
             });
         });

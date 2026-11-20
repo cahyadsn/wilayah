@@ -1,7 +1,7 @@
 /* ============================================================
    DESIGN SYSTEM — Data Wilayah v3.0
    Tokens from: High-Performance Infrastructure Stats DESIGN.md
-   last edit: 2026-11-19 20:55:00
+   last edit: 2026-11-20 21:00:00
    ============================================================ */
 :root {
   --primary: #5BC0FF;
@@ -2267,6 +2267,562 @@ body.theme-dark .island-popup-meta code {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   SIDE-BY-SIDE REGION COMPARISON TOOL (P6)
+   ============================================================ */
+
+.map-overlay-compare-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: all 0.2s ease;
+}
+
+.map-overlay-compare-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #020617;
+}
+
+.map-overlay-compare-btn svg {
+  flex-shrink: 0;
+}
+
+/* Modal Backdrop */
+.compare-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: compareFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes compareFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal Dialog */
+.compare-modal-dialog {
+  background: var(--panel-solid);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg, 14px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+  width: 100%;
+  max-width: 920px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: compareSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes compareSlideUp {
+  from { transform: translateY(18px) scale(0.98); opacity: 0.7; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Modal Header */
+.compare-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-soft);
+}
+
+.compare-modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.compare-modal-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--primary);
+  color: #020617;
+}
+
+.compare-modal-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.compare-modal-close {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-size: 22px;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.compare-modal-close:hover {
+  background: var(--surface-soft);
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+
+/* Modal Body */
+.compare-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Level Switcher Tabs */
+.compare-level-tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--surface-soft);
+  padding: 4px;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--border);
+  align-self: flex-start;
+}
+
+.compare-level-tab {
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.compare-level-tab.is-active {
+  background: var(--primary);
+  color: #020617;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Selector Bar */
+.compare-selector-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  padding: 14px;
+}
+
+.compare-select-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.compare-select-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.compare-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-entity1 {
+  background: #3b82f6;
+  box-shadow: 0 0 6px #3b82f6;
+}
+
+.dot-entity2 {
+  background: #f59e0b;
+  box-shadow: 0 0 6px #f59e0b;
+}
+
+.compare-select {
+  width: 100%;
+  height: 38px;
+  padding: 0 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.compare-select:focus {
+  border-color: var(--primary);
+}
+
+.compare-vs-badge {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 0 4px 8px 4px;
+  align-self: center;
+}
+
+.compare-action-col {
+  display: flex;
+  align-items: flex-end;
+}
+
+.compare-run-btn {
+  height: 38px;
+  padding: 0 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--primary);
+  color: #020617;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.compare-run-btn:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.compare-run-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Spinner & States */
+.compare-spinner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.compare-error-alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+  font-size: 13px;
+}
+
+.compare-empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+}
+
+.compare-empty-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.compare-empty-state h3 {
+  color: var(--text-primary);
+  margin: 0 0 6px 0;
+  font-size: 16px;
+}
+
+.compare-empty-state p {
+  margin: 0 auto;
+  max-width: 440px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Results Content */
+.compare-results {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Summary Entity Cards Grid */
+.compare-entity-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.compare-entity-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.compare-entity-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.compare-entity-card.entity-1::before {
+  background: #3b82f6;
+}
+
+.compare-entity-card.entity-2::before {
+  background: #f59e0b;
+}
+
+.compare-entity-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.compare-entity-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.compare-entity-code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--surface-soft);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.compare-entity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+
+.compare-meta-item strong {
+  color: var(--text-primary);
+}
+
+/* Actions Toolbar */
+.compare-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.compare-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.compare-tool-btn:hover {
+  background: var(--surface-strong);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.compare-tool-btn svg {
+  flex-shrink: 0;
+}
+
+/* Metrics Section */
+.compare-metrics-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.compare-section-heading {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 4px 0 0 0;
+}
+
+.compare-metric-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metric-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.metric-delta-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.metric-delta-badge.is-positive {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.metric-delta-badge.is-negative {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.metric-delta-badge.is-neutral {
+  background: var(--surface-soft);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.metric-values-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.val-entity1 {
+  color: #60a5fa;
+}
+
+.val-entity2 {
+  color: #fbbf24;
+}
+
+/* Proportional Visual Bar */
+.compare-bar-container {
+  height: 8px;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+}
+
+.compare-bar-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.compare-bar-fill.fill-entity1 {
+  background: #3b82f6;
+}
+
+.compare-bar-fill.fill-entity2 {
+  background: #f59e0b;
+}
+
+.compare-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .compare-selector-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .compare-vs-badge {
+    align-self: center;
+    padding: 0;
+  }
+  .compare-entity-grid {
+    grid-template-columns: 1fr;
+  }
+  .compare-modal-dialog {
+    max-height: 95vh;
   }
 }
 

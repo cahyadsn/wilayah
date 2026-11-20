@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit: 2026-11-19 20:55:00
+last edit: 2026-11-20 20:58:00
 author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps
@@ -26,6 +26,10 @@ if (!empty($_GET['kode']) && is_string($_GET['kode']) && preg_match('/^[0-9]+(\.
 $initial_pulau = null;
 if (!empty($_GET['pulau']) && is_string($_GET['pulau']) && preg_match('/^[0-9]{2}\.[0-9]{2}\.[0-9]{5}$/', $_GET['pulau'])) {
     $initial_pulau = $_GET['pulau'];
+}
+$initial_compare = null;
+if (!empty($_GET['compare']) && is_string($_GET['compare']) && preg_match('/^[0-9]{2}(\.[0-9]{2})?,[0-9]{2}(\.[0-9]{2})?$/', $_GET['compare'])) {
+    $initial_compare = $_GET['compare'];
 }
 define("_AUTHOR","cahyadsn");
 require_once 'inc/db.php';
@@ -51,7 +55,8 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
 
   <meta name="csrf-token" content="<?php echo get_csrf_token_html(); ?>"><?php if ($initial_kode): ?>
   <meta name="geo-kode" content="<?php echo htmlspecialchars($initial_kode, ENT_QUOTES, 'UTF-8'); ?>"><?php endif; ?><?php if ($initial_pulau): ?>
-  <meta name="geo-pulau" content="<?php echo htmlspecialchars($initial_pulau, ENT_QUOTES, 'UTF-8'); ?>"><?php endif; ?>
+  <meta name="geo-pulau" content="<?php echo htmlspecialchars($initial_pulau, ENT_QUOTES, 'UTF-8'); ?>"><?php endif; ?><?php if ($initial_compare): ?>
+  <meta name="geo-compare" content="<?php echo htmlspecialchars($initial_compare, ENT_QUOTES, 'UTF-8'); ?>"><?php endif; ?>
 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -268,6 +273,15 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
                 </button>
               </div>
             </div>
+            <button type="button" class="map-overlay-compare-btn" id="btnOpenCompare" aria-label="Bandingkan wilayah" title="Bandingkan dua wilayah (P6)" aria-haspopup="dialog">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="2" y="3" width="8" height="18" rx="1"></rect>
+                <rect x="14" y="3" width="8" height="18" rx="1"></rect>
+                <line x1="6" y1="8" x2="6" y2="8.01"></line>
+                <line x1="18" y1="8" x2="18" y2="8.01"></line>
+              </svg>
+              <span class="compare-btn-text">Bandingkan</span>
+            </button>
           </div>
         </div>
 
@@ -346,6 +360,85 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
   <script src="js/ajax.js" defer></script>
   <script src="inc/geo_js.php?v=<?php echo $safe_version;?>" defer></script>
   <script src="js/wilayah.min.js?v=<?php echo $safe_version;?>" defer></script>
+
+  <!-- ======== COMPARE MODAL (P6) ======== -->
+  <div class="compare-modal-backdrop" id="compareModal" role="dialog" aria-modal="true" aria-labelledby="compareModalTitle" style="display:none;">
+    <div class="compare-modal-dialog">
+      <div class="compare-modal-header">
+        <div class="compare-modal-title-group">
+          <span class="compare-modal-badge">P6</span>
+          <h2 class="compare-modal-title" id="compareModalTitle">Perbandingan Wilayah Multidimensi</h2>
+        </div>
+        <button type="button" class="compare-modal-close" id="btnCompareClose" aria-label="Tutup dialog perbandingan">&times;</button>
+      </div>
+
+      <div class="compare-modal-body">
+        <!-- Level Tabs -->
+        <div class="compare-level-tabs" role="tablist">
+          <button type="button" class="compare-level-tab is-active" id="tabCompareProv" data-level="provinsi" role="tab" aria-selected="true">
+            Antar Provinsi
+          </button>
+          <button type="button" class="compare-level-tab" id="tabCompareKab" data-level="kabkota" role="tab" aria-selected="false">
+            Antar Kabupaten / Kota
+          </button>
+        </div>
+
+        <!-- Selector Row -->
+        <div class="compare-selector-bar">
+          <div class="compare-select-col">
+            <label for="compareSelect1" class="compare-select-label">
+              <span class="compare-legend-dot dot-entity1" aria-hidden="true"></span>
+              Wilayah 1 (Biru)
+            </label>
+            <select id="compareSelect1" class="compare-select">
+              <option value="">Pilih Wilayah 1...</option>
+            </select>
+          </div>
+
+          <div class="compare-vs-badge" aria-hidden="true">VS</div>
+
+          <div class="compare-select-col">
+            <label for="compareSelect2" class="compare-select-label">
+              <span class="compare-legend-dot dot-entity2" aria-hidden="true"></span>
+              Wilayah 2 (Jingga)
+            </label>
+            <select id="compareSelect2" class="compare-select">
+              <option value="">Pilih Wilayah 2...</option>
+            </select>
+          </div>
+
+          <div class="compare-action-col">
+            <button type="button" id="btnRunCompare" class="compare-run-btn" disabled>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span>Bandingkan</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Spinner & Loading State -->
+        <div id="compareSpinner" class="compare-spinner-wrapper" style="display:none;" role="status" aria-live="polite">
+          <div class="spinner"></div>
+          <span>Memuat data perbandingan wilayah...</span>
+        </div>
+
+        <!-- Error State -->
+        <div id="compareError" class="compare-error-alert" style="display:none;" role="alert"></div>
+
+        <!-- Comparison Results Area -->
+        <div id="compareResults" class="compare-results" style="display:none;"></div>
+
+        <!-- Empty State -->
+        <div id="compareEmptyState" class="compare-empty-state">
+          <div class="compare-empty-icon">📊</div>
+          <h3>Pilih Dua Wilayah untuk Memulai Komparasi</h3>
+          <p>Bandingkan profil demografi, luas wilayah, kepadatan penduduk, rasio jenis kelamin, dan beban administratif secara komparatif berdampingan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Toast Notification (P2) -->
   <div id="toastNotification" class="toast-notification" role="status" aria-live="polite">

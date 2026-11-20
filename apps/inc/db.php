@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : db.php
 purpose  : configuration of database connection
 create   : 170912
-last edit: 2026-10-31 14:40:00
+last edit: 2026-11-20 21:09:00
 author   : cahya dsn
 ================================================================================
 This program is free software; you can redistribute it and/or modify it under the
@@ -105,9 +105,11 @@ $dbname = getenv('DB_NAME') !== false ? getenv('DB_NAME') : 'wilayah';
 $db_dsn = "mysql:dbname=$dbname;host=$dbhost";
 $tbl_wilayah="wilayah_level_1_2";
 $tbl_pulau="wilayah_pulau";
-try {
-  $db = new PDO($db_dsn, $dbuser, $dbpass);
-} catch (PDOException $e) {
-  error_log('Connection failed: ' . $e->getMessage());
-  echo 'Connection failed: Database error occurred.';
+if (!isset($db) || !($db instanceof PDO)) {
+    try {
+        $db = new PDO($db_dsn, $dbuser, $dbpass);
+    } catch (PDOException $e) {
+        error_log('Connection failed: ' . $e->getMessage());
+        echo 'Connection failed: Database error occurred.';
+    }
 }
