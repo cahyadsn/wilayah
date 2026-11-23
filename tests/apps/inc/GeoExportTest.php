@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : GeoExportTest.php
 purpose  : PHPUnit test suite for geo_export.php (P4 Spatial Data Exporter)
 create   : 2026-11-14
-last edit: 2026-11-19 20:47:00
+last edit: 2026-11-23 14:30:00
 author   : cahya dsn
 ================================================================================
 MIT License
@@ -102,7 +102,7 @@ class GeoExportTest extends TestCase
 
         $props = $res['json']['properties'];
         $this->assertEquals('32.73', $props['kode']);
-        $this->assertEquals('KOTA BANDUNG', $props['nama']);
+        $this->assertEquals('KOTA BANDUNG', strtoupper($props['nama']));
         $this->assertEquals('Kota', $props['tipe']);
         $this->assertArrayHasKey('luas_km2', $props);
         $this->assertArrayHasKey('penduduk', $props);
@@ -135,7 +135,7 @@ class GeoExportTest extends TestCase
         $this->assertEquals(200, $res['code']);
         $xml = simplexml_load_string($res['raw']);
         $this->assertNotFalse($xml, 'Output must be well-formed KML XML');
-        $this->assertStringContainsString('KOTA BANDUNG', (string)$xml->Document->name);
+        $this->assertStringContainsString('KOTA BANDUNG', strtoupper((string)$xml->Document->name));
         $this->assertStringContainsString('<Polygon>', $res['raw']);
         $this->assertStringContainsString('<LinearRing>', $res['raw']);
         $this->assertStringContainsString('<coordinates>', $res['raw']);

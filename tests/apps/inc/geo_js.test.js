@@ -2,8 +2,8 @@
  * BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
  * ================================================================================
  * filename : geo_js.test.js
- * purpose  : Jest tests for apps/inc/geo_js.php frontend logic (P1, P2, P3, P4, P5, P6)
- * last edit: 2026-11-20 21:22:00
+ * purpose  : Jest tests for apps/inc/geo_js.php frontend logic (P1, P2, P3, P4, P5, P6, P7)
+ * last edit: 2026-11-23 14:30:00
  * ================================================================================
  */
 const fs = require('fs');
@@ -52,6 +52,16 @@ describe('geo_js unit tests', () => {
     let calcRatioPairClient;
     let formatNumberId;
     let initCompareControls;
+    let initTimelineControls;
+    let openTimeline;
+    let closeTimeline;
+    let toggleTimelineBar;
+    let toggleTimelinePlay;
+    let changeTimelineYear;
+    let fetchTimelineOverview;
+    let renderHistoricalPaths;
+    let renderDobHighlights;
+    let clearTimelineLayers;
 
     beforeAll(async () => {
         const { JSDOM } = await import('jsdom');
@@ -115,6 +125,40 @@ describe('geo_js unit tests', () => {
     </div>
     <div id="islandList" style="display:none;"></div>
     <div id="islandEmptyState"></div>
+  </div>
+  <button id="btnToggleTimeline" type="button"></button>
+  <div class="timeline-floating-bar" id="timelineFloatingBar" style="display:none;">
+    <span class="timeline-badge">P7</span>
+    <span class="timeline-title">Linimasa Regulasi Wilayah</span>
+    <span class="timeline-year-tag" id="timelineCurrentYearTag">2025</span>
+    <button type="button" id="btnCloseTimeline">&times;</button>
+    <button type="button" id="btnTimelinePlay">
+      <svg class="icon-play" style="display:block;"></svg>
+      <svg class="icon-pause" style="display:none;"></svg>
+    </button>
+    <input type="range" class="timeline-slider-input" id="timelineSlider" min="0" max="5" value="5" />
+    <div class="timeline-ticks" id="timelineTicks">
+      <div class="timeline-tick" data-index="0" data-year="2016"><span class="tick-dot"></span><span class="tick-label">2016</span></div>
+      <div class="timeline-tick" data-index="1" data-year="2018"><span class="tick-dot"></span><span class="tick-label">2018</span></div>
+      <div class="timeline-tick" data-index="2" data-year="2020"><span class="tick-dot"></span><span class="tick-label">2020</span></div>
+      <div class="timeline-tick" data-index="3" data-year="2022"><span class="tick-dot"></span><span class="tick-label">2022</span></div>
+      <div class="timeline-tick" data-index="4" data-year="2023"><span class="tick-dot"></span><span class="tick-label">2023</span></div>
+      <div class="timeline-tick is-active" data-index="5" data-year="2025"><span class="tick-dot"></span><span class="tick-label">2025</span></div>
+    </div>
+    <button type="button" id="btnTimelinePrev">◀</button>
+    <button type="button" id="btnTimelineNext">▶</button>
+    <div id="timelineRegTitle"></div>
+    <div id="timelineStatusPill"></div>
+    <div id="timelineDescText"></div>
+    <div id="chipTimelineProv"></div>
+    <div id="chipTimelineKab"></div>
+    <div id="chipTimelineKec"></div>
+    <div id="chipTimelineDesa"></div>
+    <div id="chipTimelinePulau"></div>
+    <div id="timelineDobCallout" style="display:none;">
+      <button type="button" id="btnFocusDobPapua"></button>
+      <a id="timelineRefLink" href="#"></a>
+    </div>
   </div>
 </body>
 </html>`, {
@@ -198,7 +242,16 @@ describe('geo_js unit tests', () => {
                     zoomToShowLayer: function(l, cb) { if (cb) cb(); }
                 };
             },
-            polygon: () => ({ addTo: () => {} }),
+            polygon: () => ({ addTo: function() { return this; }, bindPopup: function() { return this; } }),
+            circleMarker: () => ({ addTo: function() { return this; }, bindPopup: function() { return this; } }),
+            featureGroup: () => {
+                const grpLayers = [];
+                return {
+                    addLayer: function(l) { grpLayers.push(l); return this; },
+                    addTo: function() { return this; },
+                    clearLayers: function() { grpLayers.length = 0; return this; }
+                };
+            },
             layerGroup: () => ({ addTo: () => {} }),
             DomEvent: {
                 disableClickPropagation: () => {},
@@ -266,6 +319,16 @@ describe('geo_js unit tests', () => {
         calcRatioPairClient = window.calcRatioPairClient;
         formatNumberId = window.formatNumberId;
         initCompareControls = window.initCompareControls;
+        initTimelineControls = window.initTimelineControls;
+        openTimeline = window.openTimeline;
+        closeTimeline = window.closeTimeline;
+        toggleTimelineBar = window.toggleTimelineBar;
+        toggleTimelinePlay = window.toggleTimelinePlay;
+        changeTimelineYear = window.changeTimelineYear;
+        fetchTimelineOverview = window.fetchTimelineOverview;
+        renderHistoricalPaths = window.renderHistoricalPaths;
+        renderDobHighlights = window.renderDobHighlights;
+        clearTimelineLayers = window.clearTimelineLayers;
     });
 
     describe('setSafeSelectOptions', () => {
@@ -1028,6 +1091,116 @@ describe('geo_js unit tests', () => {
                     updateUrlState({ compare: null });
                     expect(window.location.search).not.toContain('compare=');
                 });
+            });
+        });
+
+        describe('P7 - Historical Regional Evolution Timeline', () => {
+            const sampleOverview = {
+                status: 'success',
+                version: '1.0.0',
+                years: [2016, 2018, 2020, 2022, 2023, 2025],
+                dob_milestone: 2023,
+                snapshots: [
+                    { year: 2016, regulasi: 'Permendagri No. 56 Tahun 2015', total_provinsi: 34, total_kab_kota: 514, total_kecamatan: 7094, total_desa_kel: 82030, total_pulau: 13466, highlights: 'Rujukan pasca-reformasi' },
+                    { year: 2018, regulasi: 'Permendagri No. 137 Tahun 2017', total_provinsi: 34, total_kab_kota: 514, total_kecamatan: 7201, total_desa_kel: 83441, total_pulau: 16056, highlights: 'Pemutakhiran pulau' },
+                    { year: 2020, regulasi: 'Permendagri No. 72 Tahun 2019', total_provinsi: 34, total_kab_kota: 514, total_kecamatan: 7230, total_desa_kel: 83820, total_pulau: 16056, highlights: 'Penyesuaian kode' },
+                    { year: 2022, regulasi: 'Permendagri No. 58/2021', total_provinsi: 34, total_kab_kota: 514, total_kecamatan: 7266, total_desa_kel: 83467, total_pulau: 16772, highlights: 'Gazeter Nasional' },
+                    { year: 2023, regulasi: 'UU No. 14, 15, 16, 29 / 2022', total_provinsi: 38, total_kab_kota: 514, total_kecamatan: 7277, total_desa_kel: 83794, total_pulau: 17001, highlights: 'Pemekaran 4 DOB Papua', has_dob: true, new_regions_count: 4 },
+                    { year: 2025, regulasi: 'Kepmendagri No 300.2.2-2430 Tahun 2025', total_provinsi: 38, total_kab_kota: 514, total_kecamatan: 7285, total_desa_kel: 83762, total_pulau: 17374, highlights: 'Regulasi terkini' }
+                ]
+            };
+
+            beforeEach(() => {
+                window.timelineSnapshots = sampleOverview.snapshots;
+                window.timelineYears = sampleOverview.years;
+            });
+
+            test('openTimeline and closeTimeline should toggle floating bar and button state', () => {
+                const bar = document.getElementById('timelineFloatingBar');
+                const btn = document.getElementById('btnToggleTimeline');
+
+                openTimeline();
+                expect(bar.style.display).toBe('block');
+                expect(btn.classList.contains('is-active')).toBe(true);
+                expect(btn.getAttribute('aria-expanded')).toBe('true');
+
+                closeTimeline();
+                expect(bar.style.display).toBe('none');
+                expect(btn.classList.contains('is-active')).toBe(false);
+                expect(btn.getAttribute('aria-expanded')).toBe('false');
+            });
+
+            test('toggleTimelineBar should alternate between open and close', () => {
+                const bar = document.getElementById('timelineFloatingBar');
+                closeTimeline();
+                expect(bar.style.display).toBe('none');
+
+                toggleTimelineBar();
+                expect(bar.style.display).toBe('block');
+
+                toggleTimelineBar();
+                expect(bar.style.display).toBe('none');
+            });
+
+            test('changeTimelineYear should update slider, year tag, and active tick', () => {
+                changeTimelineYear(2020);
+
+                const slider = document.getElementById('timelineSlider');
+                const yearTag = document.getElementById('timelineCurrentYearTag');
+                const activeTick = document.querySelector('.timeline-tick.is-active');
+
+                expect(yearTag.textContent).toBe('2020');
+                expect(slider.value).toBe('2'); // index 2 for 2020
+                expect(activeTick).not.toBeNull();
+                expect(activeTick.getAttribute('data-year')).toBe('2020');
+            });
+
+            test('changeTimelineYear should update milestone text, status pill, and chips', () => {
+                changeTimelineYear(2016);
+                const title = document.getElementById('timelineRegTitle');
+                const pill = document.getElementById('timelineStatusPill');
+                const chipProv = document.getElementById('chipTimelineProv');
+
+                expect(title.textContent).toContain('56');
+                expect(pill.textContent).toBe('Historis');
+                expect(pill.classList.contains('is-historical')).toBe(true);
+                expect(chipProv.innerHTML).toContain('34');
+
+                // Switch to 2025 (latest)
+                changeTimelineYear(2025);
+                expect(pill.textContent).toBe('Terkini');
+                expect(pill.classList.contains('is-historical')).toBe(false);
+                expect(chipProv.innerHTML).toContain('38');
+            });
+
+            test('changeTimelineYear should display DOB callout on 2023 and hide it on pre-2023', () => {
+                const dobCallout = document.getElementById('timelineDobCallout');
+
+                changeTimelineYear(2023);
+                expect(dobCallout.style.display).toBe('flex');
+
+                changeTimelineYear(2022);
+                expect(dobCallout.style.display).toBe('none');
+            });
+
+            test('toggleTimelinePlay should alternate play and pause states', () => {
+                const btn = document.getElementById('btnTimelinePlay');
+                const iconPlay = btn.querySelector('.icon-play');
+                const iconPause = btn.querySelector('.icon-pause');
+
+                // Start playback
+                toggleTimelinePlay();
+                expect(iconPlay.style.display).toBe('none');
+                expect(iconPause.style.display).toBe('block');
+
+                // Stop playback
+                toggleTimelinePlay();
+                expect(iconPlay.style.display).toBe('block');
+                expect(iconPause.style.display).toBe('none');
+            });
+
+            test('initTimelineControls should bind controls without throwing', () => {
+                expect(() => initTimelineControls()).not.toThrow();
             });
         });
     });

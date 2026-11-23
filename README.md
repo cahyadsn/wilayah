@@ -178,14 +178,41 @@ node tools/check_sql_wilayah_pulau.js
 ```
 
 ## TO DO
-- [ ] **Perbandingan Wilayah Multidimensi**: Fitur komparasi *head-to-head* dua wilayah (provinsi atau kab/kota) mencakup matriks statistik demografi, rasio visual perbandingan, dan batas poligon ganda pada peta.
-- [ ] **Linimasa Histori Pemekaran Wilayah**: Visualisasi kronologis evolusi administratif Indonesia (*time-travel* 2016–2025) berbasis arsip data resmi untuk menelusuri dinamika pembentukan daerah otonomi baru (DOB) dan status pulau.
+- [x] **Perbandingan Wilayah Multidimensi**: Fitur komparasi *head-to-head* dua wilayah (provinsi atau kab/kota) mencakup matriks statistik demografi, rasio visual perbandingan, dan batas poligon ganda pada peta.
+- [x] **Linimasa Histori Pemekaran Wilayah**: Visualisasi kronologis evolusi administratif Indonesia (*time-travel* 2016–2025) berbasis arsip data resmi untuk menelusuri dinamika pembentukan daerah otonomi baru (DOB) dan status pulau.
 - [ ] **Analisis Radius & Pengukuran Spasial Maritim**: Alat ukur geodesik jarak antar-titik/pulau (km dan Nautical Miles) serta analisis lingkaran radius (*buffer zone*) untuk mendeteksi pulau-pulau dalam jangkauan.
 - [ ] **Deteksi GPS "Wilayah di Sekitar Saya"**: Integrasi HTML5 Geolocation dan algoritma *Ray-Casting* untuk mengidentifikasi hierarki wilayah administrasi resmi (Provinsi hingga Desa/Kelurahan) serta pulau terdekat dari posisi pengguna secara instan.
 - [ ] **Developer Playground & Generator Widget Dropdown**: Konsol interaktif pengujian API wilayah, generator cuplikan kode integrasi multi-bahasa (JS, PHP, Python, Dart, cURL), dan *scaffolder* formulir dropdown bertingkat mandiri (*zero-dependency*).
 
 ## CHANGE LOG
-- [2026-11-19] 🆕
+- [2026-11-23] 🆕
+  - **Fitur Linimasa Histori Pemekaran Wilayah (Historical Regional Evolution Timeline 2016-2025 - P7)**:
+    - **Agregasi Data & Pre-compiled Snapshot Cache (`tools/build_timeline_snapshot.php`, `apps/cache/timeline_snapshot.json`)**:
+      - Memproses dan mengagregasi 6 periode regulasi resmi: 2016 (Permendagri 56/2015), 2018 (Permendagri 137/2017), 2020 (Permendagri 72/2019), 2022 (Permendagri 58/2021 & Kepmendagri 050-145/2022), 2023 (UU 14, 15, 16, 29 / 2022 & Kepmendagri 100.1.1-6117/2022 - Pemekaran 4 DOB Papua), dan 2025 (Kepmendagri 300.2.2-2430/2025).
+      - Menghasilkan berkas snapshot terkompilasi `timeline_snapshot.json` berkinerja instan tanpa beban kueri SQL berat antar tabel arsip.
+    - **Backend API Linimasa (`apps/inc/geo_timeline.php`)**:
+      - Menyajikan endpoint linimasa dengan aksi: `overview`, `detail` per tahun, `dob` (metadata 4 provinsi baru Tanah Papua), dan `paths` (batas poligon pra-pemekaran 2022 untuk Papua dan Papua Barat).
+      - Dilengkapi caching header HTTP 24 jam dan validasi parameter ketat.
+    - **Komponen UI Floating Timeline Control (`apps/index.php`, `apps/css/styles.css`, `apps/css/styles.min.css`)**:
+      - Bilah kontrol linimasa mengambang (`#timelineFloatingBar`) dengan penanda tahun (ticks), slider interaktif, tombol Play/Pause untuk animasi otomatis (interval 3 detik), serta kartu info milestone regulasi lengkap dengan statistik wilayah dan status badge.
+      - Callout interaktif DOB Papua (`#timelineDobCallout`) dengan tombol *"Fokus Peta ke Papua"* dan tautan rujukan resmi regulasi.
+    - **Logika Klien JavaScript & Diff Layer Swapping (`apps/inc/geo_js.php`)**:
+      - Penggantian poligon batas wilayah dinamis: memuat batas historis pra-pemekaran (Papua & Papua Barat bersatu) saat memilih tahun $\le 2022$, dan menyorot 4 DOB baru (`93`, `94`, `95`, `96`) dengan animasi *pulse/glow effect* saat memilih tahun $\ge 2023$.
+    - **Pengujian Unit & Kualitas Kode**:
+      - Menambahkan test suite PHPUnit [`tests/apps/inc/GeoTimelineTest.php`](tests/apps/inc/GeoTimelineTest.php) (8 pengujian, 60 asersi) dengan kelulusan 100% (total 154 pengujian PHPUnit lulus).
+      - Memperluas test suite Jest [`tests/apps/inc/geo_js.test.js`](tests/apps/inc/geo_js.test.js) (total 72 pengujian Jest lulus 100%).
+- [2026-11-20] 
+  - **Fitur Perbandingan Wilayah Multidimensi (Side-by-Side Region Comparison Tool - P6)**:
+    - **Backend Comparison Engine (`apps/inc/geo_compare.php`)**:
+      - Endpoint komparasi *head-to-head* dua wilayah administrasi (antar-provinsi atau antar-kabupaten/kota) mencakup profil demografi, luas wilayah, kepadatan penduduk, rasio jenis kelamin, dan beban hierarki administratif.
+      - Generator ringkasan CSV on-the-fly (`action=export_csv`) dan validasi input ketat dengan penanganan fallback otomatis.
+    - **Antarmuka Pengguna & Dialog Modal (`apps/index.php`, `apps/css/styles.css`, `apps/css/styles.min.css`)**:
+      - Dialog modal komparasi komprehensif (`#compareModal`) dengan switcher tab level (Provinsi vs Kab/Kota), pemilih dua wilayah berdampingan, visual proportional bar dengan persentase komparatif, dan kartu delta metrik.
+      - Dukungan penuh tema terang dan gelap (*dark/light mode*), responsif mobile, dan integrasi tautan berbagi via parameter URL `?compare=kode1,kode2`.
+    - **Pengujian Unit & Kualitas Kode**:
+      - Menambahkan test suite PHPUnit [`tests/apps/inc/GeoCompareTest.php`](tests/apps/inc/GeoCompareTest.php) (9 pengujian, 92 asersi) dengan kelulusan 100%.
+      - Memperluas test suite Jest [`tests/apps/inc/geo_js.test.js`](tests/apps/inc/geo_js.test.js) (13 pengujian perbandingan lulus 100%).
+- [2026-11-19]
   - **Fitur Cluster Marker Seluruh Pulau (Island Marker Clustering - P5)**:
     - **Visualisasi Spasial Masif & Integrasi Leaflet.markercluster (`apps/index.php`, `apps/inc/geo_js.php`)**:
       - Integrasi pustaka `Leaflet.markercluster` versi 1.5.3 dengan konfigurasi performa tinggi: `chunkedLoading: true`, `chunkInterval: 100`, `chunkDelay: 50`, `maxClusterRadius: 50`, `spiderfyOnMaxZoom: true`, `showCoverageOnHover: false`, dan `zoomToBoundsOnClick: true` untuk merender ribuan pulau tanpa lag browser.

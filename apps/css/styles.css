@@ -1,7 +1,7 @@
 /* ============================================================
    DESIGN SYSTEM — Data Wilayah v3.0
    Tokens from: High-Performance Infrastructure Stats DESIGN.md
-   last edit: 2026-11-20 21:00:00
+   last edit: 2026-11-23 14:30:00
    ============================================================ */
 :root {
   --primary: #5BC0FF;
@@ -2825,4 +2825,484 @@ body.theme-dark .island-popup-meta code {
     max-height: 95vh;
   }
 }
+
+/* ============================================================
+   HISTORICAL REGIONAL EVOLUTION TIMELINE (P7)
+   ============================================================ */
+
+.map-overlay-timeline-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: all 0.2s ease;
+}
+
+.map-overlay-timeline-btn:hover,
+.map-overlay-timeline-btn.is-active {
+  background: #38bdf8;
+  border-color: #38bdf8;
+  color: #020617;
+}
+
+.map-overlay-timeline-btn svg {
+  flex-shrink: 0;
+}
+
+/* Floating Timeline Bar Container */
+.timeline-floating-bar {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 800;
+  width: calc(100% - 32px);
+  max-width: 660px;
+  background: var(--panel-solid);
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  padding: 12px 16px;
+  color: var(--text-primary);
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  animation: timelineFloatUp 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes timelineFloatUp {
+  from { transform: translateX(-50%) translateY(16px); opacity: 0; }
+  to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+.timeline-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Header */
+.timeline-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timeline-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeline-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #38bdf8;
+  color: #020617;
+}
+
+.timeline-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.timeline-year-tag {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 5px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.timeline-action-btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeline-control-btn {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.timeline-control-btn:hover {
+  background: var(--surface-soft);
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+
+/* Controls row: Play, Slider, Nav */
+.timeline-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.timeline-play-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #38bdf8;
+  color: #020617;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.35);
+}
+
+.timeline-play-btn:hover {
+  transform: scale(1.06);
+  background: #7dd3fc;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.5);
+}
+
+.timeline-play-btn:active {
+  transform: scale(0.96);
+}
+
+.timeline-slider-track-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+/* Range input styling */
+.timeline-slider-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--surface-soft);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  margin: 6px 0;
+  border: 1px solid var(--border);
+}
+
+.timeline-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #38bdf8;
+  border: 2px solid #020617;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.timeline-slider-input::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #38bdf8;
+  border: 2px solid #020617;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.timeline-slider-input:focus-visible::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+
+/* Milestone Ticks */
+.timeline-ticks {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+
+.timeline-tick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-size: 10.5px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  transition: color 0.15s ease;
+  user-select: none;
+}
+
+.timeline-tick .tick-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+  margin-bottom: 3px;
+  transition: all 0.2s ease;
+}
+
+.timeline-tick:hover {
+  color: var(--text-primary);
+}
+
+.timeline-tick:hover .tick-dot {
+  background: #7dd3fc;
+  transform: scale(1.2);
+}
+
+.timeline-tick.is-active {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.timeline-tick.is-active .tick-dot {
+  width: 8px;
+  height: 8px;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+/* Nav prev/next buttons */
+.timeline-nav-btns {
+  display: flex;
+  gap: 4px;
+}
+
+.timeline-nav-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--text-primary);
+  font-size: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.timeline-nav-btn:hover {
+  background: var(--primary);
+  color: #020617;
+  border-color: var(--primary);
+}
+
+/* Milestone Box */
+.timeline-milestone-box {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.milestone-headline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.milestone-reg-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+.milestone-status-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  white-space: nowrap;
+}
+
+.milestone-status-pill.is-historical {
+  background: var(--surface);
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+
+.milestone-desc-text {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.milestone-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.milestone-chip {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.milestone-chip strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* DOB Papua Callout */
+.timeline-dob-callout {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(234, 179, 8, 0.08));
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 8px;
+  padding: 9px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: dobGlowPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes dobGlowPulse {
+  0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.3); }
+  50% { box-shadow: 0 0 14px 2px rgba(245, 158, 11, 0.25); }
+  100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.3); }
+}
+
+.dob-callout-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #fbbf24;
+}
+
+.dob-sparkle {
+  font-size: 14px;
+}
+
+.dob-callout-body {
+  font-size: 11px;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dob-badges-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.dob-province-badge {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.dob-callout-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.dob-zoom-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 25px;
+  padding: 0 10px;
+  border-radius: 4px;
+  background: #f59e0b;
+  border: none;
+  color: #020617;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dob-zoom-action-btn:hover {
+  background: #fbbf24;
+  transform: translateY(-1px);
+}
+
+.dob-ref-link {
+  font-size: 11px;
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dob-ref-link:hover {
+  text-decoration: underline;
+}
+
+/* Polygons with pulse styling */
+.dob-polygon-pulse path {
+  animation: dobStrokePulse 2s infinite ease-in-out;
+  stroke: #fbbf24 !important;
+  stroke-width: 2.5px !important;
+}
+
+@keyframes dobStrokePulse {
+  0% { stroke-opacity: 0.6; stroke-width: 2px; }
+  50% { stroke-opacity: 1; stroke-width: 3.5px; }
+  100% { stroke-opacity: 0.6; stroke-width: 2px; }
+}
+
+@media (max-width: 640px) {
+  .timeline-floating-bar {
+    bottom: 12px;
+    width: calc(100% - 16px);
+    padding: 10px 12px;
+  }
+  .milestone-headline-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 

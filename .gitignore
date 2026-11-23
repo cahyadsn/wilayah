@@ -7,7 +7,8 @@ dump-*
 /.claudevendor
 .phpunit.result.cache
 composer.lock
-/tools
+/tools/*
+!/tools/build_timeline_snapshot.php
 /vendor
 # AI related folders
 /.agents
@@ -24,5 +25,6 @@ composer.lock
 !/cache/.gitkeep
 /apps/cache/*
 !/apps/cache/.gitkeep
+!/apps/cache/timeline_snapshot.json
 /tests/apps/cache/*
 node_modules/

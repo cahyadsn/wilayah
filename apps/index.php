@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit: 2026-11-20 20:58:00
+last edit: 2026-11-23 14:30:00
 author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps
@@ -282,6 +282,106 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
               </svg>
               <span class="compare-btn-text">Bandingkan</span>
             </button>
+            <button type="button" class="map-overlay-timeline-btn" id="btnToggleTimeline" aria-label="Linimasa Historis Pemekaran Wilayah" title="Linimasa Historis Pemekaran Wilayah (P7)" aria-expanded="false">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span class="timeline-btn-text">Linimasa</span>
+            </button>
+          </div>
+
+          <!-- Floating Timeline Control Bar (P7) -->
+          <div class="timeline-floating-bar" id="timelineFloatingBar" role="region" aria-label="Linimasa Regulasi Wilayah Indonesia" style="display:none;">
+            <div class="timeline-inner">
+              <div class="timeline-header-bar">
+                <div class="timeline-title-wrap">
+                  <span class="timeline-badge">P7</span>
+                  <span class="timeline-title">Linimasa Regulasi Wilayah</span>
+                  <span class="timeline-year-tag" id="timelineCurrentYearTag">2025</span>
+                </div>
+                <div class="timeline-action-btns">
+                  <button type="button" class="timeline-control-btn timeline-minimize-btn" id="btnCloseTimeline" aria-label="Tutup linimasa" title="Tutup linimasa">&times;</button>
+                </div>
+              </div>
+
+              <!-- Controls row: Play/Pause, Slider with Ticks, Step prev/next -->
+              <div class="timeline-controls-row">
+                <button type="button" class="timeline-play-btn" id="btnTimelinePlay" aria-label="Putar linimasa" title="Mulai / Jeda Animasi Linimasa">
+                  <svg class="icon-play" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <svg class="icon-pause" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" style="display:none;">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                  </svg>
+                </button>
+
+                <div class="timeline-slider-track-wrap">
+                  <input type="range" class="timeline-slider-input" id="timelineSlider" min="0" max="5" step="1" value="5" aria-label="Pilih tahun linimasa" />
+                  <div class="timeline-ticks" id="timelineTicks">
+                    <div class="timeline-tick" data-index="0" data-year="2016"><span class="tick-dot"></span><span class="tick-label">2016</span></div>
+                    <div class="timeline-tick" data-index="1" data-year="2018"><span class="tick-dot"></span><span class="tick-label">2018</span></div>
+                    <div class="timeline-tick" data-index="2" data-year="2020"><span class="tick-dot"></span><span class="tick-label">2020</span></div>
+                    <div class="timeline-tick" data-index="3" data-year="2022"><span class="tick-dot"></span><span class="tick-label">2022</span></div>
+                    <div class="timeline-tick" data-index="4" data-year="2023"><span class="tick-dot"></span><span class="tick-label">2023</span></div>
+                    <div class="timeline-tick is-active" data-index="5" data-year="2025"><span class="tick-dot"></span><span class="tick-label">2025</span></div>
+                  </div>
+                </div>
+
+                <div class="timeline-nav-btns">
+                  <button type="button" class="timeline-nav-btn" id="btnTimelinePrev" aria-label="Tahun sebelumnya" title="Tahun sebelumnya">◀</button>
+                  <button type="button" class="timeline-nav-btn" id="btnTimelineNext" aria-label="Tahun berikutnya" title="Tahun berikutnya">▶</button>
+                </div>
+              </div>
+
+              <!-- Milestone Details Card -->
+              <div class="timeline-milestone-box" id="timelineMilestoneBox">
+                <div class="milestone-headline-row">
+                  <div class="milestone-reg-title" id="timelineRegTitle">Kepmendagri No 300.2.2-2430 Tahun 2025</div>
+                  <span class="milestone-status-pill" id="timelineStatusPill">Terkini</span>
+                </div>
+                <div class="milestone-desc-text" id="timelineDescText">
+                  Pemutakhiran pulau rujukan BIG Gazeter 2024 dan penyesuaian batas administrasi terkini.
+                </div>
+                <div class="milestone-chips-row" id="timelineChipsRow">
+                  <span class="milestone-chip" id="chipTimelineProv"><strong>38</strong> Prov</span>
+                  <span class="milestone-chip" id="chipTimelineKab"><strong>514</strong> Kab/Kota</span>
+                  <span class="milestone-chip" id="chipTimelineKec"><strong>7.285</strong> Kec</span>
+                  <span class="milestone-chip" id="chipTimelineDesa"><strong>83.762</strong> Desa</span>
+                  <span class="milestone-chip" id="chipTimelinePulau"><strong>17.380</strong> Pulau</span>
+                </div>
+                <!-- Papua DOB Highlight Callout (shown on year 2023) -->
+                <div class="timeline-dob-callout" id="timelineDobCallout" style="display:none;">
+                  <div class="dob-callout-header">
+                    <span class="dob-sparkle">✨</span>
+                    <strong>Pemekaran 4 Daerah Otonomi Baru (DOB) Tanah Papua</strong>
+                  </div>
+                  <div class="dob-callout-body">
+                    Terbentuk 4 provinsi baru hasil pemekaran Papua &amp; Papua Barat:
+                    <div class="dob-badges-list">
+                      <span class="dob-province-badge" title="Ibukota: Merauke">Papua Selatan (93)</span>
+                      <span class="dob-province-badge" title="Ibukota: Nabire">Papua Tengah (94)</span>
+                      <span class="dob-province-badge" title="Ibukota: Wamena">Papua Pegunungan (95)</span>
+                      <span class="dob-province-badge" title="Ibukota: Sorong">Papua Barat Daya (96)</span>
+                    </div>
+                  </div>
+                  <div class="dob-callout-footer">
+                    <button type="button" class="dob-zoom-action-btn" id="btnFocusDobPapua">
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      </svg>
+                      Fokus Peta ke Papua
+                    </button>
+                    <a href="https://github.com/cahyadsn/wilayah_ref" target="_blank" rel="noopener noreferrer" class="dob-ref-link" id="timelineRefLink">
+                      Rujukan Regulasi &rarr;
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
 

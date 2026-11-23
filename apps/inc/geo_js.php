@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_js.php
 purpose  : JavaScript for AJAX cascade, map, and counters
 create   : 170912
-last edit: 2026-11-20 21:20:00
+last edit: 2026-11-23 14:30:00
 author   : cahya dsn
 ================================================================================
 MIT License
@@ -2555,6 +2555,401 @@ function initCompareControls() {
     }
 }
 
+/* ============================================================
+   HISTORICAL REGIONAL EVOLUTION TIMELINE (P7)
+   ============================================================ */
+
+var timelineSnapshots = [];
+var timelineYears = [2016, 2018, 2020, 2022, 2023, 2025];
+var timelineCurrentIndex = 5;
+var timelineCurrentYear = 2025;
+var timelineIsPlaying = false;
+var timelinePlayTimer = null;
+var timelinePreDobLayers = null;
+var timelineDobHighlightLayers = null;
+var timelinePathsCache = {};
+
+function fetchTimelineOverview() {
+    return fetch('inc/geo_timeline.php?action=overview')
+        .then(function(res) {
+            if (!res.ok) throw new Error('Failed to load timeline overview');
+            return res.json();
+        })
+        .then(function(res) {
+            if (res && res.status === 'success') {
+                if (Array.isArray(res.snapshots)) {
+                    timelineSnapshots = res.snapshots;
+                }
+                if (Array.isArray(res.years)) {
+                    timelineYears = res.years;
+                }
+            }
+            return res;
+        })
+        .catch(function(err) {
+            console.warn('Timeline overview fetch error:', err);
+            return null;
+        });
+}
+
+function openTimeline() {
+    var bar = document.getElementById('timelineFloatingBar');
+    var btn = document.getElementById('btnToggleTimeline');
+    if (bar) {
+        bar.style.display = 'block';
+    }
+    if (btn) {
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-expanded', 'true');
+    }
+    if (!timelineSnapshots || timelineSnapshots.length === 0) {
+        fetchTimelineOverview().then(function() {
+            changeTimelineYear(timelineCurrentYear);
+        });
+    } else {
+        changeTimelineYear(timelineCurrentYear);
+    }
+}
+
+function closeTimeline() {
+    if (timelineIsPlaying) {
+        toggleTimelinePlay();
+    }
+    var bar = document.getElementById('timelineFloatingBar');
+    var btn = document.getElementById('btnToggleTimeline');
+    if (bar) {
+        bar.style.display = 'none';
+    }
+    if (btn) {
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-expanded', 'false');
+    }
+    clearTimelineLayers();
+}
+
+function toggleTimelineBar() {
+    var bar = document.getElementById('timelineFloatingBar');
+    if (bar && bar.style.display !== 'none') {
+        closeTimeline();
+    } else {
+        openTimeline();
+    }
+}
+
+function toggleTimelinePlay() {
+    var btn = document.getElementById('btnTimelinePlay');
+    var iconPlay = btn ? btn.querySelector('.icon-play') : null;
+    var iconPause = btn ? btn.querySelector('.icon-pause') : null;
+
+    if (timelineIsPlaying) {
+        if (timelinePlayTimer) {
+            clearInterval(timelinePlayTimer);
+            timelinePlayTimer = null;
+        }
+        timelineIsPlaying = false;
+        if (iconPlay) iconPlay.style.display = 'block';
+        if (iconPause) iconPause.style.display = 'none';
+        if (btn) btn.setAttribute('title', 'Mulai Animasi Linimasa');
+    } else {
+        timelineIsPlaying = true;
+        if (iconPlay) iconPlay.style.display = 'none';
+        if (iconPause) iconPause.style.display = 'block';
+        if (btn) btn.setAttribute('title', 'Jeda Animasi Linimasa');
+
+        timelinePlayTimer = setInterval(function() {
+            timelineCurrentIndex = (timelineCurrentIndex + 1) % timelineYears.length;
+            var nextYear = timelineYears[timelineCurrentIndex];
+            changeTimelineYear(nextYear);
+        }, 3000);
+    }
+}
+
+function clearTimelineLayers() {
+    if (timelinePreDobLayers && map && typeof map.removeLayer === 'function') {
+        map.removeLayer(timelinePreDobLayers);
+        timelinePreDobLayers = null;
+    }
+    if (timelineDobHighlightLayers && map && typeof map.removeLayer === 'function') {
+        map.removeLayer(timelineDobHighlightLayers);
+        timelineDobHighlightLayers = null;
+    }
+}
+
+function renderHistoricalPaths(pathsData) {
+    if (!map || typeof L === 'undefined' || !pathsData || !pathsData.is_pre_dob) return;
+
+    if (timelinePreDobLayers && typeof map.removeLayer === 'function') {
+        map.removeLayer(timelinePreDobLayers);
+    }
+    timelinePreDobLayers = L.featureGroup();
+
+    if (pathsData.papua_2022 && typeof L.polygon === 'function') {
+        var poly1 = L.polygon(pathsData.papua_2022, {
+            color: '#38bdf8',
+            weight: 2,
+            opacity: 0.85,
+            fillColor: '#38bdf8',
+            fillOpacity: 0.18,
+            dashArray: '4, 4'
+        }).bindPopup('<b>91 - PAPUA (Batas Pra-Pemekaran 2022)</b><br><small>Sebelum pemekaran 4 provinsi baru di Tanah Papua</small>');
+        timelinePreDobLayers.addLayer(poly1);
+    }
+
+    if (pathsData.papua_barat_2022 && typeof L.polygon === 'function') {
+        var poly2 = L.polygon(pathsData.papua_barat_2022, {
+            color: '#38bdf8',
+            weight: 2,
+            opacity: 0.85,
+            fillColor: '#38bdf8',
+            fillOpacity: 0.18,
+            dashArray: '4, 4'
+        }).bindPopup('<b>92 - PAPUA BARAT (Batas Pra-Pemekaran 2022)</b><br><small>Sebelum pemekaran Papua Barat Daya (UU 29/2022)</small>');
+        timelinePreDobLayers.addLayer(poly2);
+    }
+
+    timelinePreDobLayers.addTo(map);
+}
+
+function loadHistoricalPreDobLayers(year) {
+    if (timelinePathsCache[2022]) {
+        renderHistoricalPaths(timelinePathsCache[2022]);
+        return Promise.resolve(timelinePathsCache[2022]);
+    }
+    return fetch('inc/geo_timeline.php?action=paths&year=2022')
+        .then(function(res) {
+            if (!res.ok) throw new Error('Failed to load historical paths');
+            return res.json();
+        })
+        .then(function(json) {
+            if (json && json.status === 'success' && json.data) {
+                timelinePathsCache[2022] = json.data;
+                renderHistoricalPaths(json.data);
+            }
+            return json;
+        })
+        .catch(function(err) {
+            console.warn('Historical paths fetch error:', err);
+            return null;
+        });
+}
+
+function renderDobHighlights() {
+    if (!map || typeof L === 'undefined') return;
+
+    if (timelineDobHighlightLayers && typeof map.removeLayer === 'function') {
+        map.removeLayer(timelineDobHighlightLayers);
+    }
+    timelineDobHighlightLayers = L.featureGroup();
+
+    var dobItems = [
+        { kode: '93', nama: 'PAPUA SELATAN', ibukota: 'Merauke', lat: -7.498, lng: 139.400, undang: 'UU No. 14 Tahun 2022' },
+        { kode: '94', nama: 'PAPUA TENGAH', ibukota: 'Nabire', lat: -3.548, lng: 136.230, undang: 'UU No. 15 Tahun 2022' },
+        { kode: '95', nama: 'PAPUA PEGUNUNGAN', ibukota: 'Wamena', lat: -4.083, lng: 138.944, undang: 'UU No. 16 Tahun 2022' },
+        { kode: '96', nama: 'PAPUA BARAT DAYA', ibukota: 'Sorong', lat: -0.876, lng: 131.256, undang: 'UU No. 29 Tahun 2022' }
+    ];
+
+    if (typeof L.circleMarker === 'function') {
+        dobItems.forEach(function(d) {
+            var marker = L.circleMarker([d.lat, d.lng], {
+                radius: 12,
+                color: '#fbbf24',
+                weight: 3,
+                fillColor: '#f59e0b',
+                fillOpacity: 0.65,
+                className: 'dob-polygon-pulse'
+            }).bindPopup('<b>DOB ' + d.kode + ' - ' + d.nama + '</b><br>Ibukota: ' + d.ibukota + '<br><small>' + d.undang + '</small>');
+            timelineDobHighlightLayers.addLayer(marker);
+        });
+        timelineDobHighlightLayers.addTo(map);
+    }
+}
+
+function changeTimelineYear(year, flyToDob) {
+    var y = parseInt(year, 10);
+    if (isNaN(y)) return;
+    timelineCurrentYear = y;
+
+    var idx = timelineYears.indexOf(timelineCurrentYear);
+    if (idx !== -1) {
+        timelineCurrentIndex = idx;
+    }
+
+    var slider = document.getElementById('timelineSlider');
+    if (slider) slider.value = timelineCurrentIndex;
+
+    var yearTag = document.getElementById('timelineCurrentYearTag');
+    if (yearTag) yearTag.textContent = String(timelineCurrentYear);
+
+    // Update active ticks
+    var ticks = document.querySelectorAll('.timeline-tick');
+    ticks.forEach(function(tick) {
+        var tYear = parseInt(tick.getAttribute('data-year'), 10);
+        if (tYear === timelineCurrentYear) {
+            tick.classList.add('is-active');
+        } else {
+            tick.classList.remove('is-active');
+        }
+    });
+
+    // Update Nav buttons
+    var btnPrev = document.getElementById('btnTimelinePrev');
+    var btnNext = document.getElementById('btnTimelineNext');
+    if (btnPrev) btnPrev.disabled = (timelineCurrentIndex === 0);
+    if (btnNext) btnNext.disabled = (timelineCurrentIndex === timelineYears.length - 1);
+
+    // Find snapshot
+    var snap = null;
+    for (var i = 0; i < timelineSnapshots.length; i++) {
+        if (timelineSnapshots[i].year === timelineCurrentYear) {
+            snap = timelineSnapshots[i];
+            break;
+        }
+    }
+
+    if (snap) {
+        var regTitle = document.getElementById('timelineRegTitle');
+        if (regTitle) regTitle.textContent = snap.regulasi || snap.short_title || ('Regulasi Wilayah Tahun ' + timelineCurrentYear);
+
+        var statusPill = document.getElementById('timelineStatusPill');
+        if (statusPill) {
+            if (timelineCurrentYear === 2025) {
+                statusPill.textContent = 'Terkini';
+                statusPill.classList.remove('is-historical');
+            } else {
+                statusPill.textContent = 'Historis';
+                statusPill.classList.add('is-historical');
+            }
+        }
+
+        var descText = document.getElementById('timelineDescText');
+        if (descText) descText.textContent = snap.highlights || '';
+
+        var provChip = document.getElementById('chipTimelineProv');
+        if (provChip) provChip.innerHTML = '<strong>' + (snap.total_provinsi || 34) + '</strong> Prov';
+
+        var kabChip = document.getElementById('chipTimelineKab');
+        if (kabChip) kabChip.innerHTML = '<strong>' + (snap.total_kab_kota || 514) + '</strong> Kab/Kota';
+
+        var kecChip = document.getElementById('chipTimelineKec');
+        if (kecChip) kecChip.innerHTML = '<strong>' + (snap.total_kecamatan ? formatNumberId(snap.total_kecamatan) : '-') + '</strong> Kec';
+
+        var desaChip = document.getElementById('chipTimelineDesa');
+        if (desaChip) desaChip.innerHTML = '<strong>' + (snap.total_desa_kel ? formatNumberId(snap.total_desa_kel) : '-') + '</strong> Desa';
+
+        var pulauChip = document.getElementById('chipTimelinePulau');
+        if (pulauChip) pulauChip.innerHTML = '<strong>' + (snap.total_pulau ? formatNumberId(snap.total_pulau) : '-') + '</strong> Pulau';
+
+        var refLink = document.getElementById('timelineRefLink');
+        if (refLink && snap.doc_url) {
+            refLink.setAttribute('href', snap.doc_url);
+        }
+    }
+
+    // Handle Papua DOB display & Map layers
+    var dobCallout = document.getElementById('timelineDobCallout');
+    if (timelineCurrentYear >= 2023) {
+        if (dobCallout) dobCallout.style.display = 'flex';
+        // Remove pre-DOB layers
+        if (timelinePreDobLayers && map && typeof map.removeLayer === 'function') {
+            map.removeLayer(timelinePreDobLayers);
+            timelinePreDobLayers = null;
+        }
+        renderDobHighlights();
+
+        if (flyToDob && map && typeof map.flyTo === 'function') {
+            map.flyTo([-4.0, 138.0], 6);
+        }
+    } else {
+        if (dobCallout) dobCallout.style.display = 'none';
+        // Remove DOB highlight markers
+        if (timelineDobHighlightLayers && map && typeof map.removeLayer === 'function') {
+            map.removeLayer(timelineDobHighlightLayers);
+            timelineDobHighlightLayers = null;
+        }
+        loadHistoricalPreDobLayers(timelineCurrentYear);
+    }
+}
+
+function initTimelineControls() {
+    var btnToggle = document.getElementById('btnToggleTimeline');
+    if (btnToggle) {
+        if (btnToggle.getAttribute('data-timeline-bound')) return;
+        btnToggle.setAttribute('data-timeline-bound', 'true');
+        btnToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleTimelineBar();
+        });
+    }
+
+    var btnClose = document.getElementById('btnCloseTimeline');
+    if (btnClose) {
+        btnClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeTimeline();
+        });
+    }
+
+    var btnPlay = document.getElementById('btnTimelinePlay');
+    if (btnPlay) {
+        btnPlay.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleTimelinePlay();
+        });
+    }
+
+    var slider = document.getElementById('timelineSlider');
+    if (slider) {
+        slider.addEventListener('input', function() {
+            var val = parseInt(this.value, 10);
+            if (!isNaN(val) && val >= 0 && val < timelineYears.length) {
+                changeTimelineYear(timelineYears[val]);
+            }
+        });
+    }
+
+    var ticks = document.querySelectorAll('.timeline-tick');
+    ticks.forEach(function(tick) {
+        tick.addEventListener('click', function() {
+            var y = parseInt(tick.getAttribute('data-year'), 10);
+            if (!isNaN(y)) {
+                changeTimelineYear(y);
+            }
+        });
+    });
+
+    var btnPrev = document.getElementById('btnTimelinePrev');
+    if (btnPrev) {
+        btnPrev.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (timelineCurrentIndex > 0) {
+                timelineCurrentIndex--;
+                changeTimelineYear(timelineYears[timelineCurrentIndex]);
+            }
+        });
+    }
+
+    var btnNext = document.getElementById('btnTimelineNext');
+    if (btnNext) {
+        btnNext.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (timelineCurrentIndex < timelineYears.length - 1) {
+                timelineCurrentIndex++;
+                changeTimelineYear(timelineYears[timelineCurrentIndex]);
+            }
+        });
+    }
+
+    var btnFocusPapua = document.getElementById('btnFocusDobPapua');
+    if (btnFocusPapua) {
+        btnFocusPapua.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (map && typeof map.flyTo === 'function') {
+                map.flyTo([-4.0, 138.0], 6);
+            }
+        });
+    }
+}
+
 // --- Init on load ---
 document.addEventListener('DOMContentLoaded', function() {
     initMap();
@@ -2564,6 +2959,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initExportControls();
     initIslandClusterControls();
     initCompareControls();
+    initTimelineControls();
 
     window.refreshMapThemeAwareness = refreshMapThemeAwareness;
     window.filterIslands = filterIslands;
@@ -2619,6 +3015,18 @@ document.addEventListener('DOMContentLoaded', function() {
     window.calcRatioPairClient = calcRatioPairClient;
     window.formatNumberId = formatNumberId;
     window.initCompareControls = initCompareControls;
+
+    // P7 exports
+    window.initTimelineControls = initTimelineControls;
+    window.openTimeline = openTimeline;
+    window.closeTimeline = closeTimeline;
+    window.toggleTimelineBar = toggleTimelineBar;
+    window.toggleTimelinePlay = toggleTimelinePlay;
+    window.changeTimelineYear = changeTimelineYear;
+    window.fetchTimelineOverview = fetchTimelineOverview;
+    window.renderHistoricalPaths = renderHistoricalPaths;
+    window.renderDobHighlights = renderDobHighlights;
+    window.clearTimelineLayers = clearTimelineLayers;
 });
 
 window.addEventListener('popstate', function() {
