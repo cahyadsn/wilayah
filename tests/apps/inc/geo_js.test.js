@@ -2,8 +2,8 @@
  * BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
  * ================================================================================
  * filename : geo_js.test.js
- * purpose  : Jest tests for apps/inc/geo_js.php frontend logic (P1, P2, P3, P4, P5, P6, P7)
- * last edit: 2026-11-23 14:30:00
+ * purpose  : Jest tests for apps/inc/geo_js.php frontend logic (P1, P2, P3, P4, P5, P6, P7, P8)
+ * last edit: 2026-11-25 07:00:00
  * ================================================================================
  */
 const fs = require('fs');
@@ -62,6 +62,29 @@ describe('geo_js unit tests', () => {
     let renderHistoricalPaths;
     let renderDobHighlights;
     let clearTimelineLayers;
+
+    // P8 variables
+    let initMeasurementControls;
+    let setMeasureMode;
+    let openMeasureBar;
+    let closeMeasureBar;
+    let toggleMeasureBar;
+    let clearMeasurement;
+    let handleMeasurementMapClick;
+    let addRulerPoint;
+    let setMeasureUnit;
+    let setBufferCenter;
+    let drawBufferCircle;
+    let updateBufferRadius;
+    let fetchProximityData;
+    let renderBufferResults;
+    let exportMeasureBufferCsv;
+    let calculateDistanceKm;
+    let calculateBearingDeg;
+    let bearingToDirection;
+    let kmToNm;
+    let nmToKm;
+    let formatMeasureDistance;
 
     beforeAll(async () => {
         const { JSDOM } = await import('jsdom');
@@ -160,6 +183,32 @@ describe('geo_js unit tests', () => {
       <a id="timelineRefLink" href="#"></a>
     </div>
   </div>
+  <button id="btnToggleMeasure" type="button"></button>
+  <div class="measure-floating-bar" id="measureFloatingBar" style="display:none;">
+    <button type="button" id="btnCloseMeasure">&times;</button>
+    <button type="button" id="btnMeasureModeRuler" data-mode="ruler"></button>
+    <button type="button" id="btnMeasureModeBuffer" data-mode="buffer"></button>
+    <button type="button" id="btnMeasureClear"></button>
+    <div id="measureControlsRuler">
+      <button type="button" id="btnUnitKm" class="is-active"></button>
+      <button type="button" id="btnUnitNm"></button>
+      <div id="measureRulerStats" style="display:none;">
+        <span id="measureTotalDistance">0.00 km</span>
+        <span id="measurePointsCount">0</span>
+        <div id="measureAzimuthItem" style="display:none;"><span id="measureAzimuthVal">-</span></div>
+      </div>
+    </div>
+    <div id="measureControlsBuffer" style="display:none;">
+      <input type="range" id="measureRadiusSlider" min="1" max="200" value="25" />
+      <input type="number" id="measureRadiusInput" min="0.1" max="500" value="25" />
+    </div>
+    <div id="measureResultsPanel" style="display:none;">
+      <span id="measureResultsCount">0</span>
+      <span id="measureResultsRadiusTag">25 km</span>
+      <button type="button" id="btnExportMeasureCsv"></button>
+      <div id="measureResultsList"></div>
+    </div>
+  </div>
 </body>
 </html>`, {
             url: "http://localhost",
@@ -243,7 +292,14 @@ describe('geo_js unit tests', () => {
                 };
             },
             polygon: () => ({ addTo: function() { return this; }, bindPopup: function() { return this; } }),
-            circleMarker: () => ({ addTo: function() { return this; }, bindPopup: function() { return this; } }),
+            circle: () => ({ addTo: function() { return this; }, setLatLng: function() { return this; }, setRadius: function() { return this; } }),
+            polyline: () => ({ addTo: function() { return this; }, setLatLngs: function() { return this; } }),
+            circleMarker: () => ({
+                addTo: function() { return this; },
+                bindPopup: function() { return this; },
+                bindTooltip: function() { return { openTooltip: () => {} }; },
+                openTooltip: function() { return this; }
+            }),
             featureGroup: () => {
                 const grpLayers = [];
                 return {
@@ -252,7 +308,14 @@ describe('geo_js unit tests', () => {
                     clearLayers: function() { grpLayers.length = 0; return this; }
                 };
             },
-            layerGroup: () => ({ addTo: () => {} }),
+            layerGroup: () => {
+                const grp = [];
+                return {
+                    addTo: function() { return this; },
+                    addLayer: function(l) { grp.push(l); return this; },
+                    clearLayers: function() { grp.length = 0; return this; }
+                };
+            },
             DomEvent: {
                 disableClickPropagation: () => {},
                 disableScrollPropagation: () => {}
@@ -329,6 +392,29 @@ describe('geo_js unit tests', () => {
         renderHistoricalPaths = window.renderHistoricalPaths;
         renderDobHighlights = window.renderDobHighlights;
         clearTimelineLayers = window.clearTimelineLayers;
+
+        // P8 functions
+        initMeasurementControls = window.initMeasurementControls;
+        setMeasureMode = window.setMeasureMode;
+        openMeasureBar = window.openMeasureBar;
+        closeMeasureBar = window.closeMeasureBar;
+        toggleMeasureBar = window.toggleMeasureBar;
+        clearMeasurement = window.clearMeasurement;
+        handleMeasurementMapClick = window.handleMeasurementMapClick;
+        addRulerPoint = window.addRulerPoint;
+        setMeasureUnit = window.setMeasureUnit;
+        setBufferCenter = window.setBufferCenter;
+        drawBufferCircle = window.drawBufferCircle;
+        updateBufferRadius = window.updateBufferRadius;
+        fetchProximityData = window.fetchProximityData;
+        renderBufferResults = window.renderBufferResults;
+        exportMeasureBufferCsv = window.exportMeasureBufferCsv;
+        calculateDistanceKm = window.calculateDistanceKm;
+        calculateBearingDeg = window.calculateBearingDeg;
+        bearingToDirection = window.bearingToDirection;
+        kmToNm = window.kmToNm;
+        nmToKm = window.nmToKm;
+        formatMeasureDistance = window.formatMeasureDistance;
     });
 
     describe('setSafeSelectOptions', () => {
@@ -1201,6 +1287,189 @@ describe('geo_js unit tests', () => {
 
             test('initTimelineControls should bind controls without throwing', () => {
                 expect(() => initTimelineControls()).not.toThrow();
+            });
+        });
+
+        describe('P8: Spatial Buffer & Distance Measurement Tool', () => {
+            beforeEach(() => {
+                clearMeasurement();
+            });
+
+            test('kmToNm and nmToKm conversion formulas', () => {
+                expect(kmToNm(1.852)).toBeCloseTo(1.0, 4);
+                expect(nmToKm(1.0)).toBeCloseTo(1.852, 4);
+                expect(kmToNm(18.52)).toBeCloseTo(10.0, 4);
+            });
+
+            test('calculateDistanceKm Haversine formula precision', () => {
+                // Jakarta (-6.1754, 106.8272) to Bandung (-6.9175, 107.6191) ~118-120 km
+                const dist = calculateDistanceKm(-6.1754, 106.8272, -6.9175, 107.6191);
+                expect(dist).toBeGreaterThan(115);
+                expect(dist).toBeLessThan(125);
+
+                // Zero distance for same point
+                expect(calculateDistanceKm(0, 0, 0, 0)).toBeCloseTo(0, 5);
+            });
+
+            test('calculateBearingDeg and bearingToDirection', () => {
+                // Due North
+                const bearingNorth = calculateBearingDeg(0, 0, 1, 0);
+                expect(bearingNorth).toBeCloseTo(0, 1);
+                expect(bearingToDirection(bearingNorth)).toBe('U');
+
+                // Due East
+                const bearingEast = calculateBearingDeg(0, 0, 0, 1);
+                expect(bearingEast).toBeCloseTo(90, 1);
+                expect(bearingToDirection(bearingEast)).toBe('T');
+
+                // Due South
+                const bearingSouth = calculateBearingDeg(1, 0, 0, 0);
+                expect(bearingSouth).toBeCloseTo(180, 1);
+                expect(bearingToDirection(bearingSouth)).toBe('S');
+
+                // Due West
+                const bearingWest = calculateBearingDeg(0, 1, 0, 0);
+                expect(bearingWest).toBeCloseTo(270, 1);
+                expect(bearingToDirection(bearingWest)).toBe('B');
+            });
+
+            test('formatMeasureDistance should format units correctly', () => {
+                expect(formatMeasureDistance(12.34, 'km')).toBe('12.3 km');
+                expect(formatMeasureDistance(5.67, 'km')).toBe('5.67 km');
+                expect(formatMeasureDistance(18.52, 'nm')).toBe('10.0 NM');
+                expect(formatMeasureDistance(1.852, 'nm')).toBe('1.00 NM');
+            });
+
+            test('openMeasureBar and closeMeasureBar toggle floating toolbar', () => {
+                const bar = document.getElementById('measureFloatingBar');
+                const btn = document.getElementById('btnToggleMeasure');
+
+                openMeasureBar();
+                expect(bar.style.display).toBe('block');
+                expect(btn.classList.contains('is-active')).toBe(true);
+
+                closeMeasureBar();
+                expect(bar.style.display).toBe('none');
+                expect(btn.classList.contains('is-active')).toBe(false);
+
+                toggleMeasureBar();
+                expect(bar.style.display).toBe('block');
+                toggleMeasureBar();
+                expect(bar.style.display).toBe('none');
+            });
+
+            test('setMeasureMode toggles ruler and buffer controls and styles', () => {
+                const btnRuler = document.getElementById('btnMeasureModeRuler');
+                const btnBuffer = document.getElementById('btnMeasureModeBuffer');
+                const ctrlRuler = document.getElementById('measureControlsRuler');
+                const ctrlBuffer = document.getElementById('measureControlsBuffer');
+
+                setMeasureMode('ruler');
+                expect(btnRuler.classList.contains('is-active')).toBe(true);
+                expect(btnBuffer.classList.contains('is-active')).toBe(false);
+                expect(ctrlRuler.style.display).toBe('flex');
+                expect(ctrlBuffer.style.display).toBe('none');
+
+                setMeasureMode('buffer');
+                expect(btnRuler.classList.contains('is-active')).toBe(false);
+                expect(btnBuffer.classList.contains('is-active')).toBe(true);
+                expect(ctrlRuler.style.display).toBe('none');
+                expect(ctrlBuffer.style.display).toBe('flex');
+            });
+
+            test('addRulerPoint accumulates distance and updates stats UI', () => {
+                addRulerPoint(5.889, 95.316); // Sabang
+                addRulerPoint(5.548, 95.323); // Banda Aceh (~38 km)
+
+                const totalDist = document.getElementById('measureTotalDistance');
+                const pointsCount = document.getElementById('measurePointsCount');
+                const statsRow = document.getElementById('measureRulerStats');
+
+                expect(statsRow.style.display).toBe('flex');
+                expect(pointsCount.textContent).toBe('2');
+                expect(totalDist.textContent).toContain('km');
+                expect(totalDist.textContent).toContain('NM');
+            });
+
+            test('setMeasureUnit updates active button and display', () => {
+                const btnKm = document.getElementById('btnUnitKm');
+                const btnNm = document.getElementById('btnUnitNm');
+
+                setMeasureUnit('nm');
+                expect(btnNm.classList.contains('is-active')).toBe(true);
+                expect(btnKm.classList.contains('is-active')).toBe(false);
+
+                setMeasureUnit('km');
+                expect(btnKm.classList.contains('is-active')).toBe(true);
+                expect(btnNm.classList.contains('is-active')).toBe(false);
+            });
+
+            test('updateBufferRadius updates slider and number input with clamping', () => {
+                const slider = document.getElementById('measureRadiusSlider');
+                const input = document.getElementById('measureRadiusInput');
+
+                updateBufferRadius(50);
+                expect(slider.value).toBe('50');
+                expect(input.value).toBe('50');
+
+                // Clamping over 500
+                updateBufferRadius(1000);
+                expect(input.value).toBe('500');
+            });
+
+            test('renderBufferResults populates entity cards and count', () => {
+                const mockResults = [
+                    {
+                        kode: '11.01.40001',
+                        nama: 'Pulau Rondo',
+                        type: 'island',
+                        lat: 6.07472,
+                        lng: 95.11306,
+                        distance_km: 28.34,
+                        distance_nm: 15.30,
+                        bearing_deg: 315.4,
+                        direction: 'BL',
+                        status: 'PPKT'
+                    },
+                    {
+                        kode: '11.72',
+                        nama: 'KOTA SABANG',
+                        type: 'region',
+                        lat: 5.88969,
+                        lng: 95.31644,
+                        distance_km: 0.5,
+                        distance_nm: 0.27,
+                        bearing_deg: 45.0,
+                        direction: 'TL'
+                    }
+                ];
+
+                renderBufferResults(mockResults);
+
+                const countEl = document.getElementById('measureResultsCount');
+                const listEl = document.getElementById('measureResultsList');
+
+                expect(countEl.textContent).toBe('2');
+                expect(listEl.children.length).toBe(2);
+                expect(listEl.innerHTML).toContain('Pulau Rondo');
+                expect(listEl.innerHTML).toContain('KOTA SABANG');
+            });
+
+            test('clearMeasurement resets all measurement layers, points and UI', () => {
+                addRulerPoint(5.889, 95.316);
+                clearMeasurement();
+
+                const totalDist = document.getElementById('measureTotalDistance');
+                const pointsCount = document.getElementById('measurePointsCount');
+                const statsRow = document.getElementById('measureRulerStats');
+
+                expect(statsRow.style.display).toBe('none');
+                expect(pointsCount.textContent).toBe('0');
+                expect(totalDist.textContent).toBe('0.00 km');
+            });
+
+            test('initMeasurementControls binds without throwing', () => {
+                expect(() => initMeasurementControls()).not.toThrow();
             });
         });
     });

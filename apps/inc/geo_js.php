@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename : geo_js.php
 purpose  : JavaScript for AJAX cascade, map, and counters
 create   : 170912
-last edit: 2026-11-23 14:30:00
+last edit: 2026-11-25 07:00:00
 author   : cahya dsn
 ================================================================================
 MIT License
@@ -795,6 +795,10 @@ function initBaseMapMenu() {
             if (toggle) toggle.setAttribute('aria-expanded', 'false');
         }
         if (event && event.latlng) {
+            if (typeof measureActiveMode !== 'undefined' && measureActiveMode !== 'none') {
+                handleMeasurementMapClick(event.latlng);
+                return;
+            }
             reverseLookupFromMapClick(event.latlng);
         }
     });
@@ -2950,6 +2954,536 @@ function initTimelineControls() {
     }
 }
 
+// ============================================================
+// P8: SPATIAL BUFFER & DISTANCE MEASUREMENT TOOL
+// ============================================================
+var measureActiveMode = 'none'; // 'none' | 'ruler' | 'buffer'
+var measureUnit = 'km'; // 'km' | 'nm'
+var measurePoints = []; // [{ lat: number, lng: number, marker: L.CircleMarker }]
+var measureRulerPolyline = null;
+var measureRulerTooltips = []; // [L.CircleMarker / L.Tooltip]
+var measureBufferCenter = null; // { lat: number, lng: number, marker: L.CircleMarker }
+var measureBufferCircle = null; // L.Circle
+var measureBufferRadius = 25.0; // km
+var measureBufferResults = []; // array of entities
+var measureProximityLayerGroup = null; // L.layerGroup for proximity island pins
+
+function kmToNm(km) {
+    return km / 1.852;
+}
+
+function nmToKm(nm) {
+    return nm * 1.852;
+}
+
+function calculateDistanceKm(lat1, lon1, lat2, lon2) {
+    var R = 6371.0;
+    var dLat = (lat2 - lat1) * Math.PI / 180.0;
+    var dLon = (lon2 - lon1) * Math.PI / 180.0;
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * Math.PI / 180.0) * Math.cos(lat2 * Math.PI / 180.0) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+}
+
+function calculateBearingDeg(lat1, lon1, lat2, lon2) {
+    var φ1 = lat1 * Math.PI / 180.0;
+    var φ2 = lat2 * Math.PI / 180.0;
+    var Δλ = (lon2 - lon1) * Math.PI / 180.0;
+    var y = Math.sin(Δλ) * Math.cos(φ2);
+    var x = Math.cos(φ1) * Math.sin(φ2) - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
+    var θ = Math.atan2(y, x);
+    return (θ * 180.0 / Math.PI + 360.0) % 360.0;
+}
+
+function bearingToDirection(deg) {
+    var directions = ['U', 'UTL', 'TL', 'TTL', 'T', 'TTG', 'TG', 'STG', 'S', 'SBD', 'BD', 'BBD', 'B', 'BBL', 'BL', 'UBL'];
+    var index = Math.round(deg / 22.5) % 16;
+    return directions[index];
+}
+
+function formatMeasureDistance(distKm, unit) {
+    if (unit === 'nm') {
+        var nm = kmToNm(distKm);
+        return (nm < 10 ? nm.toFixed(2) : nm.toFixed(1)) + ' NM';
+    }
+    return (distKm < 10 ? distKm.toFixed(2) : distKm.toFixed(1)) + ' km';
+}
+
+function setMeasureMode(mode) {
+    measureActiveMode = mode;
+    var btnRuler = document.getElementById('btnMeasureModeRuler');
+    var btnBuffer = document.getElementById('btnMeasureModeBuffer');
+    var ctrlRuler = document.getElementById('measureControlsRuler');
+    var ctrlBuffer = document.getElementById('measureControlsBuffer');
+
+    if (btnRuler) btnRuler.classList.toggle('is-active', mode === 'ruler');
+    if (btnBuffer) btnBuffer.classList.toggle('is-active', mode === 'buffer');
+
+    if (ctrlRuler) ctrlRuler.style.display = (mode === 'ruler') ? 'flex' : 'none';
+    if (ctrlBuffer) ctrlBuffer.style.display = (mode === 'buffer') ? 'flex' : 'none';
+
+    var mapCanvas = document.getElementById('map-canvas');
+    if (mapCanvas) {
+        if (mode === 'ruler' || mode === 'buffer') {
+            mapCanvas.style.cursor = 'crosshair';
+        } else {
+            mapCanvas.style.cursor = '';
+        }
+    }
+}
+
+function openMeasureBar() {
+    var bar = document.getElementById('measureFloatingBar');
+    var btn = document.getElementById('btnToggleMeasure');
+    if (bar) bar.style.display = 'block';
+    if (btn) {
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-expanded', 'true');
+    }
+    if (typeof closeTimeline === 'function') closeTimeline();
+    setMeasureMode('ruler');
+}
+
+function closeMeasureBar() {
+    var bar = document.getElementById('measureFloatingBar');
+    var btn = document.getElementById('btnToggleMeasure');
+    if (bar) bar.style.display = 'none';
+    if (btn) {
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-expanded', 'false');
+    }
+    setMeasureMode('none');
+}
+
+function toggleMeasureBar() {
+    var bar = document.getElementById('measureFloatingBar');
+    if (bar && bar.style.display !== 'none') {
+        closeMeasureBar();
+    } else {
+        openMeasureBar();
+    }
+}
+
+function clearMeasurement() {
+    if (map) {
+        if (measureRulerPolyline) {
+            map.removeLayer(measureRulerPolyline);
+            measureRulerPolyline = null;
+        }
+        measurePoints.forEach(function(p) {
+            if (p.marker) map.removeLayer(p.marker);
+        });
+        measureRulerTooltips.forEach(function(t) {
+            if (t) map.removeLayer(t);
+        });
+        if (measureBufferCircle) {
+            map.removeLayer(measureBufferCircle);
+            measureBufferCircle = null;
+        }
+        if (measureBufferCenter && measureBufferCenter.marker) {
+            map.removeLayer(measureBufferCenter.marker);
+        }
+        if (measureProximityLayerGroup) {
+            measureProximityLayerGroup.clearLayers();
+        }
+    }
+    measurePoints = [];
+    measureRulerTooltips = [];
+    measureBufferCenter = null;
+    measureBufferResults = [];
+
+    var statsRow = document.getElementById('measureRulerStats');
+    if (statsRow) statsRow.style.display = 'none';
+
+    var totalDistEl = document.getElementById('measureTotalDistance');
+    if (totalDistEl) totalDistEl.textContent = '0.00 km';
+
+    var pointsCountEl = document.getElementById('measurePointsCount');
+    if (pointsCountEl) pointsCountEl.textContent = '0';
+
+    var azimuthItem = document.getElementById('measureAzimuthItem');
+    if (azimuthItem) azimuthItem.style.display = 'none';
+
+    var resultsPanel = document.getElementById('measureResultsPanel');
+    if (resultsPanel) resultsPanel.style.display = 'none';
+
+    var resultsList = document.getElementById('measureResultsList');
+    if (resultsList) resultsList.innerHTML = '';
+}
+
+function handleMeasurementMapClick(latlng) {
+    if (measureActiveMode === 'ruler') {
+        addRulerPoint(latlng.lat, latlng.lng);
+    } else if (measureActiveMode === 'buffer') {
+        setBufferCenter(latlng.lat, latlng.lng);
+    }
+}
+
+function addRulerPoint(lat, lng) {
+    if (!map) return;
+
+    var marker = L.circleMarker([lat, lng], {
+        radius: 6,
+        color: '#10b981',
+        weight: 2,
+        fillColor: '#020617',
+        fillOpacity: 0.9
+    }).addTo(map);
+
+    var pt = { lat: lat, lng: lng, marker: marker };
+    measurePoints.push(pt);
+
+    updateRulerVisuals();
+}
+
+function updateRulerVisuals() {
+    if (!map || measurePoints.length === 0) return;
+
+    var latlngs = measurePoints.map(function(p) { return [p.lat, p.lng]; });
+
+    if (measureRulerPolyline) {
+        measureRulerPolyline.setLatLngs(latlngs);
+    } else {
+        measureRulerPolyline = L.polyline(latlngs, {
+            color: '#10b981',
+            weight: 3,
+            dashArray: '8, 8',
+            className: 'measure-ruler-line'
+        }).addTo(map);
+    }
+
+    // Clear old segment tooltips
+    measureRulerTooltips.forEach(function(t) {
+        if (map && t) map.removeLayer(t);
+    });
+    measureRulerTooltips = [];
+
+    var totalKm = 0;
+    var lastBearing = null;
+
+    for (var i = 0; i < measurePoints.length - 1; i++) {
+        var p1 = measurePoints[i];
+        var p2 = measurePoints[i + 1];
+        var segDist = calculateDistanceKm(p1.lat, p1.lng, p2.lat, p2.lng);
+        totalKm += segDist;
+
+        var segBearing = calculateBearingDeg(p1.lat, p1.lng, p2.lat, p2.lng);
+        lastBearing = segBearing;
+
+        var midLat = (p1.lat + p2.lat) / 2;
+        var midLng = (p1.lng + p2.lng) / 2;
+
+        var segLabel = formatMeasureDistance(segDist, measureUnit);
+        var dirStr = bearingToDirection(segBearing);
+
+        var segTooltipMarker = L.circleMarker([midLat, midLng], {
+            radius: 0.1,
+            opacity: 0,
+            fillOpacity: 0
+        }).addTo(map);
+
+        segTooltipMarker.bindTooltip(segLabel + ' (' + Math.round(segBearing) + '° ' + dirStr + ')', {
+            permanent: true,
+            direction: 'center',
+            className: 'measure-map-tooltip'
+        }).openTooltip();
+
+        measureRulerTooltips.push(segTooltipMarker);
+    }
+
+    var statsRow = document.getElementById('measureRulerStats');
+    if (statsRow) statsRow.style.display = 'flex';
+
+    var totalDistEl = document.getElementById('measureTotalDistance');
+    if (totalDistEl) {
+        var distStr = formatMeasureDistance(totalKm, measureUnit);
+        var altStr = (measureUnit === 'km') ? '(' + formatMeasureDistance(totalKm, 'nm') + ')' : '(' + formatMeasureDistance(totalKm, 'km') + ')';
+        totalDistEl.textContent = distStr + ' ' + altStr;
+    }
+
+    var pointsCountEl = document.getElementById('measurePointsCount');
+    if (pointsCountEl) pointsCountEl.textContent = String(measurePoints.length);
+
+    var azimuthItem = document.getElementById('measureAzimuthItem');
+    var azimuthVal = document.getElementById('measureAzimuthVal');
+    if (lastBearing !== null && azimuthItem && azimuthVal) {
+        azimuthItem.style.display = 'inline-flex';
+        azimuthVal.textContent = lastBearing.toFixed(1) + '° (' + bearingToDirection(lastBearing) + ')';
+    } else if (azimuthItem) {
+        azimuthItem.style.display = 'none';
+    }
+}
+
+function setMeasureUnit(unit) {
+    measureUnit = unit;
+    var btnKm = document.getElementById('btnUnitKm');
+    var btnNm = document.getElementById('btnUnitNm');
+    if (btnKm) btnKm.classList.toggle('is-active', unit === 'km');
+    if (btnNm) btnNm.classList.toggle('is-active', unit === 'nm');
+
+    if (measureActiveMode === 'ruler') {
+        updateRulerVisuals();
+    } else if (measureBufferResults.length > 0) {
+        renderBufferResults(measureBufferResults);
+    }
+}
+
+function setBufferCenter(lat, lng) {
+    if (!map) return;
+
+    if (measureBufferCenter && measureBufferCenter.marker) {
+        map.removeLayer(measureBufferCenter.marker);
+    }
+
+    var centerMarker = L.circleMarker([lat, lng], {
+        radius: 7,
+        color: '#10b981',
+        weight: 3,
+        fillColor: '#020617',
+        fillOpacity: 0.95
+    }).addTo(map);
+
+    measureBufferCenter = { lat: lat, lng: lng, marker: centerMarker };
+
+    drawBufferCircle();
+    fetchProximityData(lat, lng, measureBufferRadius);
+}
+
+function drawBufferCircle() {
+    if (!map || !measureBufferCenter) return;
+
+    var radiusMeters = measureBufferRadius * 1000.0;
+
+    if (measureBufferCircle) {
+        measureBufferCircle.setLatLng([measureBufferCenter.lat, measureBufferCenter.lng]);
+        measureBufferCircle.setRadius(radiusMeters);
+    } else {
+        measureBufferCircle = L.circle([measureBufferCenter.lat, measureBufferCenter.lng], {
+            radius: radiusMeters,
+            color: '#10b981',
+            weight: 2,
+            fillColor: '#10b981',
+            fillOpacity: 0.15
+        }).addTo(map);
+    }
+}
+
+function updateBufferRadius(radiusKm) {
+    var val = parseFloat(radiusKm);
+    if (isNaN(val) || val <= 0) return;
+    if (val > 500) val = 500;
+    measureBufferRadius = val;
+
+    var slider = document.getElementById('measureRadiusSlider');
+    var input = document.getElementById('measureRadiusInput');
+    if (slider && parseFloat(slider.value) !== val && val <= 200) slider.value = val;
+    if (input && parseFloat(input.value) !== val) input.value = val;
+
+    if (measureBufferCenter) {
+        drawBufferCircle();
+        fetchProximityData(measureBufferCenter.lat, measureBufferCenter.lng, measureBufferRadius);
+    }
+}
+
+function fetchProximityData(lat, lng, radiusKm) {
+    if (!measureProximityLayerGroup && map) {
+        measureProximityLayerGroup = L.layerGroup().addTo(map);
+    }
+
+    var resultsPanel = document.getElementById('measureResultsPanel');
+    var resultsList = document.getElementById('measureResultsList');
+    var radiusTag = document.getElementById('measureResultsRadiusTag');
+
+    if (resultsPanel) resultsPanel.style.display = 'block';
+    if (radiusTag) radiusTag.textContent = radiusKm + ' km';
+    if (resultsList) resultsList.innerHTML = '<div style="font-size:11.5px;color:var(--text-secondary);padding:8px 0;">Memindai entitas terdekat...</div>';
+
+    var url = 'inc/geo_proximity.php?lat=' + encodeURIComponent(lat) +
+              '&lng=' + encodeURIComponent(lng) +
+              '&radius=' + encodeURIComponent(radiusKm) +
+              '&target=all&limit=50';
+
+    fetch(url)
+        .then(function(res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+        })
+        .then(function(data) {
+            if (data && data.status === 'success') {
+                measureBufferResults = data.results || [];
+                renderBufferResults(measureBufferResults);
+            } else {
+                if (resultsList) resultsList.innerHTML = '<div style="font-size:11.5px;color:#ef4444;padding:8px 0;">Gagal: ' + escapeHtml((data && data.message) || 'Error') + '</div>';
+            }
+        })
+        .catch(function(err) {
+            if (resultsList) resultsList.innerHTML = '<div style="font-size:11.5px;color:#ef4444;padding:8px 0;">Kesalahan koneksi atau data tidak ditemukan.</div>';
+        });
+}
+
+function renderBufferResults(results) {
+    var resultsCount = document.getElementById('measureResultsCount');
+    var resultsList = document.getElementById('measureResultsList');
+    if (!resultsList) return;
+
+    if (resultsCount) resultsCount.textContent = String(results.length);
+
+    if (measureProximityLayerGroup) {
+        measureProximityLayerGroup.clearLayers();
+    }
+
+    if (!results || results.length === 0) {
+        resultsList.innerHTML = '<div style="font-size:11.5px;color:var(--text-secondary);padding:8px 0;">Tidak ada pulau atau wilayah dalam radius ini.</div>';
+        return;
+    }
+
+    var html = '';
+    results.forEach(function(item, idx) {
+        var isIsland = (item.type === 'island');
+        var distVal = (measureUnit === 'nm') ? (item.distance_nm.toFixed(2) + ' NM') : (item.distance_km.toFixed(2) + ' km');
+        var badgeType = isIsland ? 'Pulau' : 'Wilayah';
+        var bearingText = (item.bearing_deg !== undefined) ? (item.bearing_deg.toFixed(0) + '° ' + (item.direction || '')) : '';
+
+        html += '<div class="measure-result-card" data-idx="' + idx + '" data-lat="' + item.lat + '" data-lng="' + item.lng + '">' +
+                '  <div class="measure-card-info">' +
+                '    <div class="measure-card-name">' + (isIsland ? '🏝️ ' : '🏛️ ') + escapeHtml(item.nama) + '</div>' +
+                '    <div class="measure-card-meta">' + escapeHtml(item.kode) + ' &bull; ' + badgeType + '</div>' +
+                '  </div>' +
+                '  <div class="measure-card-distance">' +
+                '    <span class="measure-card-dist-val">' + distVal + '</span>' +
+                '    <span class="measure-card-bearing">' + bearingText + '</span>' +
+                '  </div>' +
+                '</div>';
+
+        if (map && measureProximityLayerGroup) {
+            var pinColor = isIsland ? '#10b981' : '#3b82f6';
+            var pinMarker = L.circleMarker([item.lat, item.lng], {
+                radius: 4.5,
+                color: pinColor,
+                weight: 1.5,
+                fillColor: pinColor,
+                fillOpacity: 0.85
+            });
+
+            pinMarker.bindPopup(
+                '<div style="font-size:12px;font-family:inherit;">' +
+                '  <strong>' + escapeHtml(item.nama) + '</strong> (' + escapeHtml(item.kode) + ')<br>' +
+                '  <span style="color:var(--text-secondary);font-size:11px;">Jarak: <strong>' + distVal + '</strong> (' + bearingText + ')</span><br>' +
+                '  <span style="font-size:10.5px;color:var(--text-secondary);">' + (item.status ? 'Status: ' + escapeHtml(item.status) : '') + '</span>' +
+                '</div>'
+            );
+
+            measureProximityLayerGroup.addLayer(pinMarker);
+        }
+    });
+
+    resultsList.innerHTML = html;
+
+    var cards = resultsList.querySelectorAll('.measure-result-card');
+    cards.forEach(function(card) {
+        card.addEventListener('click', function() {
+            var lat = parseFloat(card.getAttribute('data-lat'));
+            var lng = parseFloat(card.getAttribute('data-lng'));
+            if (!isNaN(lat) && !isNaN(lng) && map) {
+                map.flyTo([lat, lng], 12);
+            }
+        });
+    });
+}
+
+function exportMeasureBufferCsv() {
+    if (!measureBufferCenter) {
+        alert('Tentukan titik tengah radius di peta terlebih dahulu.');
+        return;
+    }
+
+    var url = 'inc/geo_proximity.php?lat=' + encodeURIComponent(measureBufferCenter.lat) +
+              '&lng=' + encodeURIComponent(measureBufferCenter.lng) +
+              '&radius=' + encodeURIComponent(measureBufferRadius) +
+              '&target=all&limit=200&format=csv';
+
+    window.open(url, '_blank');
+}
+
+function initMeasurementControls() {
+    var btnToggle = document.getElementById('btnToggleMeasure');
+    if (btnToggle) {
+        if (btnToggle.getAttribute('data-measure-bound')) return;
+        btnToggle.setAttribute('data-measure-bound', 'true');
+        btnToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleMeasureBar();
+        });
+    }
+
+    var btnClose = document.getElementById('btnCloseMeasure');
+    if (btnClose) {
+        btnClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeMeasureBar();
+        });
+    }
+
+    var btnRuler = document.getElementById('btnMeasureModeRuler');
+    if (btnRuler) {
+        btnRuler.addEventListener('click', function() {
+            setMeasureMode('ruler');
+        });
+    }
+
+    var btnBuffer = document.getElementById('btnMeasureModeBuffer');
+    if (btnBuffer) {
+        btnBuffer.addEventListener('click', function() {
+            setMeasureMode('buffer');
+        });
+    }
+
+    var btnClear = document.getElementById('btnMeasureClear');
+    if (btnClear) {
+        btnClear.addEventListener('click', function() {
+            clearMeasurement();
+        });
+    }
+
+    var btnKm = document.getElementById('btnUnitKm');
+    if (btnKm) {
+        btnKm.addEventListener('click', function() {
+            setMeasureUnit('km');
+        });
+    }
+
+    var btnNm = document.getElementById('btnUnitNm');
+    if (btnNm) {
+        btnNm.addEventListener('click', function() {
+            setMeasureUnit('nm');
+        });
+    }
+
+    var slider = document.getElementById('measureRadiusSlider');
+    if (slider) {
+        slider.addEventListener('input', function() {
+            updateBufferRadius(this.value);
+        });
+    }
+
+    var numInput = document.getElementById('measureRadiusInput');
+    if (numInput) {
+        numInput.addEventListener('change', function() {
+            updateBufferRadius(this.value);
+        });
+    }
+
+    var btnExportCsv = document.getElementById('btnExportMeasureCsv');
+    if (btnExportCsv) {
+        btnExportCsv.addEventListener('click', function(e) {
+            e.preventDefault();
+            exportMeasureBufferCsv();
+        });
+    }
+}
+
 // --- Init on load ---
 document.addEventListener('DOMContentLoaded', function() {
     initMap();
@@ -2960,6 +3494,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initIslandClusterControls();
     initCompareControls();
     initTimelineControls();
+    initMeasurementControls();
 
     window.refreshMapThemeAwareness = refreshMapThemeAwareness;
     window.filterIslands = filterIslands;
@@ -3027,6 +3562,29 @@ document.addEventListener('DOMContentLoaded', function() {
     window.renderHistoricalPaths = renderHistoricalPaths;
     window.renderDobHighlights = renderDobHighlights;
     window.clearTimelineLayers = clearTimelineLayers;
+
+    // P8 exports
+    window.initMeasurementControls = initMeasurementControls;
+    window.setMeasureMode = setMeasureMode;
+    window.openMeasureBar = openMeasureBar;
+    window.closeMeasureBar = closeMeasureBar;
+    window.toggleMeasureBar = toggleMeasureBar;
+    window.clearMeasurement = clearMeasurement;
+    window.handleMeasurementMapClick = handleMeasurementMapClick;
+    window.addRulerPoint = addRulerPoint;
+    window.setMeasureUnit = setMeasureUnit;
+    window.setBufferCenter = setBufferCenter;
+    window.drawBufferCircle = drawBufferCircle;
+    window.updateBufferRadius = updateBufferRadius;
+    window.fetchProximityData = fetchProximityData;
+    window.renderBufferResults = renderBufferResults;
+    window.exportMeasureBufferCsv = exportMeasureBufferCsv;
+    window.calculateDistanceKm = calculateDistanceKm;
+    window.calculateBearingDeg = calculateBearingDeg;
+    window.bearingToDirection = bearingToDirection;
+    window.kmToNm = kmToNm;
+    window.nmToKm = nmToKm;
+    window.formatMeasureDistance = formatMeasureDistance;
 });
 
 window.addEventListener('popstate', function() {

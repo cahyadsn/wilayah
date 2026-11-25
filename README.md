@@ -180,11 +180,32 @@ node tools/check_sql_wilayah_pulau.js
 ## TO DO
 - [x] **Perbandingan Wilayah Multidimensi**: Fitur komparasi *head-to-head* dua wilayah (provinsi atau kab/kota) mencakup matriks statistik demografi, rasio visual perbandingan, dan batas poligon ganda pada peta.
 - [x] **Linimasa Histori Pemekaran Wilayah**: Visualisasi kronologis evolusi administratif Indonesia (*time-travel* 2016–2025) berbasis arsip data resmi untuk menelusuri dinamika pembentukan daerah otonomi baru (DOB) dan status pulau.
-- [ ] **Analisis Radius & Pengukuran Spasial Maritim**: Alat ukur geodesik jarak antar-titik/pulau (km dan Nautical Miles) serta analisis lingkaran radius (*buffer zone*) untuk mendeteksi pulau-pulau dalam jangkauan.
+- [x] **Analisis Radius & Pengukuran Spasial Maritim**: Alat ukur geodesik jarak antar-titik/pulau (km dan Nautical Miles) serta analisis lingkaran radius (*buffer zone*) untuk mendeteksi pulau-pulau dalam jangkauan.
 - [ ] **Deteksi GPS "Wilayah di Sekitar Saya"**: Integrasi HTML5 Geolocation dan algoritma *Ray-Casting* untuk mengidentifikasi hierarki wilayah administrasi resmi (Provinsi hingga Desa/Kelurahan) serta pulau terdekat dari posisi pengguna secara instan.
 - [ ] **Developer Playground & Generator Widget Dropdown**: Konsol interaktif pengujian API wilayah, generator cuplikan kode integrasi multi-bahasa (JS, PHP, Python, Dart, cURL), dan *scaffolder* formulir dropdown bertingkat mandiri (*zero-dependency*).
 
 ## CHANGE LOG
+- [2026-11-25] 🆕
+  - **Fitur Analisis Radius & Pengukuran Spasial Maritim (Spatial Buffer & Distance Measurement Tool - P8)**:
+    - **Backend Mesin Kedekatan Spasial (`apps/inc/geo_proximity.php`)**:
+      - Menyajikan endpoint kalkulasi kedekatan spasial (`lat`, `lng`, `radius`, `limit`, `target`, `format`) dengan filter awal *Bounding Box* berbasis indeks SQL untuk memangkas pencarian data hingga $< 5\text{ ms}$.
+      - Algoritma geodesik presisi: Formula Haversine ($R = 6371.0\text{ km}$), konversi Mil Laut ($1\text{ NM} = 1.852\text{ km}$), perhitungan sudut kompas/bearing ($0^\circ - 360^\circ$), dan arah mata angin 16 titik kompas (U, TL, T, TG, S, BD, B, BL, dst.).
+      - Pengaman keamanan (*safety limits*): pembatasan radius maksimal $500\text{ km}$ dan batas hasil per kueri maksimal $200$ entitas.
+      - Dukungan ekspor streaming CSV dengan UTF-8 BOM untuk kompatibilitas Microsoft Excel.
+    - **Toolbar Pengukuran Mengambang & Bilah Kontrol (`apps/index.php`, `.measure-floating-bar`)**:
+      - Tombol peluncur `#btnToggleMeasure` pada overlay bar peta Leaflet.
+      - Bilah kontrol mengambang dengan mode ganda:
+        1. **Mode Penggaris / Jarak**: Pengukuran jarak antar-titik/pulau interaktif dengan garis ukur putus-putus beranimasi semut berjalan (*marching ants style*), label jarak & arah azimuth pada titik tengah segmen, serta kartu statistik total jarak dan jumlah titik.
+        2. **Mode Radius / Buffer**: Klik titik pusat di daratan/perairan peta dengan lingkaran buffer visual semi-transparan (`L.circle`), slider interaktif (1–200 km) dan input angka presisi (0.1–500 km).
+      - Sakelar pemilih satuan: **Kilometer (km)** dan **Mil Laut (Nautical Miles / NM)**.
+      - Panel hasil analisis buffer (`#measureResultsPanel`) menampilkan jumlah entitas terdeteksi, kartu daftar pulau/wilayah terdekat dengan jarak dan arah kompas, interaksi klik kartu untuk terbang ke lokasi (`map.flyTo`), serta tombol unduh CSV hasil analisis.
+    - **Logika Klien Interaktif (`apps/inc/geo_js.php`)**:
+      - Penanganan klik peta cerdas yang mengalihkan fungsi reverse geocoding ke alat ukur saat mode aktif, pembersihan memori layer geometri saat reset, dan sinkronisasi preferensi satuan.
+    - **Penataan Gaya Modern & Responsif (`apps/css/styles.css`, `apps/css/styles.min.css`)**:
+      - Desain responsif, animasi `measureFloatUp` dan `marchingAnts`, dukungan tema gelap (Dark Mode) dan terang (Light Mode).
+    - **Otomatisasi Pengujian (`tests/apps/inc/GeoProximityTest.php`, `tests/apps/inc/geo_js.test.js`)**:
+      - 10 unit test PHPUnit baru (53 asersi) menguji validasi parameter, pembatasan nilai, presisi trigonometri Haversine & bearing, filter target, dan format CSV dengan BOM.
+      - 12 unit test Jest baru menguji konversi satuan geodesik, kalkulasi arah, penambahan titik ruler, manipulasi buffer slider, dan siklus hidup pembersihan layer.
 - [2026-11-23] 🆕
   - **Fitur Linimasa Histori Pemekaran Wilayah (Historical Regional Evolution Timeline 2016-2025 - P7)**:
     - **Agregasi Data & Pre-compiled Snapshot Cache (`tools/build_timeline_snapshot.php`, `apps/cache/timeline_snapshot.json`)**:

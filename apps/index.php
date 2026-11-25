@@ -5,7 +5,7 @@ BISMILLAAHIRRAHMAANIRRAHIIM - In the Name of Allah, Most Gracious, Most Merciful
 filename    : index.php
 purpose     : main application page
 create      : 150702
-last edit: 2026-11-23 14:30:00
+last edit: 2026-11-25 07:00:00
 author  	: cahya dsn
 demo site 	: https://wilayah.cahyadsn.com/apps
 source code : https://github.com/cahyadsn/wilayah/apps
@@ -289,6 +289,12 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
               </svg>
               <span class="timeline-btn-text">Linimasa</span>
             </button>
+            <button type="button" class="map-overlay-measure-btn" id="btnToggleMeasure" aria-label="Ukur Jarak & Radius Spasial" title="Ukur Jarak & Radius Spasial (P8)" aria-expanded="false">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M2 12h20M7 8v8M12 10v4M17 8v8"></path>
+              </svg>
+              <span class="measure-btn-text">Ukur</span>
+            </button>
           </div>
 
           <!-- Floating Timeline Control Bar (P7) -->
@@ -379,6 +385,110 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
                     </a>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Measurement & Buffer Tool Bar (P8) -->
+          <div class="measure-floating-bar" id="measureFloatingBar" role="region" aria-label="Pengukuran Jarak & Radius Maritim" style="display:none;">
+            <div class="measure-inner">
+              <div class="measure-header-bar">
+                <div class="measure-title-wrap">
+                  <span class="measure-badge">P8</span>
+                  <span class="measure-title">Pengukuran &amp; Radius Spasial</span>
+                </div>
+                <div class="measure-action-btns">
+                  <button type="button" class="measure-control-btn" id="btnCloseMeasure" aria-label="Tutup menu pengukuran" title="Tutup menu pengukuran">&times;</button>
+                </div>
+              </div>
+
+              <!-- Mode Selection Row -->
+              <div class="measure-mode-row">
+                <button type="button" class="measure-mode-btn is-active" id="btnMeasureModeRuler" data-mode="ruler" title="Ukur jarak garis lurus / polyline antarpulau atau wilayah">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <line x1="2" y1="21" x2="22" y2="3"></line>
+                    <line x1="5" y1="18" x2="8" y2="15"></line>
+                    <line x1="9" y1="14" x2="12" y2="11"></line>
+                    <line x1="13" y1="10" x2="16" y2="7"></line>
+                    <line x1="17" y1="6" x2="20" y2="3"></line>
+                  </svg>
+                  <span>Garis / Jarak</span>
+                </button>
+                <button type="button" class="measure-mode-btn" id="btnMeasureModeBuffer" data-mode="buffer" title="Analisis radius lingkaran / deteksi pulau terdekat">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  <span>Radius / Buffer</span>
+                </button>
+                <button type="button" class="measure-mode-btn measure-reset-btn" id="btnMeasureClear" title="Hapus seluruh pengukuran dan reset peta">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                  <span>Reset</span>
+                </button>
+              </div>
+
+              <!-- Mode Ruler Controls -->
+              <div class="measure-controls-ruler" id="measureControlsRuler">
+                <div class="measure-unit-row">
+                  <span class="measure-sublabel">Satuan:</span>
+                  <div class="measure-unit-toggle" id="measureUnitToggle">
+                    <button type="button" class="measure-unit-btn is-active" data-unit="km" id="btnUnitKm">Kilometer (km)</button>
+                    <button type="button" class="measure-unit-btn" data-unit="nm" id="btnUnitNm">Mil Laut (NM)</button>
+                  </div>
+                </div>
+                <div class="measure-hint-row" id="measureRulerHint">
+                  Klik titik awal di peta, lalu klik titik berikutnya untuk mengukur jarak.
+                </div>
+                <div class="measure-stats-row" id="measureRulerStats" style="display:none;">
+                  <div class="measure-stat-item">
+                    <span class="measure-stat-label">Total Jarak:</span>
+                    <span class="measure-stat-val" id="measureTotalDistance">0.00 km</span>
+                  </div>
+                  <div class="measure-stat-item">
+                    <span class="measure-stat-label">Titik:</span>
+                    <span class="measure-stat-val" id="measurePointsCount">0</span>
+                  </div>
+                  <div class="measure-stat-item" id="measureAzimuthItem" style="display:none;">
+                    <span class="measure-stat-label">Arah/Azimuth:</span>
+                    <span class="measure-stat-val" id="measureAzimuthVal">-</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mode Buffer Controls -->
+              <div class="measure-controls-buffer" id="measureControlsBuffer" style="display:none;">
+                <div class="measure-buffer-config-row">
+                  <label for="measureRadiusSlider" class="measure-sublabel">Radius:</label>
+                  <input type="range" class="measure-slider-input" id="measureRadiusSlider" min="1" max="200" step="1" value="25" aria-label="Radius analisis" />
+                  <div class="measure-radius-display">
+                    <input type="number" class="measure-number-input" id="measureRadiusInput" min="0.1" max="500" step="1" value="25" aria-label="Input radius km" />
+                    <span class="measure-unit-label">km</span>
+                  </div>
+                </div>
+                <div class="measure-hint-row" id="measureBufferHint">
+                  Klik sembarang titik di perairan/daratan peta untuk memindai pulau dan wilayah di sekitarnya.
+                </div>
+              </div>
+
+              <!-- Buffer Results Panel -->
+              <div class="measure-results-panel" id="measureResultsPanel" style="display:none;">
+                <div class="measure-results-header">
+                  <div class="measure-results-title">
+                    <span id="measureResultsCount">0</span> entitas terdeteksi dalam radius <span id="measureResultsRadiusTag">25 km</span>
+                  </div>
+                  <button type="button" class="measure-export-csv-btn" id="btnExportMeasureCsv" title="Unduh CSV hasil analisis buffer">
+                    <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    CSV
+                  </button>
+                </div>
+                <div class="measure-results-list" id="measureResultsList"></div>
               </div>
             </div>
           </div>
